@@ -1,0 +1,55 @@
+import type { Metadata } from "next";
+import "./globals.css";
+import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
+
+export const metadata: Metadata = {
+  title: {
+    default: "MADRock — Premium Fitness Coaching Platform",
+    template: "%s | MADRock Fitness",
+  },
+  description:
+    "Science-based premium coaching designed to help you build muscle, lose fat, improve strength and become your best version.",
+  keywords: [
+    "Fitness Coaching",
+    "Personal Trainer",
+    "Hypertrophy Program",
+    "Fat Loss Protocol",
+    "Body Recomposition",
+    "AI Meal Planner",
+    "MADRock Fitness",
+  ],
+  authors: [{ name: "Coach Marcus Rock" }],
+  openGraph: {
+    title: "MADRock — Premium Fitness Coaching Platform",
+    description: "Train. Focus. Become Unstoppable.",
+    url: "https://madrock.vercel.app",
+    siteName: "MADRock Fitness",
+    images: [
+      {
+        url: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=1200&auto=format&fit=crop",
+        width: 1200,
+        height: 630,
+        alt: "MADRock Premium Fitness Coaching",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en" className="dark scroll-smooth">
+      <body className="bg-mad-bg text-white antialiased min-h-screen flex flex-col justify-between">
+        <Navbar />
+        <div className="flex-1">{children}</div>
+        <Footer />
+      </body>
+    </html>
+  );
+}
