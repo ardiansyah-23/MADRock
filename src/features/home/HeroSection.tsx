@@ -126,13 +126,13 @@ export function HeroSection() {
                 <div className="relative rounded-3xl overflow-hidden border border-white/15 bg-mad-surface shadow-2xl transform-gpu">
                   <div className="relative h-[480px] sm:h-[540px] w-full">
                     <Image
-                      src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1470&auto=format&fit=crop"
+                      src="/images/coach-ahmad-hudzaifah.jpg"
                       alt="Head Coach Ahmad Hudzaifah"
                       fill
                       sizes="(max-width: 768px) 100vw, 40vw"
-                      className="object-cover object-top hover:scale-105 transition-transform duration-500 transform-gpu"
+                      className="object-cover object-center hover:scale-105 transition-transform duration-500 transform-gpu"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-mad-bg via-transparent to-transparent opacity-90" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-mad-bg via-transparent to-transparent opacity-80" />
                   </div>
 
                   {/* Floating Overlay Badge */}
