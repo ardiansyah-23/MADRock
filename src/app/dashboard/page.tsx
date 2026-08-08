@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import {
   Dumbbell,
@@ -34,6 +34,26 @@ import confetti from "canvas-confetti";
 export default function DashboardPage() {
   const [activeTab, setActiveTab] = useState<"overview" | "workouts" | "nutrition" | "coaching">("overview");
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  // Restore active tab on client mount
+  useEffect(() => {
+    const hash = window.location.hash.replace("#", "");
+    const savedTab = localStorage.getItem("madrock_user_tab");
+    const validTabs = ["overview", "workouts", "nutrition", "coaching"];
+
+    if (hash && validTabs.includes(hash)) {
+      setActiveTab(hash as any);
+    } else if (savedTab && validTabs.includes(savedTab)) {
+      setActiveTab(savedTab as any);
+    }
+  }, []);
+
+  const changeTab = (tab: "overview" | "workouts" | "nutrition" | "coaching") => {
+    setActiveTab(tab);
+    localStorage.setItem("madrock_user_tab", tab);
+    window.history.replaceState(null, "", `#${tab}`);
+    setSidebarOpen(false);
+  };
 
   // In-Dashboard Booking Modal state
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
@@ -81,14 +101,12 @@ export default function DashboardPage() {
           </span>
         </Link>
 
-        <div className="flex items-center gap-2">
-          <button
-            onClick={() => setSidebarOpen(!sidebarOpen)}
-            className="p-2 rounded-xl bg-mad-bg border border-white/10 text-white"
-          >
-            {sidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
-        </div>
+        <button
+          onClick={() => setSidebarOpen(!sidebarOpen)}
+          className="p-2 rounded-xl bg-mad-bg border border-white/10 text-white"
+        >
+          {sidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+        </button>
       </div>
 
       {/* Standalone Dashboard Sidebar */}
@@ -121,10 +139,7 @@ export default function DashboardPage() {
             {navItems.map((item) => (
               <button
                 key={item.id}
-                onClick={() => {
-                  setActiveTab(item.id as any);
-                  setSidebarOpen(false);
-                }}
+                onClick={() => changeTab(item.id as any)}
                 className={`w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-xs font-bold uppercase transition-all ${
                   activeTab === item.id
                     ? "bg-mad-lime text-mad-bg font-extrabold shadow-lg shadow-mad-lime/20"

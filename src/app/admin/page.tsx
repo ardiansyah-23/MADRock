@@ -59,13 +59,32 @@ export default function AdminPage() {
   // 4. PERSISTENT BOOKINGS CONSULTATIONS STATE
   const [bookings, setBookings] = useState<BookingItem[]>([]);
 
-  // Load saved persistent data on client mount
+  // Restore active tab and load persistent data on client mount
   useEffect(() => {
     setArticles(getSavedArticles());
     setMembersList(getSavedMembers());
     setPrograms(getSavedPrograms());
     setBookings(getSavedBookings());
+
+    // Restore active tab from URL hash or localStorage
+    const hash = window.location.hash.replace("#", "");
+    const savedTab = localStorage.getItem("madrock_admin_tab");
+    const validTabs = ["overview", "articles", "members", "programs", "bookings"];
+
+    if (hash && validTabs.includes(hash)) {
+      setActiveTab(hash as any);
+    } else if (savedTab && validTabs.includes(savedTab)) {
+      setActiveTab(savedTab as any);
+    }
   }, []);
+
+  // Handle Tab Switching with URL Hash & LocalStorage persistence
+  const changeTab = (tab: "overview" | "articles" | "members" | "programs" | "bookings") => {
+    setActiveTab(tab);
+    localStorage.setItem("madrock_admin_tab", tab);
+    window.history.replaceState(null, "", `#${tab}`);
+    setSidebarOpen(false);
+  };
 
   // Article Modal State
   const [articleModalOpen, setArticleModalOpen] = useState(false);
@@ -265,10 +284,7 @@ export default function AdminPage() {
             {navItems.map((item) => (
               <button
                 key={item.id}
-                onClick={() => {
-                  setActiveTab(item.id as any);
-                  setSidebarOpen(false);
-                }}
+                onClick={() => changeTab(item.id as any)}
                 className={`w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-xs font-bold uppercase transition-all ${
                   activeTab === item.id
                     ? "bg-rose-500 text-white font-extrabold shadow-lg shadow-rose-500/20"
@@ -316,7 +332,7 @@ export default function AdminPage() {
           <div className="flex items-center gap-3">
             <span className="px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-400 font-mono text-[10px] uppercase font-bold flex items-center gap-1.5">
               <Save className="w-3 h-3 text-emerald-400 animate-pulse" />
-              <span>PERSISTENT STORAGE ENABLED</span>
+              <span>TAB PERSISTENCE ENABLED</span>
             </span>
             <h2 className="text-lg font-black font-spartan text-white uppercase tracking-wide">
               {activeTab === "overview" && "Analytics & Overview Desk"}
@@ -356,7 +372,7 @@ export default function AdminPage() {
                   ADMIN CONSOLE
                 </span>
                 <span className="text-xs text-emerald-400 font-mono flex items-center gap-1">
-                  <Check className="w-3.5 h-3.5" /> All edits auto-saved persistently
+                  <Check className="w-3.5 h-3.5" /> All tab states auto-restore on refresh
                 </span>
               </div>
               <h1 className="text-3xl font-black font-spartan text-white uppercase mt-1">
