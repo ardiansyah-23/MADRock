@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import {
   Users,
@@ -27,47 +27,45 @@ import {
   FileText,
   Check,
   AlertCircle,
+  Save,
 } from "lucide-react";
 import confetti from "canvas-confetti";
+import {
+  ArticleItem,
+  ProgramItem,
+  MemberItem,
+  BookingItem,
+  getSavedArticles,
+  saveArticles,
+  getSavedPrograms,
+  savePrograms,
+  getSavedMembers,
+  saveMembers,
+  getSavedBookings,
+  saveBookings,
+} from "@/lib/adminDataStore";
 
 export default function AdminPage() {
   const [activeTab, setActiveTab] = useState<"overview" | "articles" | "members" | "programs" | "bookings">("overview");
   const [searchTerm, setSearchTerm] = useState("");
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  // 1. ARTICLES MANAGEMENT STATE
-  const [articles, setArticles] = useState([
-    {
-      id: "hypertrophy-biomechanics-guide",
-      title: "The Biomechanics of Hypertrophy: How Mechanical Tension Drives Muscle Mass",
-      excerpt: "Explore sports science research on mechanical tension, metabolic stress, and muscle damage for natural lifters.",
-      author: "Coach Ahmad Hudzaifah",
-      date: "August 5, 2026",
-      readTime: "6 Min Read",
-      category: "Workout Science",
-      status: "Published",
-    },
-    {
-      id: "carb-cycling-fat-loss",
-      title: "Carb Cycling Demystified: How to Burn Fat Without Destroying Thyroid Function",
-      excerpt: "Learn how alternating high and low carbohydrate days prevents metabolic adaptation and maintains high workout intensity.",
-      author: "Elena Vance",
-      date: "July 28, 2026",
-      readTime: "8 Min Read",
-      category: "Nutrition",
-      status: "Published",
-    },
-    {
-      id: "creatine-monohydrate-guide",
-      title: "Creatine Monohydrate Masterclass: Timing, Dosage, and Cognitive Benefits",
-      excerpt: "Why creatine remains the gold standard of sports supplements and how 5g daily accelerates strength output.",
-      author: "Coach Ahmad Hudzaifah",
-      date: "July 19, 2026",
-      readTime: "5 Min Read",
-      category: "Supplements",
-      status: "Published",
-    },
-  ]);
+  // 1. PERSISTENT ARTICLES MANAGEMENT STATE
+  const [articles, setArticles] = useState<ArticleItem[]>([]);
+  // 2. PERSISTENT MEMBERS DIRECTORY STATE
+  const [membersList, setMembersList] = useState<MemberItem[]>([]);
+  // 3. PERSISTENT PROGRAMS CATALOG STATE
+  const [programs, setPrograms] = useState<ProgramItem[]>([]);
+  // 4. PERSISTENT BOOKINGS CONSULTATIONS STATE
+  const [bookings, setBookings] = useState<BookingItem[]>([]);
+
+  // Load saved persistent data on client mount
+  useEffect(() => {
+    setArticles(getSavedArticles());
+    setMembersList(getSavedMembers());
+    setPrograms(getSavedPrograms());
+    setBookings(getSavedBookings());
+  }, []);
 
   // Article Modal State
   const [articleModalOpen, setArticleModalOpen] = useState(false);
@@ -76,6 +74,7 @@ export default function AdminPage() {
   const [articleCategory, setArticleCategory] = useState("Workout Science");
   const [articleExcerpt, setArticleExcerpt] = useState("");
   const [articleAuthor, setArticleAuthor] = useState("Coach Ahmad Hudzaifah");
+  const [articleContent, setArticleContent] = useState("");
 
   // Open Create Article
   const handleOpenCreateArticle = () => {
@@ -84,89 +83,90 @@ export default function AdminPage() {
     setArticleCategory("Workout Science");
     setArticleExcerpt("");
     setArticleAuthor("Coach Ahmad Hudzaifah");
+    setArticleContent("");
     setArticleModalOpen(true);
   };
 
   // Open Edit Article
-  const handleOpenEditArticle = (art: typeof articles[0]) => {
+  const handleOpenEditArticle = (art: ArticleItem) => {
     setEditingArticleId(art.id);
     setArticleTitle(art.title);
     setArticleCategory(art.category);
     setArticleExcerpt(art.excerpt);
     setArticleAuthor(art.author);
+    setArticleContent(art.content || "");
     setArticleModalOpen(true);
   };
 
-  // Save Article
+  // Save Article Persistently
   const handleSaveArticle = (e: React.FormEvent) => {
     e.preventDefault();
+    let updated: ArticleItem[];
+
     if (editingArticleId) {
-      // Edit existing
-      setArticles((prev) =>
-        prev.map((a) =>
-          a.id === editingArticleId
-            ? { ...a, title: articleTitle, category: articleCategory, excerpt: articleExcerpt, author: articleAuthor }
-            : a
-        )
+      updated = articles.map((a) =>
+        a.id === editingArticleId
+          ? {
+              ...a,
+              title: articleTitle,
+              category: articleCategory,
+              excerpt: articleExcerpt,
+              author: articleAuthor,
+              content: articleContent,
+            }
+          : a
       );
     } else {
-      // Create new
-      const newArt = {
-        id: `article-${Date.now()}`,
+      const slug = articleTitle.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "") || `article-${Date.now()}`;
+      const newArt: ArticleItem = {
+        id: slug,
         title: articleTitle,
         excerpt: articleExcerpt,
+        content: articleContent || articleExcerpt,
         author: articleAuthor,
-        date: "Today",
+        date: "August 8, 2026",
         readTime: "5 Min Read",
         category: articleCategory,
+        image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800&auto=format&fit=crop",
         status: "Published",
       };
-      setArticles([newArt, ...articles]);
+      updated = [newArt, ...articles];
       confetti({ particleCount: 80, spread: 60, origin: { y: 0.6 } });
     }
+
+    setArticles(updated);
+    saveArticles(updated);
     setArticleModalOpen(false);
   };
 
-  // Delete Article
+  // Delete Article Persistently
   const handleDeleteArticle = (id: string) => {
     if (confirm("Are you sure you want to delete this article?")) {
-      setArticles((prev) => prev.filter((a) => a.id !== id));
+      const updated = articles.filter((a) => a.id !== id);
+      setArticles(updated);
+      saveArticles(updated);
     }
   };
 
-  // 2. MEMBERS DIRECTORY STATE
-  const [membersList, setMembersList] = useState([
-    { id: 1, name: "Brandon Hayes", email: "brandon@example.com", program: "12-Week Hypertrophy", status: "Active", joined: "2026-06-15" },
-    { id: 2, name: "Sarah Jenkins", email: "sarah.j@example.com", program: "Fat Loss Masterclass", status: "Active", joined: "2026-07-01" },
-    { id: 3, name: "Daniel Kim", email: "dkim@example.com", program: "Body Recomposition", status: "Active", joined: "2026-07-20" },
-    { id: 4, name: "Marcus Vance", email: "marcus.v@example.com", program: "Max Strength & Power", status: "Pending", joined: "2026-08-02" },
-    { id: 5, name: "Jessica Alba", email: "jessica@example.com", program: "1-on-1 VIP Coaching", status: "Active", joined: "2026-08-05" },
-  ]);
-
-  // Edit Member Modal State
+  // MEMBER MANAGEMENT MODAL & HANDLERS
   const [memberModalOpen, setMemberModalOpen] = useState(false);
-  const [selectedMember, setSelectedMember] = useState<typeof membersList[0] | null>(null);
+  const [selectedMember, setSelectedMember] = useState<MemberItem | null>(null);
 
-  const handleOpenEditMember = (m: typeof membersList[0]) => {
-    setSelectedMember(m);
+  const handleOpenEditMember = (m: MemberItem) => {
+    setSelectedMember({ ...m });
     setMemberModalOpen(true);
   };
 
   const handleSaveMember = (e: React.FormEvent) => {
     e.preventDefault();
     if (!selectedMember) return;
-    setMembersList((prev) => prev.map((m) => (m.id === selectedMember.id ? selectedMember : m)));
+    const updated = membersList.map((m) => (m.id === selectedMember.id ? selectedMember : m));
+    setMembersList(updated);
+    saveMembers(updated);
     setMemberModalOpen(false);
   };
 
-  // 3. PROGRAMS CATALOG STATE
-  const [programs, setPrograms] = useState([
-    { id: 1, name: "Fat Loss Masterclass", enrolled: 210, price: "$199", duration: "12 Weeks" },
-    { id: 2, name: "Hypertrophy Muscle Build", enrolled: 284, price: "$249", duration: "16 Weeks" },
-    { id: 3, name: "Body Recomposition", enrolled: 148, price: "$299", duration: "12 Weeks" },
-  ]);
-
-  // Program Modal State
+  // PROGRAM MANAGEMENT MODAL & HANDLERS
   const [programModalOpen, setProgramModalOpen] = useState(false);
   const [newProgName, setNewProgName] = useState("");
   const [newProgPrice, setNewProgPrice] = useState("$249");
@@ -174,13 +174,29 @@ export default function AdminPage() {
 
   const handleSaveProgram = (e: React.FormEvent) => {
     e.preventDefault();
-    setPrograms([
+    const updated = [
       ...programs,
       { id: Date.now(), name: newProgName, enrolled: 1, price: newProgPrice, duration: newProgDuration },
-    ]);
+    ];
+    setPrograms(updated);
+    savePrograms(updated);
     setNewProgName("");
     setProgramModalOpen(false);
     confetti({ particleCount: 70, spread: 60, origin: { y: 0.6 } });
+  };
+
+  // BOOKING HANDLER
+  const handleToggleBookingStatus = (id: number | string) => {
+    const updated = bookings.map((b) => {
+      if (b.id === id) {
+        const nextStatus: BookingItem["status"] =
+          b.status === "Pending" ? "Confirmed" : b.status === "Confirmed" ? "Cancelled" : "Pending";
+        return { ...b, status: nextStatus };
+      }
+      return b;
+    });
+    setBookings(updated);
+    saveBookings(updated);
   };
 
   // Filtered members by search
@@ -298,8 +314,9 @@ export default function AdminPage() {
         {/* Top Workplace Header Bar */}
         <header className="hidden md:flex items-center justify-between px-8 py-5 bg-mad-surface/50 border-b border-rose-500/20 backdrop-blur-md sticky top-0 z-30">
           <div className="flex items-center gap-3">
-            <span className="px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-400 font-mono text-[10px] uppercase font-bold">
-              SYSTEM ACTIVE v2.4
+            <span className="px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-400 font-mono text-[10px] uppercase font-bold flex items-center gap-1.5">
+              <Save className="w-3 h-3 text-emerald-400 animate-pulse" />
+              <span>PERSISTENT STORAGE ENABLED</span>
             </span>
             <h2 className="text-lg font-black font-spartan text-white uppercase tracking-wide">
               {activeTab === "overview" && "Analytics & Overview Desk"}
@@ -338,7 +355,9 @@ export default function AdminPage() {
                 <span className="px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-400 font-mono text-[10px] uppercase font-bold">
                   ADMIN CONSOLE
                 </span>
-                <span className="text-xs text-mad-lime font-mono">Full Platform Management Active</span>
+                <span className="text-xs text-emerald-400 font-mono flex items-center gap-1">
+                  <Check className="w-3.5 h-3.5" /> All edits auto-saved persistently
+                </span>
               </div>
               <h1 className="text-3xl font-black font-spartan text-white uppercase mt-1">
                 MADROCK PLATFORM MANAGEMENT
@@ -371,8 +390,8 @@ export default function AdminPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 <div className="p-6 rounded-2xl bg-mad-surface border border-white/10 space-y-2">
                   <span className="text-xs font-mono text-mad-gray uppercase">Total Active Members</span>
-                  <div className="text-3xl font-black font-spartan text-white">642</div>
-                  <span className="text-[10px] text-emerald-400 font-mono">+12% this month</span>
+                  <div className="text-3xl font-black font-spartan text-white">{membersList.length}</div>
+                  <span className="text-[10px] text-emerald-400 font-mono">Active Athletes</span>
                 </div>
 
                 <div className="p-6 rounded-2xl bg-mad-surface border border-white/10 space-y-2">
@@ -384,13 +403,13 @@ export default function AdminPage() {
                 <div className="p-6 rounded-2xl bg-mad-surface border border-white/10 space-y-2">
                   <span className="text-xs font-mono text-mad-gray uppercase">Published Articles</span>
                   <div className="text-3xl font-black font-spartan text-rose-400">{articles.length} Posts</div>
-                  <span className="text-[10px] text-mad-gray font-mono">Journal science articles</span>
+                  <span className="text-[10px] text-emerald-400 font-mono font-bold">Live on /blog</span>
                 </div>
 
                 <div className="p-6 rounded-2xl bg-mad-surface border border-white/10 space-y-2">
                   <span className="text-xs font-mono text-mad-gray uppercase">Active VIP Bookings</span>
-                  <div className="text-3xl font-black font-spartan text-white">128</div>
-                  <span className="text-[10px] text-mad-gray font-mono">18 pending confirmation</span>
+                  <div className="text-3xl font-black font-spartan text-white">{bookings.length}</div>
+                  <span className="text-[10px] text-mad-gray font-mono">Consultations scheduled</span>
                 </div>
               </div>
             </div>
@@ -404,7 +423,9 @@ export default function AdminPage() {
                   <h3 className="text-xl font-bold font-spartan text-white uppercase">
                     JOURNAL BLOG ARTICLES MANAGEMENT ({articles.length})
                   </h3>
-                  <p className="text-xs text-mad-gray font-mono mt-1">Publish, edit, and update fitness science articles on /blog</p>
+                  <p className="text-xs text-emerald-400 font-mono mt-1">
+                    ✓ All articles created here instantly save & display live on /blog
+                  </p>
                 </div>
 
                 <button
@@ -548,7 +569,7 @@ export default function AdminPage() {
                     </div>
                     <div className="flex items-center justify-between text-xs text-mad-gray font-mono pt-2 border-t border-white/5">
                       <span>Enrolled: <strong className="text-white">{p.enrolled} Athletes</strong></span>
-                      <button className="text-mad-lime hover:underline">Edit →</button>
+                      <span className="text-emerald-400 font-bold">Saved ✓</span>
                     </div>
                   </div>
                 ))}
@@ -564,21 +585,21 @@ export default function AdminPage() {
               </h3>
 
               <div className="space-y-3">
-                {[
-                  { name: "Brandon Hayes", pkg: "1-on-1 VIP Coaching", date: "Tomorrow, 10:00 AM", status: "Confirmed" },
-                  { name: "Sarah Jenkins", pkg: "Nutrition Prep Consultation", date: "Tomorrow, 02:00 PM", status: "Confirmed" },
-                  { name: "Daniel Kim", pkg: "Physique Strategy Call", date: "Aug 13, 11:30 AM", status: "Pending" },
-                ].map((b, idx) => (
-                  <div key={idx} className="p-4 rounded-2xl bg-mad-bg border border-white/10 flex items-center justify-between text-xs">
+                {bookings.map((b) => (
+                  <div key={b.id} className="p-4 rounded-2xl bg-mad-bg border border-white/10 flex items-center justify-between text-xs">
                     <div>
                       <strong className="text-white font-bold block text-sm">{b.name}</strong>
                       <span className="text-mad-gray font-mono">{b.pkg} • {b.date}</span>
                     </div>
-                    <span className={`px-3 py-1 rounded-full text-[10px] font-bold ${
-                      b.status === "Confirmed" ? "bg-emerald-500/20 text-emerald-400" : "bg-amber-500/20 text-amber-400"
-                    }`}>
-                      {b.status}
-                    </span>
+
+                    <button
+                      onClick={() => handleToggleBookingStatus(b.id)}
+                      className={`px-3 py-1 rounded-full text-[10px] font-bold transition-all ${
+                        b.status === "Confirmed" ? "bg-emerald-500/20 text-emerald-400" : "bg-amber-500/20 text-amber-400"
+                      }`}
+                    >
+                      {b.status} (Click to toggle)
+                    </button>
                   </div>
                 ))}
               </div>
@@ -590,7 +611,7 @@ export default function AdminPage() {
       {/* ARTICLE CREATE / EDIT MODAL */}
       {articleModalOpen && (
         <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
-          <div className="w-full max-w-lg rounded-3xl bg-mad-surface border border-white/10 p-6 sm:p-8 space-y-5 relative shadow-2xl animate-fadeIn">
+          <div className="w-full max-w-lg rounded-3xl bg-mad-surface border border-white/10 p-6 sm:p-8 space-y-5 relative shadow-2xl animate-fadeIn max-h-[90vh] overflow-y-auto">
             <button
               onClick={() => setArticleModalOpen(false)}
               className="absolute top-5 right-5 p-2 rounded-xl bg-mad-bg text-mad-gray hover:text-white"
@@ -652,7 +673,7 @@ export default function AdminPage() {
                 <label className="text-mad-gray uppercase block mb-1">Excerpt / Summary</label>
                 <textarea
                   required
-                  rows={3}
+                  rows={2}
                   placeholder="Brief summary of sports science takeaways..."
                   value={articleExcerpt}
                   onChange={(e) => setArticleExcerpt(e.target.value)}
@@ -660,11 +681,23 @@ export default function AdminPage() {
                 />
               </div>
 
+              <div>
+                <label className="text-mad-gray uppercase block mb-1">Full Article Body Content</label>
+                <textarea
+                  rows={4}
+                  placeholder="Full article body content..."
+                  value={articleContent}
+                  onChange={(e) => setArticleContent(e.target.value)}
+                  className="w-full bg-mad-bg border border-white/10 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-rose-500"
+                />
+              </div>
+
               <button
                 type="submit"
-                className="w-full py-3.5 rounded-xl bg-rose-500 text-white font-extrabold text-xs uppercase tracking-wider hover:bg-rose-600 shadow-lg shadow-rose-500/20"
+                className="w-full py-3.5 rounded-xl bg-rose-500 text-white font-extrabold text-xs uppercase tracking-wider hover:bg-rose-600 shadow-lg shadow-rose-500/20 flex items-center justify-center gap-2"
               >
-                {editingArticleId ? "SAVE CHANGES TO ARTICLE" : "PUBLISH ARTICLE TO JOURNAL"}
+                <Save className="w-4 h-4" />
+                <span>{editingArticleId ? "SAVE & PERSIST ARTICLE CHANGES" : "PUBLISH ARTICLE TO JOURNAL"}</span>
               </button>
             </form>
           </div>
@@ -762,8 +795,8 @@ export default function AdminPage() {
               <div>
                 <label className="text-mad-gray uppercase block mb-1">Member Status</label>
                 <select
-                  value={selectedMember.status}
-                  onChange={(e) => setSelectedMember({ ...selectedMember, status: e.target.value })}
+                  value={selectedMember.status as any}
+                  onChange={(e) => setSelectedMember({ ...selectedMember, status: e.target.value as any })}
                   className="w-full bg-mad-bg border border-white/10 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-mad-lime"
                 >
                   <option value="Active">Active</option>

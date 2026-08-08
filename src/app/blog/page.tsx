@@ -1,60 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { SectionHeader } from "@/components/common/SectionHeader";
 import { ScrollReveal } from "@/components/common/ScrollReveal";
 import { Search, Clock, User, Tag, ArrowRight } from "lucide-react";
+import { ArticleItem, getSavedArticles } from "@/lib/adminDataStore";
 
 export default function BlogPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [posts, setPosts] = useState<ArticleItem[]>([]);
+
+  useEffect(() => {
+    setPosts(getSavedArticles());
+  }, []);
 
   const categories = ["All", "Workout Science", "Nutrition", "Recovery", "Supplements", "Mindset"];
-
-  const posts = [
-    {
-      id: "hypertrophy-biomechanics-guide",
-      title: "The Biomechanics of Hypertrophy: How Mechanical Tension Drives Muscle Mass",
-      excerpt: "Explore sports science research on mechanical tension, metabolic stress, and muscle damage for natural lifters.",
-      author: "Coach Marcus Rock",
-      date: "August 5, 2026",
-      readTime: "6 Min Read",
-      category: "Workout Science",
-      image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800&auto=format&fit=crop",
-    },
-    {
-      id: "carb-cycling-fat-loss",
-      title: "Carb Cycling Demystified: How to Burn Fat Without Destroying Thyroid Function",
-      excerpt: "Learn how alternating high and low carbohydrate days prevents metabolic adaptation and maintains high workout intensity.",
-      author: "Elena Vance",
-      date: "July 28, 2026",
-      readTime: "8 Min Read",
-      category: "Nutrition",
-      image: "https://images.unsplash.com/photo-1467003909585-2f8a72700288?q=80&w=800&auto=format&fit=crop",
-    },
-    {
-      id: "creatine-monohydrate-guide",
-      title: "Creatine Monohydrate Masterclass: Timing, Dosage, and Cognitive Benefits",
-      excerpt: "Why creatine remains the gold standard of sports supplements and how 5g daily accelerates strength output.",
-      author: "Coach Marcus Rock",
-      date: "July 19, 2026",
-      readTime: "5 Min Read",
-      category: "Supplements",
-      image: "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?q=80&w=800&auto=format&fit=crop",
-    },
-    {
-      id: "sleep-hgh-recovery-protocol",
-      title: "Deep Sleep & HGH: The Forgotten Pillar of Elite Strength Recovery",
-      excerpt: "How sleep architecture controls human growth hormone secretion, central nervous system recovery, and testosterone synthesis.",
-      author: "David Vance",
-      date: "July 10, 2026",
-      readTime: "7 Min Read",
-      category: "Recovery",
-      image: "https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=800&auto=format&fit=crop",
-    },
-  ];
 
   const filteredPosts = posts.filter((p) => {
     const matchesCat = selectedCategory === "All" || p.category === selectedCategory;
@@ -109,13 +72,19 @@ export default function BlogPage() {
             <ScrollReveal key={post.id} delay={0.1 * idx}>
               <div className="group rounded-3xl bg-mad-surface border border-white/10 overflow-hidden hover:border-mad-lime/40 transition-all duration-300 flex flex-col justify-between h-full">
                 <div>
-                  <div className="relative h-60 w-full overflow-hidden">
-                    <Image
-                      src={post.image}
-                      alt={post.title}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-700"
-                    />
+                  <div className="relative h-60 w-full overflow-hidden bg-mad-surface-2">
+                    {post.image ? (
+                      <Image
+                        src={post.image}
+                        alt={post.title}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-700"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center text-mad-lime font-spartan font-black text-2xl">
+                        MADROCK JOURNAL
+                      </div>
+                    )}
                     <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-mad-bg/80 text-mad-lime font-mono text-[10px] uppercase font-bold border border-white/10">
                       {post.category}
                     </div>
