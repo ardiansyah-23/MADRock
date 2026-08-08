@@ -1,11 +1,8 @@
 import { HeroSection } from "@/features/home/HeroSection";
 import { TrustedBrands } from "@/features/home/TrustedBrands";
 import { AboutSection } from "@/features/home/AboutSection";
-import { ProgramsSection } from "@/features/home/ProgramsSection";
 import { FeaturedVideo } from "@/features/home/FeaturedVideo";
-import { TransformationSection } from "@/features/home/TransformationSection";
 import { CoachesSection } from "@/features/home/CoachesSection";
-import { FitnessToolsSection } from "@/features/home/FitnessToolsSection";
 import { PricingSection } from "@/features/home/PricingSection";
 import { TestimonialsSection } from "@/features/home/TestimonialsSection";
 import { CTASection } from "@/features/home/CTASection";
@@ -22,11 +19,8 @@ export default function HomePage() {
       <HeroSection />
       <TrustedBrands />
       <AboutSection />
-      <ProgramsSection />
       <FeaturedVideo />
-      <TransformationSection />
       <CoachesSection />
-      <FitnessToolsSection />
       <PricingSection />
       <TestimonialsSection />
       <CTASection />
