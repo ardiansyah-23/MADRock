@@ -9,7 +9,7 @@ import { ScrollReveal } from "@/components/common/ScrollReveal";
 export function CoachesSection() {
   const coaches = [
     {
-      name: "Marcus Rock",
+      name: "Ahmad Hudzaifah",
       role: "Head Coach & Founder",
       specialization: "Hypertrophy & Strength Biomechanics",
       experience: "8+ Years",

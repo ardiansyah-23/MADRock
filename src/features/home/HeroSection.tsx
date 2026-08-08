@@ -127,7 +127,7 @@ export function HeroSection() {
                   <div className="relative h-[480px] sm:h-[540px] w-full">
                     <Image
                       src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1470&auto=format&fit=crop"
-                      alt="Head Coach MADRock Fitness"
+                      alt="Head Coach Ahmad Hudzaifah"
                       fill
                       sizes="(max-width: 768px) 100vw, 40vw"
                       className="object-cover object-top hover:scale-105 transition-transform duration-500 transform-gpu"
@@ -138,11 +138,11 @@ export function HeroSection() {
                   {/* Floating Overlay Badge */}
                   <div className="absolute bottom-6 left-6 right-6 p-4 rounded-2xl glass-panel border border-white/10 flex items-center gap-4">
                     <div className="w-12 h-12 rounded-xl bg-mad-lime flex items-center justify-center text-mad-bg shrink-0 font-black text-xl">
-                      MR
+                      AH
                     </div>
                     <div>
                       <h4 className="text-white font-bold text-sm uppercase tracking-wide">
-                        Coach Marcus Rock
+                        Coach Ahmad Hudzaifah
                       </h4>
                       <p className="text-xs text-mad-lime font-medium">
                         Head Strength & Recomp Specialist

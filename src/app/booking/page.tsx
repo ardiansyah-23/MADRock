@@ -10,7 +10,7 @@ export default function BookingPage() {
   const [step, setStep] = useState(1);
 
   // Selections
-  const [selectedCoach, setSelectedCoach] = useState("Marcus Rock");
+  const [selectedCoach, setSelectedCoach] = useState("Ahmad Hudzaifah");
   const [selectedPackage, setSelectedPackage] = useState("1-on-1 VIP Coaching");
   const [selectedDate, setSelectedDate] = useState("2026-08-12");
   const [selectedTime, setSelectedTime] = useState("10:00 AM");
@@ -18,7 +18,7 @@ export default function BookingPage() {
   const [confirmed, setConfirmed] = useState(false);
 
   const coaches = [
-    { name: "Marcus Rock", role: "Head Strength & Biomechanics", price: "$199/mo" },
+    { name: "Ahmad Hudzaifah", role: "Head Strength & Biomechanics", price: "$199/mo" },
     { name: "Elena Vance", role: "Nutrition & Metabolic Recomp", price: "$179/mo" },
     { name: "David Vance", role: "Powerlifting & Mobility Specialist", price: "$189/mo" },
   ];

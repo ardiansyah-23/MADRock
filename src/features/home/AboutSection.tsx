@@ -51,7 +51,7 @@ export function AboutSection() {
                 <div className="relative h-[520px] w-full">
                   <Image
                     src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=1470&auto=format&fit=crop"
-                    alt="Coach Marcus Rock Training"
+                    alt="Coach Ahmad Hudzaifah Training"
                     fill
                     className="object-cover"
                   />

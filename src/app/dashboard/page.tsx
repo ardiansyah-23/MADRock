@@ -130,7 +130,7 @@ export default function DashboardPage() {
               <div className="p-5 rounded-2xl bg-mad-surface border border-white/10 space-y-1">
                 <span className="text-[11px] text-mad-gray font-mono uppercase">Next Session</span>
                 <div className="text-lg font-bold font-spartan text-white">Tomorrow, 10 AM</div>
-                <span className="text-[10px] text-mad-lime font-mono">1-on-1 with Coach Marcus</span>
+                <span className="text-[10px] text-mad-lime font-mono">1-on-1 with Coach Ahmad Hudzaifah</span>
               </div>
             </div>
 

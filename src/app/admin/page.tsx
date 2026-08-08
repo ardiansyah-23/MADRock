@@ -144,9 +144,9 @@ export default function AdminPage() {
                   </thead>
                   <tbody className="divide-y divide-white/5">
                     {[
-                      { user: "Brandon Hayes", coach: "Marcus Rock", pkg: "1-on-1 VIP", date: "2026-08-12 10:00 AM", status: "Confirmed" },
+                      { user: "Brandon Hayes", coach: "Ahmad Hudzaifah", pkg: "1-on-1 VIP", date: "2026-08-12 10:00 AM", status: "Confirmed" },
                       { user: "Sarah Jenkins", coach: "Elena Vance", pkg: "Nutrition Prep", date: "2026-08-12 02:00 PM", status: "Confirmed" },
-                      { user: "Daniel Kim", coach: "Marcus Rock", pkg: "Strategy Call", date: "2026-08-13 11:30 AM", status: "Pending" },
+                      { user: "Daniel Kim", coach: "Ahmad Hudzaifah", pkg: "Strategy Call", date: "2026-08-13 11:30 AM", status: "Pending" },
                     ].map((row, idx) => (
                       <tr key={idx} className="hover:bg-white/5">
                         <td className="p-3 font-bold text-white">{row.user}</td>
