@@ -22,22 +22,168 @@ import {
   Bell,
   Menu,
   X,
-  LayoutDashboard,
+  Edit,
+  Trash2,
+  FileText,
+  Check,
+  AlertCircle,
 } from "lucide-react";
+import confetti from "canvas-confetti";
 
 export default function AdminPage() {
-  const [activeTab, setActiveTab] = useState<"overview" | "members" | "programs" | "bookings">("overview");
+  const [activeTab, setActiveTab] = useState<"overview" | "articles" | "members" | "programs" | "bookings">("overview");
   const [searchTerm, setSearchTerm] = useState("");
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  const membersList = [
-    { name: "Brandon Hayes", email: "brandon@example.com", program: "12-Week Hypertrophy", status: "Active", joined: "2026-06-15" },
-    { name: "Sarah Jenkins", email: "sarah.j@example.com", program: "Fat Loss Masterclass", status: "Active", joined: "2026-07-01" },
-    { name: "Daniel Kim", email: "dkim@example.com", program: "Body Recomposition", status: "Active", joined: "2026-07-20" },
-    { name: "Marcus Vance", email: "marcus.v@example.com", program: "Max Strength & Power", status: "Pending", joined: "2026-08-02" },
-    { name: "Jessica Alba", email: "jessica@example.com", program: "1-on-1 VIP Coaching", status: "Active", joined: "2026-08-05" },
-  ];
+  // 1. ARTICLES MANAGEMENT STATE
+  const [articles, setArticles] = useState([
+    {
+      id: "hypertrophy-biomechanics-guide",
+      title: "The Biomechanics of Hypertrophy: How Mechanical Tension Drives Muscle Mass",
+      excerpt: "Explore sports science research on mechanical tension, metabolic stress, and muscle damage for natural lifters.",
+      author: "Coach Ahmad Hudzaifah",
+      date: "August 5, 2026",
+      readTime: "6 Min Read",
+      category: "Workout Science",
+      status: "Published",
+    },
+    {
+      id: "carb-cycling-fat-loss",
+      title: "Carb Cycling Demystified: How to Burn Fat Without Destroying Thyroid Function",
+      excerpt: "Learn how alternating high and low carbohydrate days prevents metabolic adaptation and maintains high workout intensity.",
+      author: "Elena Vance",
+      date: "July 28, 2026",
+      readTime: "8 Min Read",
+      category: "Nutrition",
+      status: "Published",
+    },
+    {
+      id: "creatine-monohydrate-guide",
+      title: "Creatine Monohydrate Masterclass: Timing, Dosage, and Cognitive Benefits",
+      excerpt: "Why creatine remains the gold standard of sports supplements and how 5g daily accelerates strength output.",
+      author: "Coach Ahmad Hudzaifah",
+      date: "July 19, 2026",
+      readTime: "5 Min Read",
+      category: "Supplements",
+      status: "Published",
+    },
+  ]);
 
+  // Article Modal State
+  const [articleModalOpen, setArticleModalOpen] = useState(false);
+  const [editingArticleId, setEditingArticleId] = useState<string | null>(null);
+  const [articleTitle, setArticleTitle] = useState("");
+  const [articleCategory, setArticleCategory] = useState("Workout Science");
+  const [articleExcerpt, setArticleExcerpt] = useState("");
+  const [articleAuthor, setArticleAuthor] = useState("Coach Ahmad Hudzaifah");
+
+  // Open Create Article
+  const handleOpenCreateArticle = () => {
+    setEditingArticleId(null);
+    setArticleTitle("");
+    setArticleCategory("Workout Science");
+    setArticleExcerpt("");
+    setArticleAuthor("Coach Ahmad Hudzaifah");
+    setArticleModalOpen(true);
+  };
+
+  // Open Edit Article
+  const handleOpenEditArticle = (art: typeof articles[0]) => {
+    setEditingArticleId(art.id);
+    setArticleTitle(art.title);
+    setArticleCategory(art.category);
+    setArticleExcerpt(art.excerpt);
+    setArticleAuthor(art.author);
+    setArticleModalOpen(true);
+  };
+
+  // Save Article
+  const handleSaveArticle = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (editingArticleId) {
+      // Edit existing
+      setArticles((prev) =>
+        prev.map((a) =>
+          a.id === editingArticleId
+            ? { ...a, title: articleTitle, category: articleCategory, excerpt: articleExcerpt, author: articleAuthor }
+            : a
+        )
+      );
+    } else {
+      // Create new
+      const newArt = {
+        id: `article-${Date.now()}`,
+        title: articleTitle,
+        excerpt: articleExcerpt,
+        author: articleAuthor,
+        date: "Today",
+        readTime: "5 Min Read",
+        category: articleCategory,
+        status: "Published",
+      };
+      setArticles([newArt, ...articles]);
+      confetti({ particleCount: 80, spread: 60, origin: { y: 0.6 } });
+    }
+    setArticleModalOpen(false);
+  };
+
+  // Delete Article
+  const handleDeleteArticle = (id: string) => {
+    if (confirm("Are you sure you want to delete this article?")) {
+      setArticles((prev) => prev.filter((a) => a.id !== id));
+    }
+  };
+
+  // 2. MEMBERS DIRECTORY STATE
+  const [membersList, setMembersList] = useState([
+    { id: 1, name: "Brandon Hayes", email: "brandon@example.com", program: "12-Week Hypertrophy", status: "Active", joined: "2026-06-15" },
+    { id: 2, name: "Sarah Jenkins", email: "sarah.j@example.com", program: "Fat Loss Masterclass", status: "Active", joined: "2026-07-01" },
+    { id: 3, name: "Daniel Kim", email: "dkim@example.com", program: "Body Recomposition", status: "Active", joined: "2026-07-20" },
+    { id: 4, name: "Marcus Vance", email: "marcus.v@example.com", program: "Max Strength & Power", status: "Pending", joined: "2026-08-02" },
+    { id: 5, name: "Jessica Alba", email: "jessica@example.com", program: "1-on-1 VIP Coaching", status: "Active", joined: "2026-08-05" },
+  ]);
+
+  // Edit Member Modal State
+  const [memberModalOpen, setMemberModalOpen] = useState(false);
+  const [selectedMember, setSelectedMember] = useState<typeof membersList[0] | null>(null);
+
+  const handleOpenEditMember = (m: typeof membersList[0]) => {
+    setSelectedMember(m);
+    setMemberModalOpen(true);
+  };
+
+  const handleSaveMember = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!selectedMember) return;
+    setMembersList((prev) => prev.map((m) => (m.id === selectedMember.id ? selectedMember : m)));
+    setMemberModalOpen(false);
+  };
+
+  // 3. PROGRAMS CATALOG STATE
+  const [programs, setPrograms] = useState([
+    { id: 1, name: "Fat Loss Masterclass", enrolled: 210, price: "$199", duration: "12 Weeks" },
+    { id: 2, name: "Hypertrophy Muscle Build", enrolled: 284, price: "$249", duration: "16 Weeks" },
+    { id: 3, name: "Body Recomposition", enrolled: 148, price: "$299", duration: "12 Weeks" },
+  ]);
+
+  // Program Modal State
+  const [programModalOpen, setProgramModalOpen] = useState(false);
+  const [newProgName, setNewProgName] = useState("");
+  const [newProgPrice, setNewProgPrice] = useState("$249");
+  const [newProgDuration, setNewProgDuration] = useState("12 Weeks");
+
+  const handleSaveProgram = (e: React.FormEvent) => {
+    e.preventDefault();
+    setPrograms([
+      ...programs,
+      { id: Date.now(), name: newProgName, enrolled: 1, price: newProgPrice, duration: newProgDuration },
+    ]);
+    setNewProgName("");
+    setProgramModalOpen(false);
+    confetti({ particleCount: 70, spread: 60, origin: { y: 0.6 } });
+  };
+
+  // Filtered members by search
   const filteredMembers = membersList.filter(
     (m) =>
       m.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -46,6 +192,7 @@ export default function AdminPage() {
 
   const navItems = [
     { id: "overview", label: "Analytics & Overview", icon: BarChart3 },
+    { id: "articles", label: "Manage Blog Articles", icon: FileText },
     { id: "members", label: "Athlete Members", icon: Users },
     { id: "programs", label: "Coaching Programs", icon: Dumbbell },
     { id: "bookings", label: "Coaching Bookings", icon: Calendar },
@@ -139,7 +286,7 @@ export default function AdminPage() {
                 <span className="text-[10px] text-rose-400 font-mono">Platform Admin</span>
               </div>
             </div>
-            <Link href="/admin/login" title="Sign Out">
+            <Link href="/login" title="Sign Out">
               <LogOut className="w-4 h-4 text-mad-gray hover:text-rose-400 transition-colors" />
             </Link>
           </div>
@@ -156,21 +303,28 @@ export default function AdminPage() {
             </span>
             <h2 className="text-lg font-black font-spartan text-white uppercase tracking-wide">
               {activeTab === "overview" && "Analytics & Overview Desk"}
+              {activeTab === "articles" && "Blog & Article Content Manager"}
               {activeTab === "members" && "Athlete Members Directory"}
               {activeTab === "programs" && "Coaching Program Catalog"}
               {activeTab === "bookings" && "Manage Consultations"}
             </h2>
           </div>
 
-          <div className="flex items-center gap-4">
-            <button className="px-4 py-2 rounded-xl bg-mad-lime text-mad-bg font-extrabold text-xs uppercase flex items-center gap-2 hover:bg-mad-lime-hover transition-all">
+          <div className="flex items-center gap-3">
+            <button
+              onClick={handleOpenCreateArticle}
+              className="px-4 py-2 rounded-xl bg-rose-500 text-white font-extrabold text-xs uppercase flex items-center gap-2 hover:bg-rose-600 transition-all shadow-lg shadow-rose-500/20"
+            >
               <Plus className="w-4 h-4" />
-              <span>Create Program</span>
+              <span>+ Create Article</span>
             </button>
 
-            <button className="p-2.5 rounded-xl bg-mad-bg border border-white/10 text-mad-gray hover:text-rose-400 relative">
-              <Bell className="w-4 h-4" />
-              <span className="w-2 h-2 rounded-full bg-rose-500 absolute top-2 right-2 animate-pulse" />
+            <button
+              onClick={() => setProgramModalOpen(true)}
+              className="px-4 py-2 rounded-xl bg-mad-lime text-mad-bg font-extrabold text-xs uppercase flex items-center gap-2 hover:bg-mad-lime-hover transition-all"
+            >
+              <Plus className="w-4 h-4" />
+              <span>Create Program</span>
             </button>
           </div>
         </header>
@@ -184,17 +338,30 @@ export default function AdminPage() {
                 <span className="px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-400 font-mono text-[10px] uppercase font-bold">
                   ADMIN CONSOLE
                 </span>
-                <span className="text-xs text-mad-lime font-mono">System Active • v2.4</span>
+                <span className="text-xs text-mad-lime font-mono">Full Platform Management Active</span>
               </div>
               <h1 className="text-3xl font-black font-spartan text-white uppercase mt-1">
                 MADROCK PLATFORM MANAGEMENT
               </h1>
             </div>
 
-            <button className="px-5 py-2.5 rounded-xl bg-mad-lime text-mad-bg font-extrabold text-xs uppercase flex items-center gap-2 hover:bg-mad-lime-hover transition-all shadow-lg shadow-mad-lime/20">
-              <Plus className="w-4 h-4" />
-              <span>Create New Program</span>
-            </button>
+            <div className="flex items-center gap-3">
+              <button
+                onClick={handleOpenCreateArticle}
+                className="px-5 py-2.5 rounded-xl bg-rose-500 text-white font-extrabold text-xs uppercase flex items-center gap-2 hover:bg-rose-600 transition-all shadow-lg shadow-rose-500/20"
+              >
+                <FileText className="w-4 h-4" />
+                <span>Publish New Article</span>
+              </button>
+
+              <button
+                onClick={() => setProgramModalOpen(true)}
+                className="px-5 py-2.5 rounded-xl bg-mad-lime text-mad-bg font-extrabold text-xs uppercase flex items-center gap-2 hover:bg-mad-lime-hover transition-all shadow-lg shadow-mad-lime/20"
+              >
+                <Plus className="w-4 h-4" />
+                <span>Create New Program</span>
+              </button>
+            </div>
           </div>
 
           {/* Overview Tab Content */}
@@ -215,61 +382,82 @@ export default function AdminPage() {
                 </div>
 
                 <div className="p-6 rounded-2xl bg-mad-surface border border-white/10 space-y-2">
-                  <span className="text-xs font-mono text-mad-gray uppercase">Active VIP Coaching Bookings</span>
-                  <div className="text-3xl font-black font-spartan text-white">128</div>
-                  <span className="text-[10px] text-mad-gray font-mono">18 pending confirmation</span>
+                  <span className="text-xs font-mono text-mad-gray uppercase">Published Articles</span>
+                  <div className="text-3xl font-black font-spartan text-rose-400">{articles.length} Posts</div>
+                  <span className="text-[10px] text-mad-gray font-mono">Journal science articles</span>
                 </div>
 
                 <div className="p-6 rounded-2xl bg-mad-surface border border-white/10 space-y-2">
-                  <span className="text-xs font-mono text-mad-gray uppercase">AI API Token Usage</span>
-                  <div className="text-3xl font-black font-spartan text-sky-400">14.2k</div>
-                  <span className="text-[10px] text-mad-gray font-mono">Gemini Engine API</span>
+                  <span className="text-xs font-mono text-mad-gray uppercase">Active VIP Bookings</span>
+                  <div className="text-3xl font-black font-spartan text-white">128</div>
+                  <span className="text-[10px] text-mad-gray font-mono">18 pending confirmation</span>
                 </div>
               </div>
+            </div>
+          )}
 
-              {/* Management Table Preview */}
-              <div className="rounded-3xl bg-mad-surface border border-white/10 p-6 sm:p-8 space-y-6">
-                <div className="flex items-center justify-between pb-4 border-b border-white/10">
+          {/* Articles Management Tab Content */}
+          {activeTab === "articles" && (
+            <div className="rounded-3xl bg-mad-surface border border-white/10 p-6 sm:p-8 space-y-6">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-white/10">
+                <div>
                   <h3 className="text-xl font-bold font-spartan text-white uppercase">
-                    RECENT MEMBER BOOKINGS
+                    JOURNAL BLOG ARTICLES MANAGEMENT ({articles.length})
                   </h3>
-                  <span className="text-xs font-mono text-mad-lime">Showing latest 5 entries</span>
+                  <p className="text-xs text-mad-gray font-mono mt-1">Publish, edit, and update fitness science articles on /blog</p>
                 </div>
 
-                <div className="overflow-x-auto">
-                  <table className="w-full text-left text-xs text-mad-gray font-mono">
-                    <thead className="bg-mad-bg text-white uppercase border-b border-white/10">
-                      <tr>
-                        <th className="p-3">User</th>
-                        <th className="p-3">Coach</th>
-                        <th className="p-3">Package</th>
-                        <th className="p-3">Date & Time</th>
-                        <th className="p-3">Status</th>
+                <button
+                  onClick={handleOpenCreateArticle}
+                  className="px-5 py-2.5 rounded-xl bg-rose-500 text-white font-extrabold text-xs uppercase flex items-center gap-2 hover:bg-rose-600 transition-all shadow-lg"
+                >
+                  <Plus className="w-4 h-4" />
+                  <span>Add Article</span>
+                </button>
+              </div>
+
+              <div className="overflow-x-auto">
+                <table className="w-full text-left text-xs text-mad-gray font-mono">
+                  <thead className="bg-mad-bg text-white uppercase border-b border-white/10">
+                    <tr>
+                      <th className="p-3">Title</th>
+                      <th className="p-3">Category</th>
+                      <th className="p-3">Author</th>
+                      <th className="p-3">Status</th>
+                      <th className="p-3 text-right">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-white/5">
+                    {articles.map((art) => (
+                      <tr key={art.id} className="hover:bg-white/5">
+                        <td className="p-3 font-bold text-white max-w-xs truncate">{art.title}</td>
+                        <td className="p-3 text-mad-lime">{art.category}</td>
+                        <td className="p-3">{art.author}</td>
+                        <td className="p-3">
+                          <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-400">
+                            {art.status}
+                          </span>
+                        </td>
+                        <td className="p-3 text-right space-x-2">
+                          <button
+                            onClick={() => handleOpenEditArticle(art)}
+                            className="px-3 py-1 rounded-lg bg-mad-bg border border-white/10 text-white hover:border-mad-lime"
+                          >
+                            <Edit className="w-3.5 h-3.5 inline mr-1" />
+                            Edit
+                          </button>
+                          <button
+                            onClick={() => handleDeleteArticle(art.id)}
+                            className="px-3 py-1 rounded-lg bg-rose-500/10 text-rose-400 border border-rose-500/30 hover:bg-rose-500/20"
+                          >
+                            <Trash2 className="w-3.5 h-3.5 inline mr-1" />
+                            Delete
+                          </button>
+                        </td>
                       </tr>
-                    </thead>
-                    <tbody className="divide-y divide-white/5">
-                      {[
-                        { user: "Brandon Hayes", coach: "Ahmad Hudzaifah", pkg: "1-on-1 VIP", date: "2026-08-12 10:00 AM", status: "Confirmed" },
-                        { user: "Sarah Jenkins", coach: "Elena Vance", pkg: "Nutrition Prep", date: "2026-08-12 02:00 PM", status: "Confirmed" },
-                        { user: "Daniel Kim", coach: "Ahmad Hudzaifah", pkg: "Strategy Call", date: "2026-08-13 11:30 AM", status: "Pending" },
-                      ].map((row, idx) => (
-                        <tr key={idx} className="hover:bg-white/5">
-                          <td className="p-3 font-bold text-white">{row.user}</td>
-                          <td className="p-3 text-mad-lime">{row.coach}</td>
-                          <td className="p-3">{row.pkg}</td>
-                          <td className="p-3">{row.date}</td>
-                          <td className="p-3">
-                            <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
-                              row.status === "Confirmed" ? "bg-emerald-500/20 text-emerald-400" : "bg-amber-500/20 text-amber-400"
-                            }`}>
-                              {row.status}
-                            </span>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
+                    ))}
+                  </tbody>
+                </table>
               </div>
             </div>
           )}
@@ -282,7 +470,6 @@ export default function AdminPage() {
                   ATHLETE MEMBERS DIRECTORY ({filteredMembers.length})
                 </h3>
 
-                {/* Search input */}
                 <div className="relative w-full sm:w-64">
                   <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-mad-gray" />
                   <input
@@ -308,8 +495,8 @@ export default function AdminPage() {
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-white/5">
-                    {filteredMembers.map((m, idx) => (
-                      <tr key={idx} className="hover:bg-white/5">
+                    {filteredMembers.map((m) => (
+                      <tr key={m.id} className="hover:bg-white/5">
                         <td className="p-3 font-bold text-white">{m.name}</td>
                         <td className="p-3">{m.email}</td>
                         <td className="p-3 text-mad-lime">{m.program}</td>
@@ -322,7 +509,10 @@ export default function AdminPage() {
                           </span>
                         </td>
                         <td className="p-3">
-                          <button className="px-3 py-1 rounded-lg bg-mad-bg border border-white/10 text-[11px] text-white hover:border-mad-lime">
+                          <button
+                            onClick={() => handleOpenEditMember(m)}
+                            className="px-3 py-1 rounded-lg bg-mad-bg border border-white/10 text-[11px] text-white hover:border-mad-lime"
+                          >
                             Edit Plan
                           </button>
                         </td>
@@ -341,25 +531,24 @@ export default function AdminPage() {
                 <h3 className="text-xl font-bold font-spartan text-white uppercase">
                   COACHING PROGRAM CATALOG
                 </h3>
-                <button className="px-4 py-2 rounded-xl bg-mad-lime text-mad-bg font-extrabold text-xs uppercase">
+                <button
+                  onClick={() => setProgramModalOpen(true)}
+                  className="px-4 py-2 rounded-xl bg-mad-lime text-mad-bg font-extrabold text-xs uppercase"
+                >
                   + Add Program
                 </button>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {[
-                  { name: "Fat Loss Masterclass", enrolled: 210, price: "$199", duration: "12 Weeks" },
-                  { name: "Hypertrophy Muscle Build", enrolled: 284, price: "$249", duration: "16 Weeks" },
-                  { name: "Body Recomposition", enrolled: 148, price: "$299", duration: "12 Weeks" },
-                ].map((p, idx) => (
-                  <div key={idx} className="p-6 rounded-2xl bg-mad-bg border border-white/10 space-y-4">
+                {programs.map((p) => (
+                  <div key={p.id} className="p-6 rounded-2xl bg-mad-bg border border-white/10 space-y-4">
                     <div className="space-y-1">
                       <h4 className="font-bold font-spartan text-lg text-white uppercase">{p.name}</h4>
                       <span className="text-xs text-mad-lime font-mono">{p.duration} • {p.price}</span>
                     </div>
                     <div className="flex items-center justify-between text-xs text-mad-gray font-mono pt-2 border-t border-white/5">
                       <span>Enrolled: <strong className="text-white">{p.enrolled} Athletes</strong></span>
-                      <button className="text-mad-lime hover:underline">Manage →</button>
+                      <button className="text-mad-lime hover:underline">Edit →</button>
                     </div>
                   </div>
                 ))}
@@ -397,6 +586,202 @@ export default function AdminPage() {
           )}
         </main>
       </div>
+
+      {/* ARTICLE CREATE / EDIT MODAL */}
+      {articleModalOpen && (
+        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+          <div className="w-full max-w-lg rounded-3xl bg-mad-surface border border-white/10 p-6 sm:p-8 space-y-5 relative shadow-2xl animate-fadeIn">
+            <button
+              onClick={() => setArticleModalOpen(false)}
+              className="absolute top-5 right-5 p-2 rounded-xl bg-mad-bg text-mad-gray hover:text-white"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            <div className="pb-3 border-b border-white/10">
+              <span className="px-3 py-1 rounded-full bg-rose-500/10 text-rose-400 font-mono text-[10px] font-bold uppercase">
+                ARTICLE MANAGEMENT
+              </span>
+              <h3 className="text-2xl font-black font-spartan text-white uppercase mt-1">
+                {editingArticleId ? "EDIT JOURNAL ARTICLE" : "CREATE NEW JOURNAL ARTICLE"}
+              </h3>
+            </div>
+
+            <form onSubmit={handleSaveArticle} className="space-y-4 text-xs font-mono">
+              <div>
+                <label className="text-mad-gray uppercase block mb-1">Article Title</label>
+                <input
+                  type="text"
+                  required
+                  placeholder="e.g. Mechanical Tension & Hypertrophy..."
+                  value={articleTitle}
+                  onChange={(e) => setArticleTitle(e.target.value)}
+                  className="w-full bg-mad-bg border border-white/10 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-rose-500"
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="text-mad-gray uppercase block mb-1">Category</label>
+                  <select
+                    value={articleCategory}
+                    onChange={(e) => setArticleCategory(e.target.value)}
+                    className="w-full bg-mad-bg border border-white/10 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-rose-500"
+                  >
+                    <option value="Workout Science">Workout Science</option>
+                    <option value="Nutrition">Nutrition</option>
+                    <option value="Recovery">Recovery</option>
+                    <option value="Supplements">Supplements</option>
+                    <option value="Mindset">Mindset</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="text-mad-gray uppercase block mb-1">Author Name</label>
+                  <input
+                    type="text"
+                    required
+                    value={articleAuthor}
+                    onChange={(e) => setArticleAuthor(e.target.value)}
+                    className="w-full bg-mad-bg border border-white/10 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-rose-500"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="text-mad-gray uppercase block mb-1">Excerpt / Summary</label>
+                <textarea
+                  required
+                  rows={3}
+                  placeholder="Brief summary of sports science takeaways..."
+                  value={articleExcerpt}
+                  onChange={(e) => setArticleExcerpt(e.target.value)}
+                  className="w-full bg-mad-bg border border-white/10 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-rose-500"
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="w-full py-3.5 rounded-xl bg-rose-500 text-white font-extrabold text-xs uppercase tracking-wider hover:bg-rose-600 shadow-lg shadow-rose-500/20"
+              >
+                {editingArticleId ? "SAVE CHANGES TO ARTICLE" : "PUBLISH ARTICLE TO JOURNAL"}
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* PROGRAM CREATE MODAL */}
+      {programModalOpen && (
+        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+          <div className="w-full max-w-md rounded-3xl bg-mad-surface border border-white/10 p-6 sm:p-8 space-y-5 relative shadow-2xl animate-fadeIn">
+            <button
+              onClick={() => setProgramModalOpen(false)}
+              className="absolute top-5 right-5 p-2 rounded-xl bg-mad-bg text-mad-gray hover:text-white"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            <div className="pb-3 border-b border-white/10">
+              <h3 className="text-2xl font-black font-spartan text-white uppercase">ADD NEW PROGRAM</h3>
+            </div>
+
+            <form onSubmit={handleSaveProgram} className="space-y-4 text-xs font-mono">
+              <div>
+                <label className="text-mad-gray uppercase block mb-1">Program Name</label>
+                <input
+                  type="text"
+                  required
+                  placeholder="e.g. 12-Week Max Recomp"
+                  value={newProgName}
+                  onChange={(e) => setNewProgName(e.target.value)}
+                  className="w-full bg-mad-bg border border-white/10 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-mad-lime"
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="text-mad-gray uppercase block mb-1">Price ($)</label>
+                  <input
+                    type="text"
+                    value={newProgPrice}
+                    onChange={(e) => setNewProgPrice(e.target.value)}
+                    className="w-full bg-mad-bg border border-white/10 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-mad-lime"
+                  />
+                </div>
+
+                <div>
+                  <label className="text-mad-gray uppercase block mb-1">Duration</label>
+                  <input
+                    type="text"
+                    value={newProgDuration}
+                    onChange={(e) => setNewProgDuration(e.target.value)}
+                    className="w-full bg-mad-bg border border-white/10 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-mad-lime"
+                  />
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                className="w-full py-3.5 rounded-xl bg-mad-lime text-mad-bg font-extrabold text-xs uppercase hover:bg-mad-lime-hover shadow-lg shadow-mad-lime/20"
+              >
+                CREATE PROGRAM CATALOG ITEM
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* MEMBER EDIT MODAL */}
+      {memberModalOpen && selectedMember && (
+        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+          <div className="w-full max-w-md rounded-3xl bg-mad-surface border border-white/10 p-6 sm:p-8 space-y-5 relative shadow-2xl animate-fadeIn">
+            <button
+              onClick={() => setMemberModalOpen(false)}
+              className="absolute top-5 right-5 p-2 rounded-xl bg-mad-bg text-mad-gray hover:text-white"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            <div className="pb-3 border-b border-white/10">
+              <h3 className="text-2xl font-black font-spartan text-white uppercase">EDIT ATHLETE PROFILE</h3>
+              <p className="text-xs text-mad-gray font-mono">{selectedMember.name} ({selectedMember.email})</p>
+            </div>
+
+            <form onSubmit={handleSaveMember} className="space-y-4 text-xs font-mono">
+              <div>
+                <label className="text-mad-gray uppercase block mb-1">Assigned Program</label>
+                <input
+                  type="text"
+                  value={selectedMember.program}
+                  onChange={(e) => setSelectedMember({ ...selectedMember, program: e.target.value })}
+                  className="w-full bg-mad-bg border border-white/10 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-mad-lime"
+                />
+              </div>
+
+              <div>
+                <label className="text-mad-gray uppercase block mb-1">Member Status</label>
+                <select
+                  value={selectedMember.status}
+                  onChange={(e) => setSelectedMember({ ...selectedMember, status: e.target.value })}
+                  className="w-full bg-mad-bg border border-white/10 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-mad-lime"
+                >
+                  <option value="Active">Active</option>
+                  <option value="Pending">Pending</option>
+                  <option value="Completed">Completed</option>
+                </select>
+              </div>
+
+              <button
+                type="submit"
+                className="w-full py-3.5 rounded-xl bg-mad-lime text-mad-bg font-extrabold text-xs uppercase hover:bg-mad-lime-hover shadow-lg"
+              >
+                SAVE MEMBER PROTOCOL
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
