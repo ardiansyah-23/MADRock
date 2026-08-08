@@ -30,6 +30,7 @@ import {
   X,
 } from "lucide-react";
 import confetti from "canvas-confetti";
+import { LanguageToggle } from "@/components/common/LanguageToggle";
 
 export default function DashboardPage() {
   const [activeTab, setActiveTab] = useState<"overview" | "workouts" | "nutrition" | "coaching">("overview");
@@ -202,6 +203,8 @@ export default function DashboardPage() {
           </div>
 
           <div className="flex items-center gap-4">
+            <LanguageToggle />
+
             <div className="relative">
               <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-mad-gray" />
               <input

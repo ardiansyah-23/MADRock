@@ -14,8 +14,11 @@ import {
   Trophy,
   Calculator,
 } from "lucide-react";
+import { LanguageToggle } from "@/components/common/LanguageToggle";
+import { useLanguage } from "@/components/common/LanguageProvider";
 
 export function Navbar() {
+  const { t } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -91,9 +94,7 @@ export function Navbar() {
   ];
 
   return (
-    <header
-      className="fixed top-0 left-0 right-0 z-50 bg-mad-bg border-b border-white/10 py-3.5 shadow-2xl transition-all duration-300"
-    >
+    <header className="fixed top-0 left-0 right-0 z-50 bg-mad-bg border-b border-white/10 py-3.5 shadow-2xl transition-all duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo */}
@@ -117,21 +118,21 @@ export function Navbar() {
               href="/"
               className="text-sm font-medium text-mad-gray hover:text-mad-lime transition-colors duration-200"
             >
-              Home
+              {t("nav_home")}
             </Link>
 
             <Link
               href="/programs"
               className="text-sm font-medium text-mad-gray hover:text-mad-lime transition-colors duration-200"
             >
-              Programs
+              {t("nav_programs")}
             </Link>
 
             <Link
               href="/workout-library"
               className="text-sm font-medium text-mad-gray hover:text-mad-lime transition-colors duration-200"
             >
-              Workouts
+              {t("nav_workouts")}
             </Link>
 
             {/* Dropdown Menu: Features */}
@@ -145,7 +146,7 @@ export function Navbar() {
                 onClick={() => setDropdownOpen(!dropdownOpen)}
                 className="flex items-center gap-1.5 text-sm font-medium text-mad-gray hover:text-mad-lime transition-colors duration-200"
               >
-                <span className={dropdownOpen ? "text-mad-lime font-bold" : ""}>Features</span>
+                <span className={dropdownOpen ? "text-mad-lime font-bold" : ""}>{t("nav_features")}</span>
                 <ChevronDown
                   className={`w-4 h-4 text-mad-lime transition-transform duration-200 ${
                     dropdownOpen ? "rotate-180" : ""
@@ -186,26 +187,30 @@ export function Navbar() {
               href="/pricing"
               className="text-sm font-medium text-mad-gray hover:text-mad-lime transition-colors duration-200"
             >
-              Pricing
+              {t("nav_pricing")}
             </Link>
 
             <Link
               href="/blog"
               className="text-sm font-medium text-mad-gray hover:text-mad-lime transition-colors duration-200"
             >
-              Blog
+              {t("nav_blog")}
             </Link>
           </nav>
 
           {/* Desktop Right CTA */}
           <div className="hidden lg:flex items-center gap-3">
+            {/* AI Coach Button */}
             <Link
               href="/ai-coach"
               className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-mad-lime bg-mad-lime/10 border border-mad-lime/30 rounded-full hover:bg-mad-lime/20 transition-all"
             >
               <Sparkles className="w-3.5 h-3.5" />
-              <span>AI Coach</span>
+              <span>{t("nav_ai_coach")}</span>
             </Link>
+
+            {/* 2-Language Switcher (EN / ID) placed RIGHT NEXT TO AI Coach */}
+            <LanguageToggle />
 
             {/* Smart Profile Icon Link */}
             <Link
@@ -213,10 +218,10 @@ export function Navbar() {
               className="p-2 text-mad-gray hover:text-white hover:bg-white/5 rounded-xl transition-all"
               title={
                 profileTargetUrl === "/admin"
-                  ? "Admin Dashboard"
+                  ? t("nav_admin")
                   : profileTargetUrl === "/dashboard"
-                  ? "User Athlete Dashboard"
-                  : "Log In to Account"
+                  ? t("nav_dashboard")
+                  : "Log In"
               }
             >
               <User className="w-5 h-5 text-white" />
@@ -226,13 +231,15 @@ export function Navbar() {
               href="/login"
               className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold bg-mad-lime text-mad-bg hover:bg-mad-lime-hover transition-all duration-300 shadow-md shadow-mad-lime/20 hover:scale-[1.02]"
             >
-              <span>START TRAINING</span>
+              <span>{t("nav_start_training")}</span>
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
 
           {/* Mobile Menu Toggle Button */}
           <div className="lg:hidden flex items-center gap-2">
+            <LanguageToggle />
+
             <Link
               href={profileTargetUrl}
               className="p-2 text-mad-gray hover:text-white"
@@ -261,7 +268,7 @@ export function Navbar() {
               onClick={() => setMobileMenuOpen(false)}
               className="text-base font-semibold text-white hover:text-mad-lime transition-colors py-1"
             >
-              Home
+              {t("nav_home")}
             </Link>
 
             <Link
@@ -269,7 +276,7 @@ export function Navbar() {
               onClick={() => setMobileMenuOpen(false)}
               className="text-base font-semibold text-white hover:text-mad-lime transition-colors py-1"
             >
-              Programs
+              {t("nav_programs")}
             </Link>
 
             <Link
@@ -277,7 +284,7 @@ export function Navbar() {
               onClick={() => setMobileMenuOpen(false)}
               className="text-base font-semibold text-white hover:text-mad-lime transition-colors py-1"
             >
-              Workouts
+              {t("nav_workouts")}
             </Link>
 
             {/* Mobile Dropdown Group */}
@@ -303,7 +310,7 @@ export function Navbar() {
               onClick={() => setMobileMenuOpen(false)}
               className="text-base font-semibold text-white hover:text-mad-lime transition-colors py-1"
             >
-              Pricing
+              {t("nav_pricing")}
             </Link>
 
             <Link
@@ -311,7 +318,7 @@ export function Navbar() {
               onClick={() => setMobileMenuOpen(false)}
               className="text-base font-semibold text-white hover:text-mad-lime transition-colors py-1"
             >
-              Blog
+              {t("nav_blog")}
             </Link>
 
             <div className="pt-4 border-t border-white/10 flex flex-col gap-3">
@@ -332,9 +339,9 @@ export function Navbar() {
                 <User className="w-4 h-4" />
                 <span>
                   {profileTargetUrl === "/admin"
-                    ? "Admin Console"
+                    ? t("nav_admin")
                     : profileTargetUrl === "/dashboard"
-                    ? "Member Dashboard"
+                    ? t("nav_dashboard")
                     : "Log In Account"}
                 </span>
               </Link>
@@ -344,7 +351,7 @@ export function Navbar() {
                 onClick={() => setMobileMenuOpen(false)}
                 className="flex items-center justify-center gap-2 py-3.5 rounded-xl bg-mad-lime text-mad-bg font-extrabold text-sm uppercase tracking-wider"
               >
-                <span>Start Training Now</span>
+                <span>{t("nav_start_training")}</span>
               </Link>
             </div>
           </div>
