@@ -29,7 +29,6 @@ import {
   Menu,
   X,
 } from "lucide-react";
-import { ThemeToggle } from "@/components/common/ThemeToggle";
 import confetti from "canvas-confetti";
 
 export default function DashboardPage() {
@@ -83,7 +82,6 @@ export default function DashboardPage() {
         </Link>
 
         <div className="flex items-center gap-2">
-          <ThemeToggle />
           <button
             onClick={() => setSidebarOpen(!sidebarOpen)}
             className="p-2 rounded-xl bg-mad-bg border border-white/10 text-white"
@@ -189,8 +187,6 @@ export default function DashboardPage() {
           </div>
 
           <div className="flex items-center gap-4">
-            <ThemeToggle />
-
             <div className="relative">
               <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-mad-gray" />
               <input

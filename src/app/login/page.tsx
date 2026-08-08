@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Dumbbell, Mail, Lock, ArrowRight, Chrome, AlertCircle, ShieldCheck, UserCheck } from "lucide-react";
-import { createClient } from "@/lib/supabase/client";
 
 export default function LoginPage() {
   const [role, setRole] = useState<"user" | "admin">("user");
@@ -31,10 +30,14 @@ export default function LoginPage() {
 
     setTimeout(() => {
       setLoading(false);
-      // Auto-detect role or handle login
+      // Save session state to localStorage
       if (email.toLowerCase().includes("admin") || role === "admin") {
+        localStorage.setItem("madrock-user", "admin@madrock.fit");
+        localStorage.setItem("madrock-role", "admin");
         window.location.href = "/admin";
       } else {
+        localStorage.setItem("madrock-user", "athlete@madrock.fit");
+        localStorage.setItem("madrock-role", "user");
         window.location.href = "/dashboard";
       }
     }, 600);
@@ -44,8 +47,12 @@ export default function LoginPage() {
     setLoading(true);
     setTimeout(() => {
       if (demoRole === "admin") {
+        localStorage.setItem("madrock-user", "admin@madrock.fit");
+        localStorage.setItem("madrock-role", "admin");
         window.location.href = "/admin";
       } else {
+        localStorage.setItem("madrock-user", "athlete@madrock.fit");
+        localStorage.setItem("madrock-role", "user");
         window.location.href = "/dashboard";
       }
     }, 400);
