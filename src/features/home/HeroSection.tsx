@@ -61,13 +61,6 @@ export function HeroSection() {
           
           {/* Left Side Content - Proportional 6 Columns */}
           <div className="lg:col-span-7 xl:col-span-7 space-y-6">
-            <ScrollReveal direction="down" delay={0.05}>
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-mad-lime/10 border border-mad-lime/30 text-mad-lime text-xs font-semibold uppercase tracking-wider">
-                <Flame className="w-3.5 h-3.5 fill-mad-lime" />
-                <span>{t("hero_badge")}</span>
-              </div>
-            </ScrollReveal>
-
             <ScrollReveal delay={0.1}>
               <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black uppercase font-spartan tracking-tight text-white leading-[1.02]">
                 {t("hero_title_1")} <br />
