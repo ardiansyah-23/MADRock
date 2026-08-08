@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Navbar } from "@/components/layout/Navbar";
-import { Footer } from "@/components/layout/Footer";
+import { ClientLayoutWrapper } from "@/components/layout/ClientLayoutWrapper";
 
 export const metadata: Metadata = {
   title: {
@@ -19,7 +18,7 @@ export const metadata: Metadata = {
     "AI Meal Planner",
     "MADRock Fitness",
   ],
-  authors: [{ name: "Coach Marcus Rock" }],
+  authors: [{ name: "Coach Ahmad Hudzaifah" }],
   openGraph: {
     title: "MADRock — Premium Fitness Coaching Platform",
     description: "Train. Focus. Become Unstoppable.",
@@ -46,9 +45,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark scroll-smooth">
       <body className="bg-mad-bg text-white antialiased min-h-screen flex flex-col justify-between">
-        <Navbar />
-        <div className="flex-1">{children}</div>
-        <Footer />
+        <ClientLayoutWrapper>{children}</ClientLayoutWrapper>
       </body>
     </html>
   );
