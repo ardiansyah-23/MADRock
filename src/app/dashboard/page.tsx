@@ -30,10 +30,18 @@ import {
   X,
 } from "lucide-react";
 import { ThemeToggle } from "@/components/common/ThemeToggle";
+import confetti from "canvas-confetti";
 
 export default function DashboardPage() {
   const [activeTab, setActiveTab] = useState<"overview" | "workouts" | "nutrition" | "coaching">("overview");
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  // In-Dashboard Booking Modal state
+  const [bookingModalOpen, setBookingModalOpen] = useState(false);
+  const [bookingCoach, setBookingCoach] = useState("Ahmad Hudzaifah");
+  const [bookingDate, setBookingDate] = useState("2026-08-12");
+  const [bookingTime, setBookingTime] = useState("10:00 AM");
+  const [bookingSuccess, setBookingSuccess] = useState(false);
 
   // State for logged workout items
   const [loggedSets, setLoggedSets] = useState<{ [key: number]: boolean }>({
@@ -42,6 +50,16 @@ export default function DashboardPage() {
 
   const toggleSetCompleted = (index: number) => {
     setLoggedSets((prev) => ({ ...prev, [index]: !prev[index] }));
+  };
+
+  const handleInDashboardBooking = (e: React.FormEvent) => {
+    e.preventDefault();
+    setBookingSuccess(true);
+    confetti({
+      particleCount: 100,
+      spread: 70,
+      origin: { y: 0.6 },
+    });
   };
 
   const navItems = [
@@ -439,12 +457,16 @@ export default function DashboardPage() {
                   <p className="text-xs text-mad-gray font-mono mt-1">Assigned Head Coach: Ahmad Hudzaifah</p>
                 </div>
 
-                <Link
-                  href="/booking"
-                  className="px-5 py-2.5 rounded-xl bg-mad-lime text-mad-bg font-extrabold text-xs uppercase hover:bg-mad-lime-hover transition-all"
+                {/* In-Dashboard Booking Trigger */}
+                <button
+                  onClick={() => {
+                    setBookingSuccess(false);
+                    setBookingModalOpen(true);
+                  }}
+                  className="px-5 py-2.5 rounded-xl bg-mad-lime text-mad-bg font-extrabold text-xs uppercase hover:bg-mad-lime-hover transition-all shadow-lg shadow-mad-lime/20"
                 >
                   Book New Session
-                </Link>
+                </button>
               </div>
 
               <div className="space-y-4">
@@ -456,18 +478,117 @@ export default function DashboardPage() {
                     <h4 className="font-bold text-white text-base">Weekly Technique & Form Video Review</h4>
                     <p className="text-xs text-mad-gray font-mono">Tomorrow at 10:00 AM • Zoom Video Call</p>
                   </div>
-                  <Link
-                    href="/booking"
+
+                  <button
+                    onClick={() => {
+                      setBookingSuccess(false);
+                      setBookingModalOpen(true);
+                    }}
                     className="px-4 py-2 rounded-xl bg-mad-surface border border-white/10 text-xs font-mono text-white hover:text-mad-lime"
                   >
-                    View Details
-                  </Link>
+                    Reschedule
+                  </button>
                 </div>
               </div>
             </div>
           )}
         </main>
       </div>
+
+      {/* In-Dashboard Booking Modal */}
+      {bookingModalOpen && (
+        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+          <div className="w-full max-w-lg rounded-3xl bg-mad-surface border border-white/10 p-6 sm:p-8 space-y-6 relative shadow-2xl animate-fadeIn">
+            <button
+              onClick={() => setBookingModalOpen(false)}
+              className="absolute top-5 right-5 p-2 rounded-xl bg-mad-bg text-mad-gray hover:text-white"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            {!bookingSuccess ? (
+              <form onSubmit={handleInDashboardBooking} className="space-y-5">
+                <div className="pb-3 border-b border-white/10">
+                  <span className="px-3 py-1 rounded-full bg-mad-lime/10 text-mad-lime font-mono text-[10px] font-bold uppercase">
+                    IN-DASHBOARD BOOKING
+                  </span>
+                  <h3 className="text-2xl font-black font-spartan text-white uppercase mt-1">
+                    BOOK COACHING SESSION
+                  </h3>
+                </div>
+
+                <div>
+                  <label className="text-xs font-mono text-mad-gray uppercase block mb-1">Select Head Coach</label>
+                  <select
+                    value={bookingCoach}
+                    onChange={(e) => setBookingCoach(e.target.value)}
+                    className="w-full bg-mad-bg border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-mad-lime font-mono"
+                  >
+                    <option value="Ahmad Hudzaifah">Coach Ahmad Hudzaifah (Head Coach)</option>
+                    <option value="Elena Vance">Elena Vance (Nutrition Specialist)</option>
+                    <option value="David Vance">David Vance (Powerlifting Coach)</option>
+                  </select>
+                </div>
+
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <label className="text-xs font-mono text-mad-gray uppercase block mb-1">Session Date</label>
+                    <input
+                      type="date"
+                      value={bookingDate}
+                      onChange={(e) => setBookingDate(e.target.value)}
+                      className="w-full bg-mad-bg border border-white/10 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-mad-lime font-mono"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="text-xs font-mono text-mad-gray uppercase block mb-1">Time Slot</label>
+                    <select
+                      value={bookingTime}
+                      onChange={(e) => setBookingTime(e.target.value)}
+                      className="w-full bg-mad-bg border border-white/10 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-mad-lime font-mono"
+                    >
+                      <option value="09:00 AM">09:00 AM</option>
+                      <option value="10:00 AM">10:00 AM</option>
+                      <option value="11:30 AM">11:30 AM</option>
+                      <option value="02:00 PM">02:00 PM</option>
+                      <option value="04:00 PM">04:00 PM</option>
+                    </select>
+                  </div>
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full py-4 rounded-2xl bg-mad-lime text-mad-bg font-extrabold text-sm uppercase tracking-wider hover:bg-mad-lime-hover shadow-lg shadow-mad-lime/20"
+                >
+                  CONFIRM IN-DASHBOARD BOOKING NOW
+                </button>
+              </form>
+            ) : (
+              <div className="text-center space-y-4 py-4">
+                <div className="w-16 h-16 rounded-full bg-mad-lime text-mad-bg flex items-center justify-center mx-auto text-2xl">
+                  <Check className="w-8 h-8 stroke-[3]" />
+                </div>
+
+                <h3 className="text-2xl font-black font-spartan uppercase text-white">
+                  SESSION BOOKED IN DASHBOARD!
+                </h3>
+
+                <p className="text-xs text-mad-gray">
+                  Your 1-on-1 session with <strong>{bookingCoach}</strong> is confirmed for <strong>{bookingDate} at {bookingTime}</strong>.
+                </p>
+
+                <button
+                  onClick={() => setBookingModalOpen(false)}
+                  className="px-6 py-2.5 rounded-xl bg-mad-lime text-mad-bg font-extrabold text-xs uppercase"
+                >
+                  Close & View Sessions
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
