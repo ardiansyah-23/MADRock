@@ -7,16 +7,25 @@ import { SectionHeader } from "@/components/common/SectionHeader";
 import { ScrollReveal } from "@/components/common/ScrollReveal";
 
 export function FitnessToolsSection() {
-  // Mini BMI & Calorie Calculator state
+  // Mini BMI & Calorie Calculator state - Using String State to avoid leading zero bugs
   const [gender, setGender] = useState<"male" | "female">("male");
-  const [weight, setWeight] = useState<number>(75); // kg
-  const [height, setHeight] = useState<number>(175); // cm
-  const [age, setAge] = useState<number>(25);
-  const [activity, setActivity] = useState<number>(1.55); // Moderate
+  const [weightStr, setWeightStr] = useState("75");
+  const [heightStr, setHeightStr] = useState("175");
+  const [ageStr, setAgeStr] = useState("25");
+  const [activity, setActivity] = useState<number>(1.55);
+
+  const weight = parseFloat(weightStr) || 0;
+  const height = parseFloat(heightStr) || 0;
+  const age = parseFloat(ageStr) || 0;
+
+  const handleCleanInput = (val: string, setter: (s: string) => void) => {
+    const cleaned = val.replace(/^0+(?=\d)/, "");
+    setter(cleaned);
+  };
 
   // Calculations
   const heightM = height / 100;
-  const bmi = weight / (heightM * heightM);
+  const bmi = heightM > 0 ? weight / (heightM * heightM) : 0;
 
   // BMR (Mifflin-St Jeor)
   const bmr =
@@ -25,7 +34,7 @@ export function FitnessToolsSection() {
       : 10 * weight + 6.25 * height - 5 * age - 161;
 
   const tdee = Math.round(bmr * activity);
-  const protein = Math.round(weight * 2.2); // ~2.2g per kg
+  const protein = Math.round(weight * 2.2);
 
   const getBmiCategory = (bmiValue: number) => {
     if (bmiValue < 18.5) return { category: "Underweight", color: "text-amber-400" };
@@ -94,8 +103,9 @@ export function FitnessToolsSection() {
                 <label className="text-xs font-mono text-mad-gray uppercase block mb-1.5">Age (Years)</label>
                 <input
                   type="number"
-                  value={age}
-                  onChange={(e) => setAge(Number(e.target.value))}
+                  value={ageStr}
+                  placeholder="e.g. 25"
+                  onChange={(e) => handleCleanInput(e.target.value, setAgeStr)}
                   className="w-full bg-mad-surface border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-mad-lime font-mono"
                 />
               </div>
@@ -105,8 +115,9 @@ export function FitnessToolsSection() {
                 <label className="text-xs font-mono text-mad-gray uppercase block mb-1.5">Weight (KG)</label>
                 <input
                   type="number"
-                  value={weight}
-                  onChange={(e) => setWeight(Number(e.target.value))}
+                  value={weightStr}
+                  placeholder="e.g. 75"
+                  onChange={(e) => handleCleanInput(e.target.value, setWeightStr)}
                   className="w-full bg-mad-surface border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-mad-lime font-mono"
                 />
               </div>
@@ -116,8 +127,9 @@ export function FitnessToolsSection() {
                 <label className="text-xs font-mono text-mad-gray uppercase block mb-1.5">Height (CM)</label>
                 <input
                   type="number"
-                  value={height}
-                  onChange={(e) => setHeight(Number(e.target.value))}
+                  value={heightStr}
+                  placeholder="e.g. 175"
+                  onChange={(e) => handleCleanInput(e.target.value, setHeightStr)}
                   className="w-full bg-mad-surface border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-mad-lime font-mono"
                 />
               </div>

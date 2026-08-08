@@ -10,17 +10,31 @@ export default function ToolsPage() {
     "tdee" | "protein" | "macro" | "water" | "1rm" | "ideal-weight" | "body-fat"
   >("tdee");
 
-  // State inputs
-  const [weight, setWeight] = useState(80);
-  const [height, setHeight] = useState(180);
-  const [age, setAge] = useState(28);
+  // String state inputs to prevent zero-display and leading zero bugs
+  const [weightStr, setWeightStr] = useState("75");
+  const [heightStr, setHeightStr] = useState("175");
+  const [ageStr, setAgeStr] = useState("25");
   const [gender, setGender] = useState<"male" | "female">("male");
   const [activity, setActivity] = useState(1.55);
   const [goal, setGoal] = useState<"cut" | "maintain" | "bulk">("cut");
 
   // 1RM specific
-  const [liftWeight, setLiftWeight] = useState(100);
-  const [reps, setReps] = useState(5);
+  const [liftWeightStr, setLiftWeightStr] = useState("100");
+  const [repsStr, setRepsStr] = useState("5");
+
+  // Parsed Numbers
+  const weight = parseFloat(weightStr) || 0;
+  const height = parseFloat(heightStr) || 0;
+  const age = parseFloat(ageStr) || 0;
+  const liftWeight = parseFloat(liftWeightStr) || 0;
+  const reps = parseFloat(repsStr) || 0;
+
+  // Clean Leading Zero Helper
+  const handleCleanInput = (val: string, setter: (s: string) => void) => {
+    // Strip leading zeros if followed by another digit (e.g. "058" -> "58")
+    const cleaned = val.replace(/^0+(?=\d)/, "");
+    setter(cleaned);
+  };
 
   // Calculations
   const bmr =
@@ -76,7 +90,7 @@ export default function ToolsPage() {
               onClick={() => setActiveTab(tab.id as any)}
               className={`flex items-center gap-2 px-5 py-3 rounded-2xl text-xs font-bold uppercase transition-all ${
                 activeTab === tab.id
-                  ? "bg-mad-lime text-mad-bg shadow-lg shadow-mad-lime/20"
+                  ? "bg-mad-lime text-mad-bg shadow-lg shadow-mad-lime/20 font-extrabold"
                   : "bg-mad-surface text-mad-gray border border-white/10 hover:text-white"
               }`}
             >
@@ -103,7 +117,7 @@ export default function ToolsPage() {
                       <select
                         value={gender}
                         onChange={(e) => setGender(e.target.value as any)}
-                        className="w-full bg-mad-bg border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-mad-lime"
+                        className="w-full bg-mad-bg border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-mad-lime font-mono"
                       >
                         <option value="male">Male</option>
                         <option value="female">Female</option>
@@ -114,9 +128,10 @@ export default function ToolsPage() {
                       <label className="text-xs font-mono text-mad-gray uppercase block mb-1">Age</label>
                       <input
                         type="number"
-                        value={age}
-                        onChange={(e) => setAge(Number(e.target.value))}
-                        className="w-full bg-mad-bg border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-mad-lime"
+                        value={ageStr}
+                        placeholder="e.g. 25"
+                        onChange={(e) => handleCleanInput(e.target.value, setAgeStr)}
+                        className="w-full bg-mad-bg border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-mad-lime font-mono"
                       />
                     </div>
                   </div>
@@ -126,8 +141,9 @@ export default function ToolsPage() {
                       <label className="text-xs font-mono text-mad-gray uppercase block mb-1">Weight (KG)</label>
                       <input
                         type="number"
-                        value={weight}
-                        onChange={(e) => setWeight(Number(e.target.value))}
+                        value={weightStr}
+                        placeholder="e.g. 75"
+                        onChange={(e) => handleCleanInput(e.target.value, setWeightStr)}
                         className="w-full bg-mad-bg border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-mad-lime font-mono"
                       />
                     </div>
@@ -136,8 +152,9 @@ export default function ToolsPage() {
                       <label className="text-xs font-mono text-mad-gray uppercase block mb-1">Height (CM)</label>
                       <input
                         type="number"
-                        value={height}
-                        onChange={(e) => setHeight(Number(e.target.value))}
+                        value={heightStr}
+                        placeholder="e.g. 175"
+                        onChange={(e) => handleCleanInput(e.target.value, setHeightStr)}
                         className="w-full bg-mad-bg border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-mad-lime font-mono"
                       />
                     </div>
@@ -153,11 +170,12 @@ export default function ToolsPage() {
                       ].map((g) => (
                         <button
                           key={g.id}
+                          type="button"
                           onClick={() => setGoal(g.id as any)}
                           className={`py-2 rounded-xl text-xs font-bold uppercase transition-all ${
                             goal === g.id
-                              ? "bg-mad-lime text-mad-bg"
-                              : "bg-mad-bg text-mad-gray border border-white/10"
+                              ? "bg-mad-lime text-mad-bg font-extrabold"
+                              : "bg-mad-bg text-mad-gray border border-white/10 hover:text-white"
                           }`}
                         >
                           {g.label}
@@ -172,8 +190,9 @@ export default function ToolsPage() {
                     <label className="text-xs font-mono text-mad-gray uppercase block mb-1">Lift Weight (KG)</label>
                     <input
                       type="number"
-                      value={liftWeight}
-                      onChange={(e) => setLiftWeight(Number(e.target.value))}
+                      value={liftWeightStr}
+                      placeholder="e.g. 100"
+                      onChange={(e) => handleCleanInput(e.target.value, setLiftWeightStr)}
                       className="w-full bg-mad-bg border border-white/10 rounded-xl px-4 py-3 text-base text-white focus:outline-none focus:border-mad-lime font-mono"
                     />
                   </div>
@@ -182,8 +201,9 @@ export default function ToolsPage() {
                     <label className="text-xs font-mono text-mad-gray uppercase block mb-1">Repetitions Performed</label>
                     <input
                       type="number"
-                      value={reps}
-                      onChange={(e) => setReps(Number(e.target.value))}
+                      value={repsStr}
+                      placeholder="e.g. 5"
+                      onChange={(e) => handleCleanInput(e.target.value, setRepsStr)}
                       className="w-full bg-mad-bg border border-white/10 rounded-xl px-4 py-3 text-base text-white focus:outline-none focus:border-mad-lime font-mono"
                     />
                   </div>
