@@ -36,6 +36,7 @@ export default function AICoachPage() {
   // Generator states
   const [goal, setGoal] = useState("Muscle Building");
   const [experience, setExperience] = useState("Intermediate");
+  const [dietaryApproach, setDietaryApproach] = useState("High Protein Standard");
   const [trainingDays, setTrainingDays] = useState(4);
   const [loading, setLoading] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -122,250 +123,54 @@ export default function AICoachPage() {
     }));
   };
 
-  // Dynamic Meal Generator Helper Functions (Generates exact matching days selected by user: 3D, 4D, 5D, 6D, 7D)
-  const generateDynamicMeal = (days: number, userGoal: string) => {
-    const dailyMealPool = [
+  // Dynamic Meal Generator Helper Function - Daily Meal Protocol (No days feature)
+  const generateDynamicMeal = (userGoal: string, diet: string) => {
+    return [
       {
-        dayTitle: "Day 1: High Protein Anabolic Protocol",
-        focus: "Muscle Synthesis & Recovery",
-        meals: [
-          {
-            meal: "Meal 1: Anabolic Breakfast",
-            time: "08:00 AM",
-            calories: userGoal === "Fat Loss" ? "420 kcal" : "620 kcal",
-            macros: userGoal === "Fat Loss" ? "42g P • 35g C • 10g F" : "48g P • 75g C • 14g F",
-            items: ["4 Whole Eggs + 2 Egg Whites", "Organic Rolled Oats with Berries", "Black Coffee or Green Tea"],
-          },
-          {
-            meal: "Meal 2: Pre-Workout Fuel Bowl",
-            time: "12:30 PM",
-            calories: userGoal === "Fat Loss" ? "510 kcal" : "740 kcal",
-            macros: userGoal === "Fat Loss" ? "50g P • 50g C • 9g F" : "55g P • 85g C • 16g F",
-            items: ["200g Grilled Chicken Breast", "Jasmine Rice & Black Beans", "Steamed Broccoli & Olive Oil"],
-          },
-          {
-            meal: "Meal 3: Post-Workout Recovery",
-            time: "05:30 PM",
-            calories: userGoal === "Fat Loss" ? "480 kcal" : "680 kcal",
-            macros: userGoal === "Fat Loss" ? "45g P • 45g C • 12g F" : "52g P • 70g C • 18g F",
-            items: ["200g Wild Salmon Fillet", "Baked Sweet Potato Mash", "MADRock Whey Isolate Shake"],
-          },
-          {
-            meal: "Meal 4: Night Time Casein Reset",
-            time: "09:30 PM",
-            calories: "320 kcal",
-            macros: "35g P • 15g C • 10g F",
-            items: ["200g Low-Fat Greek Yogurt", "Raw Almonds", "5g Creatine Monohydrate"],
-          },
+        meal: "Meal 1: Anabolic Breakfast",
+        time: "08:00 AM",
+        calories: userGoal === "Fat Loss" ? "420 kcal" : "620 kcal",
+        macros: userGoal === "Fat Loss" ? "42g P • 35g C • 10g F" : "48g P • 75g C • 14g F",
+        items: [
+          diet === "Plant-Based Vegan" ? "Tofu Scramble with Spinach & Turmeric" : "4 Whole Eggs + 2 Egg Whites",
+          "Organic Rolled Oats with Wild Berries",
+          "Black Coffee or Organic Green Tea",
         ],
       },
       {
-        dayTitle: "Day 2: Lean Clean Carb Fuel",
-        focus: "Glycogen Replenishment",
-        meals: [
-          {
-            meal: "Meal 1: Omelet & Whole Grain",
-            time: "08:00 AM",
-            calories: userGoal === "Fat Loss" ? "390 kcal" : "580 kcal",
-            macros: "38g P • 30g C • 8g F",
-            items: ["200g Egg White Omelet with Spinach", "Whole Grain Artisan Toast", "Green Tea"],
-          },
-          {
-            meal: "Meal 2: Turkey Quinoa Bowl",
-            time: "12:30 PM",
-            calories: userGoal === "Fat Loss" ? "490 kcal" : "710 kcal",
-            macros: "48g P • 45g C • 11g F",
-            items: ["200g Lean Turkey Breast", "Steamed Quinoa & Roasted Zucchini", "Avocado Slices"],
-          },
-          {
-            meal: "Meal 3: Sirloin & Asparagus",
-            time: "05:30 PM",
-            calories: userGoal === "Fat Loss" ? "530 kcal" : "730 kcal",
-            macros: "50g P • 40g C • 14g F",
-            items: ["200g Lean Sirloin Steak", "Roasted Fingerling Potatoes", "Grilled Asparagus"],
-          },
-          {
-            meal: "Meal 4: Casein & Nut Butter",
-            time: "09:30 PM",
-            calories: "290 kcal",
-            macros: "32g P • 10g C • 9g F",
-            items: ["Micellar Casein Protein Shake", "1 Tbsp Natural Almond Butter"],
-          },
+        meal: "Meal 2: Pre-Workout Fuel Bowl",
+        time: "12:30 PM",
+        calories: userGoal === "Fat Loss" ? "510 kcal" : "740 kcal",
+        macros: userGoal === "Fat Loss" ? "50g P • 50g C • 9g F" : "55g P • 85g C • 16g F",
+        items: [
+          diet === "Plant-Based Vegan" ? "Seitan Steak Strips" : "200g Grilled Chicken Breast",
+          "Jasmine Rice & Black Beans",
+          "Steamed Broccoli & Extra Virgin Olive Oil",
         ],
       },
       {
-        dayTitle: "Day 3: Micronutrient & Gut Reset",
-        focus: "Anti-Inflammatory & Cellular Repair",
-        meals: [
-          {
-            meal: "Meal 1: Anabolic Smoothie Bowl",
-            time: "08:00 AM",
-            calories: userGoal === "Fat Loss" ? "410 kcal" : "600 kcal",
-            macros: "40g P • 42g C • 9g F",
-            items: ["Whey Isolate, Frozen Berries, Spinach", "Unsweetened Almond Milk", "Chia Seeds"],
-          },
-          {
-            meal: "Meal 2: Ahi Tuna Power Salad",
-            time: "12:30 PM",
-            calories: userGoal === "Fat Loss" ? "520 kcal" : "720 kcal",
-            macros: "52g P • 40g C • 10g F",
-            items: ["200g Fresh Ahi Tuna Steak", "Wild Rice & Cucumber Salad", "Extra Virgin Olive Oil"],
-          },
-          {
-            meal: "Meal 3: Lean Beef Taco Rice",
-            time: "05:30 PM",
-            calories: userGoal === "Fat Loss" ? "550 kcal" : "750 kcal",
-            macros: "46g P • 48g C • 15g F",
-            items: ["200g Extra Lean Ground Beef", "Basmati Rice & Fresh Salsa", "Shredded Romaine Lettuce"],
-          },
-          {
-            meal: "Meal 4: Cottage Cheese Reset",
-            time: "09:30 PM",
-            calories: "310 kcal",
-            macros: "34g P • 18g C • 8g F",
-            items: ["200g Organic Low-Fat Cottage Cheese", "Fresh Blueberries & Cinnamon"],
-          },
+        meal: "Meal 3: Post-Workout Recovery",
+        time: "05:30 PM",
+        calories: userGoal === "Fat Loss" ? "480 kcal" : "680 kcal",
+        macros: userGoal === "Fat Loss" ? "45g P • 45g C • 12g F" : "52g P • 70g C • 18g F",
+        items: [
+          diet === "Plant-Based Vegan" ? "Tempeh Grain Bowl with Avocado" : "200g Wild Salmon Fillet",
+          "Baked Sweet Potato Mash",
+          "MADRock Plant / Whey Protein Shake",
         ],
       },
       {
-        dayTitle: "Day 4: Refuel & Macro Density",
-        focus: "Metabolic Density & Sustained Energy",
-        meals: [
-          {
-            meal: "Meal 1: Smoked Salmon & Eggs",
-            time: "08:00 AM",
-            calories: userGoal === "Fat Loss" ? "440 kcal" : "630 kcal",
-            macros: "40g P • 32g C • 14g F",
-            items: ["100g Wild Smoked Salmon", "3 Soft Scrambled Whole Eggs", "Sprouted Rye Toast"],
-          },
-          {
-            meal: "Meal 2: Chicken Walnut Bowl",
-            time: "12:30 PM",
-            calories: userGoal === "Fat Loss" ? "480 kcal" : "690 kcal",
-            macros: "48g P • 30g C • 12g F",
-            items: ["200g Grilled Chicken Breast", "Mixed Baby Greens & Crushed Walnuts", "Balsamic Vinaigrette"],
-          },
-          {
-            meal: "Meal 3: Baked Cod & Sweet Potato",
-            time: "05:30 PM",
-            calories: userGoal === "Fat Loss" ? "460 kcal" : "670 kcal",
-            macros: "44g P • 45g C • 8g F",
-            items: ["220g Wild Atlantic Cod Fillet", "Baked Sweet Potato Fries", "Steamed Green Beans"],
-          },
-          {
-            meal: "Meal 4: Skyr Yogurt Berry Bowl",
-            time: "09:30 PM",
-            calories: "300 kcal",
-            macros: "33g P • 16g C • 7g F",
-            items: ["200g Icelandic Skyr Yogurt", "Fresh Raspberries", "5g Creatine Monohydrate"],
-          },
-        ],
-      },
-      {
-        dayTitle: "Day 5: High MPS Optimization",
-        focus: "Continuous Muscle Protein Synthesis",
-        meals: [
-          {
-            meal: "Meal 1: High-Protein Pancakes",
-            time: "08:00 AM",
-            calories: userGoal === "Fat Loss" ? "430 kcal" : "640 kcal",
-            macros: "45g P • 50g C • 8g F",
-            items: ["Oat & Egg White Batter with Whey", "Zero-Sugar Syrup", "Fresh Strawberries"],
-          },
-          {
-            meal: "Meal 2: Bison & Rice Power Bowl",
-            time: "12:30 PM",
-            calories: userGoal === "Fat Loss" ? "540 kcal" : "760 kcal",
-            macros: "50g P • 48g C • 12g F",
-            items: ["200g Lean Ground Bison", "Brown Jasmine Rice", "Sautéed Bell Peppers"],
-          },
-          {
-            meal: "Meal 3: Chicken Fajita Skillet",
-            time: "05:30 PM",
-            calories: userGoal === "Fat Loss" ? "490 kcal" : "700 kcal",
-            macros: "48g P • 42g C • 11g F",
-            items: ["200g Chicken Thigh Strips", "Corn Tortillas & Guacamole", "Charred Onions"],
-          },
-          {
-            meal: "Meal 4: Chocolate Casein Mousse",
-            time: "09:30 PM",
-            calories: "280 kcal",
-            macros: "35g P • 10g C • 6g F",
-            items: ["Micellar Casein Protein Pudding", "Unsweetened Dark Cocoa Powder"],
-          },
-        ],
-      },
-      {
-        dayTitle: "Day 6: Lean Recomp & Fiber Focus",
-        focus: "Insulin Sensitivity & Satiety",
-        meals: [
-          {
-            meal: "Meal 1: Turkey Bacon & Egg Wrap",
-            time: "08:00 AM",
-            calories: userGoal === "Fat Loss" ? "410 kcal" : "610 kcal",
-            macros: "38g P • 34g C • 10g F",
-            items: ["3 Slices Lean Turkey Bacon", "3 Egg Whites + 1 Whole Egg", "Whole Wheat Wrap"],
-          },
-          {
-            meal: "Meal 2: Tilapia & Quinoa Salad",
-            time: "12:30 PM",
-            calories: userGoal === "Fat Loss" ? "470 kcal" : "680 kcal",
-            macros: "46g P • 38g C • 9g F",
-            items: ["220g Pan-Seared Tilapia", "Quinoa & Cucumber Salad", "Lemon Olive Oil Dressing"],
-          },
-          {
-            meal: "Meal 3: Pork Tenderloin Roast",
-            time: "05:30 PM",
-            calories: userGoal === "Fat Loss" ? "510 kcal" : "720 kcal",
-            macros: "48g P • 40g C • 12g F",
-            items: ["200g Center-Cut Pork Tenderloin", "Roasted Carrots & Brussels Sprouts", "Mashed Cauliflower"],
-          },
-          {
-            meal: "Meal 4: Night Time Cinnamon Yogurt",
-            time: "09:30 PM",
-            calories: "300 kcal",
-            macros: "32g P • 14g C • 7g F",
-            items: ["200g Greek Yogurt", "Organic Honey Drizzle & Cinnamon"],
-          },
-        ],
-      },
-      {
-        dayTitle: "Day 7: Micro-Reset & Endocrine Support",
-        focus: "Hormonal Balance & Hydration",
-        meals: [
-          {
-            meal: "Meal 1: Anabolic French Toast",
-            time: "08:00 AM",
-            calories: userGoal === "Fat Loss" ? "450 kcal" : "650 kcal",
-            macros: "42g P • 52g C • 9g F",
-            items: ["Ezekiel Bread Dipped in Egg White Whey", "Fresh Blueberries", "Zero Sugar Syrup"],
-          },
-          {
-            meal: "Meal 2: Jumbo Shrimp Noodle Bowl",
-            time: "12:30 PM",
-            calories: userGoal === "Fat Loss" ? "480 kcal" : "690 kcal",
-            macros: "45g P • 50g C • 8g F",
-            items: ["250g Jumbo Wild Shrimp", "Rice Noodles & Asian Greens", "Sesame Soy Drizzle"],
-          },
-          {
-            meal: "Meal 3: Ribeye Steak & Baked Potato",
-            time: "05:30 PM",
-            calories: userGoal === "Fat Loss" ? "540 kcal" : "750 kcal",
-            macros: "52g P • 45g C • 14g F",
-            items: ["200g Lean Cut Ribeye Steak", "Steamed Broccoli & Baked Potato", "Grass-Fed Butter"],
-          },
-          {
-            meal: "Meal 4: Casein & Dark Chocolate",
-            time: "09:30 PM",
-            calories: "310 kcal",
-            macros: "34g P • 12g C • 10g F",
-            items: ["1 Scoop Casein Protein", "10g 85% Dark Chocolate Shavings"],
-          },
+        meal: "Meal 4: Night Time Casein Reset",
+        time: "09:30 PM",
+        calories: "320 kcal",
+        macros: "35g P • 15g C • 10g F",
+        items: [
+          diet === "Plant-Based Vegan" ? "Organic Soy Greek-style Yogurt" : "200g Low-Fat Greek Yogurt",
+          "Raw Almonds & Dark Cocoa Shavings",
+          "5g Creatine Monohydrate",
         ],
       },
     ];
-
-    return dailyMealPool.slice(0, days);
   };
 
   // Protocols state
@@ -374,7 +179,7 @@ export default function AICoachPage() {
   );
 
   const [mealProtocol, setMealProtocol] = useState<any[] | null>(() =>
-    generateDynamicMeal(4, "Muscle Building")
+    generateDynamicMeal("Muscle Building", "High Protein Standard")
   );
 
   const handleSendMessage = (customMsg?: string) => {
@@ -409,7 +214,7 @@ export default function AICoachPage() {
       if (activeMode === "workout") {
         setWorkoutProtocol(generateDynamicWorkout(trainingDays, goal, experience));
       } else {
-        setMealProtocol(generateDynamicMeal(trainingDays, goal));
+        setMealProtocol(generateDynamicMeal(goal, dietaryApproach));
       }
     }, 1000);
   };
@@ -569,57 +374,90 @@ export default function AICoachPage() {
                 </span>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                <div>
-                  <label className="text-xs font-mono text-mad-gray uppercase block mb-2">Primary Goal</label>
-                  <select
-                    value={goal}
-                    onChange={(e) => setGoal(e.target.value)}
-                    className="w-full bg-mad-bg border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-mad-lime font-mono"
-                  >
-                    <option value="Fat Loss">Fat Loss</option>
-                    <option value="Muscle Building">Muscle Building</option>
-                    <option value="Body Recomposition">Body Recomposition</option>
-                    <option value="Strength Power">Strength & Power</option>
-                  </select>
-                </div>
+              {/* Workout Parameters */}
+              {activeMode === "workout" ? (
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                  <div>
+                    <label className="text-xs font-mono text-mad-gray uppercase block mb-2">Primary Goal</label>
+                    <select
+                      value={goal}
+                      onChange={(e) => setGoal(e.target.value)}
+                      className="w-full bg-mad-bg border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-mad-lime font-mono"
+                    >
+                      <option value="Fat Loss">Fat Loss</option>
+                      <option value="Muscle Building">Muscle Building</option>
+                      <option value="Body Recomposition">Body Recomposition</option>
+                      <option value="Strength Power">Strength & Power</option>
+                    </select>
+                  </div>
 
-                <div>
-                  <label className="text-xs font-mono text-mad-gray uppercase block mb-2">Experience Level</label>
-                  <select
-                    value={experience}
-                    onChange={(e) => setExperience(e.target.value)}
-                    className="w-full bg-mad-bg border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-mad-lime font-mono"
-                  >
-                    <option value="Beginner">Beginner (0-1 yrs)</option>
-                    <option value="Intermediate">Intermediate (1-3 yrs)</option>
-                    <option value="Advanced">Advanced (3+ yrs)</option>
-                  </select>
-                </div>
+                  <div>
+                    <label className="text-xs font-mono text-mad-gray uppercase block mb-2">Experience Level</label>
+                    <select
+                      value={experience}
+                      onChange={(e) => setExperience(e.target.value)}
+                      className="w-full bg-mad-bg border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-mad-lime font-mono"
+                    >
+                      <option value="Beginner">Beginner (0-1 yrs)</option>
+                      <option value="Intermediate">Intermediate (1-3 yrs)</option>
+                      <option value="Advanced">Advanced (3+ yrs)</option>
+                    </select>
+                  </div>
 
-                {/* Training Days Selector Buttons */}
-                <div>
-                  <label className="text-xs font-mono text-mad-gray uppercase block mb-2">
-                    Training Days: <strong className="text-mad-lime font-mono">{trainingDays} Days/Wk</strong>
-                  </label>
-                  <div className="flex gap-1.5">
-                    {[3, 4, 5, 6, 7].map((num) => (
-                      <button
-                        key={num}
-                        type="button"
-                        onClick={() => setTrainingDays(num)}
-                        className={`flex-1 py-2.5 rounded-xl text-xs font-bold font-mono transition-all ${
-                          trainingDays === num
-                            ? "bg-mad-lime text-mad-bg font-extrabold shadow-md"
-                            : "bg-mad-bg text-mad-gray border border-white/10 hover:text-white"
-                        }`}
-                      >
-                        {num}D
-                      </button>
-                    ))}
+                  <div>
+                    <label className="text-xs font-mono text-mad-gray uppercase block mb-2">
+                      Training Days: <strong className="text-mad-lime font-mono">{trainingDays} Days/Wk</strong>
+                    </label>
+                    <div className="flex gap-1.5">
+                      {[3, 4, 5, 6, 7].map((num) => (
+                        <button
+                          key={num}
+                          type="button"
+                          onClick={() => setTrainingDays(num)}
+                          className={`flex-1 py-2.5 rounded-xl text-xs font-bold font-mono transition-all ${
+                            trainingDays === num
+                              ? "bg-mad-lime text-mad-bg font-extrabold shadow-md"
+                              : "bg-mad-bg text-mad-gray border border-white/10 hover:text-white"
+                          }`}
+                        >
+                          {num}D
+                        </button>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
+              ) : (
+                /* Meal Planner Parameters - NO Training Days feature here */
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div>
+                    <label className="text-xs font-mono text-mad-gray uppercase block mb-2">Primary Goal</label>
+                    <select
+                      value={goal}
+                      onChange={(e) => setGoal(e.target.value)}
+                      className="w-full bg-mad-bg border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-mad-lime font-mono"
+                    >
+                      <option value="Fat Loss">Fat Loss</option>
+                      <option value="Muscle Building">Muscle Building</option>
+                      <option value="Body Recomposition">Body Recomposition</option>
+                      <option value="Performance & Endurance">Performance & Endurance</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="text-xs font-mono text-mad-gray uppercase block mb-2">Dietary Approach</label>
+                    <select
+                      value={dietaryApproach}
+                      onChange={(e) => setDietaryApproach(e.target.value)}
+                      className="w-full bg-mad-bg border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-mad-lime font-mono"
+                    >
+                      <option value="High Protein Standard">High Protein Standard</option>
+                      <option value="Ketogenic Low-Carb">Ketogenic Low-Carb</option>
+                      <option value="Flexible Macro (IIFYM)">Flexible Macro (IIFYM)</option>
+                      <option value="Plant-Based Vegan">Plant-Based Vegan</option>
+                    </select>
+                  </div>
+                </div>
+              )}
 
               <button
                 onClick={handleGeneratePlan}
@@ -629,12 +467,16 @@ export default function AICoachPage() {
                 {loading ? (
                   <>
                     <RefreshCw className="w-5 h-5 animate-spin" />
-                    <span>GENERATING {trainingDays}-DAY PROTOCOL...</span>
+                    <span>GENERATING PROTOCOL...</span>
                   </>
                 ) : (
                   <>
                     <Sparkles className="w-5 h-5" />
-                    <span>GENERATE {trainingDays}-DAY CUSTOM PROTOCOL</span>
+                    <span>
+                      {activeMode === "workout"
+                        ? `GENERATE ${trainingDays}-DAY WORKOUT PROTOCOL`
+                        : "GENERATE NUTRITION PROTOCOL NOW"}
+                    </span>
                   </>
                 )}
               </button>
@@ -709,16 +551,16 @@ export default function AICoachPage() {
               </div>
             )}
 
-            {/* Structured Visual Meal Plan Cards - Dynamically Renders Day 1 to Day N matching trainingDays selected */}
+            {/* Structured Visual Meal Plan Cards - NO Days Feature */}
             {activeMode === "meal" && mealProtocol && (
               <div className="space-y-6">
                 <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-3 border-b border-white/10">
                   <div>
                     <h3 className="text-2xl font-black font-spartan text-white uppercase tracking-tight">
-                      GENERATED NUTRITION BLUEPRINT ({mealProtocol.length} DAYS)
+                      GENERATED NUTRITION PROTOCOL
                     </h3>
                     <p className="text-xs text-mad-lime font-mono mt-1">
-                      {goal} Nutrition Plan • {mealProtocol.length} Days Meal Protocols Built
+                      Daily Macro & Meal Breakdown for {goal} ({dietaryApproach})
                     </p>
                   </div>
 
@@ -727,56 +569,38 @@ export default function AICoachPage() {
                     className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-mad-surface border border-white/10 text-xs font-mono text-white hover:text-mad-lime hover:border-mad-lime/40 transition-all"
                   >
                     {copied ? <Check className="w-4 h-4 text-mad-lime" /> : <Copy className="w-4 h-4 text-mad-lime" />}
-                    <span>{copied ? "COPIED TO CLIPBOARD" : "COPY BLUEPRINT"}</span>
+                    <span>{copied ? "COPIED TO CLIPBOARD" : "COPY NUTRITION PLAN"}</span>
                   </button>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
-                  {mealProtocol.map((dayMealBlock, dmIdx) => (
+                  {mealProtocol.map((mBlock, mIdx) => (
                     <div
-                      key={dmIdx}
+                      key={mIdx}
                       className="rounded-3xl bg-mad-surface border border-white/10 p-6 space-y-4 hover:border-mad-lime/40 transition-all flex flex-col justify-start h-auto"
                     >
-                      <div className="pb-3 border-b border-white/10 flex items-start justify-between gap-4">
-                        <div className="space-y-1">
-                          <h4 className="font-black font-spartan text-lg text-white uppercase leading-snug">
-                            {dayMealBlock.dayTitle}
+                      <div className="flex items-center justify-between pb-3 border-b border-white/10">
+                        <div>
+                          <h4 className="font-black font-spartan text-lg text-white uppercase">
+                            {mBlock.meal}
                           </h4>
-                          <span className="text-[11px] text-mad-lime font-mono uppercase block font-semibold">
-                            {dayMealBlock.focus}
+                          <span className="text-[10px] text-mad-lime font-mono uppercase block mt-1 font-semibold">
+                            Target: {mBlock.calories} • {mBlock.macros}
                           </span>
                         </div>
-                        <div className="w-8 h-8 rounded-xl bg-mad-lime/10 border border-mad-lime/30 flex items-center justify-center text-mad-lime shrink-0">
-                          <Utensils className="w-4 h-4" />
-                        </div>
+                        <span className="px-2.5 py-1 rounded-lg bg-mad-bg border border-white/10 text-xs font-mono text-mad-gray shrink-0">
+                          {mBlock.time}
+                        </span>
                       </div>
 
-                      <div className="space-y-3">
-                        {dayMealBlock.meals.map((m: any, mIdx: number) => (
-                          <div
-                            key={mIdx}
-                            className="p-3.5 rounded-xl bg-mad-bg border border-white/5 space-y-2 text-xs"
-                          >
-                            <div className="flex items-center justify-between border-b border-white/5 pb-2">
-                              <strong className="text-white font-bold block">{m.meal}</strong>
-                              <span className="px-2 py-0.5 rounded-md bg-mad-lime/10 border border-mad-lime/30 text-mad-lime font-mono text-[10px] font-bold">
-                                {m.time}
-                              </span>
-                            </div>
-                            <div className="text-[11px] text-mad-lime font-mono">
-                              {m.calories} • {m.macros}
-                            </div>
-                            <ul className="space-y-1 text-mad-gray text-[11px]">
-                              {m.items.map((item: string, iIdx: number) => (
-                                <li key={iIdx} className="flex items-center gap-1.5">
-                                  <span className="w-1 h-1 rounded-full bg-mad-lime shrink-0" />
-                                  <span>{item}</span>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
+                      <ul className="space-y-2 text-xs text-mad-gray">
+                        {mBlock.items.map((item: string, iIdx: number) => (
+                          <li key={iIdx} className="flex items-center gap-2">
+                            <span className="w-1.5 h-1.5 rounded-full bg-mad-lime shrink-0" />
+                            <span className="text-white/90 font-medium">{item}</span>
+                          </li>
                         ))}
-                      </div>
+                      </ul>
                     </div>
                   ))}
                 </div>
