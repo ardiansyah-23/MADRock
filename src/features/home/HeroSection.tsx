@@ -5,25 +5,28 @@ import Image from "next/image";
 import { ArrowRight, Calendar, Star, ShieldCheck, Flame, Users, Trophy } from "lucide-react";
 import { AnimatedCounter } from "@/components/common/AnimatedCounter";
 import { ScrollReveal } from "@/components/common/ScrollReveal";
+import { useLanguage } from "@/components/common/LanguageProvider";
 
 export function HeroSection() {
+  const { t } = useLanguage();
+
   const stats = [
     {
       value: 600,
       suffix: "+",
-      label: "Happy Clients",
+      label: t("hero_stat_1"),
       icon: Users,
     },
     {
       value: 98,
       suffix: "%",
-      label: "Success Rate",
+      label: t("hero_stat_2"),
       icon: ShieldCheck,
     },
     {
       value: 5,
       suffix: "+",
-      label: "Years Experience",
+      label: t("hero_stat_3"),
       icon: Trophy,
     },
     {
@@ -37,7 +40,7 @@ export function HeroSection() {
 
   return (
     <section className="relative min-h-screen flex flex-col justify-between pt-32 pb-12 overflow-hidden bg-mad-bg">
-      {/* Ambient Glow Background - Optimized GPU hardware layers */}
+      {/* Ambient Glow Background */}
       <div className="absolute inset-0 z-0 pointer-events-none transform-gpu">
         <Image
           src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=2070&auto=format&fit=crop"
@@ -49,7 +52,6 @@ export function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-t from-mad-bg via-mad-bg/85 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-r from-mad-bg via-mad-bg/75 to-transparent" />
         
-        {/* GPU Accelerated Glow Spheres */}
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-mad-lime/10 rounded-full blur-3xl will-change-transform transform-gpu" />
         <div className="absolute bottom-10 right-10 w-80 h-80 bg-mad-lime/15 rounded-full blur-3xl will-change-transform transform-gpu" />
       </div>
@@ -62,21 +64,20 @@ export function HeroSection() {
             <ScrollReveal direction="down" delay={0.05}>
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-mad-lime/10 border border-mad-lime/30 text-mad-lime text-xs font-semibold uppercase tracking-wider">
                 <Flame className="w-3.5 h-3.5 fill-mad-lime" />
-                <span>MADROCK PREMIUM COACHING</span>
+                <span>{t("hero_badge")}</span>
               </div>
             </ScrollReveal>
 
             <ScrollReveal delay={0.1}>
               <h1 className="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-black uppercase font-spartan tracking-tight text-white leading-[0.95]">
-                Train Hard. <br />
-                Stay Focused. <br />
-                <span className="text-mad-lime">Become Unstoppable.</span>
+                {t("hero_title_1")} <br />
+                <span className="text-mad-lime">{t("hero_title_2")}</span>
               </h1>
             </ScrollReveal>
 
             <ScrollReveal delay={0.15}>
               <p className="text-base sm:text-lg lg:text-xl text-mad-gray max-w-xl font-normal leading-relaxed">
-                Science-based coaching designed to help you build muscle, lose fat, improve strength and become your absolute best version.
+                {t("hero_subtitle")}
               </p>
             </ScrollReveal>
 
@@ -87,16 +88,16 @@ export function HeroSection() {
                   href="/login"
                   className="group inline-flex items-center gap-3 px-8 py-4 rounded-2xl text-base font-extrabold bg-mad-lime text-mad-bg hover:bg-mad-lime-hover transition-all duration-300 shadow-xl shadow-mad-lime/20 hover:scale-[1.02] active:scale-[0.98] transform-gpu"
                 >
-                  <span>START TRAINING</span>
+                  <span>{t("hero_cta_primary")}</span>
                   <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                 </Link>
 
                 <Link
-                  href="/booking"
+                  href="/programs"
                   className="inline-flex items-center gap-2.5 px-7 py-4 rounded-2xl text-base font-bold bg-white/5 border border-white/15 text-white hover:bg-white/10 hover:border-mad-lime/50 transition-all duration-300 backdrop-blur-md hover:scale-[1.02] active:scale-[0.98] transform-gpu"
                 >
                   <Calendar className="w-5 h-5 text-mad-lime" />
-                  <span>Book Consultation</span>
+                  <span>{t("hero_cta_secondary")}</span>
                 </Link>
               </div>
             </ScrollReveal>
@@ -120,7 +121,6 @@ export function HeroSection() {
           <div className="lg:col-span-5 relative">
             <ScrollReveal direction="left" delay={0.15}>
               <div className="relative mx-auto max-w-md lg:max-w-none">
-                {/* Decorative Frame */}
                 <div className="absolute -inset-1 rounded-3xl bg-gradient-to-tr from-mad-lime/30 via-transparent to-mad-lime/20 blur-xl opacity-60 pointer-events-none transform-gpu" />
 
                 <div className="relative rounded-3xl overflow-hidden border border-white/15 bg-mad-surface shadow-2xl transform-gpu">
