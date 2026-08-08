@@ -103,6 +103,13 @@ export function Navbar() {
           {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-7">
             <Link
+              href="/"
+              className="text-sm font-medium text-mad-gray hover:text-mad-lime transition-colors duration-200"
+            >
+              Home
+            </Link>
+
+            <Link
               href="/programs"
               className="text-sm font-medium text-mad-gray hover:text-mad-lime transition-colors duration-200"
             >
@@ -221,6 +228,14 @@ export function Navbar() {
       {mobileMenuOpen && (
         <div className="lg:hidden fixed inset-x-0 top-[65px] bg-mad-bg/95 backdrop-blur-xl border-b border-white/10 px-6 py-6 transition-all animate-fadeIn">
           <div className="flex flex-col gap-3">
+            <Link
+              href="/"
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-base font-semibold text-white hover:text-mad-lime transition-colors py-1"
+            >
+              Home
+            </Link>
+
             <Link
               href="/programs"
               onClick={() => setMobileMenuOpen(false)}
