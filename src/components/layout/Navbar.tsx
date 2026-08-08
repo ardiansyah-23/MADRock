@@ -1,34 +1,65 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { Dumbbell, Menu, X, Sparkles, User, ArrowRight } from "lucide-react";
+import {
+  Dumbbell,
+  Menu,
+  X,
+  Sparkles,
+  User,
+  ArrowRight,
+  ChevronDown,
+  Utensils,
+  Trophy,
+  Calculator,
+} from "lucide-react";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 20);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinks = [
-    { name: "Programs", href: "/programs" },
-    { name: "Workouts", href: "/workout-library" },
-    { name: "Meal Planner", href: "/meal-planner" },
-    { name: "Transformations", href: "/transformations" },
-    { name: "Calculators", href: "/tools" },
-    { name: "Pricing", href: "/pricing" },
-    { name: "Blog", href: "/blog" },
+  // Close dropdown on outside click
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const dropdownItems = [
+    {
+      name: "Meal Planner",
+      href: "/meal-planner",
+      description: "Custom macro plans & recipes",
+      icon: Utensils,
+    },
+    {
+      name: "Transformations",
+      href: "/transformations",
+      description: "Client before & after results",
+      icon: Trophy,
+    },
+    {
+      name: "Calculators",
+      href: "/tools",
+      description: "9 interactive fitness tools",
+      icon: Calculator,
+    },
   ];
 
   return (
@@ -58,15 +89,79 @@ export function Navbar() {
 
           {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-7">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="text-sm font-medium text-mad-gray hover:text-mad-lime transition-colors duration-200"
+            <Link
+              href="/programs"
+              className="text-sm font-medium text-mad-gray hover:text-mad-lime transition-colors duration-200"
+            >
+              Programs
+            </Link>
+
+            <Link
+              href="/workout-library"
+              className="text-sm font-medium text-mad-gray hover:text-mad-lime transition-colors duration-200"
+            >
+              Workouts
+            </Link>
+
+            {/* Dropdown Menu: Resources / Features */}
+            <div
+              ref={dropdownRef}
+              className="relative"
+              onMouseEnter={() => setDropdownOpen(true)}
+              onMouseLeave={() => setDropdownOpen(false)}
+            >
+              <button
+                onClick={() => setDropdownOpen(!dropdownOpen)}
+                className="flex items-center gap-1.5 text-sm font-medium text-mad-gray hover:text-mad-lime transition-colors duration-200 py-1"
               >
-                {link.name}
-              </Link>
-            ))}
+                <span>Features</span>
+                <ChevronDown
+                  className={`w-4 h-4 text-mad-lime transition-transform duration-200 ${
+                    dropdownOpen ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+
+              {/* Dropdown Content */}
+              {dropdownOpen && (
+                <div className="absolute top-full left-0 mt-2 w-72 rounded-2xl bg-mad-surface/95 backdrop-blur-xl border border-white/10 p-2 shadow-2xl animate-fadeIn z-50">
+                  {dropdownItems.map((item) => (
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      onClick={() => setDropdownOpen(false)}
+                      className="flex items-start gap-3 p-3 rounded-xl hover:bg-white/5 transition-all duration-200 group/item"
+                    >
+                      <div className="w-9 h-9 rounded-xl bg-mad-lime/10 border border-mad-lime/20 flex items-center justify-center text-mad-lime group-hover/item:bg-mad-lime group-hover/item:text-mad-bg transition-colors">
+                        <item.icon className="w-4 h-4" />
+                      </div>
+                      <div>
+                        <span className="font-bold text-white text-sm group-hover/item:text-mad-lime transition-colors block">
+                          {item.name}
+                        </span>
+                        <span className="text-[11px] text-mad-gray leading-tight block mt-0.5">
+                          {item.description}
+                        </span>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <Link
+              href="/pricing"
+              className="text-sm font-medium text-mad-gray hover:text-mad-lime transition-colors duration-200"
+            >
+              Pricing
+            </Link>
+
+            <Link
+              href="/blog"
+              className="text-sm font-medium text-mad-gray hover:text-mad-lime transition-colors duration-200"
+            >
+              Blog
+            </Link>
           </nav>
 
           {/* Desktop Right CTA */}
@@ -110,17 +205,56 @@ export function Navbar() {
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
         <div className="lg:hidden fixed inset-x-0 top-[65px] bg-mad-bg/95 backdrop-blur-xl border-b border-white/10 px-6 py-6 transition-all animate-fadeIn">
-          <div className="flex flex-col gap-4">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-base font-semibold text-white hover:text-mad-lime transition-colors py-1.5"
-              >
-                {link.name}
-              </Link>
-            ))}
+          <div className="flex flex-col gap-3">
+            <Link
+              href="/programs"
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-base font-semibold text-white hover:text-mad-lime transition-colors py-1"
+            >
+              Programs
+            </Link>
+
+            <Link
+              href="/workout-library"
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-base font-semibold text-white hover:text-mad-lime transition-colors py-1"
+            >
+              Workouts
+            </Link>
+
+            {/* Mobile Dropdown Group */}
+            <div className="py-2 border-y border-white/10 my-1 space-y-2">
+              <span className="text-[10px] font-mono uppercase tracking-widest text-mad-lime font-bold block">
+                Features & Tools
+              </span>
+              {dropdownItems.map((item) => (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center gap-3 py-2 px-3 rounded-xl bg-mad-surface/60 border border-white/5 text-sm font-semibold text-white hover:text-mad-lime"
+                >
+                  <item.icon className="w-4 h-4 text-mad-lime" />
+                  <span>{item.name}</span>
+                </Link>
+              ))}
+            </div>
+
+            <Link
+              href="/pricing"
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-base font-semibold text-white hover:text-mad-lime transition-colors py-1"
+            >
+              Pricing
+            </Link>
+
+            <Link
+              href="/blog"
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-base font-semibold text-white hover:text-mad-lime transition-colors py-1"
+            >
+              Blog
+            </Link>
 
             <div className="pt-4 border-t border-white/10 flex flex-col gap-3">
               <Link
