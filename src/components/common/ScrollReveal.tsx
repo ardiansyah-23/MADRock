@@ -20,10 +20,10 @@ export function ScrollReveal({
     let x = 0;
     let y = 0;
 
-    if (direction === "up") y = 40;
-    if (direction === "down") y = -40;
-    if (direction === "left") x = 40;
-    if (direction === "right") x = -40;
+    if (direction === "up") y = 24;
+    if (direction === "down") y = -24;
+    if (direction === "left") x = 24;
+    if (direction === "right") x = -24;
 
     return {
       hidden: { opacity: 0, x, y },
@@ -32,9 +32,9 @@ export function ScrollReveal({
         x: 0,
         y: 0,
         transition: {
-          duration: 0.7,
-          delay: delay,
-          ease: [0.21, 0.47, 0.32, 0.98] as const,
+          duration: 0.5,
+          delay: delay * 0.7, // Snappier delay pacing
+          ease: [0.16, 1, 0.3, 1] as const, // Butter-smooth Apple spring curve
         },
       },
     };
@@ -44,9 +44,9 @@ export function ScrollReveal({
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-80px" }}
+      viewport={{ once: true, margin: "-20px" }} // Triggers immediately as element enters view
       variants={getVariants()}
-      className={className}
+      className={`${className} transform-gpu will-change-transform`}
     >
       {children}
     </motion.div>
