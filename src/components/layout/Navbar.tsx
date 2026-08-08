@@ -208,7 +208,7 @@ export function Navbar() {
             </Link>
 
             <Link
-              href="/booking"
+              href="/login"
               className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold bg-mad-lime text-mad-bg hover:bg-mad-lime-hover transition-all duration-300 shadow-md shadow-mad-lime/20 hover:scale-[1.02]"
             >
               <span>START TRAINING</span>
@@ -312,7 +312,7 @@ export function Navbar() {
               </Link>
 
               <Link
-                href="/booking"
+                href="/login"
                 onClick={() => setMobileMenuOpen(false)}
                 className="flex items-center justify-center gap-2 py-3.5 rounded-xl bg-mad-lime text-mad-bg font-extrabold text-sm uppercase tracking-wider"
               >

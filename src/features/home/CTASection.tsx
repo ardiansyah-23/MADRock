@@ -29,7 +29,7 @@ export function CTASection() {
 
             <div className="flex flex-wrap justify-center items-center gap-4 pt-4">
               <Link
-                href="/booking"
+                href="/login"
                 className="group inline-flex items-center gap-3 px-9 py-4.5 rounded-2xl text-base font-extrabold bg-mad-lime text-mad-bg hover:bg-mad-lime-hover transition-all duration-300 shadow-xl shadow-mad-lime/25 hover:scale-105"
               >
                 <span>START YOUR TRANSFORMATION</span>

@@ -84,7 +84,7 @@ export function HeroSection() {
             <ScrollReveal delay={0.2}>
               <div className="flex flex-wrap items-center gap-4 pt-2">
                 <Link
-                  href="/booking"
+                  href="/login"
                   className="group inline-flex items-center gap-3 px-8 py-4 rounded-2xl text-base font-extrabold bg-mad-lime text-mad-bg hover:bg-mad-lime-hover transition-all duration-300 shadow-xl shadow-mad-lime/20 hover:scale-[1.02] active:scale-[0.98] transform-gpu"
                 >
                   <span>START TRAINING</span>
