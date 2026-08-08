@@ -40,7 +40,7 @@ export default function AICoachPage() {
   const [loading, setLoading] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  // Dynamic Generator Helper Functions
+  // Dynamic Generator Helper Functions - Every Day has exactly 4 items for uniform card height
   const generateDynamicWorkout = (days: number, userGoal: string, exp: string) => {
     const pool = [
       {
@@ -69,6 +69,8 @@ export default function AICoachPage() {
         exercises: [
           { name: "Incline Treadmill Walk", sets: "35 Mins", rpe: "RPE 5", rest: "N/A" },
           { name: "Full Body Dynamic Mobility Routine", sets: "20 Mins", rpe: "RPE 3", rest: "N/A" },
+          { name: "Foam Rolling & Myofascial Release", sets: "15 Mins", rpe: "RPE 2", rest: "N/A" },
+          { name: "Sauna / Contrast Hydrotherapy", sets: "15 Mins", rpe: "RPE 2", rest: "N/A" },
         ],
       },
       {
@@ -98,6 +100,7 @@ export default function AICoachPage() {
           { name: "Conventional Deadlift", sets: "3 Sets x 5 Reps", rpe: "RPE 8.5", rest: "3.5 Mins" },
           { name: "Bulgarian Split Squats", sets: "3 Sets x 10 Reps/leg", rpe: "RPE 9", rest: "2 Mins" },
           { name: "Hanging Leg Raises", sets: "4 Sets x 15 Reps", rpe: "RPE 9.5", rest: "60 Secs" },
+          { name: "Cable Woodchoppers & Rotation", sets: "3 Sets x 15 Reps", rpe: "RPE 9", rest: "60 Secs" },
         ],
       },
       {
@@ -107,6 +110,7 @@ export default function AICoachPage() {
           { name: "Dumbbell Thrusters", sets: "4 Sets x 12 Reps", rpe: "RPE 9", rest: "90 Secs" },
           { name: "Kettlebell Swings", sets: "4 Sets x 20 Reps", rpe: "RPE 9", rest: "60 Secs" },
           { name: "Rowing Ergometer Sprints", sets: "5 Rounds x 250m", rpe: "RPE 9.5", rest: "90 Secs" },
+          { name: "Farmer's Heavy Carries", sets: "4 Sets x 50 Meters", rpe: "RPE 9", rest: "60 Secs" },
         ],
       },
     ];
@@ -445,7 +449,7 @@ export default function AICoachPage() {
                   </button>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
                   {workoutProtocol.map((dayBlock, dIdx) => (
                     <div
                       key={dIdx}
@@ -506,7 +510,7 @@ export default function AICoachPage() {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
                   {mealProtocol.map((mBlock, mIdx) => (
                     <div
                       key={mIdx}
