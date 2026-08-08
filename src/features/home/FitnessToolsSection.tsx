@@ -18,6 +18,8 @@ export function FitnessToolsSection() {
   const height = parseFloat(heightStr) || 0;
   const age = parseFloat(ageStr) || 0;
 
+  const isInputValid = weight > 0 && height > 0 && age > 0;
+
   const handleCleanInput = (val: string, setter: (s: string) => void) => {
     const cleaned = val.replace(/^0+(?=\d)/, "");
     setter(cleaned);
@@ -25,18 +27,20 @@ export function FitnessToolsSection() {
 
   // Calculations
   const heightM = height / 100;
-  const bmi = heightM > 0 ? weight / (heightM * heightM) : 0;
+  const bmi = isInputValid && heightM > 0 ? weight / (heightM * heightM) : 0;
 
   // BMR (Mifflin-St Jeor)
-  const bmr =
-    gender === "male"
-      ? 10 * weight + 6.25 * height - 5 * age + 5
-      : 10 * weight + 6.25 * height - 5 * age - 161;
+  const bmr = isInputValid
+    ? (gender === "male"
+        ? 10 * weight + 6.25 * height - 5 * age + 5
+        : 10 * weight + 6.25 * height - 5 * age - 161)
+    : 0;
 
-  const tdee = Math.round(bmr * activity);
-  const protein = Math.round(weight * 2.2);
+  const tdee = isInputValid ? Math.round(bmr * activity) : 0;
+  const protein = isInputValid ? Math.round(weight * 2.2) : 0;
 
   const getBmiCategory = (bmiValue: number) => {
+    if (bmiValue <= 0) return { category: "Enter Parameters", color: "text-mad-gray" };
     if (bmiValue < 18.5) return { category: "Underweight", color: "text-amber-400" };
     if (bmiValue < 25) return { category: "Optimal Healthy Weight", color: "text-mad-lime" };
     if (bmiValue < 30) return { category: "Overweight", color: "text-amber-400" };

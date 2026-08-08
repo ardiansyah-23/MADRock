@@ -29,42 +29,50 @@ export default function ToolsPage() {
   const liftWeight = parseFloat(liftWeightStr) || 0;
   const reps = parseFloat(repsStr) || 0;
 
+  // Validation Flags
+  const isInputValid = weight > 0 && height > 0 && age > 0;
+  const is1rmValid = liftWeight > 0 && reps > 0;
+
   // Clean Leading Zero Helper
   const handleCleanInput = (val: string, setter: (s: string) => void) => {
-    // Strip leading zeros if followed by another digit (e.g. "058" -> "58")
     const cleaned = val.replace(/^0+(?=\d)/, "");
     setter(cleaned);
   };
 
   // Calculations
-  const bmr =
-    gender === "male"
-      ? 10 * weight + 6.25 * height - 5 * age + 5
-      : 10 * weight + 6.25 * height - 5 * age - 161;
+  const bmr = isInputValid
+    ? (gender === "male"
+        ? 10 * weight + 6.25 * height - 5 * age + 5
+        : 10 * weight + 6.25 * height - 5 * age - 161)
+    : 0;
 
-  const tdee = Math.round(bmr * activity);
+  const tdee = isInputValid ? Math.round(bmr * activity) : 0;
 
   let targetCalories = tdee;
-  if (goal === "cut") targetCalories = Math.round(tdee * 0.8);
-  if (goal === "bulk") targetCalories = Math.round(tdee * 1.15);
+  if (isInputValid) {
+    if (goal === "cut") targetCalories = Math.round(tdee * 0.8);
+    if (goal === "bulk") targetCalories = Math.round(tdee * 1.15);
+  }
 
-  const proteinGrams = Math.round(weight * 2.2);
-  const fatGrams = Math.round((targetCalories * 0.25) / 9);
-  const carbGrams = Math.round((targetCalories - (proteinGrams * 4 + fatGrams * 9)) / 4);
+  const proteinGrams = isInputValid ? Math.round(weight * 2.2) : 0;
+  const fatGrams = isInputValid ? Math.round((targetCalories * 0.25) / 9) : 0;
+  const carbGrams = isInputValid ? Math.round((targetCalories - (proteinGrams * 4 + fatGrams * 9)) / 4) : 0;
 
   // Water (Liters)
-  const waterLiters = (weight * 0.035 + (activity > 1.4 ? 0.8 : 0.4)).toFixed(1);
+  const waterLiters = isInputValid ? (weight * 0.035 + (activity > 1.4 ? 0.8 : 0.4)).toFixed(1) : "0.0";
 
   // 1RM Epley Formula
-  const oneRepMax = Math.round(liftWeight * (1 + reps / 30));
+  const oneRepMax = is1rmValid ? Math.round(liftWeight * (1 + reps / 30)) : 0;
 
   // Ideal Weight (Hamwi Formula)
   const heightInchesOver5ft = Math.max(0, (height / 2.54) - 60);
-  const idealWeightKg = Math.round(
-    gender === "male"
-      ? 48 + 2.7 * heightInchesOver5ft
-      : 45.5 + 2.2 * heightInchesOver5ft
-  );
+  const idealWeightKg = height > 0
+    ? Math.round(
+        gender === "male"
+          ? 48 + 2.7 * heightInchesOver5ft
+          : 45.5 + 2.2 * heightInchesOver5ft
+      )
+    : 0;
 
   return (
     <main className="pt-32 pb-24 bg-mad-bg text-white min-h-screen">
