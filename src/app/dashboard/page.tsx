@@ -29,6 +29,7 @@ import {
   Menu,
   X,
 } from "lucide-react";
+import { ThemeToggle } from "@/components/common/ThemeToggle";
 
 export default function DashboardPage() {
   const [activeTab, setActiveTab] = useState<"overview" | "workouts" | "nutrition" | "coaching">("overview");
@@ -63,12 +64,15 @@ export default function DashboardPage() {
           </span>
         </Link>
 
-        <button
-          onClick={() => setSidebarOpen(!sidebarOpen)}
-          className="p-2 rounded-xl bg-mad-bg border border-white/10 text-white"
-        >
-          {sidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-        </button>
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
+          <button
+            onClick={() => setSidebarOpen(!sidebarOpen)}
+            className="p-2 rounded-xl bg-mad-bg border border-white/10 text-white"
+          >
+            {sidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+        </div>
       </div>
 
       {/* Standalone Dashboard Sidebar */}
@@ -167,6 +171,8 @@ export default function DashboardPage() {
           </div>
 
           <div className="flex items-center gap-4">
+            <ThemeToggle />
+
             <div className="relative">
               <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-mad-gray" />
               <input

@@ -14,6 +14,7 @@ import {
   Trophy,
   Calculator,
 } from "lucide-react";
+import { ThemeToggle } from "@/components/common/ThemeToggle";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -187,7 +188,9 @@ export function Navbar() {
           </nav>
 
           {/* Desktop Right CTA */}
-          <div className="hidden lg:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-3">
+            <ThemeToggle />
+
             <Link
               href="/ai-coach"
               className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-mad-lime bg-mad-lime/10 border border-mad-lime/30 rounded-full hover:bg-mad-lime/20 transition-all"
@@ -214,13 +217,16 @@ export function Navbar() {
           </div>
 
           {/* Mobile Menu Toggle Button */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2.5 rounded-xl bg-mad-surface text-white border border-white/10 hover:text-mad-lime transition-colors"
-            aria-label="Toggle menu"
-          >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          <div className="lg:hidden flex items-center gap-2">
+            <ThemeToggle />
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="p-2.5 rounded-xl bg-mad-surface text-white border border-white/10 hover:text-mad-lime transition-colors"
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
       </div>
 

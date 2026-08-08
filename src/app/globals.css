@@ -17,6 +17,7 @@ body {
   overflow-x: hidden;
   selection-background-color: #B8E10F;
   selection-color: #0D0D0D;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 ::selection {
@@ -88,4 +89,80 @@ body {
 
 .lime-glow-lg {
   box-shadow: 0 0 50px rgba(184, 225, 15, 0.35);
+}
+
+/* ==========================================
+   LIGHT MODE OVERRIDES & THEME SUPPORT
+   ========================================== */
+
+html.light body {
+  background-color: #F8FAFC !important;
+  color: #0F172A !important;
+}
+
+html.light .bg-mad-bg {
+  background-color: #F8FAFC !important;
+  color: #0F172A !important;
+}
+
+html.light .bg-mad-surface {
+  background-color: #FFFFFF !important;
+  color: #0F172A !important;
+  border-color: #E2E8F0 !important;
+  box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.05) !important;
+}
+
+html.light .bg-mad-surface-2 {
+  background-color: #F1F5F9 !important;
+  color: #0F172A !important;
+}
+
+html.light .text-white {
+  color: #0F172A !important;
+}
+
+html.light .text-mad-gray {
+  color: #475569 !important;
+}
+
+html.light .border-white\/10,
+html.light .border-white\/15,
+html.light .border-white\/20,
+html.light .border-white\/5 {
+  border-color: #E2E8F0 !important;
+}
+
+html.light .glass-panel {
+  background: rgba(255, 255, 255, 0.9) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid #E2E8F0 !important;
+  color: #0F172A !important;
+}
+
+html.light .glass-card {
+  background: #FFFFFF !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid #E2E8F0 !important;
+  color: #0F172A !important;
+  box-shadow: 0 4px 15px -3px rgba(0, 0, 0, 0.04) !important;
+}
+
+html.light .glass-card-hover:hover {
+  background: #FFFFFF !important;
+  border-color: rgba(132, 204, 22, 0.6) !important;
+  box-shadow: 0 10px 30px -10px rgba(132, 204, 22, 0.2) !important;
+}
+
+html.light ::-webkit-scrollbar-track {
+  background: #F8FAFC;
+}
+
+html.light ::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+}
+
+html.light ::-webkit-scrollbar-thumb:hover {
+  background: #84CC16;
 }
