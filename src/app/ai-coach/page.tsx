@@ -453,7 +453,7 @@ export default function AICoachPage() {
                   {workoutProtocol.map((dayBlock, dIdx) => (
                     <div
                       key={dIdx}
-                      className="rounded-3xl bg-mad-surface border border-white/10 p-6 space-y-4 hover:border-mad-lime/40 transition-all flex flex-col justify-between"
+                      className="rounded-3xl bg-mad-surface border border-white/10 p-6 space-y-4 hover:border-mad-lime/40 transition-all flex flex-col justify-start h-auto"
                     >
                       <div className="pb-3 border-b border-white/10 flex items-start justify-between gap-4">
                         <div className="space-y-1">
