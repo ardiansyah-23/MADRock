@@ -5,28 +5,27 @@
 @tailwind utilities;
 
 :root, html {
-  color-scheme: light;
+  color-scheme: dark;
   --font-spartan: 'League Spartan', sans-serif;
   --font-bebas: 'Bebas Neue', cursive;
   --font-inter: 'Inter', sans-serif;
 
-  /* ☀️ 100% LIGHT MODE COLOR PALETTE */
-  --mad-bg: #F8FAFC;              /* Clean soft slate-50 background */
-  --mad-surface: #FFFFFF;         /* Pure white surface cards */
-  --mad-surface-2: #F1F5F9;       /* Slate-100 secondary surface */
-  --mad-surface-3: #E2E8F0;       /* Slate-200 input borders */
-  --mad-lime: #65A30D;            /* Vibrant Lime-600 (High-contrast green on light) */
-  --mad-lime-hover: #4D7C0F;      /* Lime-800 hover */
-  --mad-lime-light: #84CC16;
-  --mad-lime-dark: #F7FEE7;       /* Very light lime tint */
-  --mad-text: #0F172A;            /* Slate-900 crisp dark heading text */
-  --mad-gray: #475569;            /* Slate-600 readable body text */
+  /* 🌌 SLEEK CHARCOAL SLATE THEME (PREMIUM SOFT DARK) */
+  --mad-bg: #14171F;              /* Elegant deep charcoal slate background (soft-dark) */
+  --mad-surface: #1E232E;         /* Rich charcoal card surface */
+  --mad-surface-2: #282F3D;       /* Secondary charcoal surface */
+  --mad-surface-3: #323A4B;       /* Input background & borders */
+  --mad-lime: #84CC16;            /* Vibrant Lime-500 (electric contrast) */
+  --mad-lime-hover: #65A30D;      /* Lime-600 hover */
+  --mad-lime-light: #A3E635;
+  --mad-text: #F8FAFC;            /* Slate-50 crisp white headings & title text */
+  --mad-gray: #94A3B8;            /* Slate-400 clean body text */
   --mad-gray-dark: #64748B;
-  --mad-border: rgba(15, 23, 42, 0.1); /* Subtle dark border on white cards */
-  --mad-glass: rgba(255, 255, 255, 0.95);
-  --mad-glass-border: rgba(15, 23, 42, 0.08);
-  --mad-input-bg: #FFFFFF;
-  --mad-input-border: #CBD5E1;
+  --mad-border: rgba(255, 255, 255, 0.1);
+  --mad-glass: rgba(30, 35, 46, 0.85);
+  --mad-glass-border: rgba(255, 255, 255, 0.1);
+  --mad-input-bg: #1E232E;
+  --mad-input-border: #323A4B;
 }
 
 body {
@@ -38,7 +37,7 @@ body {
 
 ::selection {
   background: var(--mad-lime);
-  color: #FFFFFF;
+  color: #14171F;
 }
 
 /* Custom Scrollbar */
@@ -51,7 +50,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #CBD5E1;
+  background: #282F3D;
   border-radius: 4px;
 }
 
@@ -59,21 +58,20 @@ body {
   background: var(--mad-lime);
 }
 
-/* Glass Effect for Light Mode */
+/* Glass Effect */
 .glass-panel {
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(30, 35, 46, 0.85);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(15, 23, 42, 0.08);
-  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .glass-card {
-  background: #FFFFFF;
+  background: #1E232E;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(15, 23, 42, 0.08);
-  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 25px -5px rgba(0, 0, 0, 0.3);
 }
 
 .glass-card-hover {
@@ -81,22 +79,22 @@ body {
 }
 
 .glass-card-hover:hover {
-  background: #FFFFFF;
+  background: #282F3D;
   border-color: var(--mad-lime);
   transform: translateY(-4px);
-  box-shadow: 0 10px 30px -10px rgba(101, 163, 13, 0.2);
+  box-shadow: 0 10px 30px -10px rgba(132, 204, 22, 0.25);
 }
 
 /* Text Gradients */
 .text-gradient-lime {
-  background: linear-gradient(135deg, var(--mad-text) 0%, var(--mad-lime) 100%);
+  background: linear-gradient(135deg, #F8FAFC 0%, var(--mad-lime) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* Light Mode Utility Overrides for Universal Readability */
-.text-white:not(.keep-white) {
-  color: var(--mad-text) !important;
+/* Charcoal Slate Utilities */
+.text-white {
+  color: #F8FAFC !important;
 }
 
 .text-mad-gray {
@@ -112,30 +110,29 @@ body {
 }
 
 .border-white\/5, .border-white\/10, .border-white\/15, .border-white\/20 {
-  border-color: rgba(15, 23, 42, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
 }
 
 .bg-white\/5, .bg-white\/10, .bg-white\/15 {
-  background-color: rgba(15, 23, 42, 0.04) !important;
+  background-color: rgba(255, 255, 255, 0.05) !important;
 }
 
-/* Lime Buttons in Light Mode have bold white text for maximum pop */
 .bg-mad-lime {
   background-color: var(--mad-lime) !important;
-  color: #FFFFFF !important;
+  color: #14171F !important;
 }
 
 .bg-mad-lime * {
-  color: #FFFFFF !important;
+  color: #14171F !important;
 }
 
 /* Inputs & Form Controls */
 input, select, textarea {
-  background-color: #FFFFFF !important;
-  border-color: #CBD5E1 !important;
-  color: #0F172A !important;
+  background-color: #1E232E !important;
+  border-color: #323A4B !important;
+  color: #F8FAFC !important;
 }
 
 input::placeholder, textarea::placeholder {
-  color: #94A3B8 !important;
+  color: #64748B !important;
 }
