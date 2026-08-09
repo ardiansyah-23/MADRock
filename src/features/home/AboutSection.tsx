@@ -55,7 +55,7 @@ export function AboutSection() {
                     fill
                     className="object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-mad-bg via-transparent to-transparent opacity-80" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
                 </div>
 
                 <div className="absolute top-6 right-6 px-4 py-2 rounded-xl bg-mad-lime text-mad-bg font-extrabold text-xs uppercase tracking-wider">

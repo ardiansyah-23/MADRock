@@ -162,7 +162,7 @@ export default function ProgramsPage() {
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-mad-surface via-mad-surface/40 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
 
                   {program.badge && (
                     <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-mad-lime text-mad-bg font-black text-[10px] uppercase tracking-wider shadow-lg">

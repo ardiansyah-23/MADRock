@@ -561,30 +561,19 @@ export default function AdminPage() {
             </div>
 
             <form onSubmit={handleSaveArticle} className="space-y-4 text-xs font-mono">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label className="text-mad-lime uppercase block mb-1">🇮🇩 Judul Artikel (Indonesian)</label>
-                  <input
-                    type="text"
-                    required
-                    placeholder="Judul artikel Bahasa Indonesia..."
-                    value={articleTitleID}
-                    onChange={(e) => setArticleTitleID(e.target.value)}
-                    className="w-full bg-mad-bg border border-white/10 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-rose-500"
-                  />
-                </div>
-
-                <div>
-                  <label className="text-rose-400 uppercase block mb-1">🇺🇸 Article Title (English)</label>
-                  <input
-                    type="text"
-                    required
-                    placeholder="English article title..."
-                    value={articleTitleEN}
-                    onChange={(e) => setArticleTitleEN(e.target.value)}
-                    className="w-full bg-mad-bg border border-white/10 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-rose-500"
-                  />
-                </div>
+              <div>
+                <label className="text-white font-bold uppercase block mb-1">Article Title / Judul Artikel</label>
+                <input
+                  type="text"
+                  required
+                  placeholder="e.g. Biomekanika Latihan & Hipertrofi / Hypertrophy Biomechanics..."
+                  value={articleTitleID}
+                  onChange={(e) => {
+                    setArticleTitleID(e.target.value);
+                    if (!articleTitleEN) setArticleTitleEN(e.target.value);
+                  }}
+                  className="w-full bg-mad-bg border border-white/10 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-rose-500"
+                />
               </div>
 
               <div className="grid grid-cols-2 gap-3">
@@ -615,29 +604,49 @@ export default function AdminPage() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label className="text-mad-lime uppercase block mb-1">🇮🇩 Rangkuman (Indonesian)</label>
-                  <textarea
-                    rows={2}
-                    placeholder="Rangkuman artikel Bahasa Indonesia..."
-                    value={articleExcerptID}
-                    onChange={(e) => setArticleExcerptID(e.target.value)}
-                    className="w-full bg-mad-bg border border-white/10 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-rose-500"
-                  />
-                </div>
-
-                <div>
-                  <label className="text-rose-400 uppercase block mb-1">🇺🇸 Summary Excerpt (English)</label>
-                  <textarea
-                    rows={2}
-                    placeholder="English summary excerpt..."
-                    value={articleExcerptEN}
-                    onChange={(e) => setArticleExcerptEN(e.target.value)}
-                    className="w-full bg-mad-bg border border-white/10 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-rose-500"
-                  />
-                </div>
+              <div>
+                <label className="text-white font-bold uppercase block mb-1">Excerpt / Rangkuman Artikel</label>
+                <textarea
+                  rows={2}
+                  required
+                  placeholder="Ringkasan singkat artikel..."
+                  value={articleExcerptID}
+                  onChange={(e) => {
+                    setArticleExcerptID(e.target.value);
+                    if (!articleExcerptEN) setArticleExcerptEN(e.target.value);
+                  }}
+                  className="w-full bg-mad-bg border border-white/10 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-rose-500"
+                />
               </div>
+
+              {/* Optional English Title Override */}
+              <details className="bg-mad-bg/50 border border-white/10 rounded-xl p-3 text-[11px]">
+                <summary className="cursor-pointer font-bold text-rose-400 uppercase">
+                  + Opsional: Atur Judul & Rangkuman Bahasa Inggris Khusus (EN)
+                </summary>
+                <div className="space-y-3 pt-3 mt-2 border-t border-white/10">
+                  <div>
+                    <label className="text-mad-gray uppercase block mb-1">English Title</label>
+                    <input
+                      type="text"
+                      placeholder="Custom English title..."
+                      value={articleTitleEN}
+                      onChange={(e) => setArticleTitleEN(e.target.value)}
+                      className="w-full bg-mad-bg border border-white/10 rounded-xl px-3 py-2 text-white"
+                    />
+                  </div>
+                  <div>
+                    <label className="text-mad-gray uppercase block mb-1">English Excerpt</label>
+                    <textarea
+                      rows={2}
+                      placeholder="Custom English excerpt..."
+                      value={articleExcerptEN}
+                      onChange={(e) => setArticleExcerptEN(e.target.value)}
+                      className="w-full bg-mad-bg border border-white/10 rounded-xl px-3 py-2 text-white"
+                    />
+                  </div>
+                </div>
+              </details>
 
               <button
                 type="submit"
