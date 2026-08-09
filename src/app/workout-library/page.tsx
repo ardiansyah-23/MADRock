@@ -16,6 +16,33 @@ export default function WorkoutLibraryPage() {
     "All", "Chest", "Back", "Shoulders", "Legs", "Arms", "Core", "Cardio", "Mobility", "Stretching"
   ];
 
+  const getCategoryLabel = (cat: string) => {
+    if (lang !== "id") return cat;
+    const map: Record<string, string> = {
+      All: "Semua",
+      Chest: "Dada",
+      Back: "Punggung",
+      Shoulders: "Bahu",
+      Legs: "Kaki",
+      Arms: "Lengan",
+      Core: "Inti / Core",
+      Cardio: "Kardio",
+      Mobility: "Mobilitas",
+      Stretching: "Peregangan",
+    };
+    return map[cat] ?? cat;
+  };
+
+  const getDifficultyLabel = (d: string) => {
+    if (lang !== "id") return d;
+    const map: Record<string, string> = {
+      Beginner: "Pemula",
+      Intermediate: "Menengah",
+      Advanced: "Mahir",
+    };
+    return map[d] ?? d;
+  };
+
   const exercises = [
     {
       id: "barbell-bench-press",
@@ -161,10 +188,10 @@ export default function WorkoutLibraryPage() {
                 className={`px-4 py-2 rounded-xl text-xs font-bold uppercase transition-all ${
                   selectedCategory === cat
                     ? "bg-mad-lime text-mad-bg shadow-md"
-                    : "bg-mad-surface text-mad-gray border border-white/10 hover:text-white"
+                    : "bg-mad-surface text-slate-700 border border-white/10 hover:text-slate-900 hover:border-mad-lime/30"
                 }`}
               >
-                {cat}
+                {getCategoryLabel(cat)}
               </button>
             ))}
           </div>
@@ -182,11 +209,11 @@ export default function WorkoutLibraryPage() {
                     fill
                     className="object-cover"
                   />
-                  <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-mad-bg/80 text-mad-lime font-mono text-[10px] uppercase font-bold border border-white/10">
-                    {exercise.category}
+                  <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-slate-900/80 text-lime-400 font-mono text-[10px] uppercase font-bold border border-slate-700">
+                    {getCategoryLabel(exercise.category)}
                   </div>
-                  <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-mad-lime text-mad-bg font-extrabold text-[10px] uppercase">
-                    {exercise.difficulty}
+                  <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-mad-lime text-white font-extrabold text-[10px] uppercase">
+                    {getDifficultyLabel(exercise.difficulty)}
                   </div>
                 </div>
 

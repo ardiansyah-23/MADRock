@@ -306,9 +306,9 @@ export default function ProgramsPage() {
                   {lang === "id" ? "SELURUH FITUR PROTOKOL:" : "FULL PROTOCOL INCLUSIONS:"}
                 </h4>
                 {selectedProgram.features.map((feat: string, i: number) => (
-                  <div key={i} className="flex items-center gap-2.5 text-xs text-mad-gray">
+                  <div key={i} className="flex items-center gap-2.5 text-xs">
                     <CheckCircle2 className="w-4 h-4 text-mad-lime shrink-0" />
-                    <span className="text-white font-medium">{feat}</span>
+                    <span className="text-slate-800 font-semibold">{feat}</span>
                   </div>
                 ))}
               </div>
