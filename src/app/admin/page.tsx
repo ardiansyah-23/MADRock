@@ -133,17 +133,17 @@ export default function AdminPage() {
       updated = articles.map((a) =>
         a.id === editingArticleId
           ? {
-              ...a,
-              title_id: finalTitleID,
-              title_en: finalTitleEN,
-              category_id: articleCategory,
-              category_en: articleCategory,
-              excerpt_id: articleExcerptID || articleExcerptEN,
-              excerpt_en: articleExcerptEN || articleExcerptID,
-              author: articleAuthor,
-              content_id: articleContentID || articleExcerptID,
-              content_en: articleContentEN || articleExcerptEN,
-            }
+            ...a,
+            title_id: finalTitleID,
+            title_en: finalTitleEN,
+            category_id: articleCategory,
+            category_en: articleCategory,
+            excerpt_id: articleExcerptID || articleExcerptEN,
+            excerpt_en: articleExcerptEN || articleExcerptID,
+            author: articleAuthor,
+            content_id: articleContentID || articleExcerptID,
+            content_en: articleContentEN || articleExcerptEN,
+          }
           : a
       );
     } else {
@@ -275,9 +275,8 @@ export default function AdminPage() {
 
       {/* Standalone Admin Sidebar */}
       <aside
-        className={`fixed md:sticky top-0 left-0 z-40 h-screen w-64 bg-mad-surface border-r border-rose-500/20 p-6 flex flex-col justify-between transition-transform duration-300 ${
-          sidebarOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
-        }`}
+        className={`fixed md:sticky top-0 left-0 z-40 h-screen w-64 bg-mad-surface border-r border-rose-500/20 p-6 flex flex-col justify-between transition-transform duration-300 ${sidebarOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
+          }`}
       >
         <div className="space-y-8">
           <Link href="/" className="flex items-center gap-2.5 group pt-2">
@@ -302,11 +301,10 @@ export default function AdminPage() {
               <button
                 key={item.id}
                 onClick={() => changeTab(item.id as any)}
-                className={`w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-xs font-bold uppercase transition-all ${
-                  activeTab === item.id
+                className={`w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-xs font-bold uppercase transition-all ${activeTab === item.id
                     ? "bg-rose-500 text-white font-extrabold shadow-lg shadow-rose-500/20"
                     : "text-mad-gray hover:text-white hover:bg-white/5"
-                }`}
+                  }`}
               >
                 <item.icon className="w-4 h-4 shrink-0" />
                 <span>{item.label}</span>
@@ -364,7 +362,7 @@ export default function AdminPage() {
               className="px-4 py-2 rounded-xl bg-rose-500 text-white font-extrabold text-xs uppercase flex items-center gap-2 hover:bg-rose-600 transition-all shadow-lg shadow-rose-500/20"
             >
               <Plus className="w-4 h-4" />
-              <span>+ Create Article</span>
+              <span>+ Create % Article</span>
             </button>
 
             <button
@@ -372,7 +370,7 @@ export default function AdminPage() {
               className="px-4 py-2 rounded-xl bg-mad-lime text-mad-bg font-extrabold text-xs uppercase flex items-center gap-2 hover:bg-mad-lime-hover transition-all"
             >
               <Plus className="w-4 h-4" />
-              <span>Create Program</span>
+              <span>Create % Program</span>
             </button>
           </div>
         </header>
