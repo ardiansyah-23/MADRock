@@ -644,7 +644,7 @@ export default function AICoachPage() {
                         {mBlock.items.map((item: string, iIdx: number) => (
                           <li key={iIdx} className="flex items-center gap-2">
                             <span className="w-1.5 h-1.5 rounded-full bg-mad-lime shrink-0" />
-                            <span className="text-white/90 font-medium">{item}</span>
+                            <span className="text-slate-900 font-medium">{item}</span>
                           </li>
                         ))}
                       </ul>

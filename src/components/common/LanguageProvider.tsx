@@ -15,10 +15,10 @@ const translations: Record<Language, Record<string, string>> = {
   id: {
     // Navbar
     nav_home: "Beranda",
-    nav_programs: "Program Latihan",
-    nav_workouts: "Gerakan Latihan",
-    nav_features: "Fitur Utama",
-    nav_pricing: "Daftar Harga",
+    nav_programs: "Program",
+    nav_workouts: "Workout",
+    nav_features: "Fitur",
+    nav_pricing: "Harga",
     nav_blog: "Blog",
     nav_ai_coach: "AI Coach",
     nav_start_training: "MULAI LATIHAN",
