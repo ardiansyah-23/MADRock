@@ -104,8 +104,8 @@ export default function BlogPage() {
                           MADROCK JOURNAL
                         </div>
                       )}
-                      <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-mad-bg/80 text-mad-lime font-mono text-[10px] uppercase font-bold border border-white/10">
-                        {category}
+                      <div className="absolute top-4 left-4 px-3.5 py-1.5 rounded-full bg-slate-900 text-white font-mono text-[11px] uppercase font-extrabold border border-slate-700 shadow-xl z-10">
+                        <span className="keep-white text-white">{category}</span>
                       </div>
                     </div>
 

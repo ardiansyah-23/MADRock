@@ -155,32 +155,31 @@ export default function ProgramsPage() {
             <ScrollReveal key={program.id} delay={0.1 * idx}>
               <div className="group rounded-3xl bg-mad-surface border border-white/10 overflow-hidden hover:border-mad-lime/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-mad-lime/10 flex flex-col h-full">
                 {/* Image Header */}
-                <div className="relative h-64 w-full overflow-hidden">
+                <div className="relative h-56 w-full overflow-hidden">
                   <Image
                     src={program.image}
                     alt={program.title}
                     fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-700"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
 
                   {program.badge && (
-                    <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-mad-lime text-mad-bg font-black text-[10px] uppercase tracking-wider shadow-lg">
-                      {program.badge}
+                    <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-slate-900 text-white font-extrabold text-[10px] uppercase tracking-wider border border-slate-700 shadow-xl z-10">
+                      <span className="keep-white text-white">{program.badge}</span>
                     </div>
                   )}
-
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <span className="text-[10px] font-mono text-mad-lime uppercase tracking-widest block mb-1">
-                      {program.category}
-                    </span>
-                    <h3 className="text-2xl font-black font-spartan text-white uppercase leading-tight">
-                      {program.title}
-                    </h3>
-                  </div>
                 </div>
 
                 {/* Card Content */}
-                <div className="p-6 flex flex-col justify-between flex-1 space-y-6">
+                <div className="p-6 flex flex-col justify-between flex-1 space-y-5">
+                  <div className="space-y-1">
+                    <span className="text-[11px] font-mono text-mad-lime font-bold uppercase tracking-widest block">
+                      {program.category}
+                    </span>
+                    <h3 className="text-2xl font-black font-spartan text-slate-900 uppercase leading-tight">
+                      {program.title}
+                    </h3>
+                  </div>
                   <p className="text-xs text-mad-gray leading-relaxed">
                     {program.description}
                   </p>

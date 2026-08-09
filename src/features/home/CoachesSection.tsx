@@ -58,9 +58,9 @@ export function CoachesSection() {
                     className="object-cover group-hover:scale-105 transition-transform duration-700"
                   />
 
-                  <div className="absolute top-4 right-4 px-3 py-1 rounded-full glass-panel border border-white/15 flex items-center gap-1 text-xs text-white font-bold">
-                    <Star className="w-3.5 h-3.5 fill-mad-lime text-mad-lime" />
-                    <span>{coach.rating} ({coach.reviews})</span>
+                  <div className="absolute top-4 right-4 px-3 py-1.5 rounded-full bg-slate-900 text-white border border-slate-700 shadow-xl flex items-center gap-1.5 text-xs font-bold z-10">
+                    <Star className="w-3.5 h-3.5 fill-lime-400 text-lime-400" />
+                    <span className="keep-white text-white">{coach.rating} ({coach.reviews})</span>
                   </div>
                 </div>
 
