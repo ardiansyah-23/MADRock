@@ -5,27 +5,27 @@
 @tailwind utilities;
 
 :root, html {
-  color-scheme: dark;
+  color-scheme: light;
   --font-spartan: 'League Spartan', sans-serif;
   --font-bebas: 'Bebas Neue', cursive;
   --font-inter: 'Inter', sans-serif;
 
-  /* 🌌 SLEEK CHARCOAL SLATE THEME (PREMIUM SOFT DARK) */
-  --mad-bg: #14171F;              /* Elegant deep charcoal slate background (soft-dark) */
-  --mad-surface: #1E232E;         /* Rich charcoal card surface */
-  --mad-surface-2: #282F3D;       /* Secondary charcoal surface */
-  --mad-surface-3: #323A4B;       /* Input background & borders */
-  --mad-lime: #84CC16;            /* Vibrant Lime-500 (electric contrast) */
-  --mad-lime-hover: #65A30D;      /* Lime-600 hover */
-  --mad-lime-light: #A3E635;
-  --mad-text: #F8FAFC;            /* Slate-50 crisp white headings & title text */
-  --mad-gray: #94A3B8;            /* Slate-400 clean body text */
+  /* ⚙️ EXECUTIVE SLATE-GRAY THEME */
+  --mad-bg: #E2E8F0;              /* Neutral Slate-200 Gray background */
+  --mad-surface: #FFFFFF;         /* Pure white crisp surface cards */
+  --mad-surface-2: #F1F5F9;       /* Slate-100 secondary surface */
+  --mad-surface-3: #CBD5E1;       /* Slate-300 borders */
+  --mad-lime: #65A30D;            /* Lime-600 high contrast green */
+  --mad-lime-hover: #4D7C0F;      /* Lime-800 hover */
+  --mad-lime-light: #84CC16;
+  --mad-text: #0F172A;            /* Slate-900 sharp dark headings */
+  --mad-gray: #475569;            /* Slate-600 body text */
   --mad-gray-dark: #64748B;
-  --mad-border: rgba(255, 255, 255, 0.1);
-  --mad-glass: rgba(30, 35, 46, 0.85);
-  --mad-glass-border: rgba(255, 255, 255, 0.1);
-  --mad-input-bg: #1E232E;
-  --mad-input-border: #323A4B;
+  --mad-border: rgba(15, 23, 42, 0.12);
+  --mad-glass: rgba(255, 255, 255, 0.95);
+  --mad-glass-border: rgba(15, 23, 42, 0.12);
+  --mad-input-bg: #FFFFFF;
+  --mad-input-border: #94A3B8;
 }
 
 body {
@@ -37,7 +37,7 @@ body {
 
 ::selection {
   background: var(--mad-lime);
-  color: #14171F;
+  color: #FFFFFF;
 }
 
 /* Custom Scrollbar */
@@ -50,7 +50,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #282F3D;
+  background: #CBD5E1;
   border-radius: 4px;
 }
 
@@ -58,20 +58,21 @@ body {
   background: var(--mad-lime);
 }
 
-/* Glass Effect */
+/* Glass Effect for Slate-Gray Theme */
 .glass-panel {
-  background: rgba(30, 35, 46, 0.85);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.08);
 }
 
 .glass-card {
-  background: #1E232E;
+  background: #FFFFFF;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 4px 25px -5px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06);
 }
 
 .glass-card-hover {
@@ -79,22 +80,22 @@ body {
 }
 
 .glass-card-hover:hover {
-  background: #282F3D;
+  background: #FFFFFF;
   border-color: var(--mad-lime);
   transform: translateY(-4px);
-  box-shadow: 0 10px 30px -10px rgba(132, 204, 22, 0.25);
+  box-shadow: 0 10px 30px -10px rgba(101, 163, 13, 0.25);
 }
 
 /* Text Gradients */
 .text-gradient-lime {
-  background: linear-gradient(135deg, #F8FAFC 0%, var(--mad-lime) 100%);
+  background: linear-gradient(135deg, var(--mad-text) 0%, var(--mad-lime) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* Charcoal Slate Utilities */
-.text-white {
-  color: #F8FAFC !important;
+/* Slate-Gray Utility Overrides */
+.text-white:not(.keep-white) {
+  color: var(--mad-text) !important;
 }
 
 .text-mad-gray {
@@ -110,27 +111,27 @@ body {
 }
 
 .border-white\/5, .border-white\/10, .border-white\/15, .border-white\/20 {
-  border-color: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(15, 23, 42, 0.12) !important;
 }
 
 .bg-white\/5, .bg-white\/10, .bg-white\/15 {
-  background-color: rgba(255, 255, 255, 0.05) !important;
+  background-color: rgba(15, 23, 42, 0.05) !important;
 }
 
 .bg-mad-lime {
   background-color: var(--mad-lime) !important;
-  color: #14171F !important;
+  color: #FFFFFF !important;
 }
 
 .bg-mad-lime * {
-  color: #14171F !important;
+  color: #FFFFFF !important;
 }
 
 /* Inputs & Form Controls */
 input, select, textarea {
-  background-color: #1E232E !important;
-  border-color: #323A4B !important;
-  color: #F8FAFC !important;
+  background-color: #FFFFFF !important;
+  border-color: #CBD5E1 !important;
+  color: #0F172A !important;
 }
 
 input::placeholder, textarea::placeholder {

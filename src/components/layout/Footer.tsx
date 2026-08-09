@@ -5,20 +5,20 @@ import { Dumbbell, Instagram, Youtube, Twitter, Facebook, Mail, Phone, MapPin, A
 
 export function Footer() {
   return (
-    <footer className="bg-[#0E1015] border-t border-[#282F3D] pt-16 pb-12 text-slate-400">
+    <footer className="bg-[#CBD5E1] border-t border-slate-400 pt-16 pb-12 text-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 pb-16 border-b border-[#282F3D]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 pb-16 border-b border-slate-400">
           {/* Brand Info */}
           <div className="lg:col-span-2 space-y-5">
             <Link href="/" className="flex items-center gap-2.5">
-              <div className="w-10 h-10 rounded-xl bg-mad-lime flex items-center justify-center text-[#14171F]">
+              <div className="w-10 h-10 rounded-xl bg-mad-lime flex items-center justify-center text-white">
                 <Dumbbell className="w-6 h-6 stroke-[2.5]" />
               </div>
-              <span className="font-spartan font-black text-2xl tracking-tighter text-white uppercase">
+              <span className="font-spartan font-black text-2xl tracking-tighter text-slate-900 uppercase">
                 MAD<span className="text-mad-lime">ROCK</span>
               </span>
             </Link>
-            <p className="text-sm text-slate-400 max-w-sm leading-relaxed">
+            <p className="text-sm text-slate-700 max-w-sm leading-relaxed">
               Science-based premium coaching designed to help you build muscle, burn fat, master performance, and become your best version.
             </p>
             <div className="flex items-center gap-3">
@@ -31,7 +31,7 @@ export function Footer() {
                 <a
                   key={idx}
                   href={social.href}
-                  className="w-10 h-10 rounded-xl bg-[#181C26] border border-[#282F3D] flex items-center justify-center text-white hover:text-mad-lime hover:border-mad-lime/40 transition-all duration-300 shadow-sm"
+                  className="w-10 h-10 rounded-xl bg-white border border-slate-300 flex items-center justify-center text-slate-800 hover:text-mad-lime hover:border-mad-lime/40 transition-all duration-300 shadow-sm"
                 >
                   <social.icon className="w-4 h-4" />
                 </a>
@@ -41,7 +41,7 @@ export function Footer() {
 
           {/* Quick Links */}
           <div className="space-y-4">
-            <h4 className="text-white font-bold text-sm tracking-wider uppercase font-spartan">
+            <h4 className="text-slate-900 font-bold text-sm tracking-wider uppercase font-spartan">
               Programs
             </h4>
             <ul className="space-y-2.5 text-sm">
@@ -55,7 +55,7 @@ export function Footer() {
 
           {/* Tools & Resources */}
           <div className="space-y-4">
-            <h4 className="text-white font-bold text-sm tracking-wider uppercase font-spartan">
+            <h4 className="text-slate-900 font-bold text-sm tracking-wider uppercase font-spartan">
               Resources & Tools
             </h4>
             <ul className="space-y-2.5 text-sm">
@@ -69,10 +69,10 @@ export function Footer() {
 
           {/* Contact / Newsletter */}
           <div className="space-y-4">
-            <h4 className="text-white font-bold text-sm tracking-wider uppercase font-spartan">
+            <h4 className="text-slate-900 font-bold text-sm tracking-wider uppercase font-spartan">
               Stay Connected
             </h4>
-            <p className="text-xs text-slate-400">
+            <p className="text-xs text-slate-700">
               Subscribe to get exclusive workout protocols and nutrition advice directly to your inbox.
             </p>
             <form onSubmit={(e) => e.preventDefault()} className="space-y-2">
@@ -80,13 +80,13 @@ export function Footer() {
                 <input
                   type="email"
                   placeholder="Enter your email"
-                  className="w-full bg-[#181C26] border border-[#282F3D] rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-mad-lime shadow-sm"
+                  className="w-full bg-white border border-slate-300 rounded-xl px-4 py-2.5 text-xs text-slate-900 placeholder-slate-500 focus:outline-none focus:border-mad-lime shadow-sm"
                 />
                 <button
                   type="submit"
-                  className="absolute right-1.5 top-1.5 bottom-1.5 px-3 bg-mad-lime text-[#14171F] rounded-lg font-bold hover:bg-mad-lime-hover transition-colors flex items-center justify-center shadow-sm"
+                  className="absolute right-1.5 top-1.5 bottom-1.5 px-3 bg-mad-lime text-white rounded-lg font-bold hover:bg-mad-lime-hover transition-colors flex items-center justify-center shadow-sm"
                 >
-                  <ArrowRight className="w-3.5 h-3.5" />
+                  <ArrowRight className="w-3.5 h-3.5 text-white" />
                 </button>
               </div>
             </form>
@@ -94,12 +94,12 @@ export function Footer() {
         </div>
 
         {/* Bottom copyright */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-600 gap-4">
           <p>© {new Date().getFullYear()} MADRock Fitness Coaching. All rights reserved.</p>
           <div className="flex items-center gap-6">
-            <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
-            <Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
-            <Link href="/faq" className="hover:text-white transition-colors">FAQ</Link>
+            <Link href="/privacy" className="hover:text-slate-900 transition-colors">Privacy Policy</Link>
+            <Link href="/terms" className="hover:text-slate-900 transition-colors">Terms of Service</Link>
+            <Link href="/faq" className="hover:text-slate-900 transition-colors">FAQ</Link>
           </div>
         </div>
       </div>
