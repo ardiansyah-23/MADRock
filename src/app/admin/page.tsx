@@ -362,7 +362,7 @@ export default function AdminPage() {
               className="px-4 py-2 rounded-xl bg-rose-500 text-white font-extrabold text-xs uppercase flex items-center gap-2 hover:bg-rose-600 transition-all shadow-lg shadow-rose-500/20"
             >
               <Plus className="w-4 h-4" />
-              <span>+ Create % Article</span>
+              <span>Create Article</span>
             </button>
 
             <button
@@ -370,7 +370,7 @@ export default function AdminPage() {
               className="px-4 py-2 rounded-xl bg-mad-lime text-mad-bg font-extrabold text-xs uppercase flex items-center gap-2 hover:bg-mad-lime-hover transition-all"
             >
               <Plus className="w-4 h-4" />
-              <span>Create % Program</span>
+              <span>Create Program</span>
             </button>
           </div>
         </header>
