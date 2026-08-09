@@ -10,8 +10,8 @@ export function Footer() {
   return (
     <footer className="bg-[#CBD5E1] border-t border-slate-400 pt-16 pb-12 text-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 pb-16 border-b border-slate-400">
-          {/* Brand Info */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 pb-16 border-b border-slate-400 items-start">
+          {/* Brand Info (Cols 1-2) */}
           <div className="lg:col-span-2 space-y-5">
             <Link href="/" className="flex items-center gap-2.5">
               <div className="w-10 h-10 rounded-xl bg-mad-lime flex items-center justify-center text-white">
@@ -44,8 +44,8 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Tools & Resources */}
-          <div className="space-y-4">
+          {/* Tools & Resources (Col 3, aligned right inside grid) */}
+          <div className="lg:col-span-1 space-y-4 lg:pl-4">
             <h4 className="text-slate-900 font-bold text-sm tracking-wider uppercase font-spartan">
               {lang === "id" ? "FITUR & ALAT UKUR" : "RESOURCES & TOOLS"}
             </h4>
@@ -58,17 +58,17 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Contact / Newsletter */}
-          <div className="space-y-4">
+          {/* Contact / Newsletter (Cols 4-5, stretched to far right edge) */}
+          <div className="lg:col-span-2 space-y-4 lg:pl-8">
             <h4 className="text-slate-900 font-bold text-sm tracking-wider uppercase font-spartan">
               {lang === "id" ? "DAPATKAN PROTOKOL" : "STAY CONNECTED"}
             </h4>
-            <p className="text-xs text-slate-700">
+            <p className="text-xs text-slate-700 leading-relaxed max-w-md">
               {lang === "id"
                 ? "Dapatkan tips nutrisi dan protokol latihan eksklusif langsung di email Anda."
                 : "Subscribe to get exclusive workout protocols and nutrition advice directly to your inbox."}
             </p>
-            <form onSubmit={(e) => e.preventDefault()} className="space-y-2">
+            <form onSubmit={(e) => e.preventDefault()} className="space-y-2 max-w-md">
               <div className="relative">
                 <input
                   type="email"
