@@ -8,7 +8,7 @@ import { ScrollReveal } from "@/components/common/ScrollReveal";
 import { useLanguage } from "@/components/common/LanguageProvider";
 
 export function HeroSection() {
-  const { t } = useLanguage();
+  const { lang, t } = useLanguage();
 
   const stats = [
     {

@@ -15,83 +15,83 @@ const translations: Record<Language, Record<string, string>> = {
   id: {
     // Navbar
     nav_home: "Beranda",
-    nav_programs: "Program",
-    nav_workouts: "Latihan",
-    nav_features: "Fitur",
-    nav_pricing: "Harga",
-    nav_blog: "Blog", // Kept strictly as "Blog" per request
+    nav_programs: "Program Latihan",
+    nav_workouts: "Gerakan Latihan",
+    nav_features: "Fitur Utama",
+    nav_pricing: "Daftar Harga",
+    nav_blog: "Blog",
     nav_ai_coach: "AI Coach",
     nav_start_training: "MULAI LATIHAN",
-    nav_dashboard: "Dashboard Member",
+    nav_dashboard: "Portal Member",
     nav_admin: "Konsol Admin",
 
     // Dropdown Features
     feat_meal_planner: "Meal Planner",
-    feat_meal_desc: "Rencana nutrisi & resep makro kustom",
-    feat_transformations: "Transformasi",
-    feat_trans_desc: "Hasil nyata sebelum & sesudah atlet",
+    feat_meal_desc: "Rencana nutrisi kustom & resep makro harian",
+    feat_transformations: "Transformasi Klien",
+    feat_trans_desc: "Bukti nyata sebelum & sesudah dari program kami",
     feat_calculators: "Kalkulator Fitnes",
-    feat_calc_desc: "9 alat ukur sains fitnes interaktif",
+    feat_calc_desc: "9 kalkulator kebugaran ilmiah interaktif",
 
     // Hero Section
-    hero_badge: "METODE HIPERTROFI & REKOMPOSISI BERBASIS SAINS",
-    hero_title_1: "LATIHAN DENGAN PRESI SAINS.",
-    hero_title_2: "BENTUK FISIK IMPIANMU.",
+    hero_badge: "METODE REKOMPOSISI TUBUH BERBASIS SAINS OLAHRAGA",
+    hero_title_1: "LATIHAN DENGAN PRESISI SAINS.",
+    hero_title_2: "BENTUK FISIK IMPIAN ANDA.",
     hero_subtitle:
-      "Program kepelatihan beban berbasis sains biomekanika olahraga untuk membentuk otot, membakar lemak tubuh, dan membangun kekuatan fisik tanpa cedera.",
-    hero_cta_primary: "MULAI LATIHAN SEKARANG",
-    hero_cta_secondary: "Jelajahi Program 12-Minggu",
-    hero_stat_1: "Atlet Terbiasa",
-    hero_stat_2: "Tingkat Keberhasilan",
-    hero_stat_3: "Pelatih VIP Dedicated",
+      "Program kepelatihan beban berbasis sains biomekanika olahraga untuk membangun massa otot, membakar lemak membandel, dan meningkatkan kekuatan fisik secara optimal dan aman.",
+    hero_cta_primary: "MULAI SEKARANG",
+    hero_cta_secondary: "Jelajahi Program 12 Minggu",
+    hero_stat_1: "Klien Mentransformasi Fisik",
+    hero_stat_2: "Tingkat Keberhasilan Klien",
+    hero_stat_3: "Pelatih VIP Bersertifikat",
 
     // Programs Page
     prog_header_badge: "KATALOG KEPELATIHAN PRESISI",
     prog_header_title: "PROGRAM LATIHAN PERIODISASI",
-    prog_header_subtitle: "Protokol kepelatihan beban ilmiah yang dirancang untuk mencapai hipertrofi maksimum, pembakaran lemak tajam, dan kekuatan puncak.",
+    prog_header_subtitle: "Protokol latihan ilmiah yang dirancang untuk mempercepat pertumbuhan otot, pembakaran lemak optimal, dan peningkatan kekuatan puncak.",
     prog_cta: "PILIH PROGRAM INI",
 
     // Workouts Page
-    work_header_badge: "DATABASE BIOMEKANIKA OTOT",
-    work_header_title: "PERPUSTAKAAN LATIHAN BEBAN",
-    work_header_subtitle: "Panduan teknis eksekusi gerakan beban berbasis anatomi untuk merangsang tegangan mekanis secara maksimal.",
+    work_header_badge: "DATABASE BIOMEKANIKA GERAKAN",
+    work_header_title: "PERPUSTAKAAN GERAKAN LATIHAN",
+    work_header_subtitle: "Panduan teknis eksekusi gerakan berbasis anatomi untuk mengoptimalkan stimulasi otot secara maksimal dan aman dari cedera.",
 
     // Meal Planner Page
     meal_header_badge: "GENERATOR NUTRISI & MAKRO AI",
-    meal_header_title: "PERENCANA MAKANAN KUSTOM",
-    meal_header_subtitle: "Rancang rencana makan presisi tinggi yang disesuaikan dengan kebutuhan kalori, target protein, dan gaya hidup Anda.",
-    meal_button_generate: "GENERATE MEAL PLAN SEKARANG",
+    meal_header_title: "PERENCANA NUTRISI KUSTOM",
+    meal_header_subtitle: "Rancang rencana makan presisi tinggi yang disesuaikan dengan kebutuhan kalori harian, target protein, dan gaya hidup Anda.",
+    meal_button_generate: "BUAT RENCANA MAKANAN SEKARANG",
 
     // Transformations Page
-    trans_header_badge: "BUKTI NYATA & HASIL KLIEN",
-    trans_header_title: "TRANSFORMASI FISIK ATLET",
-    trans_header_subtitle: "Lihat bagaimana protokol sains MADRock membantu lebih dari 600+ atlet mengubah bentuk tubuh mereka secara dramatis.",
+    trans_header_badge: "BUKTI NYATA PERKEMBANGAN KLIEN",
+    trans_header_title: "GALERI TRANSFORMASI FISIK",
+    trans_header_subtitle: "Lihat bukti nyata bagaimana protokol berbasis sains kami membantu lebih dari 600 klien mencapai bentuk tubuh ideal mereka.",
 
     // Tools / Calculators Page
-    tools_header_badge: "9 ALAT INTERAKTIF FITNES SAINS",
-    tools_header_title: "KALKULATOR PRESI SAINS",
-    tools_header_subtitle: "Hitung TDEE, target protein, pembagian makro, estimasi 1RM, hingga kadar lemak tubuh secara akurat.",
+    tools_header_badge: "9 ALAT INTERAKTIF OLAHRAGA ILMIAH",
+    tools_header_title: "KALKULATOR KEBUTUHAN FISIK",
+    tools_header_subtitle: "Hitung TDEE, kebutuhan protein, target makro harian, estimasi 1RM, dan kadar lemak tubuh secara akurat.",
 
     // Pricing Page
-    price_header_badge: "INVESTASI FISIK TERBAIK ANDA",
+    price_header_badge: "INVESTASI TERBAIK UNTUK TUBUH ANDA",
     price_header_title: "PAKET KEANGGOTAAN TRANSPARAN",
-    price_header_subtitle: "Tanpa kontrak mengikat. Batal kapan saja. Pilih tingkat bimbingan kepelatihan yang Anda butuhkan.",
+    price_header_subtitle: "Tanpa kontrak yang mengikat. Batalkan kapan saja. Pilih tingkat bimbingan kepelatihan sesuai kebutuhan Anda.",
     price_monthly: "Penagihan Bulanan",
     price_yearly: "Tahunan (Hemat 20%)",
-    price_guarantee_title: "JAMINAN 14-HARI UANG KEMBALI",
-    price_guarantee_desc: "Jika Anda tidak merasa puas dengan protokol kepelatihan kami dalam 14 hari pertama, Anda berhak mendapatkan pengembalian uang 100%.",
+    price_guarantee_title: "GARANSI 100% UANGA KEMBALI 14 HARI",
+    price_guarantee_desc: "Jika Anda tidak merasakan perkembangan atau kurang puas dengan program kami dalam 14 hari pertama, kami kembalikan investasi Anda 100%.",
 
     // AI Coach Assistant Page
     ai_header_badge: "ASISTEN KEPELATIHAN AI REAL-TIME",
     ai_header_title: "MADROCK AI COACH ASSISTANT",
-    ai_header_subtitle: "Tanyakan apa saja seputar teknik latihan, perhitungan makro, hingga strategi progresif overload 24/7.",
+    ai_header_subtitle: "Konsultasikan teknik gerakan, perhitungan kalori makro, dan strategi beban progresif (progressive overload) 24/7.",
 
     // Common UI Text
-    search_placeholder: "Cari latihan, artikel, atau makanan...",
+    search_placeholder: "Cari gerakan latihan, artikel, atau makanan...",
     log_out: "Keluar",
-    back_to_home: "Kembali ke Web Utama",
-    quick_demo_user: "Login Demo User (Athlete)",
-    quick_demo_admin: "Login Demo Admin (Coach)",
+    back_to_home: "Kembali ke Beranda Utama",
+    quick_demo_user: "Login Demo Member (Atlet)",
+    quick_demo_admin: "Login Demo Admin (Pelatih)",
     footer_rights: "Hak Cipta Dilindungi Undang-Undang.",
   },
   en: {
@@ -101,7 +101,7 @@ const translations: Record<Language, Record<string, string>> = {
     nav_workouts: "Workouts",
     nav_features: "Features",
     nav_pricing: "Pricing",
-    nav_blog: "Blog", // Kept strictly as "Blog" per request
+    nav_blog: "Blog",
     nav_ai_coach: "AI Coach",
     nav_start_training: "START TRAINING",
     nav_dashboard: "Member Dashboard",
