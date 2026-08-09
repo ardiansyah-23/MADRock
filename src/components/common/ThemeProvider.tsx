@@ -13,14 +13,27 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>("dark");
+  const [theme, setThemeState] = useState<Theme>("light");
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
-    const savedTheme = (localStorage.getItem("madrock-theme") as Theme) || "dark";
-    setThemeState(savedTheme);
-    applyTheme(savedTheme);
+    const rawSaved = localStorage.getItem("madrock-theme");
+    // If no theme or old dark theme is cached, default & save light mode
+    let initialTheme: Theme = "light";
+    if (rawSaved === "light") {
+      initialTheme = "light";
+    } else if (rawSaved === "dark") {
+      // User previously had dark mode saved before light theme request, update to light default
+      initialTheme = "light";
+      localStorage.setItem("madrock-theme", "light");
+    } else {
+      initialTheme = "light";
+      localStorage.setItem("madrock-theme", "light");
+    }
+
+    setThemeState(initialTheme);
+    applyTheme(initialTheme);
   }, []);
 
   const applyTheme = (newTheme: Theme) => {
@@ -59,3 +72,4 @@ export function useTheme() {
   }
   return context;
 }
+
