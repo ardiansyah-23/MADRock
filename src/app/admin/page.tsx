@@ -302,8 +302,8 @@ export default function AdminPage() {
                 key={item.id}
                 onClick={() => changeTab(item.id as any)}
                 className={`w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-xs font-bold uppercase transition-all ${activeTab === item.id
-                    ? "bg-rose-500 text-white font-extrabold shadow-lg shadow-rose-500/20"
-                    : "text-mad-gray hover:text-white hover:bg-white/5"
+                  ? "bg-rose-500 text-white font-extrabold shadow-lg shadow-rose-500/20"
+                  : "text-mad-gray hover:text-white hover:bg-white/5"
                   }`}
               >
                 <item.icon className="w-4 h-4 shrink-0" />
@@ -375,288 +375,254 @@ export default function AdminPage() {
           </div>
         </header>
 
-        {/* Main Content Area */}
-        <main className="p-4 sm:p-8 space-y-8 flex-1">
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-b border-white/10 pb-6">
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-400 font-mono text-[10px] uppercase font-bold">
-                  ADMIN CONSOLE
-                </span>
-                <span className="text-xs text-emerald-400 font-mono flex items-center gap-1">
-                  <Check className="w-3.5 h-3.5" /> Full Dual Language Article Editor Enabled
-                </span>
+        {/* Articles Tab */}
+        {activeTab === "articles" && (
+          <div className="rounded-3xl bg-mad-surface border border-white/10 p-6 sm:p-8 space-y-6">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-white/10">
+              <div>
+                <h3 className="text-xl font-bold font-spartan text-white uppercase">
+                  JOURNAL BLOG ARTICLES MANAGEMENT ({articles.length})
+                </h3>
+                <p className="text-xs text-emerald-400 font-mono mt-1">
+                  ✓ All articles published here render live in Indonesian (ID) & English (EN) on /blog
+                </p>
               </div>
-              <h1 className="text-3xl font-black font-spartan text-white uppercase mt-1">
-                MADROCK PLATFORM MANAGEMENT
-              </h1>
-            </div>
 
-            <div className="flex items-center gap-3">
               <button
                 onClick={handleOpenCreateArticle}
-                className="px-5 py-2.5 rounded-xl bg-rose-500 text-white font-extrabold text-xs uppercase flex items-center gap-2 hover:bg-rose-600 transition-all shadow-lg shadow-rose-500/20"
-              >
-                <FileText className="w-4 h-4" />
-                <span>Publish New Article</span>
-              </button>
-
-              <button
-                onClick={() => setProgramModalOpen(true)}
-                className="px-5 py-2.5 rounded-xl bg-mad-lime text-mad-bg font-extrabold text-xs uppercase flex items-center gap-2 hover:bg-mad-lime-hover transition-all shadow-lg shadow-mad-lime/20"
+                className="px-5 py-2.5 rounded-xl bg-rose-500 text-white font-extrabold text-xs uppercase flex items-center gap-2 hover:bg-rose-600 transition-all shadow-lg"
               >
                 <Plus className="w-4 h-4" />
-                <span>Create New Program</span>
+                <span>Add Article</span>
               </button>
             </div>
+
+            <div className="overflow-x-auto">
+              <table className="w-full text-left text-xs text-mad-gray font-mono">
+                <thead className="bg-mad-bg text-white uppercase border-b border-white/10">
+                  <tr>
+                    <th className="p-3">Title (ID & EN)</th>
+                    <th className="p-3">Category</th>
+                    <th className="p-3">Author</th>
+                    <th className="p-3">Status</th>
+                    <th className="p-3 text-right">Actions</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-white/5">
+                  {articles.map((art) => (
+                    <tr key={art.id} className="hover:bg-white/5">
+                      <td className="p-3 font-bold text-white max-w-xs truncate">
+                        <span className="block text-white">🇮🇩 {art.title_id}</span>
+                        <span className="block text-mad-gray text-[11px]">🇺🇸 {art.title_en}</span>
+                      </td>
+                      <td className="p-3 text-mad-lime">{art.category_en}</td>
+                      <td className="p-3">{art.author}</td>
+                      <td className="p-3">
+                        <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-400">
+                          {art.status}
+                        </span>
+                      </td>
+                      <td className="p-3 text-right space-x-2">
+                        <button
+                          onClick={() => handleOpenEditArticle(art)}
+                          className="px-3 py-1 rounded-lg bg-mad-bg border border-white/10 text-white hover:border-mad-lime"
+                        >
+                          <Edit className="w-3.5 h-3.5 inline mr-1" />
+                          Edit
+                        </button>
+                        <button
+                          onClick={() => handleDeleteArticle(art.id)}
+                          className="px-3 py-1 rounded-lg bg-rose-500/10 text-rose-400 border border-rose-500/30 hover:bg-rose-500/20"
+                        >
+                          <Trash2 className="w-3.5 h-3.5 inline mr-1" />
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
+
+        {/* Overview Tab */}
+        {activeTab === "overview" && (
+          <div className="space-y-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="p-6 rounded-2xl bg-mad-surface border border-white/10 space-y-2">
+                <span className="text-xs font-mono text-mad-gray uppercase">Total Active Members</span>
+                <div className="text-3xl font-black font-spartan text-white">{membersList.length}</div>
+                <span className="text-[10px] text-emerald-400 font-mono">Active Athletes</span>
+              </div>
+
+              <div className="p-6 rounded-2xl bg-mad-surface border border-white/10 space-y-2">
+                <span className="text-xs font-mono text-mad-gray uppercase">Monthly Recurring Revenue</span>
+                <div className="text-3xl font-black font-spartan text-mad-lime">$48,250</div>
+                <span className="text-[10px] text-emerald-400 font-mono">+8.4% MRR Growth</span>
+              </div>
+
+              <div className="p-6 rounded-2xl bg-mad-surface border border-white/10 space-y-2">
+                <span className="text-xs font-mono text-mad-gray uppercase">Published Articles</span>
+                <div className="text-3xl font-black font-spartan text-rose-400">{articles.length} Posts</div>
+                <span className="text-[10px] text-emerald-400 font-mono font-bold">Dual Language (ID/EN)</span>
+              </div>
+
+              <div className="p-6 rounded-2xl bg-mad-surface border border-white/10 space-y-2">
+                <span className="text-xs font-mono text-mad-gray uppercase">Active VIP Bookings</span>
+                <div className="text-3xl font-black font-spartan text-white">{bookings.length}</div>
+                <span className="text-[10px] text-mad-gray font-mono">Consultations scheduled</span>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Programs Tab */}
+        {activeTab === "programs" && (
+          <div className="rounded-3xl bg-mad-surface border border-white/10 p-6 sm:p-8 space-y-6">
+            <div className="flex items-center justify-between pb-4 border-b border-white/10">
+              <h3 className="text-xl font-bold font-spartan text-white uppercase">COACHING PROGRAM CATALOG</h3>
+              <button onClick={() => setProgramModalOpen(true)} className="px-4 py-2 rounded-xl bg-mad-lime text-mad-bg font-extrabold text-xs uppercase">
+                + Add Program
+              </button>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {programs.map((p) => (
+                <div key={p.id} className="p-6 rounded-2xl bg-mad-bg border border-white/10 space-y-4">
+                  <div className="space-y-1">
+                    <h4 className="font-bold font-spartan text-lg text-white uppercase">🇮🇩 {p.name_id}</h4>
+                    <h5 className="font-semibold text-sm text-mad-gray uppercase">🇺🇸 {p.name_en}</h5>
+                    <span className="text-xs text-mad-lime font-mono block pt-1">{p.duration_en} • {p.price}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </main>
+    </div>
+
+      {/* ARTICLE DUAL LANGUAGE MODAL */ }
+  {
+    articleModalOpen && (
+      <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+        <div className="w-full max-w-2xl rounded-3xl bg-mad-surface border border-white/10 p-6 sm:p-8 space-y-5 relative shadow-2xl animate-fadeIn max-h-[90vh] overflow-y-auto">
+          <button
+            onClick={() => setArticleModalOpen(false)}
+            className="absolute top-5 right-5 p-2 rounded-xl bg-mad-bg text-mad-gray hover:text-white"
+          >
+            <X className="w-5 h-5" />
+          </button>
+
+          <div className="pb-3 border-b border-white/10">
+            <span className="px-3 py-1 rounded-full bg-rose-500/10 text-rose-400 font-mono text-[10px] font-bold uppercase">
+              DUAL LANGUAGE ARTICLE EDITOR (ID & EN)
+            </span>
+            <h3 className="text-2xl font-black font-spartan text-white uppercase mt-1">
+              {editingArticleId ? "EDIT JOURNAL ARTICLE" : "CREATE NEW JOURNAL ARTICLE"}
+            </h3>
           </div>
 
-          {/* Articles Tab */}
-          {activeTab === "articles" && (
-            <div className="rounded-3xl bg-mad-surface border border-white/10 p-6 sm:p-8 space-y-6">
-              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-white/10">
-                <div>
-                  <h3 className="text-xl font-bold font-spartan text-white uppercase">
-                    JOURNAL BLOG ARTICLES MANAGEMENT ({articles.length})
-                  </h3>
-                  <p className="text-xs text-emerald-400 font-mono mt-1">
-                    ✓ All articles published here render live in Indonesian (ID) & English (EN) on /blog
-                  </p>
-                </div>
-
-                <button
-                  onClick={handleOpenCreateArticle}
-                  className="px-5 py-2.5 rounded-xl bg-rose-500 text-white font-extrabold text-xs uppercase flex items-center gap-2 hover:bg-rose-600 transition-all shadow-lg"
-                >
-                  <Plus className="w-4 h-4" />
-                  <span>Add Article</span>
-                </button>
-              </div>
-
-              <div className="overflow-x-auto">
-                <table className="w-full text-left text-xs text-mad-gray font-mono">
-                  <thead className="bg-mad-bg text-white uppercase border-b border-white/10">
-                    <tr>
-                      <th className="p-3">Title (ID & EN)</th>
-                      <th className="p-3">Category</th>
-                      <th className="p-3">Author</th>
-                      <th className="p-3">Status</th>
-                      <th className="p-3 text-right">Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-white/5">
-                    {articles.map((art) => (
-                      <tr key={art.id} className="hover:bg-white/5">
-                        <td className="p-3 font-bold text-white max-w-xs truncate">
-                          <span className="block text-white">🇮🇩 {art.title_id}</span>
-                          <span className="block text-mad-gray text-[11px]">🇺🇸 {art.title_en}</span>
-                        </td>
-                        <td className="p-3 text-mad-lime">{art.category_en}</td>
-                        <td className="p-3">{art.author}</td>
-                        <td className="p-3">
-                          <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-400">
-                            {art.status}
-                          </span>
-                        </td>
-                        <td className="p-3 text-right space-x-2">
-                          <button
-                            onClick={() => handleOpenEditArticle(art)}
-                            className="px-3 py-1 rounded-lg bg-mad-bg border border-white/10 text-white hover:border-mad-lime"
-                          >
-                            <Edit className="w-3.5 h-3.5 inline mr-1" />
-                            Edit
-                          </button>
-                          <button
-                            onClick={() => handleDeleteArticle(art.id)}
-                            className="px-3 py-1 rounded-lg bg-rose-500/10 text-rose-400 border border-rose-500/30 hover:bg-rose-500/20"
-                          >
-                            <Trash2 className="w-3.5 h-3.5 inline mr-1" />
-                            Delete
-                          </button>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          )}
-
-          {/* Overview Tab */}
-          {activeTab === "overview" && (
-            <div className="space-y-8">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                <div className="p-6 rounded-2xl bg-mad-surface border border-white/10 space-y-2">
-                  <span className="text-xs font-mono text-mad-gray uppercase">Total Active Members</span>
-                  <div className="text-3xl font-black font-spartan text-white">{membersList.length}</div>
-                  <span className="text-[10px] text-emerald-400 font-mono">Active Athletes</span>
-                </div>
-
-                <div className="p-6 rounded-2xl bg-mad-surface border border-white/10 space-y-2">
-                  <span className="text-xs font-mono text-mad-gray uppercase">Monthly Recurring Revenue</span>
-                  <div className="text-3xl font-black font-spartan text-mad-lime">$48,250</div>
-                  <span className="text-[10px] text-emerald-400 font-mono">+8.4% MRR Growth</span>
-                </div>
-
-                <div className="p-6 rounded-2xl bg-mad-surface border border-white/10 space-y-2">
-                  <span className="text-xs font-mono text-mad-gray uppercase">Published Articles</span>
-                  <div className="text-3xl font-black font-spartan text-rose-400">{articles.length} Posts</div>
-                  <span className="text-[10px] text-emerald-400 font-mono font-bold">Dual Language (ID/EN)</span>
-                </div>
-
-                <div className="p-6 rounded-2xl bg-mad-surface border border-white/10 space-y-2">
-                  <span className="text-xs font-mono text-mad-gray uppercase">Active VIP Bookings</span>
-                  <div className="text-3xl font-black font-spartan text-white">{bookings.length}</div>
-                  <span className="text-[10px] text-mad-gray font-mono">Consultations scheduled</span>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* Programs Tab */}
-          {activeTab === "programs" && (
-            <div className="rounded-3xl bg-mad-surface border border-white/10 p-6 sm:p-8 space-y-6">
-              <div className="flex items-center justify-between pb-4 border-b border-white/10">
-                <h3 className="text-xl font-bold font-spartan text-white uppercase">COACHING PROGRAM CATALOG</h3>
-                <button onClick={() => setProgramModalOpen(true)} className="px-4 py-2 rounded-xl bg-mad-lime text-mad-bg font-extrabold text-xs uppercase">
-                  + Add Program
-                </button>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {programs.map((p) => (
-                  <div key={p.id} className="p-6 rounded-2xl bg-mad-bg border border-white/10 space-y-4">
-                    <div className="space-y-1">
-                      <h4 className="font-bold font-spartan text-lg text-white uppercase">🇮🇩 {p.name_id}</h4>
-                      <h5 className="font-semibold text-sm text-mad-gray uppercase">🇺🇸 {p.name_en}</h5>
-                      <span className="text-xs text-mad-lime font-mono block pt-1">{p.duration_en} • {p.price}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-        </main>
-      </div>
-
-      {/* ARTICLE DUAL LANGUAGE MODAL */}
-      {articleModalOpen && (
-        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
-          <div className="w-full max-w-2xl rounded-3xl bg-mad-surface border border-white/10 p-6 sm:p-8 space-y-5 relative shadow-2xl animate-fadeIn max-h-[90vh] overflow-y-auto">
-            <button
-              onClick={() => setArticleModalOpen(false)}
-              className="absolute top-5 right-5 p-2 rounded-xl bg-mad-bg text-mad-gray hover:text-white"
-            >
-              <X className="w-5 h-5" />
-            </button>
-
-            <div className="pb-3 border-b border-white/10">
-              <span className="px-3 py-1 rounded-full bg-rose-500/10 text-rose-400 font-mono text-[10px] font-bold uppercase">
-                DUAL LANGUAGE ARTICLE EDITOR (ID & EN)
-              </span>
-              <h3 className="text-2xl font-black font-spartan text-white uppercase mt-1">
-                {editingArticleId ? "EDIT JOURNAL ARTICLE" : "CREATE NEW JOURNAL ARTICLE"}
-              </h3>
+          <form onSubmit={handleSaveArticle} className="space-y-4 text-xs font-mono">
+            <div>
+              <label className="text-white font-bold uppercase block mb-1">Article Title / Judul Artikel</label>
+              <input
+                type="text"
+                required
+                placeholder="e.g. Biomekanika Latihan & Hipertrofi / Hypertrophy Biomechanics..."
+                value={articleTitleID}
+                onChange={(e) => {
+                  setArticleTitleID(e.target.value);
+                  if (!articleTitleEN) setArticleTitleEN(e.target.value);
+                }}
+                className="w-full bg-mad-bg border border-white/10 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-rose-500"
+              />
             </div>
 
-            <form onSubmit={handleSaveArticle} className="space-y-4 text-xs font-mono">
+            <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="text-white font-bold uppercase block mb-1">Article Title / Judul Artikel</label>
+                <label className="text-mad-gray uppercase block mb-1">Category</label>
+                <select
+                  value={articleCategory}
+                  onChange={(e) => setArticleCategory(e.target.value)}
+                  className="w-full bg-mad-bg border border-white/10 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-rose-500"
+                >
+                  <option value="Workout Science">Workout Science</option>
+                  <option value="Nutrition">Nutrition</option>
+                  <option value="Recovery">Recovery</option>
+                  <option value="Supplements">Supplements</option>
+                  <option value="Mindset">Mindset</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="text-mad-gray uppercase block mb-1">Author Name</label>
                 <input
                   type="text"
                   required
-                  placeholder="e.g. Biomekanika Latihan & Hipertrofi / Hypertrophy Biomechanics..."
-                  value={articleTitleID}
-                  onChange={(e) => {
-                    setArticleTitleID(e.target.value);
-                    if (!articleTitleEN) setArticleTitleEN(e.target.value);
-                  }}
-                  className="w-full bg-mad-bg border border-white/10 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-rose-500"
+                  value={articleAuthor}
+                  onChange={(e) => setArticleAuthor(e.target.value)}
+                  className="w-full bg-mad-bg border border-white/10 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-rose-500"
                 />
               </div>
+            </div>
 
-              <div className="grid grid-cols-2 gap-3">
-                <div>
-                  <label className="text-mad-gray uppercase block mb-1">Category</label>
-                  <select
-                    value={articleCategory}
-                    onChange={(e) => setArticleCategory(e.target.value)}
-                    className="w-full bg-mad-bg border border-white/10 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-rose-500"
-                  >
-                    <option value="Workout Science">Workout Science</option>
-                    <option value="Nutrition">Nutrition</option>
-                    <option value="Recovery">Recovery</option>
-                    <option value="Supplements">Supplements</option>
-                    <option value="Mindset">Mindset</option>
-                  </select>
-                </div>
+            <div>
+              <label className="text-white font-bold uppercase block mb-1">Excerpt / Rangkuman Artikel</label>
+              <textarea
+                rows={2}
+                required
+                placeholder="Ringkasan singkat artikel..."
+                value={articleExcerptID}
+                onChange={(e) => {
+                  setArticleExcerptID(e.target.value);
+                  if (!articleExcerptEN) setArticleExcerptEN(e.target.value);
+                }}
+                className="w-full bg-mad-bg border border-white/10 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-rose-500"
+              />
+            </div>
 
+            {/* Optional English Title Override */}
+            <details className="bg-mad-bg/50 border border-white/10 rounded-xl p-3 text-[11px]">
+              <summary className="cursor-pointer font-bold text-rose-400 uppercase">
+                + Opsional: Atur Judul & Rangkuman Bahasa Inggris Khusus (EN)
+              </summary>
+              <div className="space-y-3 pt-3 mt-2 border-t border-white/10">
                 <div>
-                  <label className="text-mad-gray uppercase block mb-1">Author Name</label>
+                  <label className="text-mad-gray uppercase block mb-1">English Title</label>
                   <input
                     type="text"
-                    required
-                    value={articleAuthor}
-                    onChange={(e) => setArticleAuthor(e.target.value)}
-                    className="w-full bg-mad-bg border border-white/10 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-rose-500"
+                    placeholder="Custom English title..."
+                    value={articleTitleEN}
+                    onChange={(e) => setArticleTitleEN(e.target.value)}
+                    className="w-full bg-mad-bg border border-white/10 rounded-xl px-3 py-2 text-white"
+                  />
+                </div>
+                <div>
+                  <label className="text-mad-gray uppercase block mb-1">English Excerpt</label>
+                  <textarea
+                    rows={2}
+                    placeholder="Custom English excerpt..."
+                    value={articleExcerptEN}
+                    onChange={(e) => setArticleExcerptEN(e.target.value)}
+                    className="w-full bg-mad-bg border border-white/10 rounded-xl px-3 py-2 text-white"
                   />
                 </div>
               </div>
+            </details>
 
-              <div>
-                <label className="text-white font-bold uppercase block mb-1">Excerpt / Rangkuman Artikel</label>
-                <textarea
-                  rows={2}
-                  required
-                  placeholder="Ringkasan singkat artikel..."
-                  value={articleExcerptID}
-                  onChange={(e) => {
-                    setArticleExcerptID(e.target.value);
-                    if (!articleExcerptEN) setArticleExcerptEN(e.target.value);
-                  }}
-                  className="w-full bg-mad-bg border border-white/10 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-rose-500"
-                />
-              </div>
-
-              {/* Optional English Title Override */}
-              <details className="bg-mad-bg/50 border border-white/10 rounded-xl p-3 text-[11px]">
-                <summary className="cursor-pointer font-bold text-rose-400 uppercase">
-                  + Opsional: Atur Judul & Rangkuman Bahasa Inggris Khusus (EN)
-                </summary>
-                <div className="space-y-3 pt-3 mt-2 border-t border-white/10">
-                  <div>
-                    <label className="text-mad-gray uppercase block mb-1">English Title</label>
-                    <input
-                      type="text"
-                      placeholder="Custom English title..."
-                      value={articleTitleEN}
-                      onChange={(e) => setArticleTitleEN(e.target.value)}
-                      className="w-full bg-mad-bg border border-white/10 rounded-xl px-3 py-2 text-white"
-                    />
-                  </div>
-                  <div>
-                    <label className="text-mad-gray uppercase block mb-1">English Excerpt</label>
-                    <textarea
-                      rows={2}
-                      placeholder="Custom English excerpt..."
-                      value={articleExcerptEN}
-                      onChange={(e) => setArticleExcerptEN(e.target.value)}
-                      className="w-full bg-mad-bg border border-white/10 rounded-xl px-3 py-2 text-white"
-                    />
-                  </div>
-                </div>
-              </details>
-
-              <button
-                type="submit"
-                className="w-full py-3.5 rounded-xl bg-rose-500 text-white font-extrabold text-xs uppercase tracking-wider hover:bg-rose-600 shadow-lg shadow-rose-500/20 flex items-center justify-center gap-2"
-              >
-                <Save className="w-4 h-4" />
-                <span>{editingArticleId ? "SAVE DUAL-LANGUAGE ARTICLE" : "PUBLISH DUAL-LANGUAGE ARTICLE"}</span>
-              </button>
-            </form>
-          </div>
+            <button
+              type="submit"
+              className="w-full py-3.5 rounded-xl bg-rose-500 text-white font-extrabold text-xs uppercase tracking-wider hover:bg-rose-600 shadow-lg shadow-rose-500/20 flex items-center justify-center gap-2"
+            >
+              <Save className="w-4 h-4" />
+              <span>{editingArticleId ? "SAVE DUAL-LANGUAGE ARTICLE" : "PUBLISH DUAL-LANGUAGE ARTICLE"}</span>
+            </button>
+          </form>
         </div>
-      )}
-    </div>
+      </div>
+    )
+  }
+    </div >
   );
 }
