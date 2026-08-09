@@ -31,12 +31,11 @@ export function FeaturedVideo() {
             {/* Video Thumbnail */}
             <div className="relative h-[380px] sm:h-[500px] lg:h-[580px] w-full">
               <Image
-                src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=2000&auto=format&fit=crop"
-                alt="MADRock Workout Demonstration"
+                src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=1600&auto=format&fit=crop"
+                alt="Workout Breakdown Preview"
                 fill
-                className="object-cover group-hover:scale-105 transition-transform duration-700 opacity-80"
+                className="object-cover group-hover:scale-105 transition-transform duration-700 opacity-90"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
 
               {/* Play Button Overlay */}
               <div className="absolute inset-0 flex flex-col items-center justify-center">

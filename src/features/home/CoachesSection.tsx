@@ -57,7 +57,6 @@ export function CoachesSection() {
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
 
                   <div className="absolute top-4 right-4 px-3 py-1 rounded-full glass-panel border border-white/15 flex items-center gap-1 text-xs text-white font-bold">
                     <Star className="w-3.5 h-3.5 fill-mad-lime text-mad-lime" />

@@ -126,8 +126,6 @@ export function HeroSection() {
                       sizes="(max-width: 768px) 100vw, 40vw"
                       className="object-cover object-top hover:scale-105 transition-transform duration-500 transform-gpu"
                     />
-                    {/* STRICTLY DARK VIGNETTE GRADIENT (BLACK TO TRANSPARENT) */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-90" />
                   </div>
 
                   {/* Floating Overlay Badge on Dark Gradient */}

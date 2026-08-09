@@ -50,12 +50,11 @@ export function AboutSection() {
               <div className="relative rounded-3xl overflow-hidden border border-white/15 bg-mad-surface shadow-2xl">
                 <div className="relative h-[520px] w-full">
                   <Image
-                    src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=1470&auto=format&fit=crop"
-                    alt="Coach Ahmad Hudzaifah Training"
+                    src="https://images.unsplash.com/photo-1594381898411-846e7d193883?q=80&w=1000&auto=format&fit=crop"
+                    alt="Coaching Philosophy"
                     fill
                     className="object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
                 </div>
 
                 <div className="absolute top-6 right-6 px-4 py-2 rounded-xl bg-mad-lime text-mad-bg font-extrabold text-xs uppercase tracking-wider">
