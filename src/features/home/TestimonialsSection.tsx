@@ -1,34 +1,46 @@
 "use client";
 
 import Image from "next/image";
-import { Star, Quote, CheckCircle } from "lucide-react";
+import { Star, CheckCircle } from "lucide-react";
 import { SectionHeader } from "@/components/common/SectionHeader";
 import { ScrollReveal } from "@/components/common/ScrollReveal";
+import { useLanguage } from "@/components/common/LanguageProvider";
 
 export function TestimonialsSection() {
+  const { lang, t } = useLanguage();
+
   const reviews = [
     {
       name: "Brandon Hayes",
-      role: "CEO & Executive",
+      role: lang === "id" ? "CEO & Eksekutif" : "CEO & Executive",
       rating: 5,
-      date: "Verified Google Review",
-      review: "MADRock is the only coaching platform that actually understands busy schedules. Down 22lbs of fat in 12 weeks while increasing my deadlift by 60lbs. Worth every single penny.",
+      date: lang === "id" ? "Ulasan Google Terverifikasi" : "Verified Google Review",
+      review:
+        lang === "id"
+          ? "MADRock adalah satu-satunya platform kepelatihan yang benar-benar memahami kesibukan saya. Turun 10kg lemak dalam 12 minggu sambil menaikkan angkatan deadlift 27kg. Sangat sepadan dengan setiap rupiah."
+          : "MADRock is the only coaching platform that actually understands busy schedules. Down 22lbs of fat in 12 weeks while increasing my deadlift by 60lbs. Worth every single penny.",
       avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop",
     },
     {
       name: "Sarah Jenkins",
-      role: "Crossfit Athlete",
+      role: lang === "id" ? "Atlet Fitnes" : "Crossfit Athlete",
       rating: 5,
-      date: "Verified Google Review",
-      review: "The AI Meal Planner and custom macro guidance completely changed how I fuel my sessions. My recovery has skyrocketed and my body composition looks insane.",
+      date: lang === "id" ? "Ulasan Google Terverifikasi" : "Verified Google Review",
+      review:
+        lang === "id"
+          ? "AI Meal Planner dan panduan makro kustom mengubah total cara saya mengisi bahan bakar latihan. Pemulihan saya meningkat pesat dan bentuk fisik saya terlihat luar biasa."
+          : "The AI Meal Planner and custom macro guidance completely changed how I fuel my sessions. My recovery has skyrocketed and my body composition looks insane.",
       avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop",
     },
     {
       name: "Dr. Michael Chen",
-      role: "Orthopedic Surgeon",
+      role: lang === "id" ? "Dokter Spesialis Ortopedi" : "Orthopedic Surgeon",
       rating: 5,
-      date: "Verified Client",
-      review: "As a physician, I evaluate programs through an evidence-based lens. Coach Marcus's periodization and biomechanics instruction are elite level.",
+      date: lang === "id" ? "Klien Terverifikasi" : "Verified Client",
+      review:
+        lang === "id"
+          ? "Sebagai seorang dokter, saya mengevaluasi program melalui kacamata berbasis bukti sains. Periodisasi dan panduan biomekanika Coach Ahmad berada di level elit."
+          : "As a physician, I evaluate programs through an evidence-based lens. Coach Ahmad's periodization and biomechanics instruction are elite level.",
       avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=200&auto=format&fit=crop",
     },
   ];
@@ -37,9 +49,13 @@ export function TestimonialsSection() {
     <section className="py-24 bg-mad-surface relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
-          badge="ATHLETE REVIEWS"
-          title="WHAT OUR CLIENTS SAY"
-          subtitle="Real reviews from real members who transformed their lives with MADRock."
+          badge={lang === "id" ? "ULASAN ATLET" : "ATHLETE REVIEWS"}
+          title={lang === "id" ? "APA KATA KLIEN KAMI" : "WHAT OUR CLIENTS SAY"}
+          subtitle={
+            lang === "id"
+              ? "Ulasan nyata dari member nyata yang mengubah hidup dan fisik mereka bersama MADRock."
+              : "Real reviews from real members who transformed their lives with MADRock."
+          }
         />
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

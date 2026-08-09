@@ -8,26 +8,25 @@ import {
   Send,
   Dumbbell,
   Utensils,
-  Zap,
-  CheckCircle2,
-  Copy,
   Check,
-  Flame,
+  Copy,
   Calendar,
-  Layers,
-  Activity,
-  ArrowRight,
   RefreshCw,
 } from "lucide-react";
+import { useLanguage } from "@/components/common/LanguageProvider";
 
 export default function AICoachPage() {
+  const { lang, t } = useLanguage();
   const [activeMode, setActiveMode] = useState<"workout" | "meal" | "chat">("workout");
 
   // Chat state
   const [messages, setMessages] = useState([
     {
       sender: "ai",
-      text: "MADRock AI Assistant active. Enter your training split, progressive overload questions, or daily macro targets to get instant biomechanics guidance.",
+      text:
+        lang === "id"
+          ? "Asisten AI MADRock aktif. Masukkan split latihan, pertanyaan progressive overload, atau target makro harian Anda untuk mendapatkan panduan biomekanika instan."
+          : "MADRock AI Assistant active. Enter your training split, progressive overload questions, or daily macro targets to get instant biomechanics guidance.",
     },
   ]);
   const [inputMessage, setInputMessage] = useState("");
@@ -45,7 +44,7 @@ export default function AICoachPage() {
   const generateDynamicWorkout = (days: number, userGoal: string, exp: string) => {
     const pool = [
       {
-        dayName: "Upper Body Heavy Strength",
+        dayName: lang === "id" ? "Tubuh Atas Kekuatan Berat" : "Upper Body Heavy Strength",
         focus: `Mechanical Tension • ${exp} Level`,
         exercises: [
           { name: "Barbell Bench Press", sets: "4 Sets x 6 Reps", rpe: "RPE 8", rest: "3 Mins" },
@@ -55,7 +54,7 @@ export default function AICoachPage() {
         ],
       },
       {
-        dayName: "Lower Body Power & Drive",
+        dayName: lang === "id" ? "Tubuh Bawah Power & Squat" : "Lower Body Power & Drive",
         focus: "Quad & Posterior Chain Focus",
         exercises: [
           { name: "Barbell Back Squat", sets: "4 Sets x 6 Reps", rpe: "RPE 8.5", rest: "3 Mins" },
@@ -65,17 +64,17 @@ export default function AICoachPage() {
         ],
       },
       {
-        dayName: "Active Recovery & CNS Reset",
+        dayName: lang === "id" ? "Pemulihan Aktif & Mobilitas" : "Active Recovery & CNS Reset",
         focus: "Joint Hydration & Mobility",
         exercises: [
           { name: "Incline Treadmill Walk", sets: "35 Mins", rpe: "RPE 5", rest: "N/A" },
           { name: "Full Body Dynamic Mobility Routine", sets: "20 Mins", rpe: "RPE 3", rest: "N/A" },
           { name: "Foam Rolling & Myofascial Release", sets: "15 Mins", rpe: "RPE 2", rest: "N/A" },
-          { name: "Sauna / Contrast Hydrotherapy", sets: "15 Mins", rpe: "RPE 2", rest: "N/A" },
+          { name: "Sauna / Hydrotherapy", sets: "15 Mins", rpe: "RPE 2", rest: "N/A" },
         ],
       },
       {
-        dayName: "Push & Deltoid Hypertrophy",
+        dayName: lang === "id" ? "Push & Hipertrofi Bahu" : "Push & Deltoid Hypertrophy",
         focus: "Chest, Shoulders & Triceps",
         exercises: [
           { name: "Standing Military Press", sets: "4 Sets x 8 Reps", rpe: "RPE 8", rest: "2.5 Mins" },
@@ -85,7 +84,7 @@ export default function AICoachPage() {
         ],
       },
       {
-        dayName: "Pull & Arm Volume",
+        dayName: lang === "id" ? "Pull & Volume Lengan" : "Pull & Arm Volume",
         focus: "Lats, Rhomboids & Biceps",
         exercises: [
           { name: "Weighted Pull-Ups", sets: "4 Sets x 6 Reps", rpe: "RPE 8.5", rest: "2.5 Mins" },
@@ -95,7 +94,7 @@ export default function AICoachPage() {
         ],
       },
       {
-        dayName: "Posterior Chain & Core Conditioning",
+        dayName: lang === "id" ? "Posterior Chain & Perut" : "Posterior Chain & Core Conditioning",
         focus: "Hamstrings, Glutes & Abs",
         exercises: [
           { name: "Conventional Deadlift", sets: "3 Sets x 5 Reps", rpe: "RPE 8.5", rest: "3.5 Mins" },
@@ -105,7 +104,7 @@ export default function AICoachPage() {
         ],
       },
       {
-        dayName: "Full Body Metabolic Conditioning",
+        dayName: lang === "id" ? "Kondisikan Fisik Total" : "Full Body Metabolic Conditioning",
         focus: `High Density • ${userGoal}`,
         exercises: [
           { name: "Dumbbell Thrusters", sets: "4 Sets x 12 Reps", rpe: "RPE 9", rest: "90 Secs" },
@@ -117,17 +116,17 @@ export default function AICoachPage() {
     ];
 
     return pool.slice(0, days).map((item, idx) => ({
-      dayTitle: `Day ${idx + 1}: ${item.dayName}`,
+      dayTitle: lang === "id" ? `Hari ${idx + 1}: ${item.dayName}` : `Day ${idx + 1}: ${item.dayName}`,
       focus: item.focus,
       exercises: item.exercises,
     }));
   };
 
-  // Dynamic Meal Generator Helper Function - Daily Meal Protocol (No days feature)
+  // Dynamic Meal Generator Helper Function
   const generateDynamicMeal = (userGoal: string, diet: string) => {
     return [
       {
-        meal: "Meal 1: Anabolic Breakfast",
+        meal: lang === "id" ? "Makan 1: Sarapan Anabolik" : "Meal 1: Anabolic Breakfast",
         time: "08:00 AM",
         calories: userGoal === "Fat Loss" ? "420 kcal" : "620 kcal",
         macros: userGoal === "Fat Loss" ? "42g P • 35g C • 10g F" : "48g P • 75g C • 14g F",
@@ -138,7 +137,7 @@ export default function AICoachPage() {
         ],
       },
       {
-        meal: "Meal 2: Pre-Workout Fuel Bowl",
+        meal: lang === "id" ? "Makan 2: Pre-Workout Fuel" : "Meal 2: Pre-Workout Fuel Bowl",
         time: "12:30 PM",
         calories: userGoal === "Fat Loss" ? "510 kcal" : "740 kcal",
         macros: userGoal === "Fat Loss" ? "50g P • 50g C • 9g F" : "55g P • 85g C • 16g F",
@@ -149,7 +148,7 @@ export default function AICoachPage() {
         ],
       },
       {
-        meal: "Meal 3: Post-Workout Recovery",
+        meal: lang === "id" ? "Makan 3: Post-Workout Recovery" : "Meal 3: Post-Workout Recovery",
         time: "05:30 PM",
         calories: userGoal === "Fat Loss" ? "480 kcal" : "680 kcal",
         macros: userGoal === "Fat Loss" ? "45g P • 45g C • 12g F" : "52g P • 70g C • 18g F",
@@ -160,7 +159,7 @@ export default function AICoachPage() {
         ],
       },
       {
-        meal: "Meal 4: Night Time Casein Reset",
+        meal: lang === "id" ? "Makan 4: Nutrisi Malam" : "Meal 4: Night Time Casein Reset",
         time: "09:30 PM",
         calories: "320 kcal",
         macros: "35g P • 15g C • 10g F",
@@ -191,15 +190,27 @@ export default function AICoachPage() {
     setIsTyping(true);
 
     setTimeout(() => {
-      let reply = "Based on progressive overload biomechanics: Ensure you log load and reps weekly. Keep RPE at 8-9 for primary compound movements and take reps to near failure (RPE 9.5-10) on isolation exercises.";
-      
+      let reply =
+        lang === "id"
+          ? "Berdasarkan biomekanika progressive overload: Pastikan Anda mencatat beban dan repetisi setiap minggu. Pertahankan RPE di angka 8-9 untuk angkatan compound utama dan lakukan repetisi mendekati failure (RPE 9.5-10) pada latihan isolasi."
+          : "Based on progressive overload biomechanics: Ensure you log load and reps weekly. Keep RPE at 8-9 for primary compound movements and take reps to near failure (RPE 9.5-10) on isolation exercises.";
+
       const lower = textToSend.toLowerCase();
-      if (lower.includes("creatine")) {
-        reply = "Creatine Monohydrate protocol: Take 5g daily consistently. It increases intramuscular phosphocreatine stores, giving your muscles extra ATP energy for explosive reps. Loading phase is optional (5g/day for 30 days is just as effective as 20g/day for 5 days).";
+      if (lower.includes("creatine") || lower.includes("kreatin")) {
+        reply =
+          lang === "id"
+            ? "Protokol Kreatin Monohidrat: Konsumsi 5g setiap hari secara konsisten. Ini meningkatkan cadangan fosfokreatin otot, memberi energi ATP ekstra untuk repetisi eksplosif."
+            : "Creatine Monohydrate protocol: Take 5g daily consistently. It increases intramuscular phosphocreatine stores, giving your muscles extra ATP energy for explosive reps.";
       } else if (lower.includes("protein")) {
-        reply = "Optimal Protein Target: Aim for 1.6g to 2.2g of protein per kg of bodyweight daily. Divide your intake into 3-5 meals spaced 3-4 hours apart to maximize muscle protein synthesis (MPS).";
+        reply =
+          lang === "id"
+            ? "Target Protein Optimal: Targetkan 1.6g hingga 2.2g protein per kg berat badan setiap hari. Bagi asupan Anda menjadi 3-5 porsi makan berjarak 3-4 jam."
+            : "Optimal Protein Target: Aim for 1.6g to 2.2g of protein per kg of bodyweight daily. Divide your intake into 3-5 meals spaced 3-4 hours apart.";
       } else if (lower.includes("split")) {
-        reply = "Recommended Split: For 4 days/week training, an Upper/Lower split works best for strength and hypertrophy. For 5-6 days, a Push/Pull/Legs (PPL) split allows optimal volume and recovery per muscle group.";
+        reply =
+          lang === "id"
+            ? "Rekomendasi Split: Untuk 4 hari latihan per minggu, Upper/Lower split sangat ideal untuk kekuatan dan hipertrofi."
+            : "Recommended Split: For 4 days/week training, an Upper/Lower split works best for strength and hypertrophy.";
       }
 
       setIsTyping(false);
@@ -225,27 +236,31 @@ export default function AICoachPage() {
   };
 
   const quickPrompts = [
-    "Optimal Protein Intake for 80kg Athlete",
-    "Best Creatine Timing & Loading Protocol",
-    "How to Fix Plateaus on Bench Press",
-    "Upper/Lower vs Push/Pull/Legs Split",
+    lang === "id" ? "Asupan Protein Optimal untuk Atlet 80kg" : "Optimal Protein Intake for 80kg Athlete",
+    lang === "id" ? "Protokol Konsumsi Kreatin Terbaik" : "Best Creatine Timing & Loading Protocol",
+    lang === "id" ? "Cara Mengatasi Stagnasi Bench Press" : "How to Fix Plateaus on Bench Press",
+    lang === "id" ? "Upper/Lower vs Push/Pull/Legs Split" : "Upper/Lower vs Push/Pull/Legs Split",
   ];
 
   return (
     <main className="pt-32 pb-24 bg-mad-bg text-white min-h-screen">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
-          badge="AI FITNESS ENGINE"
-          title="MADROCK AI ATHLETE COACH"
-          subtitle="Generate custom periodized workout splits, precision macro meal protocols, or chat 24/7 with our AI fitness algorithms."
+          badge={lang === "id" ? "MESIN AI FITNES" : "AI FITNESS ENGINE"}
+          title={lang === "id" ? "AI COACH ATLET MADROCK" : "MADROCK AI ATHLETE COACH"}
+          subtitle={
+            lang === "id"
+              ? "Buat split latihan periodisasi kustom, protokol nutrisi makro presisi, atau konsultasi 24/7 dengan algoritma AI kami."
+              : "Generate custom periodized workout splits, precision macro meal protocols, or chat 24/7 with our AI fitness algorithms."
+          }
         />
 
         {/* Mode Selector */}
         <div className="flex flex-wrap justify-center gap-3 mb-10">
           {[
-            { id: "workout", label: "AI Workout Generator", icon: Dumbbell },
-            { id: "meal", label: "AI Meal Planner", icon: Utensils },
-            { id: "chat", label: "24/7 AI Fitness Chat", icon: Bot },
+            { id: "workout", label: lang === "id" ? "AI Generator Latihan" : "AI Workout Generator", icon: Dumbbell },
+            { id: "meal", label: lang === "id" ? "AI Meal Planner" : "AI Meal Planner", icon: Utensils },
+            { id: "chat", label: lang === "id" ? "Chat AI Fitnes 24/7" : "24/7 AI Fitness Chat", icon: Bot },
           ].map((mode) => (
             <button
               key={mode.id}
@@ -334,7 +349,11 @@ export default function AICoachPage() {
               <div className="p-4 bg-mad-surface-2 border-t border-white/10 flex gap-2">
                 <input
                   type="text"
-                  placeholder="Ask about workout split, protein powder, or recovery..."
+                  placeholder={
+                    lang === "id"
+                      ? "Tanyakan seputar split latihan, suplemen, atau pemulihan..."
+                      : "Ask about workout split, protein powder, or recovery..."
+                  }
                   value={inputMessage}
                   onChange={(e) => setInputMessage(e.target.value)}
                   onKeyDown={(e) => e.key === "Enter" && handleSendMessage()}
@@ -363,9 +382,13 @@ export default function AICoachPage() {
                   </div>
                   <div>
                     <h3 className="text-xl font-bold font-spartan text-white uppercase">
-                      {activeMode === "workout" ? "WORKOUT PROTOCOL GENERATOR" : "CUSTOM MEAL PLAN GENERATOR"}
+                      {activeMode === "workout"
+                        ? (lang === "id" ? "GENERATOR PROTOKOL LATIHAN AI" : "WORKOUT PROTOCOL GENERATOR")
+                        : (lang === "id" ? "GENERATOR RENCANA MAKAN AI" : "CUSTOM MEAL PLAN GENERATOR")}
                     </h3>
-                    <span className="text-[10px] font-mono text-mad-gray">SELECT YOUR PARAMETERS</span>
+                    <span className="text-[10px] font-mono text-mad-gray">
+                      {lang === "id" ? "PILIH PARAMETER ANDA" : "SELECT YOUR PARAMETERS"}
+                    </span>
                   </div>
                 </div>
 
@@ -378,35 +401,42 @@ export default function AICoachPage() {
               {activeMode === "workout" ? (
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                   <div>
-                    <label className="text-xs font-mono text-mad-gray uppercase block mb-2">Primary Goal</label>
+                    <label className="text-xs font-mono text-mad-gray uppercase block mb-2">
+                      {lang === "id" ? "Target Utama" : "Primary Goal"}
+                    </label>
                     <select
                       value={goal}
                       onChange={(e) => setGoal(e.target.value)}
                       className="w-full bg-mad-bg border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-mad-lime font-mono"
                     >
-                      <option value="Fat Loss">Fat Loss</option>
-                      <option value="Muscle Building">Muscle Building</option>
-                      <option value="Body Recomposition">Body Recomposition</option>
-                      <option value="Strength Power">Strength & Power</option>
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="text-xs font-mono text-mad-gray uppercase block mb-2">Experience Level</label>
-                    <select
-                      value={experience}
-                      onChange={(e) => setExperience(e.target.value)}
-                      className="w-full bg-mad-bg border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-mad-lime font-mono"
-                    >
-                      <option value="Beginner">Beginner (0-1 yrs)</option>
-                      <option value="Intermediate">Intermediate (1-3 yrs)</option>
-                      <option value="Advanced">Advanced (3+ yrs)</option>
+                      <option value="Fat Loss">{lang === "id" ? "Fat Loss (Bakar Lemak)" : "Fat Loss"}</option>
+                      <option value="Muscle Building">{lang === "id" ? "Otot & Hipertrofi" : "Muscle Building"}</option>
+                      <option value="Body Recomposition">{lang === "id" ? "Rekomposisi Tubuh" : "Body Recomposition"}</option>
+                      <option value="Strength Power">{lang === "id" ? "Kekuatan Puncak" : "Strength & Power"}</option>
                     </select>
                   </div>
 
                   <div>
                     <label className="text-xs font-mono text-mad-gray uppercase block mb-2">
-                      Training Days: <strong className="text-mad-lime font-mono">{trainingDays} Days/Wk</strong>
+                      {lang === "id" ? "Tingkat Pengalaman" : "Experience Level"}
+                    </label>
+                    <select
+                      value={experience}
+                      onChange={(e) => setExperience(e.target.value)}
+                      className="w-full bg-mad-bg border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-mad-lime font-mono"
+                    >
+                      <option value="Beginner">{lang === "id" ? "Pemula (0-1 tahun)" : "Beginner (0-1 yrs)"}</option>
+                      <option value="Intermediate">{lang === "id" ? "Menengah (1-3 tahun)" : "Intermediate (1-3 yrs)"}</option>
+                      <option value="Advanced">{lang === "id" ? "Mahir (3+ tahun)" : "Advanced (3+ yrs)"}</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="text-xs font-mono text-mad-gray uppercase block mb-2">
+                      {lang === "id" ? "Hari Latihan:" : "Training Days:"}{" "}
+                      <strong className="text-mad-lime font-mono">
+                        {trainingDays} {lang === "id" ? "Hari/Mgg" : "Days/Wk"}
+                      </strong>
                     </label>
                     <div className="flex gap-1.5">
                       {[3, 4, 5, 6, 7].map((num) => (
@@ -427,24 +457,27 @@ export default function AICoachPage() {
                   </div>
                 </div>
               ) : (
-                /* Meal Planner Parameters - NO Training Days feature here */
+                /* Meal Planner Parameters */
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="text-xs font-mono text-mad-gray uppercase block mb-2">Primary Goal</label>
+                    <label className="text-xs font-mono text-mad-gray uppercase block mb-2">
+                      {lang === "id" ? "Target Utama" : "Primary Goal"}
+                    </label>
                     <select
                       value={goal}
                       onChange={(e) => setGoal(e.target.value)}
                       className="w-full bg-mad-bg border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-mad-lime font-mono"
                     >
-                      <option value="Fat Loss">Fat Loss</option>
-                      <option value="Muscle Building">Muscle Building</option>
-                      <option value="Body Recomposition">Body Recomposition</option>
-                      <option value="Performance & Endurance">Performance & Endurance</option>
+                      <option value="Fat Loss">{lang === "id" ? "Fat Loss (Bakar Lemak)" : "Fat Loss"}</option>
+                      <option value="Muscle Building">{lang === "id" ? "Otot & Hipertrofi" : "Muscle Building"}</option>
+                      <option value="Body Recomposition">{lang === "id" ? "Rekomposisi Tubuh" : "Body Recomposition"}</option>
                     </select>
                   </div>
 
                   <div>
-                    <label className="text-xs font-mono text-mad-gray uppercase block mb-2">Dietary Approach</label>
+                    <label className="text-xs font-mono text-mad-gray uppercase block mb-2">
+                      {lang === "id" ? "Pendekatan Diet" : "Dietary Approach"}
+                    </label>
                     <select
                       value={dietaryApproach}
                       onChange={(e) => setDietaryApproach(e.target.value)}
@@ -467,14 +500,18 @@ export default function AICoachPage() {
                 {loading ? (
                   <>
                     <RefreshCw className="w-5 h-5 animate-spin" />
-                    <span>GENERATING PROTOCOL...</span>
+                    <span>{lang === "id" ? "MEMBENTUK PROTOKOL..." : "GENERATING PROTOCOL..."}</span>
                   </>
                 ) : (
                   <>
                     <Sparkles className="w-5 h-5" />
                     <span>
                       {activeMode === "workout"
-                        ? `GENERATE ${trainingDays}-DAY WORKOUT PROTOCOL`
+                        ? lang === "id"
+                          ? `PROSES PROTOKOL ${trainingDays} HARI LATIHAN`
+                          : `GENERATE ${trainingDays}-DAY WORKOUT PROTOCOL`
+                        : lang === "id"
+                        ? "PROSES PROTOKOL NUTRISI SEKARANG"
                         : "GENERATE NUTRITION PROTOCOL NOW"}
                     </span>
                   </>
@@ -488,7 +525,9 @@ export default function AICoachPage() {
                 <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-3 border-b border-white/10">
                   <div>
                     <h3 className="text-2xl font-black font-spartan text-white uppercase tracking-tight">
-                      GENERATED WORKOUT BLUEPRINT ({workoutProtocol.length} DAYS)
+                      {lang === "id"
+                        ? `CETAK BIRU LATIHAN AI (${workoutProtocol.length} HARI)`
+                        : `GENERATED WORKOUT BLUEPRINT (${workoutProtocol.length} DAYS)`}
                     </h3>
                     <p className="text-xs text-mad-lime font-mono mt-1">
                       {goal} Protocol • {experience} Level • {workoutProtocol.length} Days Built
@@ -500,7 +539,11 @@ export default function AICoachPage() {
                     className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-mad-surface border border-white/10 text-xs font-mono text-white hover:text-mad-lime hover:border-mad-lime/40 transition-all"
                   >
                     {copied ? <Check className="w-4 h-4 text-mad-lime" /> : <Copy className="w-4 h-4 text-mad-lime" />}
-                    <span>{copied ? "COPIED TO CLIPBOARD" : "COPY BLUEPRINT"}</span>
+                    <span>
+                      {copied
+                        ? (lang === "id" ? "TERSALIN KE CLIPBOARD" : "COPIED TO CLIPBOARD")
+                        : (lang === "id" ? "SALIN CETAK BIRU" : "COPY BLUEPRINT")}
+                    </span>
                   </button>
                 </div>
 
@@ -551,13 +594,13 @@ export default function AICoachPage() {
               </div>
             )}
 
-            {/* Structured Visual Meal Plan Cards - NO Days Feature */}
+            {/* Structured Visual Meal Plan Cards */}
             {activeMode === "meal" && mealProtocol && (
               <div className="space-y-6">
                 <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-3 border-b border-white/10">
                   <div>
                     <h3 className="text-2xl font-black font-spartan text-white uppercase tracking-tight">
-                      GENERATED NUTRITION PROTOCOL
+                      {lang === "id" ? "PROTOKOL NUTRISI TERBENTUK" : "GENERATED NUTRITION PROTOCOL"}
                     </h3>
                     <p className="text-xs text-mad-lime font-mono mt-1">
                       Daily Macro & Meal Breakdown for {goal} ({dietaryApproach})
@@ -569,7 +612,11 @@ export default function AICoachPage() {
                     className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-mad-surface border border-white/10 text-xs font-mono text-white hover:text-mad-lime hover:border-mad-lime/40 transition-all"
                   >
                     {copied ? <Check className="w-4 h-4 text-mad-lime" /> : <Copy className="w-4 h-4 text-mad-lime" />}
-                    <span>{copied ? "COPIED TO CLIPBOARD" : "COPY NUTRITION PLAN"}</span>
+                    <span>
+                      {copied
+                        ? (lang === "id" ? "TERSALIN KE CLIPBOARD" : "COPIED TO CLIPBOARD")
+                        : (lang === "id" ? "SALIN RENCANA MAKAN" : "COPY NUTRITION PLAN")}
+                    </span>
                   </button>
                 </div>
 

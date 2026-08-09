@@ -4,8 +4,10 @@ import { useState } from "react";
 import Link from "next/link";
 import { Dumbbell, Mail, ArrowLeft, CheckCircle, AlertCircle } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
+import { useLanguage } from "@/components/common/LanguageProvider";
 
 export default function ForgotPasswordPage() {
+  const { lang, t } = useLanguage();
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [msg, setMsg] = useState<string | null>(null);
@@ -26,7 +28,11 @@ export default function ForgotPasswordPage() {
       setErrorMsg(error.message);
       setLoading(false);
     } else {
-      setMsg("Password reset link sent! Check your inbox.");
+      setMsg(
+        lang === "id"
+          ? "Link reset kata sandi telah dikirim! Periksa kotak masuk email Anda."
+          : "Password reset link sent! Check your inbox."
+      );
       setLoading(false);
     }
   };
@@ -45,10 +51,12 @@ export default function ForgotPasswordPage() {
           </Link>
 
           <h1 className="text-2xl font-black font-spartan uppercase text-white">
-            RESET PASSWORD
+            {lang === "id" ? "RESET KATA SANDI" : "RESET PASSWORD"}
           </h1>
           <p className="text-xs text-mad-gray">
-            Enter your email to receive a password reset link.
+            {lang === "id"
+              ? "Masukkan email Anda untuk menerima link reset kata sandi."
+              : "Enter your email to receive a password reset link."}
           </p>
         </div>
 
@@ -68,7 +76,9 @@ export default function ForgotPasswordPage() {
 
         <form onSubmit={handleResetPassword} className="space-y-4">
           <div>
-            <label className="text-xs font-mono text-mad-gray uppercase block mb-1">Email Address</label>
+            <label className="text-xs font-mono text-mad-gray uppercase block mb-1">
+              {lang === "id" ? "Alamat Email" : "Email Address"}
+            </label>
             <div className="relative">
               <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-mad-gray" />
               <input
@@ -87,14 +97,18 @@ export default function ForgotPasswordPage() {
             disabled={loading}
             className="w-full py-4 rounded-xl bg-mad-lime text-mad-bg font-extrabold text-sm uppercase tracking-wider hover:bg-mad-lime-hover transition-all flex items-center justify-center gap-2 shadow-lg shadow-mad-lime/20"
           >
-            <span>{loading ? "SENDING LINK..." : "SEND RESET LINK"}</span>
+            <span>
+              {loading
+                ? (lang === "id" ? "MENGIRIM LINK..." : "SENDING LINK...")
+                : (lang === "id" ? "KIRIM LINK RESET" : "SEND RESET LINK")}
+            </span>
           </button>
         </form>
 
         <p className="text-center text-xs text-mad-gray pt-2">
           <Link href="/login" className="inline-flex items-center gap-1 text-mad-lime font-bold hover:underline">
             <ArrowLeft className="w-3.5 h-3.5" />
-            <span>Back to Login</span>
+            <span>{lang === "id" ? "Kembali ke Halaman Login" : "Back to Login"}</span>
           </Link>
         </p>
       </div>

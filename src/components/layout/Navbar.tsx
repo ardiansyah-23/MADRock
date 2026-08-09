@@ -18,7 +18,7 @@ import { LanguageToggle } from "@/components/common/LanguageToggle";
 import { useLanguage } from "@/components/common/LanguageProvider";
 
 export function Navbar() {
-  const { t } = useLanguage();
+  const { lang, t } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -72,21 +72,21 @@ export function Navbar() {
 
   const dropdownItems = [
     {
-      name: "Meal Planner",
+      name: lang === "id" ? "AI Meal Planner" : "Meal Planner",
       href: "/meal-planner",
-      description: "Custom macro plans & recipes",
+      description: lang === "id" ? "Resep & target makro kustom" : "Custom macro plans & recipes",
       icon: Utensils,
     },
     {
-      name: "Transformations",
+      name: lang === "id" ? "Transformasi Atlet" : "Transformations",
       href: "/transformations",
-      description: "Client before & after results",
+      description: lang === "id" ? "Hasil sebelum & sesudah atlet" : "Client before & after results",
       icon: Trophy,
     },
     {
-      name: "Calculators",
+      name: lang === "id" ? "Kalkulator Fitnes" : "Calculators",
       href: "/tools",
-      description: "9 interactive fitness tools",
+      description: lang === "id" ? "9 alat ukur fitnes interaktif" : "9 interactive fitness tools",
       icon: Calculator,
     },
   ];
@@ -288,7 +288,7 @@ export function Navbar() {
             {/* Mobile Dropdown Group */}
             <div className="py-2 border-y border-slate-300 my-1 space-y-2">
               <span className="text-[10px] font-mono uppercase tracking-widest text-mad-lime font-bold block">
-                Features & Tools
+                {lang === "id" ? "Fitur & Kalkulator" : "Features & Tools"}
               </span>
               {dropdownItems.map((item) => (
                 <Link
@@ -326,7 +326,7 @@ export function Navbar() {
                 className="flex items-center justify-center gap-2 py-3 rounded-xl bg-lime-50 text-mad-lime border border-lime-300 font-semibold text-sm"
               >
                 <Sparkles className="w-4 h-4" />
-                <span>AI Coach Feature</span>
+                <span>{lang === "id" ? "Fitur AI Coach" : "AI Coach Feature"}</span>
               </Link>
 
               <Link
@@ -340,6 +340,8 @@ export function Navbar() {
                     ? t("nav_admin")
                     : profileTargetUrl === "/dashboard"
                     ? t("nav_dashboard")
+                    : lang === "id"
+                    ? "Masuk Akun"
                     : "Log In Account"}
                 </span>
               </Link>

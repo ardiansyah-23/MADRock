@@ -6,33 +6,25 @@ import {
   Dumbbell,
   Utensils,
   Flame,
-  Activity,
-  Trophy,
   Calendar,
   CheckCircle2,
-  TrendingUp,
-  User,
   Plus,
   Sparkles,
-  ChevronRight,
-  Clock,
-  Award,
-  BarChart3,
-  ShieldCheck,
-  Check,
   Search,
   Bell,
   LogOut,
   LayoutDashboard,
-  Settings,
   Home,
   Menu,
   X,
+  Check,
 } from "lucide-react";
 import confetti from "canvas-confetti";
 import { LanguageToggle } from "@/components/common/LanguageToggle";
+import { useLanguage } from "@/components/common/LanguageProvider";
 
 export default function DashboardPage() {
+  const { lang, t } = useLanguage();
   const [activeTab, setActiveTab] = useState<"overview" | "workouts" | "nutrition" | "coaching">("overview");
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -83,10 +75,10 @@ export default function DashboardPage() {
   };
 
   const navItems = [
-    { id: "overview", label: "Overview", icon: LayoutDashboard },
-    { id: "workouts", label: "Workout Tracker", icon: Dumbbell },
-    { id: "nutrition", label: "Nutrition & Macros", icon: Utensils },
-    { id: "coaching", label: "1-on-1 Coaching", icon: Calendar },
+    { id: "overview", label: lang === "id" ? "Ringkasan" : "Overview", icon: LayoutDashboard },
+    { id: "workouts", label: lang === "id" ? "Tracker Latihan" : "Workout Tracker", icon: Dumbbell },
+    { id: "nutrition", label: lang === "id" ? "Nutrisi & Makro" : "Nutrition & Macros", icon: Utensils },
+    { id: "coaching", label: lang === "id" ? "Kepelatihan 1-on-1" : "1-on-1 Coaching", icon: Calendar },
   ];
 
   return (
@@ -127,7 +119,7 @@ export default function DashboardPage() {
                 MAD<span className="text-mad-lime">ROCK</span>
               </span>
               <span className="text-[9px] font-mono tracking-widest text-mad-lime uppercase font-bold mt-0.5">
-                ATHLETE PORTAL
+                PORTAL ATLET
               </span>
             </div>
           </Link>
@@ -157,7 +149,7 @@ export default function DashboardPage() {
               className="w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-xs font-bold uppercase text-mad-lime bg-mad-lime/10 border border-mad-lime/30 hover:bg-mad-lime/20 transition-all mt-4"
             >
               <Sparkles className="w-4 h-4 shrink-0" />
-              <span>AI Coach Assistant</span>
+              <span>{lang === "id" ? "Asisten AI Coach" : "AI Coach Assistant"}</span>
             </Link>
           </nav>
         </div>
@@ -169,7 +161,7 @@ export default function DashboardPage() {
             className="flex items-center gap-2 text-xs text-mad-gray hover:text-white font-mono px-2 transition-colors"
           >
             <Home className="w-4 h-4 text-mad-lime" />
-            <span>Back to Main Web</span>
+            <span>{lang === "id" ? "Kembali ke Website Utama" : "Back to Main Web"}</span>
           </Link>
 
           <div className="p-3.5 rounded-2xl bg-mad-bg border border-white/10 flex items-center justify-between">
@@ -179,10 +171,10 @@ export default function DashboardPage() {
               </div>
               <div className="text-left">
                 <h5 className="font-bold text-white text-xs leading-none">Marcus Rock</h5>
-                <span className="text-[10px] text-mad-lime font-mono">Athlete Member</span>
+                <span className="text-[10px] text-mad-lime font-mono">Member Atlet</span>
               </div>
             </div>
-            <Link href="/login" title="Log Out">
+            <Link href="/login" title="Keluar">
               <LogOut className="w-4 h-4 text-mad-gray hover:text-rose-400 transition-colors" />
             </Link>
           </div>
@@ -195,10 +187,10 @@ export default function DashboardPage() {
         <header className="hidden md:flex items-center justify-between px-8 py-5 bg-mad-surface/50 border-b border-white/10 backdrop-blur-md sticky top-0 z-30">
           <div className="flex items-center gap-3">
             <h2 className="text-lg font-black font-spartan text-white uppercase tracking-wide">
-              {activeTab === "overview" && "Athlete Overview"}
-              {activeTab === "workouts" && "Active Workout Tracker"}
-              {activeTab === "nutrition" && "Nutrition & Macros Target"}
-              {activeTab === "coaching" && "1-on-1 Coaching Desk"}
+              {activeTab === "overview" && (lang === "id" ? "Ringkasan Atlet" : "Athlete Overview")}
+              {activeTab === "workouts" && (lang === "id" ? "Tracker Latihan Aktif" : "Active Workout Tracker")}
+              {activeTab === "nutrition" && (lang === "id" ? "Target Nutrisi & Makro" : "Nutrition & Macros Target")}
+              {activeTab === "coaching" && (lang === "id" ? "Meja Kepelatihan 1-on-1" : "1-on-1 Coaching Desk")}
             </h2>
           </div>
 
@@ -209,7 +201,7 @@ export default function DashboardPage() {
               <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-mad-gray" />
               <input
                 type="text"
-                placeholder="Search workouts or meals..."
+                placeholder={lang === "id" ? "Cari latihan atau makanan..." : "Search workouts or meals..."}
                 className="bg-mad-bg border border-white/10 rounded-xl pl-10 pr-4 py-2 text-xs text-white placeholder-mad-gray focus:outline-none focus:border-mad-lime font-mono w-64"
               />
             </div>
@@ -234,14 +226,14 @@ export default function DashboardPage() {
               <div>
                 <div className="flex items-center gap-2">
                   <span className="px-3 py-0.5 rounded-full bg-mad-lime/10 border border-mad-lime/30 text-mad-lime font-mono text-[10px] font-bold uppercase">
-                    VIP ATHLETE MEMBER
+                    MEMBER ATLET VIP
                   </span>
                 </div>
                 <h1 className="text-2xl sm:text-3xl font-black font-spartan text-white uppercase mt-1">
-                  WELCOME BACK, ATHLETE
+                  {lang === "id" ? "SELAMAT DATANG KEMBALI, ATLET" : "WELCOME BACK, ATHLETE"}
                 </h1>
                 <p className="text-xs text-mad-gray font-mono mt-0.5">
-                  Current Protocol: <strong className="text-white">12-Week Hypertrophy Masterclass</strong> • Week 4, Day 2
+                  {lang === "id" ? "Protokol Aktif:" : "Current Protocol:"} <strong className="text-white">12-Week Hypertrophy Masterclass</strong> • Week 4, Day 2
                 </p>
               </div>
             </div>
@@ -249,7 +241,7 @@ export default function DashboardPage() {
             <div className="flex items-center gap-3 z-10">
               <div className="px-4 py-2.5 rounded-2xl bg-mad-bg border border-white/10 text-xs font-mono text-mad-gray flex items-center gap-2">
                 <Flame className="w-4 h-4 text-mad-lime fill-mad-lime" />
-                <span>Streak: <strong className="text-mad-lime">14 Days 🔥</strong></span>
+                <span>Streak: <strong className="text-mad-lime">14 {lang === "id" ? "Hari" : "Days"} 🔥</strong></span>
               </div>
             </div>
           </div>
@@ -260,7 +252,9 @@ export default function DashboardPage() {
               {/* Top Metric Cards */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div className="p-5 rounded-2xl bg-mad-surface border border-white/10 space-y-1">
-                  <span className="text-[11px] text-mad-gray font-mono uppercase">Daily Calories</span>
+                  <span className="text-[11px] text-mad-gray font-mono uppercase">
+                    {lang === "id" ? "Kalori Harian" : "Daily Calories"}
+                  </span>
                   <div className="text-2xl font-black font-spartan text-mad-lime">2,450 / 2,600</div>
                   <div className="w-full h-1.5 rounded-full bg-mad-bg overflow-hidden mt-2">
                     <div className="w-[94%] h-full bg-mad-lime" />
@@ -268,7 +262,9 @@ export default function DashboardPage() {
                 </div>
 
                 <div className="p-5 rounded-2xl bg-mad-surface border border-white/10 space-y-1">
-                  <span className="text-[11px] text-mad-gray font-mono uppercase">Protein Consumed</span>
+                  <span className="text-[11px] text-mad-gray font-mono uppercase">
+                    {lang === "id" ? "Protein Dikonsumsi" : "Protein Consumed"}
+                  </span>
                   <div className="text-2xl font-black font-spartan text-white">165g / 180g</div>
                   <div className="w-full h-1.5 rounded-full bg-mad-bg overflow-hidden mt-2">
                     <div className="w-[90%] h-full bg-mad-lime" />
@@ -276,15 +272,23 @@ export default function DashboardPage() {
                 </div>
 
                 <div className="p-5 rounded-2xl bg-mad-surface border border-white/10 space-y-1">
-                  <span className="text-[11px] text-mad-gray font-mono uppercase">Current Weight</span>
+                  <span className="text-[11px] text-mad-gray font-mono uppercase">
+                    {lang === "id" ? "Berat Badan" : "Current Weight"}
+                  </span>
                   <div className="text-2xl font-black font-spartan text-white">78.4 KG</div>
-                  <span className="text-[10px] text-emerald-400 font-mono">-1.2 kg this month</span>
+                  <span className="text-[10px] text-emerald-400 font-mono">
+                    {lang === "id" ? "-1.2 kg bulan ini" : "-1.2 kg this month"}
+                  </span>
                 </div>
 
                 <div className="p-5 rounded-2xl bg-mad-surface border border-white/10 space-y-1">
-                  <span className="text-[11px] text-mad-gray font-mono uppercase">Next Session</span>
-                  <div className="text-lg font-bold font-spartan text-white">Tomorrow, 10 AM</div>
-                  <span className="text-[10px] text-mad-lime font-mono">1-on-1 with Coach Ahmad Hudzaifah</span>
+                  <span className="text-[11px] text-mad-gray font-mono uppercase">
+                    {lang === "id" ? "Sesi Berikutnya" : "Next Session"}
+                  </span>
+                  <div className="text-lg font-bold font-spartan text-white">
+                    {lang === "id" ? "Besok, 10:00 WIB" : "Tomorrow, 10 AM"}
+                  </div>
+                  <span className="text-[10px] text-mad-lime font-mono">1-on-1 Coach Ahmad Hudzaifah</span>
                 </div>
               </div>
 
@@ -295,7 +299,7 @@ export default function DashboardPage() {
                   <div className="flex items-center justify-between pb-4 border-b border-white/10">
                     <h3 className="text-xl font-bold font-spartan text-white uppercase flex items-center gap-2">
                       <Dumbbell className="w-5 h-5 text-mad-lime" />
-                      <span>TODAY'S WORKOUT PROTOCOL</span>
+                      <span>{lang === "id" ? "PROTOKOL LATIHAN HARI INI" : "TODAY'S WORKOUT PROTOCOL"}</span>
                     </h3>
                     <span className="text-xs text-mad-lime font-mono uppercase font-bold">Chest & Triceps Power</span>
                   </div>
@@ -324,7 +328,7 @@ export default function DashboardPage() {
                 <div className="lg:col-span-5 rounded-3xl bg-mad-surface border border-white/10 p-6 sm:p-8 space-y-6">
                   <h3 className="text-xl font-bold font-spartan text-white uppercase border-b border-white/10 pb-4 flex items-center gap-2">
                     <Utensils className="w-5 h-5 text-mad-lime" />
-                    <span>TODAY'S MEAL TARGETS</span>
+                    <span>{lang === "id" ? "TARGET MAKAN HARI INI" : "TODAY'S MEAL TARGETS"}</span>
                   </h3>
 
                   <div className="space-y-3">
@@ -354,13 +358,13 @@ export default function DashboardPage() {
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-white/10">
                 <div>
                   <h3 className="text-xl font-bold font-spartan text-white uppercase">
-                    ACTIVE LOG: UPPER BODY HYPERTROPHY
+                    {lang === "id" ? "LOG AKTIF: HIPERTROFI TUBUH ATAS" : "ACTIVE LOG: UPPER BODY HYPERTROPHY"}
                   </h3>
                   <p className="text-xs text-mad-gray font-mono mt-1">Week 4 • Day 2 • Progressive Overload Focus</p>
                 </div>
 
                 <span className="px-3 py-1 rounded-full bg-mad-lime/10 border border-mad-lime/30 text-mad-lime font-mono text-xs font-bold">
-                  COMPLETED: {Object.keys(loggedSets).filter(k => loggedSets[Number(k)]).length} / 4 EXERCISES
+                  {lang === "id" ? "SELESAI:" : "COMPLETED:"} {Object.keys(loggedSets).filter(k => loggedSets[Number(k)]).length} / 4 {lang === "id" ? "GERAKAN" : "EXERCISES"}
                 </span>
               </div>
 
@@ -403,7 +407,7 @@ export default function DashboardPage() {
                               : "bg-mad-surface text-white border border-white/10 hover:border-mad-lime"
                           }`}
                         >
-                          {isDone ? "✓ COMPLETED" : "MARK COMPLETE"}
+                          {isDone ? (lang === "id" ? "✓ SELESAI" : "✓ COMPLETED") : (lang === "id" ? "TANDAI SELESAI" : "MARK COMPLETE")}
                         </button>
                       </div>
                     </div>
@@ -419,7 +423,7 @@ export default function DashboardPage() {
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-white/10">
                 <div>
                   <h3 className="text-xl font-bold font-spartan text-white uppercase">
-                    NUTRITION & MACRO PLANNER
+                    {lang === "id" ? "PERENCANA NUTRISI & MAKRO" : "NUTRITION & MACRO PLANNER"}
                   </h3>
                   <p className="text-xs text-mad-lime font-mono mt-1">Goal: Lean Muscle Gain • Target: 2,600 kcal/day</p>
                 </div>
@@ -428,7 +432,7 @@ export default function DashboardPage() {
                   href="/meal-planner"
                   className="px-4 py-2 rounded-xl bg-mad-lime/10 border border-mad-lime/30 text-mad-lime text-xs font-mono font-bold uppercase hover:bg-mad-lime/20 transition-all"
                 >
-                  Open Meal Generator →
+                  {lang === "id" ? "Buka Generator Makanan →" : "Open Meal Generator →"}
                 </Link>
               </div>
 
@@ -442,7 +446,7 @@ export default function DashboardPage() {
                 </div>
 
                 <div className="p-5 rounded-2xl bg-mad-bg border border-white/10 space-y-2">
-                  <span className="text-xs font-mono text-mad-gray uppercase">Carbohydrates (Target: 310g)</span>
+                  <span className="text-xs font-mono text-mad-gray uppercase">Karbohidrat (Target: 310g)</span>
                   <div className="text-3xl font-black font-spartan text-white">290g</div>
                   <div className="w-full h-2 rounded-full bg-mad-surface overflow-hidden">
                     <div className="w-[93%] h-full bg-white" />
@@ -450,7 +454,7 @@ export default function DashboardPage() {
                 </div>
 
                 <div className="p-5 rounded-2xl bg-mad-bg border border-white/10 space-y-2">
-                  <span className="text-xs font-mono text-mad-gray uppercase">Dietary Fats (Target: 65g)</span>
+                  <span className="text-xs font-mono text-mad-gray uppercase">Lemak Nutrisi (Target: 65g)</span>
                   <div className="text-3xl font-black font-spartan text-white">58g</div>
                   <div className="w-full h-2 rounded-full bg-mad-surface overflow-hidden">
                     <div className="w-[89%] h-full bg-amber-400" />
@@ -466,7 +470,7 @@ export default function DashboardPage() {
               <div className="flex items-center justify-between pb-4 border-b border-white/10">
                 <div>
                   <h3 className="text-xl font-bold font-spartan text-white uppercase">
-                    1-ON-1 COACHING SESSIONS
+                    {lang === "id" ? "SESI KEPELATIHAN 1-ON-1" : "1-ON-1 COACHING SESSIONS"}
                   </h3>
                   <p className="text-xs text-mad-gray font-mono mt-1">Assigned Head Coach: Ahmad Hudzaifah</p>
                 </div>
@@ -479,7 +483,7 @@ export default function DashboardPage() {
                   }}
                   className="px-5 py-2.5 rounded-xl bg-mad-lime text-mad-bg font-extrabold text-xs uppercase hover:bg-mad-lime-hover transition-all shadow-lg shadow-mad-lime/20"
                 >
-                  Book New Session
+                  {lang === "id" ? "Jadwalkan Sesi Baru" : "Book New Session"}
                 </button>
               </div>
 
@@ -487,10 +491,12 @@ export default function DashboardPage() {
                 <div className="p-5 rounded-2xl bg-mad-bg border border-mad-lime/30 flex items-center justify-between">
                   <div className="space-y-1">
                     <span className="px-2.5 py-0.5 rounded bg-mad-lime/10 text-mad-lime font-mono text-[10px] font-bold uppercase">
-                      CONFIRMED UPCOMING
+                      {lang === "id" ? "MENDATANG TERKONFIRMASI" : "CONFIRMED UPCOMING"}
                     </span>
-                    <h4 className="font-bold text-white text-base">Weekly Technique & Form Video Review</h4>
-                    <p className="text-xs text-mad-gray font-mono">Tomorrow at 10:00 AM • Zoom Video Call</p>
+                    <h4 className="font-bold text-white text-base">
+                      {lang === "id" ? "Evaluasi Mingguan Biomekanika & Form Latihan" : "Weekly Technique & Form Video Review"}
+                    </h4>
+                    <p className="text-xs text-mad-gray font-mono">Besok, 10:00 WIB • Zoom Video Call</p>
                   </div>
 
                   <button
@@ -500,7 +506,7 @@ export default function DashboardPage() {
                     }}
                     className="px-4 py-2 rounded-xl bg-mad-surface border border-white/10 text-xs font-mono text-white hover:text-mad-lime"
                   >
-                    Reschedule
+                    {lang === "id" ? "Ubah Jadwal" : "Reschedule"}
                   </button>
                 </div>
               </div>
@@ -527,12 +533,14 @@ export default function DashboardPage() {
                     IN-DASHBOARD BOOKING
                   </span>
                   <h3 className="text-2xl font-black font-spartan text-white uppercase mt-1">
-                    BOOK COACHING SESSION
+                    {lang === "id" ? "JADWALKAN SESI KEPELATIHAN" : "BOOK COACHING SESSION"}
                   </h3>
                 </div>
 
                 <div>
-                  <label className="text-xs font-mono text-mad-gray uppercase block mb-1">Select Head Coach</label>
+                  <label className="text-xs font-mono text-mad-gray uppercase block mb-1">
+                    {lang === "id" ? "Pilih Pelatih Kepala" : "Select Head Coach"}
+                  </label>
                   <select
                     value={bookingCoach}
                     onChange={(e) => setBookingCoach(e.target.value)}
@@ -546,7 +554,9 @@ export default function DashboardPage() {
 
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="text-xs font-mono text-mad-gray uppercase block mb-1">Session Date</label>
+                    <label className="text-xs font-mono text-mad-gray uppercase block mb-1">
+                      {lang === "id" ? "Tanggal Sesi" : "Session Date"}
+                    </label>
                     <input
                       type="date"
                       value={bookingDate}
@@ -556,7 +566,9 @@ export default function DashboardPage() {
                   </div>
 
                   <div>
-                    <label className="text-xs font-mono text-mad-gray uppercase block mb-1">Time Slot</label>
+                    <label className="text-xs font-mono text-mad-gray uppercase block mb-1">
+                      {lang === "id" ? "Slot Waktu" : "Time Slot"}
+                    </label>
                     <select
                       value={bookingTime}
                       onChange={(e) => setBookingTime(e.target.value)}
@@ -575,7 +587,7 @@ export default function DashboardPage() {
                   type="submit"
                   className="w-full py-4 rounded-2xl bg-mad-lime text-mad-bg font-extrabold text-sm uppercase tracking-wider hover:bg-mad-lime-hover shadow-lg shadow-mad-lime/20"
                 >
-                  CONFIRM IN-DASHBOARD BOOKING NOW
+                  {lang === "id" ? "KONFIRMASI JADWAL SESI SEKARANG" : "CONFIRM IN-DASHBOARD BOOKING NOW"}
                 </button>
               </form>
             ) : (
@@ -584,19 +596,21 @@ export default function DashboardPage() {
                   <Check className="w-8 h-8 stroke-[3]" />
                 </div>
 
-                <h3 className="text-2xl font-black font-spartan uppercase text-white">
-                  SESSION BOOKED IN DASHBOARD!
-                </h3>
+                <h2 className="text-2xl font-black font-spartan uppercase text-white">
+                  {lang === "id" ? "SESI BERHASIL DIJADWALKAN!" : "SESSION BOOKED IN DASHBOARD!"}
+                </h2>
 
                 <p className="text-xs text-mad-gray">
-                  Your 1-on-1 session with <strong>{bookingCoach}</strong> is confirmed for <strong>{bookingDate} at {bookingTime}</strong>.
+                  {lang === "id"
+                    ? `Sesi 1-on-1 Anda dengan ${bookingCoach} terkonfirmasi untuk ${bookingDate} pukul ${bookingTime}.`
+                    : `Your 1-on-1 session with ${bookingCoach} is confirmed for ${bookingDate} at ${bookingTime}.`}
                 </p>
 
                 <button
                   onClick={() => setBookingModalOpen(false)}
                   className="px-6 py-2.5 rounded-xl bg-mad-lime text-mad-bg font-extrabold text-xs uppercase"
                 >
-                  Close & View Sessions
+                  {lang === "id" ? "Tutup & Lihat Sesi" : "Close & View Sessions"}
                 </button>
               </div>
             )}

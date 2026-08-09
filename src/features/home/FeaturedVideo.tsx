@@ -5,25 +5,31 @@ import Image from "next/image";
 import { Play, X, Dumbbell, Zap, HeartPulse, Apple, Brain } from "lucide-react";
 import { SectionHeader } from "@/components/common/SectionHeader";
 import { ScrollReveal } from "@/components/common/ScrollReveal";
+import { useLanguage } from "@/components/common/LanguageProvider";
 
 export function FeaturedVideo() {
+  const { lang, t } = useLanguage();
   const [isPlaying, setIsPlaying] = useState(false);
 
   const tags = [
-    { label: "Strength", icon: Dumbbell, color: "text-mad-lime" },
-    { label: "Mobility", icon: Zap, color: "text-amber-400" },
-    { label: "Recovery", icon: HeartPulse, color: "text-emerald-400" },
-    { label: "Nutrition", icon: Apple, color: "text-rose-400" },
-    { label: "Mindset", icon: Brain, color: "text-sky-400" },
+    { label: lang === "id" ? "Kekuatan" : "Strength", icon: Dumbbell, color: "text-mad-lime" },
+    { label: lang === "id" ? "Mobilitas" : "Mobility", icon: Zap, color: "text-amber-400" },
+    { label: lang === "id" ? "Pemulihan" : "Recovery", icon: HeartPulse, color: "text-emerald-400" },
+    { label: lang === "id" ? "Nutrisi" : "Nutrition", icon: Apple, color: "text-rose-400" },
+    { label: lang === "id" ? "Pola Pikir" : "Mindset", icon: Brain, color: "text-sky-400" },
   ];
 
   return (
     <section className="py-24 bg-mad-bg relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
-          badge="FEATURED WORKOUT DEMO"
-          title="EXPERIENCE THE TRAINING INTENSITY"
-          subtitle="Watch how Coach Marcus breaks down biomechanics and execution for peak athletic performance."
+          badge={lang === "id" ? "DEMO LATIHAN UNGGULAN" : "FEATURED WORKOUT DEMO"}
+          title={lang === "id" ? "RASAKAN INTENSITAS KEPELATIHAN" : "EXPERIENCE THE TRAINING INTENSITY"}
+          subtitle={
+            lang === "id"
+              ? "Tonton bagaimana Head Coach Ahmad mengupas biomekanika dan eksekusi gerakan untuk performa fisik puncak."
+              : "Watch how Coach Ahmad breaks down biomechanics and execution for peak athletic performance."
+          }
         />
 
         <ScrollReveal>
@@ -47,7 +53,7 @@ export function FeaturedVideo() {
                   <Play className="w-10 h-10 ml-1 fill-mad-bg stroke-none" />
                 </button>
                 <span className="mt-4 text-xs font-mono tracking-widest text-white uppercase font-bold bg-mad-bg/80 px-4 py-1.5 rounded-full border border-white/10">
-                  WATCH WORKOUT BREAKDOWN (3:45)
+                  {lang === "id" ? "TONTON EVALUASI GERAKAN (3:45)" : "WATCH WORKOUT BREAKDOWN (3:45)"}
                 </span>
               </div>
 
@@ -67,7 +73,7 @@ export function FeaturedVideo() {
           </div>
         </ScrollReveal>
 
-        {/* Modal Video Player Placeholder */}
+        {/* Modal Video Player */}
         {isPlaying && (
           <div className="fixed inset-0 z-50 bg-black/90 backdrop-blur-xl flex items-center justify-center p-4">
             <div className="relative w-full max-w-4xl bg-mad-surface rounded-3xl overflow-hidden border border-white/20">

@@ -2,11 +2,13 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Check, Zap, Sparkles, ArrowRight } from "lucide-react";
+import { Check, ArrowRight } from "lucide-react";
 import { SectionHeader } from "@/components/common/SectionHeader";
 import { ScrollReveal } from "@/components/common/ScrollReveal";
+import { useLanguage } from "@/components/common/LanguageProvider";
 
 export function PricingSection() {
+  const { lang, t } = useLanguage();
   const [billingCycle, setBillingCycle] = useState<"monthly" | "yearly">("monthly");
 
   const plans = [
@@ -14,50 +16,59 @@ export function PricingSection() {
       name: "Starter Protocol",
       priceMonthly: 79,
       priceYearly: 65,
-      description: "Essential science-backed training & nutrition tools for self-directed athletes.",
+      description:
+        lang === "id"
+          ? "Alat ukur nutrisi & latihan berbasis sains esensial untuk atlet mandiri."
+          : "Essential science-backed training & nutrition tools for self-directed athletes.",
       features: [
-        "Full Access to Workout Library (100+ exercises)",
-        "Structured 12-Week Training Program",
-        "Macro & Calorie Calculator Dashboard",
-        "AI Workout & Meal Generator (10/mo)",
-        "Community Discord Access",
+        lang === "id" ? "Akses Penuh Perpustakaan Latihan (100+ gerakan)" : "Full Access to Workout Library (100+ exercises)",
+        lang === "id" ? "Program Latihan Periodisasi 12-Minggu" : "Structured 12-Week Training Program",
+        lang === "id" ? "Dashboard Kalkulator Makro & Kalori" : "Macro & Calorie Calculator Dashboard",
+        lang === "id" ? "Generator Latihan & Makan AI (10/bln)" : "AI Workout & Meal Generator (10/mo)",
+        lang === "id" ? "Akses Komunitas Atlet Discord" : "Community Discord Access",
       ],
-      cta: "SELECT STARTER",
+      cta: lang === "id" ? "PILIH STARTER" : "SELECT STARTER",
       highlighted: false,
     },
     {
       name: "Professional 1-on-1",
       priceMonthly: 199,
       priceYearly: 169,
-      description: "Our flagship VIP 1-on-1 coaching program with direct coach accountability.",
-      badge: "MOST POPULAR: TOP RESULTS",
+      description:
+        lang === "id"
+          ? "Program kepelatihan VIP 1-on-1 andalan kami dengan bimbingan langsung pelatih kepala."
+          : "Our flagship VIP 1-on-1 coaching program with direct coach accountability.",
+      badge: lang === "id" ? "TERPOPULER: HASIL MAKSIMAL" : "MOST POPULAR: TOP RESULTS",
       features: [
-        "EVERYTHING IN STARTER",
-        "Dedicated Personal Head Coach",
-        "100% Custom Periodized Program",
-        "Custom Weekly Macro & Meal Plan",
-        "Weekly Video Form Analysis & Call",
-        "Unlimited AI Coach Chat Access",
-        "Visual Photo Progress Tracker",
-        "Direct WhatsApp / In-App Messaging",
+        lang === "id" ? "SEMUA FITUR DI PAKET STARTER" : "EVERYTHING IN STARTER",
+        lang === "id" ? "Pelatih Kepala Dedicated Ahmad Hudzaifah" : "Dedicated Personal Head Coach",
+        lang === "id" ? "100% Program Periodisasi Kustom" : "100% Custom Periodized Program",
+        lang === "id" ? "Rencana Makan & Makro Mingguan Kustom" : "Custom Weekly Macro & Meal Plan",
+        lang === "id" ? "Analisis Form Video & Panggilan Mingguan" : "Weekly Video Form Analysis & Call",
+        lang === "id" ? "Akses Chat AI Coach Tanpa Batas" : "Unlimited AI Coach Chat Access",
+        lang === "id" ? "Tracker Progres Foto Visual" : "Visual Photo Progress Tracker",
+        lang === "id" ? "Pesan Langsung WhatsApp / Dalam Aplikasi" : "Direct WhatsApp / In-App Messaging",
       ],
-      cta: "START 1-ON-1 COACHING",
+      cta: lang === "id" ? "MULAI KEPELATIHAN 1-ON-1" : "START 1-ON-1 COACHING",
       highlighted: true,
     },
     {
       name: "Elite Performance",
       priceMonthly: 349,
       priceYearly: 299,
-      description: "Complete concierge coaching including bloodwork analysis & competition prep.",
+      description:
+        lang === "id"
+          ? "Kepelatihan privat komprehensif termasuk analisis laboratorium darah & optimasi pemulihan."
+          : "Complete concierge coaching including bloodwork analysis & competition prep.",
       features: [
-        "EVERYTHING IN PROFESSIONAL",
-        "Bi-Weekly 1-on-1 Zoom Coaching Sessions",
-        "Bloodwork & Biofeedback Optimization",
-        "Supplement & Recovery Protocols",
-        "Priority 24/7 VIP Communication",
-        "Free MADRock Merchandise & Gear",
+        lang === "id" ? "SEMUA FITUR DI PAKET PROFESSIONAL" : "EVERYTHING IN PROFESSIONAL",
+        lang === "id" ? "Sesi Panggilan Zoom 1-on-1 Dwi-Mingguan" : "Bi-Weekly 1-on-1 Zoom Coaching Sessions",
+        lang === "id" ? "Optimasi Analisis Darah & Biofeedback" : "Bloodwork & Biofeedback Optimization",
+        lang === "id" ? "Protokol Suplemen & Pemulihan Fisik" : "Supplement & Recovery Protocols",
+        lang === "id" ? "Komunikasi VIP Prioritas 24/7" : "Priority 24/7 VIP Communication",
+        lang === "id" ? "Merchandise MADRock Gratis" : "Free MADRock Merchandise & Gear",
       ],
-      cta: "APPLY FOR ELITE",
+      cta: lang === "id" ? "DAFTAR PAKET ELITE" : "APPLY FOR ELITE",
       highlighted: false,
     },
   ];
@@ -66,9 +77,9 @@ export function PricingSection() {
     <section className="py-24 bg-mad-bg relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
-          badge="INVEST IN YOURSELF"
-          title="TRANSPARENT MEMBERSHIP PLANS"
-          subtitle="No contracts. Cancel anytime. Choose the level of guidance you need to reach your peak physique."
+          badge={t("price_header_badge")}
+          title={t("price_header_title")}
+          subtitle={t("price_header_subtitle")}
         />
 
         {/* Billing Toggle */}
@@ -82,7 +93,7 @@ export function PricingSection() {
                   : "text-mad-gray hover:text-white"
               }`}
             >
-              Monthly Billing
+              {t("price_monthly")}
             </button>
             <button
               onClick={() => setBillingCycle("yearly")}
@@ -92,8 +103,7 @@ export function PricingSection() {
                   : "text-mad-gray hover:text-white"
               }`}
             >
-              <span>Yearly (Save 20%)</span>
-              <span className="px-1.5 py-0.5 rounded-full bg-white/20 text-[9px]">20% OFF</span>
+              <span>{t("price_yearly")}</span>
             </button>
           </div>
         </div>
@@ -132,14 +142,16 @@ export function PricingSection() {
                       <span className="text-5xl font-black font-spartan text-white">
                         ${price}
                       </span>
-                      <span className="text-xs font-mono text-mad-gray uppercase">/ month</span>
+                      <span className="text-xs font-mono text-mad-gray uppercase">
+                        {lang === "id" ? "/ bulan" : "/ month"}
+                      </span>
                     </div>
 
                     <ul className="space-y-3.5 text-xs text-mad-gray">
                       {plan.features.map((feature, fIdx) => (
                         <li key={fIdx} className="flex items-start gap-3">
                           <Check className="w-4 h-4 text-mad-lime shrink-0 mt-0.5" />
-                          <span className={feature.startsWith("EVERYTHING") ? "font-bold text-white uppercase" : ""}>
+                          <span className={feature.startsWith("EVERYTHING") || feature.startsWith("SEMUA") ? "font-bold text-white uppercase" : ""}>
                             {feature}
                           </span>
                         </li>
