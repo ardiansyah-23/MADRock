@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "HD Exercise Library & Muscle Biomechanics Database | MADRock",
     description: "Anatomically-guided weightlifting technique guides to maximize mechanical tension stimulation.",
-    url: "https://madrock.fit/workout-library",
+    url: "https://mad-rock.vercel.app/workout-library",
   },
 };
 

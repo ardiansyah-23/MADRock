@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Sports Science Journal | MADRock",
     description: "Evidence-based articles on weightlifting biomechanics, nutrition protocols, and recovery science.",
-    url: "https://madrock.fit/blog",
+    url: "https://mad-rock.vercel.app/blog",
   },
 };
 

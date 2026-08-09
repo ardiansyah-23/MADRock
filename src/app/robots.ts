@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/admin", "/dashboard"],
     },
-    sitemap: "https://madrock.fit/sitemap.xml",
+    sitemap: "https://mad-rock.vercel.app/sitemap.xml",
   };
 }

@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://madrock.fit";
+  const baseUrl = "https://mad-rock.vercel.app";
 
   const routes = [
     "",

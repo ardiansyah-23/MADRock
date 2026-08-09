@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Periodized Training Programs: Build Muscle & Shred Fat | MADRock",
     description: "Scientific weightlifting splits engineered for maximum mechanical tension and rapid physique transformation.",
-    url: "https://madrock.fit/programs",
+    url: "https://mad-rock.vercel.app/programs",
   },
 };
 

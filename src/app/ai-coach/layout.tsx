@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "AI Athlete Coach: Workout Split & Macro Generator | MADRock",
     description: "Generate custom periodized workout splits, precision macro meal protocols, or chat 24/7 with AI.",
-    url: "https://madrock.fit/ai-coach",
+    url: "https://mad-rock.vercel.app/ai-coach",
   },
 };
 

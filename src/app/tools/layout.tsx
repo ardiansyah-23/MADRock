@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "9 Free Scientific Fitness Calculators | MADRock",
     description: "Suite of 9 precision formula tools built to optimize your diet, macros, body fat, and 1RM.",
-    url: "https://madrock.fit/tools",
+    url: "https://mad-rock.vercel.app/tools",
   },
 };
 

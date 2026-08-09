@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Athlete Physique Transformations: Before & After Proof | MADRock",
     description: "Real before and after results achieved by athletes following our periodized coaching protocols.",
-    url: "https://madrock.fit/transformations",
+    url: "https://mad-rock.vercel.app/transformations",
   },
 };
 

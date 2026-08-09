@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     title: "MADRock: Science-Based Fitness Coaching & AI Meal Planner",
     description:
       "Build lean muscle and shred body fat without extreme diets. Certified 1-on-1 personal coaching, periodized splits, and AI meal generators.",
-    url: "https://madrock.fit",
+    url: "https://mad-rock.vercel.app",
     siteName: "MADRock Fitness Coaching",
     images: [
       {
@@ -53,8 +53,8 @@ export default function HomePage() {
     "@type": "SportsActivityLocation",
     name: "MADRock Performance Coaching",
     image: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=1200&auto=format&fit=crop",
-    "@id": "https://madrock.fit",
-    url: "https://madrock.fit",
+    "@id": "https://mad-rock.vercel.app",
+    url: "https://mad-rock.vercel.app",
     telephone: "+18005557625",
     priceRange: "$$$",
     address: {

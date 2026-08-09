@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "AI Meal Planner & Precision Macro Recipe Generator | MADRock",
     description: "Calculate exact caloric targets and generate calculated high-protein recipes.",
-    url: "https://madrock.fit/meal-planner",
+    url: "https://mad-rock.vercel.app/meal-planner",
   },
 };
 

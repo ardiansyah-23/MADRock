@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Transparent Membership Plans & 14-Day Guarantee | MADRock",
     description: "No long-term contracts. Choose the level of science-backed guidance you need.",
-    url: "https://madrock.fit/pricing",
+    url: "https://mad-rock.vercel.app/pricing",
   },
 };
 
