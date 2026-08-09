@@ -27,7 +27,7 @@ export default function AICoachPage() {
   const [messages, setMessages] = useState([
     {
       sender: "ai",
-      text: "Welcome to MADRock AI Coach! I am powered by Google Gemini fitness algorithms. How can I help you optimize your training split, progressive overload, or nutrition targets today?",
+      text: "MADRock AI Assistant active. Enter your training split, progressive overload questions, or daily macro targets to get instant biomechanics guidance.",
     },
   ]);
   const [inputMessage, setInputMessage] = useState("");

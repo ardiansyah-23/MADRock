@@ -35,7 +35,7 @@ export default function PricingPage() {
       priceMonthly: 199,
       priceYearly: 169,
       description: "Our flagship VIP 1-on-1 coaching program with direct coach accountability.",
-      badge: "MOST POPULAR — TOP RESULTS",
+      badge: "MOST POPULAR: TOP RESULTS",
       features: [
         "EVERYTHING IN STARTER",
         "Dedicated Head Coach Ahmad Hudzaifah",

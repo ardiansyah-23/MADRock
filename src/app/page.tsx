@@ -8,7 +8,7 @@ import { TestimonialsSection } from "@/features/home/TestimonialsSection";
 import { CTASection } from "@/features/home/CTASection";
 
 export const metadata = {
-  title: "MADRock — Premium Fitness Coaching Platform | Train. Focus. Become.",
+  title: "MADRock: Premium Fitness Coaching Platform | Train. Focus. Become.",
   description:
     "Science-based premium coaching designed to help you build muscle, lose fat, improve strength and become your best version. Features custom workouts, AI meal plans, and 1-on-1 coaching.",
 };

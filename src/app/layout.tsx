@@ -4,7 +4,7 @@ import { ClientLayoutWrapper } from "@/components/layout/ClientLayoutWrapper";
 
 export const metadata: Metadata = {
   title: {
-    default: "MADRock — Premium Fitness Coaching Platform",
+    default: "MADRock: Premium Fitness Coaching Platform",
     template: "%s | MADRock Fitness",
   },
   description:
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Coach Ahmad Hudzaifah" }],
   openGraph: {
-    title: "MADRock — Premium Fitness Coaching Platform",
+    title: "MADRock: Premium Fitness Coaching Platform",
     description: "Train. Focus. Become Unstoppable.",
     url: "https://madrock.vercel.app",
     siteName: "MADRock Fitness",
