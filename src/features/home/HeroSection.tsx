@@ -33,7 +33,7 @@ export function HeroSection() {
       value: 4.9,
       suffix: "★",
       decimals: 1,
-      label: "Average Rating",
+      label: lang === "id" ? "Rating Rata-rata" : "Average Rating",
       icon: Star,
     },
   ];

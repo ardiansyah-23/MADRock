@@ -1,8 +1,28 @@
 "use client";
 
-import { Award, ShieldCheck, Dumbbell, Zap, HeartPulse, Sparkles } from "lucide-react";
+import { Dumbbell } from "lucide-react";
+import { useLanguage } from "@/components/common/LanguageProvider";
 
 export function TrustedBrands() {
+  const { lang } = useLanguage();
+
+  const getPartnerCategory = (cat: string) => {
+    if (lang === "id") {
+      switch (cat) {
+        case "Gym Partner": return "Partner Gym";
+        case "Equipment": return "Peralatan";
+        case "Nutrition": return "Nutrisi";
+        case "Performance": return "Performa";
+        case "Certification": return "Sertifikasi";
+        case "Sports": return "Olahraga";
+        case "Supplements": return "Suplemen";
+        case "Apparel": return "Pakaian Latihan";
+        default: return cat;
+      }
+    }
+    return cat;
+  };
+
   const partners = [
     { name: "ELEIKO SPORT", category: "Gym Partner" },
     { name: "ROGUE FITNESS", category: "Equipment" },
@@ -17,8 +37,10 @@ export function TrustedBrands() {
   return (
     <section className="py-12 bg-mad-surface/80 border-y border-white/5 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 mb-6 text-center">
-        <p className="text-xs uppercase font-mono tracking-widest text-mad-gray">
-          TRUSTED BY INDUSTRY LEADERS & CERTIFIED ORGANIZATIONS
+        <p className="text-xs uppercase font-mono tracking-widest text-mad-gray font-bold">
+          {lang === "id"
+            ? "DIPERCAYA OLEH PEMIMPIN INDUSTRI & ORGANISASI TERSERTIFIKASI"
+            : "TRUSTED BY INDUSTRY LEADERS & CERTIFIED ORGANIZATIONS"}
         </p>
       </div>
 
@@ -34,11 +56,11 @@ export function TrustedBrands() {
                 <Dumbbell className="w-4 h-4" />
               </div>
               <div>
-                <span className="font-spartan font-extrabold text-base tracking-wider text-white uppercase block">
+                <span className="font-spartan font-black text-base tracking-wider text-white uppercase block">
                   {partner.name}
                 </span>
                 <span className="text-[10px] text-mad-gray uppercase tracking-widest block font-mono">
-                  {partner.category}
+                  {getPartnerCategory(partner.category)}
                 </span>
               </div>
             </div>

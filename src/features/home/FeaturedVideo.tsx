@@ -52,7 +52,7 @@ export function FeaturedVideo() {
                 >
                   <Play className="w-10 h-10 ml-1 fill-mad-bg stroke-none" />
                 </button>
-                <span className="mt-4 text-xs font-mono tracking-widest text-white uppercase font-bold bg-mad-bg/80 px-4 py-1.5 rounded-full border border-white/10">
+                <span className="mt-4 text-xs font-mono tracking-widest keep-white text-white uppercase font-bold bg-mad-bg/80 px-4 py-1.5 rounded-full border border-white/10">
                   {lang === "id" ? "TONTON EVALUASI GERAKAN (3:45)" : "WATCH WORKOUT BREAKDOWN (3:45)"}
                 </span>
               </div>

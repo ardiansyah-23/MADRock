@@ -19,11 +19,11 @@
   --mad-lime-hover: #4D7C0F;      /* Lime-800 hover */
   --mad-lime-light: #84CC16;
   --mad-text: #0F172A;            /* Slate-900 sharp dark headings */
-  --mad-gray: #475569;            /* Slate-600 body text */
-  --mad-gray-dark: #64748B;
-  --mad-border: rgba(15, 23, 42, 0.12);
+  --mad-gray: #1E293B;            /* Slate-800 body text (high contrast) */
+  --mad-gray-dark: #334155;
+  --mad-border: rgba(15, 23, 42, 0.15);
   --mad-glass: rgba(255, 255, 255, 0.95);
-  --mad-glass-border: rgba(15, 23, 42, 0.12);
+  --mad-glass-border: rgba(15, 23, 42, 0.15);
   --mad-input-bg: #FFFFFF;
   --mad-input-border: #94A3B8;
 }
@@ -32,6 +32,9 @@ body {
   background-color: var(--mad-bg);
   color: var(--mad-text);
   font-family: var(--font-inter);
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
 
@@ -100,6 +103,7 @@ body {
 
 .text-mad-gray {
   color: var(--mad-gray) !important;
+  font-weight: 550 !important;
 }
 
 .bg-mad-bg {

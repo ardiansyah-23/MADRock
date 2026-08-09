@@ -15,6 +15,21 @@ export default function MealPlannerPage() {
     "All", "High Protein", "Cutting Deficit", "Bulking Surplus", "Low Carb", "Vegetarian"
   ];
 
+  const getCategoryLabel = (cat: string) => {
+    if (lang === "id") {
+      switch (cat) {
+        case "All": return "Semua";
+        case "High Protein": return "Tinggi Protein";
+        case "Cutting Deficit": return "Defisit Kalori";
+        case "Bulking Surplus": return "Surplus Massa Otot";
+        case "Low Carb": return "Rendah Karbo";
+        case "Vegetarian": return "Vegetarian";
+        default: return cat;
+      }
+    }
+    return cat;
+  };
+
   const meals = [
     {
       id: "grilled-salmon-asparagus",
@@ -112,7 +127,7 @@ export default function MealPlannerPage() {
                   : "bg-mad-surface text-mad-gray border border-white/10 hover:text-white"
               }`}
             >
-              {cat}
+              {getCategoryLabel(cat)}
             </button>
           ))}
         </div>
@@ -132,7 +147,7 @@ export default function MealPlannerPage() {
                       className="object-cover"
                     />
                     <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-mad-bg/80 text-mad-lime font-mono text-[10px] uppercase font-bold border border-white/10">
-                      {meal.category}
+                      {getCategoryLabel(meal.category)}
                     </div>
                   </div>
 

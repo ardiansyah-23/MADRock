@@ -23,6 +23,37 @@ export default function ProgramsPage() {
     "Custom Tailored",
   ];
 
+  const getCategoryLabel = (cat: string) => {
+    if (lang === "id") {
+      switch (cat) {
+        case "All": return "Semua";
+        case "Cutting Protocol": return "Protokol Defisit (Cutting)";
+        case "Mass Building": return "Pembentukan Massa (Bulking)";
+        case "Shred & Build": return "Bakar Lemak & Bentuk Otot";
+        case "Powerbuilding": return "Powerbuilding";
+        case "Home Workout": return "Latihan di Rumah";
+        case "Custom Tailored": return "Desain Kustom Pribadi";
+        default: return cat;
+      }
+    }
+    return cat;
+  };
+
+  const getDifficultyLabel = (diff: string) => {
+    if (lang === "id") {
+      switch (diff) {
+        case "Intermediate - Advanced": return "Menengah - Mahir";
+        case "All Levels": return "Semua Tingkatan";
+        case "Intermediate": return "Menengah";
+        case "Advanced": return "Mahir";
+        case "Beginner - Intermediate": return "Pemula - Menengah";
+        case "Personalized": return "Dipersonalisasi";
+        default: return diff;
+      }
+    }
+    return diff;
+  };
+
   const programs = [
     {
       id: "fat-loss-masterclass",
@@ -32,7 +63,7 @@ export default function ProgramsPage() {
         lang === "id"
           ? "Kondisi metabolik dipercepat yang dipadukan dengan optimasi defisit kalori untuk membakar lemak tubuh sambil mempertahankan massa otot."
           : "Accelerated metabolic conditioning paired with calorie deficit optimization to strip body fat while preserving lean muscle mass.",
-      duration: "12 Weeks",
+      duration: lang === "id" ? "12 Minggu" : "12 Weeks",
       difficulty: "Intermediate - Advanced",
       image: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=1000&auto=format&fit=crop",
       badge: lang === "id" ? "Terpopuler" : "Most Popular",
@@ -53,7 +84,7 @@ export default function ProgramsPage() {
         lang === "id"
           ? "Latihan beban periodisasi volume tinggi yang ditargetkan untuk progressive overload, tegangan mekanis maksimum, dan pertumbuhan otot pesat."
           : "High-volume periodized weightlifting targeted at progressive overload, maximum mechanical tension, and rapid muscle growth.",
-      duration: "16 Weeks",
+      duration: lang === "id" ? "16 Minggu" : "16 Weeks",
       difficulty: "All Levels",
       image: "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?q=80&w=1000&auto=format&fit=crop",
       badge: lang === "id" ? "Pertumbuhan Maksimal" : "High Growth",
@@ -74,7 +105,7 @@ export default function ProgramsPage() {
         lang === "id"
           ? "Secara bersamaan menurunkan persentase lemak tubuh sekaligus meningkatkan kekuatan dan massa otot kering menggunakan algoritma carb cycling."
           : "Simultaneously drop body fat percentage while increasing strength and lean muscle mass using carb cycling algorithms.",
-      duration: "12 Weeks",
+      duration: lang === "id" ? "12 Minggu" : "12 Weeks",
       difficulty: "Intermediate",
       image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1000&auto=format&fit=crop",
       price: "$219",
@@ -94,7 +125,7 @@ export default function ProgramsPage() {
         lang === "id"
           ? "Fokus pada angkatan berat compound (Squat, Bench Press, Deadlift) yang dirancang untuk membangun kekuatan eksplosif dan ketahanan sendi."
           : "Focus on heavy compound lifts (Squat, Bench Press, Deadlift) engineered to build explosive raw strength and joint resilience.",
-      duration: "10 Weeks",
+      duration: lang === "id" ? "10 Minggu" : "10 Weeks",
       difficulty: "Advanced",
       image: "https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=1000&auto=format&fit=crop",
       price: "$229",
@@ -113,7 +144,7 @@ export default function ProgramsPage() {
         lang === "id"
           ? "Sistem latihan rumah intensitas tinggi yang dirancang untuk profesional sibuk dengan alat minimal dan efisiensi fisik maksimal."
           : "High-intensity home workout system designed for busy professionals requiring minimal gear and maximum physical efficiency.",
-      duration: "8 Weeks",
+      duration: lang === "id" ? "8 Minggu" : "8 Weeks",
       difficulty: "Beginner - Intermediate",
       image: "https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?q=80&w=1000&auto=format&fit=crop",
       price: "$149",
@@ -132,7 +163,7 @@ export default function ProgramsPage() {
         lang === "id"
           ? "Kepelatihan privat komprehensif dengan analisis video mingguan, pesan langsung 24/7, dan manajemen makro yang dipersonalisasi penuh."
           : "Comprehensive private coaching with weekly video analysis, 24/7 direct messaging, and fully customized macro management.",
-      duration: "Ongoing",
+      duration: lang === "id" ? "Berkelanjutan" : "Ongoing",
       difficulty: "Personalized",
       image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=1000&auto=format&fit=crop",
       badge: "Akses VIP",
@@ -172,7 +203,7 @@ export default function ProgramsPage() {
                   : "bg-mad-surface text-mad-gray border border-white/10 hover:text-white"
               }`}
             >
-              {cat}
+              {getCategoryLabel(cat)}
             </button>
           ))}
         </div>
@@ -202,7 +233,7 @@ export default function ProgramsPage() {
                 <div className="p-6 flex flex-col justify-between flex-1 space-y-5">
                   <div className="space-y-1">
                     <span className="text-[11px] font-mono text-mad-lime font-bold uppercase tracking-widest block">
-                      {program.category}
+                      {getCategoryLabel(program.category)}
                     </span>
                     <h3 className="text-2xl font-black font-spartan text-slate-900 uppercase leading-tight">
                       {program.title}
@@ -259,7 +290,7 @@ export default function ProgramsPage() {
 
               <div className="space-y-2">
                 <span className="text-xs font-mono text-mad-lime uppercase tracking-widest">
-                  {selectedProgram.category} • {selectedProgram.duration}
+                  {getCategoryLabel(selectedProgram.category)} • {selectedProgram.duration} • {getDifficultyLabel(selectedProgram.difficulty)}
                 </span>
                 <h2 className="text-3xl font-black font-spartan uppercase text-white">
                   {selectedProgram.title}
