@@ -2,12 +2,13 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Calculator, ArrowRight, Zap, Scale, Flame, Activity } from "lucide-react";
+import { Calculator, ArrowRight } from "lucide-react";
 import { SectionHeader } from "@/components/common/SectionHeader";
 import { ScrollReveal } from "@/components/common/ScrollReveal";
+import { useLanguage } from "@/components/common/LanguageProvider";
 
 export function FitnessToolsSection() {
-  // Mini BMI & Calorie Calculator state - Using String State to avoid leading zero bugs
+  const { lang, t } = useLanguage();
   const [gender, setGender] = useState<"male" | "female">("male");
   const [weightStr, setWeightStr] = useState("75");
   const [heightStr, setHeightStr] = useState("175");
@@ -40,11 +41,11 @@ export function FitnessToolsSection() {
   const protein = isInputValid ? Math.round(weight * 2.2) : 0;
 
   const getBmiCategory = (bmiValue: number) => {
-    if (bmiValue <= 0) return { category: "Enter Parameters", color: "text-mad-gray" };
-    if (bmiValue < 18.5) return { category: "Underweight", color: "text-amber-400" };
-    if (bmiValue < 25) return { category: "Optimal Healthy Weight", color: "text-mad-lime" };
-    if (bmiValue < 30) return { category: "Overweight", color: "text-amber-400" };
-    return { category: "Obese", color: "text-rose-500" };
+    if (bmiValue <= 0) return { category: lang === "id" ? "Masukkan Parameter" : "Enter Parameters", color: "text-mad-gray" };
+    if (bmiValue < 18.5) return { category: lang === "id" ? "Kekurangan Berat" : "Underweight", color: "text-amber-400" };
+    if (bmiValue < 25) return { category: lang === "id" ? "Berat Badan Ideal" : "Optimal Healthy Weight", color: "text-mad-lime" };
+    if (bmiValue < 30) return { category: lang === "id" ? "Kelebihan Berat" : "Overweight", color: "text-amber-400" };
+    return { category: lang === "id" ? "Obesitas" : "Obese", color: "text-rose-500" };
   };
 
   const bmiData = getBmiCategory(bmi);
@@ -53,9 +54,13 @@ export function FitnessToolsSection() {
     <section className="py-24 bg-mad-surface relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
-          badge="FREE FITNESS CALCULATORS"
-          title="CALCULATE YOUR NUMBERS"
-          subtitle="Instant precision metrics for BMI, TDEE maintenance calories, and daily protein targets."
+          badge={lang === "id" ? "KALKULATOR FITNES GRATIS" : "FREE FITNESS CALCULATORS"}
+          title={lang === "id" ? "HITUNG ANGKAN METABOLISME ANDA" : "CALCULATE YOUR NUMBERS"}
+          subtitle={
+            lang === "id"
+              ? "Metrik presisi instan untuk BMI, kalori maintenance TDEE, dan target protein harian."
+              : "Instant precision metrics for BMI, TDEE maintenance calories, and daily protein targets."
+          }
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -65,17 +70,21 @@ export function FitnessToolsSection() {
               <div className="flex items-center gap-2">
                 <Calculator className="w-5 h-5 text-mad-lime" />
                 <span className="font-spartan font-bold text-white uppercase text-lg">
-                  QUICK METABOLIC ESTIMATOR
+                  {lang === "id" ? "KALKULATOR METABOLIK CEPAT" : "QUICK METABOLIC ESTIMATOR"}
                 </span>
               </div>
-              <span className="text-xs text-mad-gray font-mono">SCIENTIFIC ALGORITHMS</span>
+              <span className="text-xs text-mad-gray font-mono">
+                {lang === "id" ? "ALGORITMA SAINS" : "SCIENTIFIC ALGORITHMS"}
+              </span>
             </div>
 
             {/* Inputs */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {/* Gender */}
               <div>
-                <label className="text-xs font-mono text-mad-gray uppercase block mb-1.5">Gender</label>
+                <label className="text-xs font-mono text-mad-gray uppercase block mb-1.5">
+                  {lang === "id" ? "Jenis Kelamin" : "Gender"}
+                </label>
                 <div className="grid grid-cols-2 gap-2">
                   <button
                     type="button"
@@ -86,7 +95,7 @@ export function FitnessToolsSection() {
                         : "bg-mad-surface text-mad-gray border border-white/10"
                     }`}
                   >
-                    Male
+                    {lang === "id" ? "Pria" : "Male"}
                   </button>
                   <button
                     type="button"
@@ -97,14 +106,16 @@ export function FitnessToolsSection() {
                         : "bg-mad-surface text-mad-gray border border-white/10"
                     }`}
                   >
-                    Female
+                    {lang === "id" ? "Wanita" : "Female"}
                   </button>
                 </div>
               </div>
 
               {/* Age */}
               <div>
-                <label className="text-xs font-mono text-mad-gray uppercase block mb-1.5">Age (Years)</label>
+                <label className="text-xs font-mono text-mad-gray uppercase block mb-1.5">
+                  {lang === "id" ? "Usia (Tahun)" : "Age (Years)"}
+                </label>
                 <input
                   type="number"
                   value={ageStr}
@@ -116,7 +127,9 @@ export function FitnessToolsSection() {
 
               {/* Weight */}
               <div>
-                <label className="text-xs font-mono text-mad-gray uppercase block mb-1.5">Weight (KG)</label>
+                <label className="text-xs font-mono text-mad-gray uppercase block mb-1.5">
+                  {lang === "id" ? "Berat Badan (KG)" : "Weight (KG)"}
+                </label>
                 <input
                   type="number"
                   value={weightStr}
@@ -128,7 +141,9 @@ export function FitnessToolsSection() {
 
               {/* Height */}
               <div>
-                <label className="text-xs font-mono text-mad-gray uppercase block mb-1.5">Height (CM)</label>
+                <label className="text-xs font-mono text-mad-gray uppercase block mb-1.5">
+                  {lang === "id" ? "Tinggi Badan (CM)" : "Height (CM)"}
+                </label>
                 <input
                   type="number"
                   value={heightStr}
@@ -141,16 +156,18 @@ export function FitnessToolsSection() {
 
             {/* Activity Level */}
             <div>
-              <label className="text-xs font-mono text-mad-gray uppercase block mb-1.5">Activity Level</label>
+              <label className="text-xs font-mono text-mad-gray uppercase block mb-1.5">
+                {lang === "id" ? "Tingkat Aktivitas" : "Activity Level"}
+              </label>
               <select
                 value={activity}
                 onChange={(e) => setActivity(Number(e.target.value))}
                 className="w-full bg-mad-surface border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-mad-lime font-mono"
               >
-                <option value={1.2}>Sedentary (Office Job)</option>
-                <option value={1.375}>Lightly Active (1-3 days/wk)</option>
-                <option value={1.55}>Moderately Active (3-5 days/wk)</option>
-                <option value={1.725}>Very Active (6-7 days hard training)</option>
+                <option value={1.2}>{lang === "id" ? "Ringan / Duduk (Pekerja Kantor)" : "Sedentary (Office Job)"}</option>
+                <option value={1.375}>{lang === "id" ? "Aktif Ringan (1-3 hari/mgg)" : "Lightly Active (1-3 days/wk)"}</option>
+                <option value={1.55}>{lang === "id" ? "Cukup Aktif (3-5 hari/mgg)" : "Moderately Active (3-5 days/wk)"}</option>
+                <option value={1.725}>{lang === "id" ? "Sangat Aktif (6-7 hari latihan berat)" : "Very Active (6-7 days hard training)"}</option>
               </select>
             </div>
           </div>
@@ -160,14 +177,16 @@ export function FitnessToolsSection() {
             <div className="absolute top-0 right-0 w-32 h-32 bg-mad-lime/10 rounded-full blur-2xl pointer-events-none" />
 
             <h3 className="text-xl font-bold font-spartan text-white uppercase border-b border-white/10 pb-3">
-              YOUR METABOLIC PROFILE
+              {lang === "id" ? "PROFIL METABOLIK ANDA" : "YOUR METABOLIC PROFILE"}
             </h3>
 
             <div className="space-y-4">
               {/* BMI Card */}
               <div className="p-4 rounded-2xl bg-mad-surface border border-white/10 flex items-center justify-between">
                 <div>
-                  <span className="text-xs text-mad-gray font-mono block">BODY MASS INDEX (BMI)</span>
+                  <span className="text-xs text-mad-gray font-mono block">
+                    {lang === "id" ? "INDEKS MASSA TUBUH (BMI)" : "BODY MASS INDEX (BMI)"}
+                  </span>
                   <span className={`text-xs font-bold ${bmiData.color}`}>{bmiData.category}</span>
                 </div>
                 <span className="text-3xl font-black font-spartan text-white">{bmi.toFixed(1)}</span>
@@ -176,8 +195,12 @@ export function FitnessToolsSection() {
               {/* TDEE Card */}
               <div className="p-4 rounded-2xl bg-mad-surface border border-white/10 flex items-center justify-between">
                 <div>
-                  <span className="text-xs text-mad-gray font-mono block">DAILY CALORIES (TDEE)</span>
-                  <span className="text-xs text-mad-lime font-bold">Maintenance Target</span>
+                  <span className="text-xs text-mad-gray font-mono block">
+                    {lang === "id" ? "KALORI HARIAN (TDEE)" : "DAILY CALORIES (TDEE)"}
+                  </span>
+                  <span className="text-xs text-mad-lime font-bold">
+                    {lang === "id" ? "Target Maintenance" : "Maintenance Target"}
+                  </span>
                 </div>
                 <span className="text-3xl font-black font-spartan text-mad-lime">{tdee} kcal</span>
               </div>
@@ -185,8 +208,12 @@ export function FitnessToolsSection() {
               {/* Protein Target */}
               <div className="p-4 rounded-2xl bg-mad-surface border border-white/10 flex items-center justify-between">
                 <div>
-                  <span className="text-xs text-mad-gray font-mono block">DAILY PROTEIN TARGET</span>
-                  <span className="text-xs text-mad-gray">Optimal Muscle Synthesis</span>
+                  <span className="text-xs text-mad-gray font-mono block">
+                    {lang === "id" ? "TARGET PROTEIN HARIAN" : "DAILY PROTEIN TARGET"}
+                  </span>
+                  <span className="text-xs text-mad-gray">
+                    {lang === "id" ? "Sintesis Otot Optimal" : "Optimal Muscle Synthesis"}
+                  </span>
                 </div>
                 <span className="text-3xl font-black font-spartan text-white">{protein}g</span>
               </div>
@@ -196,7 +223,7 @@ export function FitnessToolsSection() {
               href="/tools"
               className="w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-2xl bg-mad-lime text-mad-bg font-extrabold text-sm uppercase tracking-wider shadow-lg hover:bg-mad-lime-hover transition-all"
             >
-              <span>ACCESS ALL 9 CALCULATORS</span>
+              <span>{lang === "id" ? "AKSES SELURUH 9 KALKULATOR" : "ACCESS ALL 9 CALCULATORS"}</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>

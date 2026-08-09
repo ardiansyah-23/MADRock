@@ -1,36 +1,54 @@
 "use client";
 
 import Image from "next/image";
-import { CheckCircle2, Award, Brain, Clock, Utensils, Activity, Target, ShieldAlert } from "lucide-react";
+import { CheckCircle2, Brain, Clock, Utensils, Activity, Target } from "lucide-react";
 import { SectionHeader } from "@/components/common/SectionHeader";
 import { ScrollReveal } from "@/components/common/ScrollReveal";
+import { useLanguage } from "@/components/common/LanguageProvider";
 
 export function AboutSection() {
+  const { lang } = useLanguage();
+
   const features = [
     {
       icon: Brain,
-      title: "Science Based Protocol",
-      description: "No guesswork. Every workout and meal structure is backed by sports science research and biomechanics.",
+      title: lang === "id" ? "Protokol Berbasis Sains" : "Science Based Protocol",
+      description:
+        lang === "id"
+          ? "Tanpa tebak-menebak. Setiap struktur latihan dan nutrisi didukung riset sains olahraga dan biomekanika."
+          : "No guesswork. Every workout and meal structure is backed by sports science research and biomechanics.",
     },
     {
       icon: Target,
-      title: "Personal 1-on-1 Coaching",
-      description: "Direct access to your dedicated head coach for daily accountability, form feedback, and adjustments.",
+      title: lang === "id" ? "Kepelatihan 1-on-1 VIP" : "Personal 1-on-1 Coaching",
+      description:
+        lang === "id"
+          ? "Akses langsung ke pelatih kepala dedicated untuk evaluasi gerakan harian, umpan balik form, dan penyesuaian program."
+          : "Direct access to your dedicated head coach for daily accountability, form feedback, and adjustments.",
     },
     {
       icon: Clock,
-      title: "Flexible Schedule",
-      description: "Workouts engineered around your busy career, travel lifestyle, or home equipment availability.",
+      title: lang === "id" ? "Jadwal Fleksibel" : "Flexible Schedule",
+      description:
+        lang === "id"
+          ? "Program dirancang menyesuaikan dengan jadwal kerja padat, gaya hidup travel, atau ketersediaan alat gym."
+          : "Workouts engineered around your busy career, travel lifestyle, or home equipment availability.",
     },
     {
       icon: Utensils,
-      title: "Precision Nutrition Guide",
-      description: "Custom macro frameworks and easy delicious meal plans tailored to your exact taste and metabolic profile.",
+      title: lang === "id" ? "Panduan Nutrisi Presisi" : "Precision Nutrition Guide",
+      description:
+        lang === "id"
+          ? "Kerangka makronutrisi kustom dan rencana makan lezat yang disesuaikan dengan selera dan profil metabolik Anda."
+          : "Custom macro frameworks and easy delicious meal plans tailored to your exact taste and metabolic profile.",
     },
     {
       icon: Activity,
-      title: "Advanced Progress Tracking",
-      description: "Detailed analytics for weight, body fat %, lift volume, and visual photo comparison dashboard.",
+      title: lang === "id" ? "Pelacakan Progres Lanjutan" : "Advanced Progress Tracking",
+      description:
+        lang === "id"
+          ? "Analisis detail berat badan, % kadar lemak, volume angkatan, dan dashboard komparasi foto transformasi."
+          : "Detailed analytics for weight, body fat %, lift volume, and visual photo comparison dashboard.",
     },
   ];
 
@@ -38,9 +56,13 @@ export function AboutSection() {
     <section className="py-24 bg-mad-bg relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
-          badge="ABOUT THE COACH"
-          title="ENGINEERED FOR REAL RESULTS"
-          subtitle="Combining elite athletic performance principles with personalized lifestyle coaching."
+          badge={lang === "id" ? "TENTANG HEAD COACH" : "ABOUT THE COACH"}
+          title={lang === "id" ? "DIRANCANG UNTUK HASIL NYATA" : "ENGINEERED FOR REAL RESULTS"}
+          subtitle={
+            lang === "id"
+              ? "Menggabungkan prinsip performa atlet elit dengan kepelatihan gaya hidup yang dipersonalisasi."
+              : "Combining elite athletic performance principles with personalized lifestyle coaching."
+          }
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-20">
@@ -68,10 +90,14 @@ export function AboutSection() {
           <div className="lg:col-span-7 space-y-6">
             <ScrollReveal>
               <h3 className="text-2xl sm:text-3xl font-extrabold uppercase font-spartan text-white">
-                "FITNESS IS NOT A 12-WEEK QUICK FIX. IT IS YOUR LIFE PERFORMANCE ARCHITECTURE."
+                {lang === "id"
+                  ? '"FITNES BUKAN SOLUSI 12-MINGGU SERBA INSTAN. INI ADALAH ARSITEKTUR PERFORMA HIDUP ANDA."'
+                  : '"FITNESS IS NOT A 12-WEEK QUICK FIX. IT IS YOUR LIFE PERFORMANCE ARCHITECTURE."'}
               </h3>
               <p className="text-mad-gray text-base leading-relaxed mt-4">
-                Over the past 8+ years, I’ve transformed hundreds of busy professionals, entrepreneurs, and athletes. My philosophy is simple: eliminate fluff, master compound movements, optimize recovery, and build sustainable nutritional habits.
+                {lang === "id"
+                  ? "Selama lebih dari 8+ tahun, saya telah membantu ratusan profesional, pengusaha, dan atlet mengubah bentuk fisik mereka. Filosofi saya sederhana: eliminasi gerakan tak berguna, kuasai compound movement, optimalkan pemulihan, dan bangun kebiasaan nutrisi yang berkelanjutan."
+                  : "Over the past 8+ years, I’ve transformed hundreds of busy professionals, entrepreneurs, and athletes. My philosophy is simple: eliminate fluff, master compound movements, optimize recovery, and build sustainable nutritional habits."}
               </p>
             </ScrollReveal>
 
@@ -79,16 +105,22 @@ export function AboutSection() {
             <ScrollReveal delay={0.2}>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-2">
                 <div className="p-4 rounded-2xl bg-mad-surface border border-white/10">
-                  <span className="text-mad-lime font-mono text-xs uppercase block">Experience</span>
-                  <span className="text-white font-bold text-lg font-spartan">8+ Years Active</span>
+                  <span className="text-mad-lime font-mono text-xs uppercase block">
+                    {lang === "id" ? "Pengalaman" : "Experience"}
+                  </span>
+                  <span className="text-white font-bold text-lg font-spartan">8+ {lang === "id" ? "Tahun" : "Years"}</span>
                 </div>
                 <div className="p-4 rounded-2xl bg-mad-surface border border-white/10">
-                  <span className="text-mad-lime font-mono text-xs uppercase block">Certifications</span>
+                  <span className="text-mad-lime font-mono text-xs uppercase block">
+                    {lang === "id" ? "Sertifikasi" : "Certifications"}
+                  </span>
                   <span className="text-white font-bold text-lg font-spartan">NSCA & NASM</span>
                 </div>
                 <div className="p-4 rounded-2xl bg-mad-surface border border-white/10">
-                  <span className="text-mad-lime font-mono text-xs uppercase block">Transformations</span>
-                  <span className="text-white font-bold text-lg font-spartan">600+ Clients</span>
+                  <span className="text-mad-lime font-mono text-xs uppercase block">
+                    {lang === "id" ? "Transformasi" : "Transformations"}
+                  </span>
+                  <span className="text-white font-bold text-lg font-spartan">600+ {lang === "id" ? "Klien" : "Clients"}</span>
                 </div>
               </div>
             </ScrollReveal>
@@ -96,10 +128,18 @@ export function AboutSection() {
             <ScrollReveal delay={0.3}>
               <ul className="space-y-3 pt-2 text-sm text-mad-gray">
                 {[
-                  "Personalized periodized strength & hypertrophy programs",
-                  "Comprehensive bloodwork & biofeedback analysis integration",
-                  "Weekly 1-on-1 video call check-ins & form critique",
-                  "Exclusive mobile app dashboard & AI coach support",
+                  lang === "id"
+                    ? "Program kekuatan & hipertrofi periodisasi kustom"
+                    : "Personalized periodized strength & hypertrophy programs",
+                  lang === "id"
+                    ? "Integrasi analisis darah komprehensif & biofeedback"
+                    : "Comprehensive bloodwork & biofeedback analysis integration",
+                  lang === "id"
+                    ? "Evaluasi video form latihan & evaluasi mingguan 1-on-1"
+                    : "Weekly 1-on-1 video call check-ins & form critique",
+                  lang === "id"
+                    ? "Akses dashboard mobile app & dukungan AI Coach"
+                    : "Exclusive mobile app dashboard & AI coach support",
                 ].map((item, idx) => (
                   <li key={idx} className="flex items-center gap-3">
                     <CheckCircle2 className="w-5 h-5 text-mad-lime shrink-0" />

@@ -3,8 +3,11 @@
 import Link from "next/link";
 import { ArrowRight, Flame, ShieldCheck } from "lucide-react";
 import { ScrollReveal } from "@/components/common/ScrollReveal";
+import { useLanguage } from "@/components/common/LanguageProvider";
 
 export function CTASection() {
+  const { lang } = useLanguage();
+
   return (
     <section className="py-24 bg-mad-bg relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -15,16 +18,20 @@ export function CTASection() {
 
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-mad-lime/10 border border-mad-lime/30 text-mad-lime text-xs font-semibold uppercase tracking-wider">
               <Flame className="w-3.5 h-3.5 fill-mad-lime" />
-              <span>YOUR TRANSFORMATION STARTS TODAY</span>
+              <span>{lang === "id" ? "TRANSFORMASI ANDA DIMULAI HARI INI" : "YOUR TRANSFORMATION STARTS TODAY"}</span>
             </div>
 
             <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black uppercase font-spartan text-white tracking-tight max-w-4xl mx-auto leading-none">
-              STOP WASTING TIME IN THE GYM. <br />
-              <span className="text-mad-lime">START BUILDING YOUR LEGACY.</span>
+              {lang === "id" ? "BERHENTI BUANG WAKTU DI GYM." : "STOP WASTING TIME IN THE GYM."} <br />
+              <span className="text-mad-lime">
+                {lang === "id" ? "BANGUN BENTUK TUBUH IMPIANMU." : "START BUILDING YOUR LEGACY."}
+              </span>
             </h2>
 
             <p className="text-base sm:text-lg text-mad-gray max-w-2xl mx-auto leading-relaxed">
-              Join over 600+ athletes who turned their physique dreams into reality. Get your custom coaching strategy now.
+              {lang === "id"
+                ? "Bergabunglah dengan lebih dari 600+ atlet yang telah berhasil mengubah bentuk fisik mereka. Dapatkan strategi latihan kustom Anda sekarang."
+                : "Join over 600+ athletes who turned their physique dreams into reality. Get your custom coaching strategy now."}
             </p>
 
             <div className="flex flex-wrap justify-center items-center gap-4 pt-4">
@@ -32,7 +39,7 @@ export function CTASection() {
                 href="/login"
                 className="group inline-flex items-center gap-3 px-9 py-4.5 rounded-2xl text-base font-extrabold bg-mad-lime text-mad-bg hover:bg-mad-lime-hover transition-all duration-300 shadow-xl shadow-mad-lime/25 hover:scale-105"
               >
-                <span>START YOUR TRANSFORMATION</span>
+                <span>{lang === "id" ? "MULAI TRANSFORMASI SEKARANG" : "START YOUR TRANSFORMATION"}</span>
                 <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
               </Link>
 
@@ -40,18 +47,18 @@ export function CTASection() {
                 href="/tools"
                 className="inline-flex items-center gap-2 px-8 py-4.5 rounded-2xl text-base font-bold bg-white/5 border border-white/15 text-white hover:bg-white/10 transition-all duration-300"
               >
-                <span>Try Free Fitness Calculators</span>
+                <span>{lang === "id" ? "Coba Kalkulator Gratis" : "Try Free Fitness Calculators"}</span>
               </Link>
             </div>
 
             <div className="pt-6 flex justify-center items-center gap-6 text-xs text-mad-gray">
               <div className="flex items-center gap-2">
                 <ShieldCheck className="w-4 h-4 text-mad-lime" />
-                <span>No long term commitments</span>
+                <span>{lang === "id" ? "Tanpa Kontrak Mengikat" : "No long term commitments"}</span>
               </div>
               <div className="flex items-center gap-2">
                 <ShieldCheck className="w-4 h-4 text-mad-lime" />
-                <span>Instant App Access</span>
+                <span>{lang === "id" ? "Akses Aplikasi Langsung" : "Instant App Access"}</span>
               </div>
             </div>
           </div>

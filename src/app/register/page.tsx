@@ -4,8 +4,10 @@ import { useState } from "react";
 import Link from "next/link";
 import { Dumbbell, Mail, Lock, User, ArrowRight, AlertCircle, CheckCircle } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
+import { useLanguage } from "@/components/common/LanguageProvider";
 
 export default function RegisterPage() {
+  const { lang, t } = useLanguage();
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -36,7 +38,11 @@ export default function RegisterPage() {
       setErrorMsg(error.message);
       setLoading(false);
     } else {
-      setSuccessMsg("Registration successful! Check your email to verify your account, or log in.");
+      setSuccessMsg(
+        lang === "id"
+          ? "Registrasi berhasil! Periksa email Anda untuk verifikasi, atau silakan login."
+          : "Registration successful! Check your email to verify your account, or log in."
+      );
       setLoading(false);
     }
   };
@@ -55,10 +61,12 @@ export default function RegisterPage() {
           </Link>
 
           <h1 className="text-2xl font-black font-spartan uppercase text-white">
-            JOIN MADROCK ATHLETES
+            {lang === "id" ? "GABUNG ATLET MADROCK" : "JOIN MADROCK ATHLETES"}
           </h1>
           <p className="text-xs text-mad-gray">
-            Create your account to start custom periodized coaching.
+            {lang === "id"
+              ? "Buat akun Anda untuk memulai kepelatihan periodisasi kustom."
+              : "Create your account to start custom periodized coaching."}
           </p>
         </div>
 
@@ -78,7 +86,9 @@ export default function RegisterPage() {
 
         <form onSubmit={handleRegister} className="space-y-4">
           <div>
-            <label className="text-xs font-mono text-mad-gray uppercase block mb-1">Full Name</label>
+            <label className="text-xs font-mono text-mad-gray uppercase block mb-1">
+              {lang === "id" ? "Nama Lengkap" : "Full Name"}
+            </label>
             <div className="relative">
               <User className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-mad-gray" />
               <input
@@ -93,7 +103,9 @@ export default function RegisterPage() {
           </div>
 
           <div>
-            <label className="text-xs font-mono text-mad-gray uppercase block mb-1">Email Address</label>
+            <label className="text-xs font-mono text-mad-gray uppercase block mb-1">
+              {lang === "id" ? "Alamat Email" : "Email Address"}
+            </label>
             <div className="relative">
               <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-mad-gray" />
               <input
@@ -108,7 +120,9 @@ export default function RegisterPage() {
           </div>
 
           <div>
-            <label className="text-xs font-mono text-mad-gray uppercase block mb-1">Password</label>
+            <label className="text-xs font-mono text-mad-gray uppercase block mb-1">
+              {lang === "id" ? "Kata Sandi" : "Password"}
+            </label>
             <div className="relative">
               <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-mad-gray" />
               <input
@@ -124,16 +138,18 @@ export default function RegisterPage() {
           </div>
 
           <div>
-            <label className="text-xs font-mono text-mad-gray uppercase block mb-1">Primary Fitness Goal</label>
+            <label className="text-xs font-mono text-mad-gray uppercase block mb-1">
+              {lang === "id" ? "Target Utama Fitnes" : "Primary Fitness Goal"}
+            </label>
             <select
               value={goal}
               onChange={(e) => setGoal(e.target.value)}
               className="w-full bg-mad-bg border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-mad-lime font-mono"
             >
-              <option value="Fat Loss">Fat Loss Masterclass</option>
-              <option value="Muscle Building">Hypertrophy Muscle Build</option>
-              <option value="Body Recomposition">Body Recomposition</option>
-              <option value="Strength">Max Strength & Power</option>
+              <option value="Fat Loss">{lang === "id" ? "Fat Loss (Bakar Lemak)" : "Fat Loss Masterclass"}</option>
+              <option value="Muscle Building">{lang === "id" ? "Hipertrofi & Otot" : "Hypertrophy Muscle Build"}</option>
+              <option value="Body Recomposition">{lang === "id" ? "Rekomposisi Tubuh" : "Body Recomposition"}</option>
+              <option value="Strength">{lang === "id" ? "Kekuatan Puncak" : "Max Strength & Power"}</option>
             </select>
           </div>
 
@@ -142,15 +158,19 @@ export default function RegisterPage() {
             disabled={loading}
             className="w-full py-4 rounded-xl bg-mad-lime text-mad-bg font-extrabold text-sm uppercase tracking-wider hover:bg-mad-lime-hover transition-all flex items-center justify-center gap-2 shadow-lg shadow-mad-lime/20"
           >
-            <span>{loading ? "CREATING ACCOUNT..." : "CREATE ATHLETE ACCOUNT"}</span>
+            <span>
+              {loading
+                ? (lang === "id" ? "MEMBUAT AKUN..." : "CREATING ACCOUNT...")
+                : (lang === "id" ? "BUAT AKUN ATLET" : "CREATE ATHLETE ACCOUNT")}
+            </span>
             <ArrowRight className="w-4 h-4" />
           </button>
         </form>
 
         <p className="text-center text-xs text-mad-gray pt-2">
-          Already have an account?{" "}
+          {lang === "id" ? "Sudah memiliki akun?" : "Already have an account?"}{" "}
           <Link href="/login" className="text-mad-lime font-bold hover:underline">
-            Log In
+            {lang === "id" ? "Masuk Disini" : "Log In"}
           </Link>
         </p>
       </div>

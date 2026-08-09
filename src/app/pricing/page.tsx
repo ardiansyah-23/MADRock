@@ -2,11 +2,13 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Check, Zap, Sparkles, ArrowRight, ShieldCheck, HelpCircle, ChevronDown } from "lucide-react";
+import { Check, ArrowRight, ShieldCheck, ChevronDown } from "lucide-react";
 import { SectionHeader } from "@/components/common/SectionHeader";
 import { ScrollReveal } from "@/components/common/ScrollReveal";
+import { useLanguage } from "@/components/common/LanguageProvider";
 
 export default function PricingPage() {
+  const { lang, t } = useLanguage();
   const [billingCycle, setBillingCycle] = useState<"monthly" | "yearly">("monthly");
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
@@ -19,70 +21,91 @@ export default function PricingPage() {
       name: "Starter Protocol",
       priceMonthly: 79,
       priceYearly: 65,
-      description: "Essential science-backed training & nutrition tools for self-directed athletes.",
+      description:
+        lang === "id"
+          ? "Alat ukur nutrisi & latihan berbasis sains esensial untuk atlet mandiiri."
+          : "Essential science-backed training & nutrition tools for self-directed athletes.",
       features: [
-        "Full Access to Workout Library (100+ exercises)",
-        "Structured 12-Week Training Program",
-        "Macro & Calorie Calculator Dashboard",
-        "AI Workout & Meal Generator (10/mo)",
-        "Community Discord Access",
+        lang === "id" ? "Akses Penuh Perpustakaan Latihan (100+ gerakan)" : "Full Access to Workout Library (100+ exercises)",
+        lang === "id" ? "Program Latihan Periodisasi 12-Minggu" : "Structured 12-Week Training Program",
+        lang === "id" ? "Dashboard Kalkulator Makro & Kalori" : "Macro & Calorie Calculator Dashboard",
+        lang === "id" ? "Generator Latihan & Makan AI (10/bln)" : "AI Workout & Meal Generator (10/mo)",
+        lang === "id" ? "Akses Komunitas Atlet Discord" : "Community Discord Access",
       ],
-      cta: "SELECT STARTER",
+      cta: lang === "id" ? "PILIH STARTER" : "SELECT STARTER",
       highlighted: false,
     },
     {
       name: "Professional 1-on-1",
       priceMonthly: 199,
       priceYearly: 169,
-      description: "Our flagship VIP 1-on-1 coaching program with direct coach accountability.",
-      badge: "MOST POPULAR: TOP RESULTS",
+      description:
+        lang === "id"
+          ? "Program kepelatihan VIP 1-on-1 andalan kami dengan bimbingan & evaluasi langsung pelatih kepala."
+          : "Our flagship VIP 1-on-1 coaching program with direct coach accountability.",
+      badge: lang === "id" ? "TERPOPULER: HASIL MAKSIMAL" : "MOST POPULAR: TOP RESULTS",
       features: [
-        "EVERYTHING IN STARTER",
-        "Dedicated Head Coach Ahmad Hudzaifah",
-        "100% Custom Periodized Program",
-        "Custom Weekly Macro & Meal Plan",
-        "Weekly Video Form Analysis & Call",
-        "Unlimited AI Coach Chat Access",
-        "Visual Photo Progress Tracker",
-        "Direct WhatsApp / In-App Messaging",
+        lang === "id" ? "SEMUA FITUR DI PAKET STARTER" : "EVERYTHING IN STARTER",
+        lang === "id" ? "Pelatih Kepala Dedicated Ahmad Hudzaifah" : "Dedicated Head Coach Ahmad Hudzaifah",
+        lang === "id" ? "100% Program Periodisasi Kustom" : "100% Custom Periodized Program",
+        lang === "id" ? "Rencana Makan & Makro Mingguan Kustom" : "Custom Weekly Macro & Meal Plan",
+        lang === "id" ? "Analisis Form Video & Panggilan Mingguan" : "Weekly Video Form Analysis & Call",
+        lang === "id" ? "Akses Chat AI Coach Tanpa Batas" : "Unlimited AI Coach Chat Access",
+        lang === "id" ? "Tracker Progres Foto Visual" : "Visual Photo Progress Tracker",
+        lang === "id" ? "Pesan Langsung WhatsApp / Dalam Aplikasi" : "Direct WhatsApp / In-App Messaging",
       ],
-      cta: "START 1-ON-1 COACHING",
+      cta: lang === "id" ? "MULAI KEPEALTIHAN 1-ON-1" : "START 1-ON-1 COACHING",
       highlighted: true,
     },
     {
       name: "Elite Performance",
       priceMonthly: 349,
       priceYearly: 299,
-      description: "Complete concierge coaching including bloodwork analysis & competition prep.",
+      description:
+        lang === "id"
+          ? "Kepelatihan privat komprehensif termasuk analisis laboratorium darah & optimasi biofeedback."
+          : "Complete concierge coaching including bloodwork analysis & competition prep.",
       features: [
-        "EVERYTHING IN PROFESSIONAL",
-        "Bi-Weekly 1-on-1 Zoom Coaching Sessions",
-        "Bloodwork & Biofeedback Optimization",
-        "Supplement & Recovery Protocols",
-        "Priority 24/7 VIP Communication",
-        "Free MADRock Merchandise & Gear",
+        lang === "id" ? "SEMUA FITUR DI PAKET PROFESSIONAL" : "EVERYTHING IN PROFESSIONAL",
+        lang === "id" ? "Sesi Panggilan Zoom 1-on-1 Dwi-Mingguan" : "Bi-Weekly 1-on-1 Zoom Coaching Sessions",
+        lang === "id" ? "Optimasi Analisis Darah & Biofeedback" : "Bloodwork & Biofeedback Optimization",
+        lang === "id" ? "Protokol Suplemen & Pemulihan Fisik" : "Supplement & Recovery Protocols",
+        lang === "id" ? "Komunikasi VIP Prioritas 24/7" : "Priority 24/7 VIP Communication",
+        lang === "id" ? "Merchandise & Merchandise MADRock Gratis" : "Free MADRock Merchandise & Gear",
       ],
-      cta: "APPLY FOR ELITE",
+      cta: lang === "id" ? "DAFTAR PAKET ELITE" : "APPLY FOR ELITE",
       highlighted: false,
     },
   ];
 
   const faqs = [
     {
-      q: "Is there a long-term contract or cancellation fee?",
-      a: "No! All MADRock plans are month-to-month. You can pause or cancel your subscription anytime with one click from your athlete dashboard.",
+      q: lang === "id" ? "Apakah ada kontrak jangka panjang atau biaya pembatalan?" : "Is there a long-term contract or cancellation fee?",
+      a:
+        lang === "id"
+          ? "Tidak ada! Semua paket MADRock berlaku bulan-ke-bulan. Anda dapat mejedakan atau membatalkan langganan kapan saja dengan satu klik dari dashboard atlet Anda."
+          : "No! All MADRock plans are month-to-month. You can pause or cancel your subscription anytime with one click from your athlete dashboard.",
     },
     {
-      q: "How does the 1-on-1 coaching check-in work?",
-      a: "Every week, you submit your lift video recordings and body weight log. Coach Ahmad Hudzaifah personally reviews your form biomechanics and adjusts your reps/macros accordingly.",
+      q: lang === "id" ? "Bagaimana cara kerja evaluasi mingguan kepelatihan 1-on-1?" : "How does the 1-on-1 coaching check-in work?",
+      a:
+        lang === "id"
+          ? "Setiap minggu, Anda mengirimkan rekaman video angkatan dan catatan berat badan. Coach Ahmad Hudzaifah secara pribadi mengevaluasi biomekanika gerakan Anda dan menyesuaikan beban/makro secara presisi."
+          : "Every week, you submit your lift video recordings and body weight log. Coach Ahmad Hudzaifah personally reviews your form biomechanics and adjusts your reps/macros accordingly.",
     },
     {
-      q: "What if I am a beginner with no gym experience?",
-      a: "Our programs cater to all levels from absolute beginner (0-1 yrs) to competitive strength athletes. Your custom plan starts at your current fitness baseline.",
+      q: lang === "id" ? "Bagaimana jika saya seorang pemula tanpa pengalaman gym?" : "What if I am a beginner with no gym experience?",
+      a:
+        lang === "id"
+          ? "Program kami melayani seluruh tingkat pengalaman dari pemula total (0-1 tahun) hingga atlet kekuatan berpengalaman. Program kustom Anda dimulai dari garis dasar fitnes Anda saat ini."
+          : "Our programs cater to all levels from absolute beginner (0-1 yrs) to competitive strength athletes. Your custom plan starts at your current fitness baseline.",
     },
     {
-      q: "Can I switch coaches or plans later?",
-      a: "Yes! You can upgrade, downgrade, or request a plan transition anytime directly inside your member dashboard.",
+      q: lang === "id" ? "Bisakah saya mengganti paket atau pelatih nanti?" : "Can I switch coaches or plans later?",
+      a:
+        lang === "id"
+          ? "Ya! Anda dapat melakukan upgrade, downgrade, atau meminta transisi paket kapan saja langsung di dalam dashboard member Anda."
+          : "Yes! You can upgrade, downgrade, or request a plan transition anytime directly inside your member dashboard.",
     },
   ];
 
@@ -90,9 +113,9 @@ export default function PricingPage() {
     <main className="pt-32 pb-24 bg-mad-bg text-white min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         <SectionHeader
-          badge="INVEST IN YOUR PEAK PHYSIQUE"
-          title="TRANSPARENT MEMBERSHIP PLANS"
-          subtitle="No contracts. Cancel anytime. Choose the level of science-based guidance you need to reach your goals."
+          badge={t("price_header_badge")}
+          title={t("price_header_title")}
+          subtitle={t("price_header_subtitle")}
         />
 
         {/* Billing Toggle */}
@@ -106,7 +129,7 @@ export default function PricingPage() {
                   : "text-mad-gray hover:text-white"
               }`}
             >
-              Monthly Billing
+              {t("price_monthly")}
             </button>
             <button
               onClick={() => setBillingCycle("yearly")}
@@ -116,8 +139,7 @@ export default function PricingPage() {
                   : "text-mad-gray hover:text-white"
               }`}
             >
-              <span>Yearly (Save 20%)</span>
-              <span className="px-2 py-0.5 rounded-full bg-white/20 text-[10px]">20% OFF</span>
+              <span>{t("price_yearly")}</span>
             </button>
           </div>
         </div>
@@ -156,14 +178,16 @@ export default function PricingPage() {
                       <span className="text-5xl font-black font-spartan text-white">
                         ${price}
                       </span>
-                      <span className="text-xs font-mono text-mad-gray uppercase">/ month</span>
+                      <span className="text-xs font-mono text-mad-gray uppercase">
+                        {lang === "id" ? "/ bulan" : "/ month"}
+                      </span>
                     </div>
 
                     <ul className="space-y-3.5 text-xs text-mad-gray">
                       {plan.features.map((feature, fIdx) => (
                         <li key={fIdx} className="flex items-start gap-3">
                           <Check className="w-4 h-4 text-mad-lime shrink-0 mt-0.5" />
-                          <span className={feature.startsWith("EVERYTHING") ? "font-bold text-white uppercase" : ""}>
+                          <span className={feature.startsWith("EVERYTHING") || feature.startsWith("SEMUA") ? "font-bold text-white uppercase" : ""}>
                             {feature}
                           </span>
                         </li>
@@ -197,8 +221,8 @@ export default function PricingPage() {
               <ShieldCheck className="w-6 h-6" />
             </div>
             <div>
-              <h4 className="text-lg font-bold font-spartan text-white uppercase">14-DAY MONEY-BACK GUARANTEE</h4>
-              <p className="text-xs text-mad-gray">If you don't feel completely satisfied with your personalized protocol in the first 14 days, get a 100% full refund.</p>
+              <h4 className="text-lg font-bold font-spartan text-white uppercase">{t("price_guarantee_title")}</h4>
+              <p className="text-xs text-mad-gray">{t("price_guarantee_desc")}</p>
             </div>
           </div>
 
@@ -206,15 +230,21 @@ export default function PricingPage() {
             href="/booking"
             className="px-6 py-3 rounded-xl bg-mad-lime text-mad-bg font-extrabold text-xs uppercase whitespace-nowrap shadow-lg"
           >
-            GET STARTED RISK-FREE
+            {lang === "id" ? "MULAI TANPA RISIKO" : "GET STARTED RISK-FREE"}
           </Link>
         </div>
 
         {/* FAQ Section */}
         <div className="max-w-3xl mx-auto space-y-6 pt-8">
           <div className="text-center space-y-2">
-            <h3 className="text-2xl font-black font-spartan uppercase text-white">FREQUENTLY ASKED QUESTIONS</h3>
-            <p className="text-xs text-mad-gray">Have questions about our pricing or coaching options?</p>
+            <h3 className="text-2xl font-black font-spartan uppercase text-white">
+              {lang === "id" ? "PERTANYAAN SERING DIAJUKAN (FAQ)" : "FREQUENTLY ASKED QUESTIONS"}
+            </h3>
+            <p className="text-xs text-mad-gray">
+              {lang === "id"
+                ? "Punya pertanyaan seputar harga atau opsi kepelatihan kami?"
+                : "Have questions about our pricing or coaching options?"}
+            </p>
           </div>
 
           <div className="space-y-3">

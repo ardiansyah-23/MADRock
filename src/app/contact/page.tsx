@@ -2,10 +2,11 @@
 
 import { useState } from "react";
 import { SectionHeader } from "@/components/common/SectionHeader";
-import { ScrollReveal } from "@/components/common/ScrollReveal";
 import { Mail, Phone, MapPin, Send, CheckCircle } from "lucide-react";
+import { useLanguage } from "@/components/common/LanguageProvider";
 
 export default function ContactPage() {
+  const { lang, t } = useLanguage();
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -17,9 +18,13 @@ export default function ContactPage() {
     <main className="pt-32 pb-24 bg-mad-bg text-white min-h-screen">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
-          badge="GET IN TOUCH"
-          title="CONTACT MADROCK HEADQUARTERS"
-          subtitle="Have questions about our coaching packages, custom enterprise programs, or partnerships? Reach out below."
+          badge={lang === "id" ? "HUBUNGI KAMI" : "GET IN TOUCH"}
+          title={lang === "id" ? "KONTAK MARKAS MADROCK" : "CONTACT MADROCK HEADQUARTERS"}
+          subtitle={
+            lang === "id"
+              ? "Punya pertanyaan seputar paket kepelatihan, program perusahaan, atau kemitraan? Hubungi kami di bawah."
+              : "Have questions about our coaching packages, custom enterprise programs, or partnerships? Reach out below."
+          }
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
@@ -27,7 +32,7 @@ export default function ContactPage() {
           <div className="lg:col-span-5 space-y-6">
             <div className="p-8 rounded-3xl bg-mad-surface border border-white/10 space-y-6">
               <h3 className="text-xl font-bold font-spartan text-white uppercase border-b border-white/10 pb-3">
-                DIRECT HEADQUARTERS
+                {lang === "id" ? "KANTOR PUSAT" : "DIRECT HEADQUARTERS"}
               </h3>
 
               <div className="space-y-4 text-xs font-mono text-mad-gray">
@@ -63,12 +68,14 @@ export default function ContactPage() {
             {!submitted ? (
               <form onSubmit={handleSubmit} className="space-y-4">
                 <h3 className="text-xl font-bold font-spartan text-white uppercase border-b border-white/10 pb-3">
-                  SEND US A MESSAGE
+                  {lang === "id" ? "KIRIM PESAN KEPADA KAMI" : "SEND US A MESSAGE"}
                 </h3>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="text-xs font-mono text-mad-gray uppercase block mb-1">Your Name</label>
+                    <label className="text-xs font-mono text-mad-gray uppercase block mb-1">
+                      {lang === "id" ? "Nama Anda" : "Your Name"}
+                    </label>
                     <input
                       type="text"
                       required
@@ -78,7 +85,9 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <label className="text-xs font-mono text-mad-gray uppercase block mb-1">Email Address</label>
+                    <label className="text-xs font-mono text-mad-gray uppercase block mb-1">
+                      {lang === "id" ? "Alamat Email" : "Email Address"}
+                    </label>
                     <input
                       type="email"
                       required
@@ -89,21 +98,29 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <label className="text-xs font-mono text-mad-gray uppercase block mb-1">Subject</label>
+                  <label className="text-xs font-mono text-mad-gray uppercase block mb-1">
+                    {lang === "id" ? "Subjek Pesan" : "Subject"}
+                  </label>
                   <input
                     type="text"
                     required
-                    placeholder="1-on-1 VIP Coaching Inquiry"
+                    placeholder={lang === "id" ? "Pertanyaan Kepelatihan 1-on-1 VIP" : "1-on-1 VIP Coaching Inquiry"}
                     className="w-full bg-mad-bg border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-mad-lime font-mono"
                   />
                 </div>
 
                 <div>
-                  <label className="text-xs font-mono text-mad-gray uppercase block mb-1">Message</label>
+                  <label className="text-xs font-mono text-mad-gray uppercase block mb-1">
+                    {lang === "id" ? "Isi Pesan" : "Message"}
+                  </label>
                   <textarea
                     rows={4}
                     required
-                    placeholder="Tell us about your fitness goals and any questions..."
+                    placeholder={
+                      lang === "id"
+                        ? "Tuliskan target fitnes Anda dan pertanyaan yang ingin diajukan..."
+                        : "Tell us about your fitness goals and any questions..."
+                    }
                     className="w-full bg-mad-bg border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-mad-lime font-mono"
                   />
                 </div>
@@ -113,7 +130,7 @@ export default function ContactPage() {
                   className="w-full py-4 rounded-xl bg-mad-lime text-mad-bg font-extrabold text-sm uppercase tracking-wider hover:bg-mad-lime-hover shadow-lg transition-all flex items-center justify-center gap-2"
                 >
                   <Send className="w-4 h-4" />
-                  <span>SEND MESSAGE NOW</span>
+                  <span>{lang === "id" ? "KIRIM PESAN SEKARANG" : "SEND MESSAGE NOW"}</span>
                 </button>
               </form>
             ) : (
@@ -122,10 +139,12 @@ export default function ContactPage() {
                   <CheckCircle className="w-8 h-8" />
                 </div>
                 <h3 className="text-2xl font-bold font-spartan text-white uppercase">
-                  MESSAGE RECEIVED!
+                  {lang === "id" ? "PESAN TERKIRIM!" : "MESSAGE RECEIVED!"}
                 </h3>
                 <p className="text-xs text-mad-gray max-w-sm mx-auto">
-                  Our head coach team will review your inquiry and get back to you within 24 business hours.
+                  {lang === "id"
+                    ? "Tim pelatih kami akan meninjau pertanyaan Anda dan membalas dalam waktu 24 jam kerja."
+                    : "Our head coach team will review your inquiry and get back to you within 24 business hours."}
                 </p>
               </div>
             )}

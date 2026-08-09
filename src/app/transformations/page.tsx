@@ -4,37 +4,49 @@ import Image from "next/image";
 import Link from "next/link";
 import { SectionHeader } from "@/components/common/SectionHeader";
 import { ScrollReveal } from "@/components/common/ScrollReveal";
-import { Quote, Trophy, ArrowRight, CheckCircle } from "lucide-react";
+import { Quote, Trophy, ArrowRight } from "lucide-react";
+import { useLanguage } from "@/components/common/LanguageProvider";
 
 export default function TransformationsPage() {
+  const { lang, t } = useLanguage();
+
   const transformations = [
     {
       name: "Alex Rivera",
       age: 32,
-      duration: "16 Weeks",
-      lost: "28 lbs Fat",
-      gained: "+6 lbs Muscle",
-      story: "I tried generic gym apps for 3 years with zero progress. MADRock's custom macro breakdown and heavy compound structure transformed my body completely.",
+      duration: lang === "id" ? "16 Minggu" : "16 Weeks",
+      lost: lang === "id" ? "-12.5 kg Lemak" : "28 lbs Fat",
+      gained: lang === "id" ? "+2.7 kg Otot" : "+6 lbs Muscle",
+      story:
+        lang === "id"
+          ? "Saya mencoba aplikasi gym generik selama 3 tahun tanpa progres. Perhitungan makro kustom dan struktur angkatan compound MADRock mengubah fisik saya secara total."
+          : "I tried generic gym apps for 3 years with zero progress. MADRock's custom macro breakdown and heavy compound structure transformed my body completely.",
       beforeImg: "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?q=80&w=600&auto=format&fit=crop",
       afterImg: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=600&auto=format&fit=crop",
     },
     {
       name: "Marcus Vance",
       age: 28,
-      duration: "12 Weeks",
-      lost: "18 lbs Fat",
-      gained: "+8 lbs Muscle",
-      story: "Coach Marcus fixed my shoulder impingement, dialed in my cutting macros, and helped me hit a 405lb squat while staying under 10% body fat.",
+      duration: lang === "id" ? "12 Minggu" : "12 Weeks",
+      lost: lang === "id" ? "-8 kg Lemak" : "18 lbs Fat",
+      gained: lang === "id" ? "+3.6 kg Otot" : "+8 lbs Muscle",
+      story:
+        lang === "id"
+          ? "Coach Ahmad membenahi cidera bahu saya, mengatur makro defisit, dan membantu saya mencetak rekor Squat 180kg dengan kadar lemak di bawah 10%."
+          : "Coach Ahmad fixed my shoulder impingement, dialed in my cutting macros, and helped me hit a 405lb squat while staying under 10% body fat.",
       beforeImg: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=600&auto=format&fit=crop",
       afterImg: "https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=600&auto=format&fit=crop",
     },
     {
       name: "Daniel Kim",
       age: 35,
-      duration: "24 Weeks",
-      lost: "42 lbs Fat",
-      gained: "+12 lbs Muscle",
-      story: "As a tech lead working 60 hours a week, I thought I didn't have time. The 45-minute optimized workouts fit my calendar effortlessly.",
+      duration: lang === "id" ? "24 Minggu" : "24 Weeks",
+      lost: lang === "id" ? "-19 kg Lemak" : "42 lbs Fat",
+      gained: lang === "id" ? "+5.4 kg Otot" : "+12 lbs Muscle",
+      story:
+        lang === "id"
+          ? "Sebagai lead engineer yang bekerja 60 jam seminggu, saya pikir saya tidak punya waktu. Latihan terstruktur 45 menit masuk ke jadwal saya dengan sangat pas."
+          : "As a tech lead working 60 hours a week, I thought I didn't have time. The 45-minute optimized workouts fit my calendar effortlessly.",
       beforeImg: "https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?q=80&w=600&auto=format&fit=crop",
       afterImg: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=600&auto=format&fit=crop",
     },
@@ -44,9 +56,9 @@ export default function TransformationsPage() {
     <main className="pt-32 pb-24 bg-mad-bg text-white min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
-          badge="PROVEN RESULTS"
-          title="CLIENT TRANSFORMATIONS"
-          subtitle="Real before and after results achieved by athletes following our periodized coaching protocols."
+          badge={t("trans_header_badge")}
+          title={t("trans_header_title")}
+          subtitle={t("trans_header_subtitle")}
         />
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
@@ -63,7 +75,7 @@ export default function TransformationsPage() {
                       className="object-cover"
                     />
                     <div className="absolute top-2 left-2 px-2.5 py-1 rounded-md bg-mad-bg/80 text-[10px] font-mono text-mad-gray uppercase font-bold">
-                      BEFORE
+                      {lang === "id" ? "SEBELUM" : "BEFORE"}
                     </div>
                   </div>
 
@@ -75,7 +87,7 @@ export default function TransformationsPage() {
                       className="object-cover"
                     />
                     <div className="absolute top-2 left-2 px-2.5 py-1 rounded-md bg-mad-lime text-mad-bg text-[10px] font-mono uppercase font-black">
-                      AFTER
+                      {lang === "id" ? "SESUDAH" : "AFTER"}
                     </div>
                   </div>
                 </div>
@@ -83,11 +95,15 @@ export default function TransformationsPage() {
                 {/* Stats Pill */}
                 <div className="grid grid-cols-2 gap-2 text-center">
                   <div className="p-3 rounded-xl bg-mad-bg border border-white/5">
-                    <span className="text-[10px] font-mono text-mad-lime uppercase block">Fat Loss</span>
+                    <span className="text-[10px] font-mono text-mad-lime uppercase block">
+                      {lang === "id" ? "Penurunan Lemak" : "Fat Loss"}
+                    </span>
                     <span className="text-white font-extrabold text-sm font-spartan">{item.lost}</span>
                   </div>
                   <div className="p-3 rounded-xl bg-mad-bg border border-white/5">
-                    <span className="text-[10px] font-mono text-mad-lime uppercase block">Muscle Gain</span>
+                    <span className="text-[10px] font-mono text-mad-lime uppercase block">
+                      {lang === "id" ? "Pertumbuhan Otot" : "Muscle Gain"}
+                    </span>
                     <span className="text-white font-extrabold text-sm font-spartan">{item.gained}</span>
                   </div>
                 </div>
@@ -104,10 +120,10 @@ export default function TransformationsPage() {
                 <div className="pt-4 border-t border-white/10 flex items-center justify-between">
                   <div>
                     <h4 className="text-white font-bold text-base font-spartan uppercase">
-                      {item.name}, {item.age}
+                      {item.name}, {item.age} {lang === "id" ? "Tahun" : "Yrs"}
                     </h4>
                     <span className="text-[11px] text-mad-gray font-mono">
-                      Program Duration: {item.duration}
+                      {lang === "id" ? "Durasi Program:" : "Program Duration:"} {item.duration}
                     </span>
                   </div>
                   <div className="w-8 h-8 rounded-full bg-mad-lime/10 border border-mad-lime/30 flex items-center justify-center text-mad-lime">
@@ -122,16 +138,18 @@ export default function TransformationsPage() {
         {/* CTA Box */}
         <div className="p-10 rounded-3xl bg-mad-surface border border-mad-lime/30 text-center space-y-6 max-w-3xl mx-auto">
           <h3 className="text-3xl font-black font-spartan uppercase text-white">
-            READY TO BE OUR NEXT SUCCESS STORY?
+            {lang === "id" ? "SIAP MENJADI KISAH SUKSES BERIKUTNYA?" : "READY TO BE OUR NEXT SUCCESS STORY?"}
           </h3>
           <p className="text-sm text-mad-gray max-w-lg mx-auto">
-            Book your consultation now and get your custom periodized program built by Head Coach Marcus.
+            {lang === "id"
+              ? "Jadwalkan konsultasi Anda sekarang dan dapatkan program periodisasi kustom dari Head Coach Ahmad."
+              : "Book your consultation now and get your custom periodized program built by Head Coach Ahmad."}
           </p>
           <Link
             href="/booking"
             className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-mad-lime text-mad-bg font-extrabold text-sm uppercase tracking-wider hover:bg-mad-lime-hover shadow-xl shadow-mad-lime/20"
           >
-            <span>START YOUR TRANSFORMATION</span>
+            <span>{lang === "id" ? "MULAI TRANSFORMASI ANDA" : "START YOUR TRANSFORMATION"}</span>
             <ArrowRight className="w-4 h-4" />
           </Link>
         </div>

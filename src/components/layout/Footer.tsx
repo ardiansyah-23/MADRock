@@ -1,9 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { Dumbbell, Instagram, Youtube, Twitter, Facebook, Mail, Phone, MapPin, ArrowRight } from "lucide-react";
+import { Dumbbell, Instagram, Youtube, Twitter, Facebook, ArrowRight } from "lucide-react";
+import { useLanguage } from "@/components/common/LanguageProvider";
 
 export function Footer() {
+  const { lang, t } = useLanguage();
+
   return (
     <footer className="bg-[#CBD5E1] border-t border-slate-400 pt-16 pb-12 text-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -19,7 +22,9 @@ export function Footer() {
               </span>
             </Link>
             <p className="text-sm text-slate-700 max-w-sm leading-relaxed">
-              Science-based premium coaching designed to help you build muscle, burn fat, master performance, and become your best version.
+              {lang === "id"
+                ? "Program kepelatihan beban berbasis sains biomekanika olahraga untuk membentuk otot, membakar lemak tubuh, dan membangun kekuatan fisik tanpa cedera."
+                : "Science-based premium coaching designed to help you build muscle, burn fat, master performance, and become your best version."}
             </p>
             <div className="flex items-center gap-3">
               {[
@@ -39,47 +44,35 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div className="space-y-4">
-            <h4 className="text-slate-900 font-bold text-sm tracking-wider uppercase font-spartan">
-              Programs
-            </h4>
-            <ul className="space-y-2.5 text-sm">
-              <li><Link href="/programs#fat-loss" className="hover:text-mad-lime transition-colors">Fat Loss Masterclass</Link></li>
-              <li><Link href="/programs#hypertrophy" className="hover:text-mad-lime transition-colors">Muscle Building</Link></li>
-              <li><Link href="/programs#recomp" className="hover:text-mad-lime transition-colors">Body Recomposition</Link></li>
-              <li><Link href="/programs#strength" className="hover:text-mad-lime transition-colors">Strength Training</Link></li>
-              <li><Link href="/programs#online" className="hover:text-mad-lime transition-colors">1-on-1 Coaching</Link></li>
-            </ul>
-          </div>
-
           {/* Tools & Resources */}
           <div className="space-y-4">
             <h4 className="text-slate-900 font-bold text-sm tracking-wider uppercase font-spartan">
-              Resources & Tools
+              {lang === "id" ? "FITUR & ALAT UKUR" : "RESOURCES & TOOLS"}
             </h4>
             <ul className="space-y-2.5 text-sm">
-              <li><Link href="/workout-library" className="hover:text-mad-lime transition-colors">Workout Library</Link></li>
-              <li><Link href="/meal-planner" className="hover:text-mad-lime transition-colors">AI Meal Planner</Link></li>
-              <li><Link href="/tools" className="hover:text-mad-lime transition-colors">TDEE & Macro Calculator</Link></li>
-              <li><Link href="/blog" className="hover:text-mad-lime transition-colors">Fitness Science Blog</Link></li>
-              <li><Link href="/transformations" className="hover:text-mad-lime transition-colors">Client Transformations</Link></li>
+              <li><Link href="/workout-library" className="hover:text-mad-lime transition-colors">{lang === "id" ? "Perpustakaan Latihan" : "Workout Library"}</Link></li>
+              <li><Link href="/meal-planner" className="hover:text-mad-lime transition-colors">{lang === "id" ? "AI Meal Planner Nutrisi" : "AI Meal Planner"}</Link></li>
+              <li><Link href="/tools" className="hover:text-mad-lime transition-colors">{lang === "id" ? "9 Kalkulator Fitnes Sains" : "TDEE & Macro Calculator"}</Link></li>
+              <li><Link href="/blog" className="hover:text-mad-lime transition-colors">{lang === "id" ? "Jurnal & Artikel Fitnes" : "Fitness Science Blog"}</Link></li>
+              <li><Link href="/transformations" className="hover:text-mad-lime transition-colors">{lang === "id" ? "Transformasi Atlet" : "Client Transformations"}</Link></li>
             </ul>
           </div>
 
           {/* Contact / Newsletter */}
           <div className="space-y-4">
             <h4 className="text-slate-900 font-bold text-sm tracking-wider uppercase font-spartan">
-              Stay Connected
+              {lang === "id" ? "DAPATKAN PROTOKOL" : "STAY CONNECTED"}
             </h4>
             <p className="text-xs text-slate-700">
-              Subscribe to get exclusive workout protocols and nutrition advice directly to your inbox.
+              {lang === "id"
+                ? "Dapatkan tips nutrisi dan protokol latihan eksklusif langsung di email Anda."
+                : "Subscribe to get exclusive workout protocols and nutrition advice directly to your inbox."}
             </p>
             <form onSubmit={(e) => e.preventDefault()} className="space-y-2">
               <div className="relative">
                 <input
                   type="email"
-                  placeholder="Enter your email"
+                  placeholder={lang === "id" ? "Masukkan email Anda..." : "Enter your email..."}
                   className="w-full bg-white border border-slate-300 rounded-xl px-4 py-2.5 text-xs text-slate-900 placeholder-slate-500 focus:outline-none focus:border-mad-lime shadow-sm"
                 />
                 <button
@@ -95,10 +88,10 @@ export function Footer() {
 
         {/* Bottom copyright */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-600 gap-4">
-          <p>© {new Date().getFullYear()} MADRock Fitness Coaching. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} MADRock Fitness Coaching. {t("footer_rights")}</p>
           <div className="flex items-center gap-6">
-            <Link href="/privacy" className="hover:text-slate-900 transition-colors">Privacy Policy</Link>
-            <Link href="/terms" className="hover:text-slate-900 transition-colors">Terms of Service</Link>
+            <Link href="/privacy" className="hover:text-slate-900 transition-colors">{lang === "id" ? "Kebijakan Privasi" : "Privacy Policy"}</Link>
+            <Link href="/terms" className="hover:text-slate-900 transition-colors">{lang === "id" ? "Syarat & Ketentuan" : "Terms of Service"}</Link>
             <Link href="/faq" className="hover:text-slate-900 transition-colors">FAQ</Link>
           </div>
         </div>

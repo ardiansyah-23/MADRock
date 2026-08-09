@@ -4,9 +4,11 @@ import { useState } from "react";
 import Image from "next/image";
 import { SectionHeader } from "@/components/common/SectionHeader";
 import { ScrollReveal } from "@/components/common/ScrollReveal";
-import { Utensils, Flame, Clock, Check, ChevronRight, Sparkles } from "lucide-react";
+import { Clock } from "lucide-react";
+import { useLanguage } from "@/components/common/LanguageProvider";
 
 export default function MealPlannerPage() {
+  const { lang, t } = useLanguage();
   const [selectedGoal, setSelectedGoal] = useState("All");
 
   const categories = [
@@ -16,92 +18,71 @@ export default function MealPlannerPage() {
   const meals = [
     {
       id: "grilled-salmon-asparagus",
-      title: "Wild Salmon & Garlic Asparagus",
+      title: lang === "id" ? "Salmon Liar & Asparagus Bawang Putih" : "Wild Salmon & Garlic Asparagus",
       category: "High Protein",
       calories: 580,
       protein: "48g",
       carbs: "22g",
       fat: "24g",
-      prepTime: "20 Mins",
+      prepTime: lang === "id" ? "20 Menit" : "20 Mins",
       image: "https://images.unsplash.com/photo-1467003909585-2f8a72700288?q=80&w=800&auto=format&fit=crop",
       ingredients: [
-        "200g Wild Alaskan Salmon Fillet",
-        "150g Fresh Asparagus Spears",
-        "1 tbsp Extra Virgin Olive Oil",
-        "1 Lemon (Juiced & Zested)",
-        "Garlic Powder, Sea Salt, Cracked Black Pepper",
-      ],
-      steps: [
-        "Season salmon fillet with sea salt, pepper, and garlic powder.",
-        "Heat olive oil in a skillet over medium-high heat.",
-        "Pan-sear salmon skin-side down for 4 minutes, flip and cook 3 minutes.",
-        "Sauté asparagus in same pan for 5 minutes with lemon juice.",
+        lang === "id" ? "200g Fillet Salmon Liar Alaska" : "200g Wild Alaskan Salmon Fillet",
+        lang === "id" ? "150g Batang Asparagus Segar" : "150g Fresh Asparagus Spears",
+        lang === "id" ? "1 sdm Minyak Zaitun Extra Virgin" : "1 tbsp Extra Virgin Olive Oil",
+        lang === "id" ? "1 Jeruk Lemon (Perasan & Parutan)" : "1 Lemon (Juiced & Zested)",
+        lang === "id" ? "Bubuk Bawang Putih, Garam Laut, Lada Hitam" : "Garlic Powder, Sea Salt, Cracked Black Pepper",
       ],
     },
     {
       id: "steak-sweet-potato",
-      title: "Grass-Fed Sirloin & Sweet Potato Mash",
+      title: lang === "id" ? "Sirloin Grass-Fed & Tumbukan Ubi Manis" : "Grass-Fed Sirloin & Sweet Potato Mash",
       category: "Bulking Surplus",
       calories: 740,
       protein: "58g",
       carbs: "65g",
       fat: "22g",
-      prepTime: "25 Mins",
+      prepTime: lang === "id" ? "25 Menit" : "25 Mins",
       image: "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800&auto=format&fit=crop",
       ingredients: [
-        "250g Top Sirloin Steak",
-        "200g Baked Sweet Potato",
-        "1 tbsp Grass-fed Butter",
-        "Steamed Broccoli Florets",
-      ],
-      steps: [
-        "Bake sweet potato at 200°C for 40 minutes, mash with butter.",
-        "Sear sirloin in hot cast-iron skillet for 3 minutes per side for medium-rare.",
-        "Rest steak for 5 minutes before slicing against the grain.",
+        lang === "id" ? "250g Daging Steak Top Sirloin" : "250g Top Sirloin Steak",
+        lang === "id" ? "200g Ubi Manis Panggang" : "200g Baked Sweet Potato",
+        lang === "id" ? "1 sdm Mentega Grass-fed" : "1 tbsp Grass-fed Butter",
+        lang === "id" ? "Brokoli Kukus Segar" : "Steamed Broccoli Florets",
       ],
     },
     {
       id: "chicken-quinoa-bowl",
-      title: "Chipotle Chicken & Quinoa Fuel Bowl",
+      title: lang === "id" ? "Mangkok Ayam Chipotle & Quinoa" : "Chipotle Chicken & Quinoa Fuel Bowl",
       category: "Cutting Deficit",
       calories: 490,
       protein: "52g",
       carbs: "45g",
       fat: "10g",
-      prepTime: "15 Mins",
+      prepTime: lang === "id" ? "15 Menit" : "15 Mins",
       image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=800&auto=format&fit=crop",
       ingredients: [
-        "180g Grilled Chicken Breast",
-        "100g Cooked Organic Quinoa",
-        "Black Beans & Pico De Gallo",
-        "Sliced Avocado (30g)",
-      ],
-      steps: [
-        "Grill seasoned chicken breast with chipotle spices until internal temp reaches 74°C.",
-        "Layer cooked quinoa, black beans, and salsa in bowl.",
-        "Top with sliced chicken breast and fresh avocado.",
+        lang === "id" ? "180g Dada Ayam Panggang" : "180g Grilled Chicken Breast",
+        lang === "id" ? "100g Quinoa Organik Matang" : "100g Cooked Organic Quinoa",
+        lang === "id" ? "Kacang Hitam & Salsa Pico De Gallo" : "Black Beans & Pico De Gallo",
+        lang === "id" ? "Potongan Alpukat Segar (30g)" : "Sliced Avocado (30g)",
       ],
     },
     {
       id: "whey-oatmeal-power-bowl",
-      title: "Anabolic Berry & Whey Protein Oats",
+      title: lang === "id" ? "Oatmeal Anabolik Buah Beri & Whey Protein" : "Anabolic Berry & Whey Protein Oats",
       category: "High Protein",
       calories: 420,
       protein: "42g",
       carbs: "50g",
       fat: "8g",
-      prepTime: "8 Mins",
+      prepTime: lang === "id" ? "8 Menit" : "8 Mins",
       image: "https://images.unsplash.com/photo-1517673400267-0251440c45dc?q=80&w=800&auto=format&fit=crop",
       ingredients: [
-        "60g Rolled Oats",
-        "1 Scoop MADRock Isolate Whey Protein",
-        "100g Mixed Wild Berries",
-        "1 tbsp Chia Seeds",
-      ],
-      steps: [
-        "Cook oats with water or almond milk in microwave for 90 seconds.",
-        "Stir in whey protein isolate thoroughly after cooking.",
-        "Top with fresh blueberries, raspberries, and chia seeds.",
+        lang === "id" ? "60g Oat Utuh Organik" : "60g Rolled Oats",
+        lang === "id" ? "1 Scoop MADRock Whey Isolate" : "1 Scoop MADRock Isolate Whey Protein",
+        lang === "id" ? "100g Campuran Buah Beri Liar" : "100g Mixed Wild Berries",
+        lang === "id" ? "1 sdm Biji Chia (Chia Seeds)" : "1 tbsp Chia Seeds",
       ],
     },
   ];
@@ -114,9 +95,9 @@ export default function MealPlannerPage() {
     <main className="pt-32 pb-24 bg-mad-bg text-white min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
-          badge="NUTRITION & MACROS"
-          title="PRECISION MEAL PLANNER & RECIPES"
-          subtitle="Fuel your workouts with calculated high-protein recipes tailored for cutting, bulking, and body recomposition."
+          badge={t("meal_header_badge")}
+          title={t("meal_header_title")}
+          subtitle={t("meal_header_subtitle")}
         />
 
         {/* Filter Categories */}
@@ -172,7 +153,9 @@ export default function MealPlannerPage() {
                     {/* Macros breakdown */}
                     <div className="grid grid-cols-4 gap-1 text-center p-3 rounded-2xl bg-mad-bg border border-white/5">
                       <div>
-                        <span className="text-[9px] font-mono text-mad-gray block">CALORIES</span>
+                        <span className="text-[9px] font-mono text-mad-gray block">
+                          {lang === "id" ? "KALORI" : "CALORIES"}
+                        </span>
                         <span className="text-sm font-bold font-spartan text-mad-lime">{meal.calories}</span>
                       </div>
                       <div>
@@ -180,18 +163,20 @@ export default function MealPlannerPage() {
                         <span className="text-sm font-bold font-spartan text-white">{meal.protein}</span>
                       </div>
                       <div>
-                        <span className="text-[9px] font-mono text-mad-gray block">CARBS</span>
+                        <span className="text-[9px] font-mono text-mad-gray block">KARBO</span>
                         <span className="text-sm font-bold font-spartan text-white">{meal.carbs}</span>
                       </div>
                       <div>
-                        <span className="text-[9px] font-mono text-mad-gray block">FAT</span>
+                        <span className="text-[9px] font-mono text-mad-gray block">LEMAK</span>
                         <span className="text-sm font-bold font-spartan text-white">{meal.fat}</span>
                       </div>
                     </div>
 
                     {/* Ingredients list */}
                     <div className="space-y-1">
-                      <span className="text-[10px] font-mono text-mad-lime uppercase font-bold block">Key Ingredients:</span>
+                      <span className="text-[10px] font-mono text-mad-lime uppercase font-bold block">
+                        {lang === "id" ? "Bahan-bahan Utama:" : "Key Ingredients:"}
+                      </span>
                       <ul className="text-xs text-mad-gray space-y-1">
                         {meal.ingredients.slice(0, 3).map((ing, i) => (
                           <li key={i} className="flex items-center gap-2">

@@ -2,11 +2,12 @@
 
 import { useState } from "react";
 import { SectionHeader } from "@/components/common/SectionHeader";
-import { ScrollReveal } from "@/components/common/ScrollReveal";
-import { Check, Calendar as CalendarIcon, Clock, User, ShieldCheck, CreditCard, Sparkles, ArrowRight } from "lucide-react";
+import { Check, Calendar as CalendarIcon, Clock, User, Sparkles, ArrowRight } from "lucide-react";
 import confetti from "canvas-confetti";
+import { useLanguage } from "@/components/common/LanguageProvider";
 
 export default function BookingPage() {
+  const { lang } = useLanguage();
   const [step, setStep] = useState(1);
 
   // Selections
@@ -18,15 +19,27 @@ export default function BookingPage() {
   const [confirmed, setConfirmed] = useState(false);
 
   const coaches = [
-    { name: "Ahmad Hudzaifah", role: "Head Strength & Biomechanics", price: "$199/mo" },
-    { name: "Elena Vance", role: "Nutrition & Metabolic Recomp", price: "$179/mo" },
-    { name: "David Vance", role: "Powerlifting & Mobility Specialist", price: "$189/mo" },
+    { name: "Ahmad Hudzaifah", role: lang === "id" ? "Head Strength & Biomekanika" : "Head Strength & Biomechanics", price: "$199/bln" },
+    { name: "Elena Vance", role: lang === "id" ? "Spesialis Nutrisi & Rekomposisi" : "Nutrition & Metabolic Recomp", price: "$179/bln" },
+    { name: "David Vance", role: lang === "id" ? "Spesialis Powerlifting & Mobilitas" : "Powerlifting & Mobility Specialist", price: "$189/bln" },
   ];
 
   const packages = [
-    { title: "1-on-1 VIP Coaching", duration: "Monthly", sessions: "Unlimited Access" },
-    { title: "Single Strategy Consultation", duration: "60 Mins", sessions: "1-on-1 Call" },
-    { title: "Transformation Intensive", duration: "12 Weeks", sessions: "Weekly Video Check-ins" },
+    {
+      title: lang === "id" ? "Kepelatihan VIP 1-on-1" : "1-on-1 VIP Coaching",
+      duration: lang === "id" ? "Bulanan" : "Monthly",
+      sessions: lang === "id" ? "Akses Tanpa Batas" : "Unlimited Access",
+    },
+    {
+      title: lang === "id" ? "Konsultasi Strategi Tunggal" : "Single Strategy Consultation",
+      duration: lang === "id" ? "60 Menit" : "60 Mins",
+      sessions: lang === "id" ? "Panggilan 1-on-1" : "1-on-1 Call",
+    },
+    {
+      title: lang === "id" ? "Intensif Transformasi 12-Minggu" : "Transformation Intensive",
+      duration: lang === "id" ? "12 Minggu" : "12 Weeks",
+      sessions: lang === "id" ? "Evaluasi Video Mingguan" : "Weekly Video Check-ins",
+    },
   ];
 
   const timeSlots = [
@@ -46,17 +59,21 @@ export default function BookingPage() {
     <main className="pt-32 pb-24 bg-mad-bg text-white min-h-screen">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
-          badge="VIP CONSULTATION & COACHING"
-          title="BOOK YOUR SESSION"
-          subtitle="Select your head coach, choose a convenient time slot, and start your custom transformation."
+          badge={lang === "id" ? "KONSULTASI & KEPELATIHAN VIP" : "VIP CONSULTATION & COACHING"}
+          title={lang === "id" ? "JADWALKAN SESI ANDA" : "BOOK YOUR SESSION"}
+          subtitle={
+            lang === "id"
+              ? "Pilih pelatih kepala Anda, tentukan slot waktu yang sesuai, dan mulai transformasi kustom Anda."
+              : "Select your head coach, choose a convenient time slot, and start your custom transformation."
+          }
         />
 
         {/* Steps Indicator */}
         <div className="flex items-center justify-between mb-12 border-b border-white/10 pb-6">
           {[
-            { num: 1, label: "Coach & Package" },
-            { num: 2, label: "Date & Time" },
-            { num: 3, label: "Confirmation" },
+            { num: 1, label: lang === "id" ? "Pelatih & Paket" : "Coach & Package" },
+            { num: 2, label: lang === "id" ? "Tanggal & Waktu" : "Date & Time" },
+            { num: 3, label: lang === "id" ? "Konfirmasi" : "Confirmation" },
           ].map((s) => (
             <div key={s.num} className="flex items-center gap-3">
               <div
@@ -88,7 +105,7 @@ export default function BookingPage() {
                 <div className="space-y-4">
                   <h3 className="text-xl font-bold font-spartan text-white uppercase flex items-center gap-2">
                     <User className="w-5 h-5 text-mad-lime" />
-                    <span>1. SELECT HEAD COACH</span>
+                    <span>{lang === "id" ? "1. PILIH HEAD COACH" : "1. SELECT HEAD COACH"}</span>
                   </h3>
 
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -113,7 +130,7 @@ export default function BookingPage() {
                 <div className="space-y-4 pt-4 border-t border-white/10">
                   <h3 className="text-xl font-bold font-spartan text-white uppercase flex items-center gap-2">
                     <Sparkles className="w-5 h-5 text-mad-lime" />
-                    <span>2. SELECT COACHING PACKAGE</span>
+                    <span>{lang === "id" ? "2. PILIH PAKET KEPELATIHAN" : "2. SELECT COACHING PACKAGE"}</span>
                   </h3>
 
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -138,7 +155,7 @@ export default function BookingPage() {
                   onClick={() => setStep(2)}
                   className="w-full inline-flex items-center justify-center gap-2 py-4 rounded-2xl bg-mad-lime text-mad-bg font-extrabold text-sm uppercase tracking-wider hover:bg-mad-lime-hover shadow-lg"
                 >
-                  <span>PROCEED TO DATE & TIME</span>
+                  <span>{lang === "id" ? "LANJUT KE TANGGAL & WAKTU" : "PROCEED TO DATE & TIME"}</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
@@ -151,7 +168,7 @@ export default function BookingPage() {
                   <div className="space-y-4">
                     <h3 className="text-lg font-bold font-spartan text-white uppercase flex items-center gap-2">
                       <CalendarIcon className="w-5 h-5 text-mad-lime" />
-                      <span>SELECT DATE</span>
+                      <span>{lang === "id" ? "PILIH TANGGAL" : "SELECT DATE"}</span>
                     </h3>
                     <input
                       type="date"
@@ -165,7 +182,7 @@ export default function BookingPage() {
                   <div className="space-y-4">
                     <h3 className="text-lg font-bold font-spartan text-white uppercase flex items-center gap-2">
                       <Clock className="w-5 h-5 text-mad-lime" />
-                      <span>SELECT TIME SLOT</span>
+                      <span>{lang === "id" ? "PILIH SLOT WAKTU" : "SELECT TIME SLOT"}</span>
                     </h3>
                     <div className="grid grid-cols-2 gap-2">
                       {timeSlots.map((time) => (
@@ -190,13 +207,13 @@ export default function BookingPage() {
                     onClick={() => setStep(1)}
                     className="w-1/3 py-4 rounded-2xl bg-mad-bg border border-white/10 text-white font-bold text-xs uppercase"
                   >
-                    BACK
+                    {lang === "id" ? "KEMBALI" : "BACK"}
                   </button>
                   <button
                     onClick={() => setStep(3)}
                     className="w-2/3 inline-flex items-center justify-center gap-2 py-4 rounded-2xl bg-mad-lime text-mad-bg font-extrabold text-sm uppercase tracking-wider"
                   >
-                    <span>REVIEW & CONFIRM</span>
+                    <span>{lang === "id" ? "TINJAU & KONFIRMASI" : "REVIEW & CONFIRM"}</span>
                     <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>
@@ -206,24 +223,24 @@ export default function BookingPage() {
             {step === 3 && (
               <div className="space-y-8">
                 <h3 className="text-xl font-bold font-spartan text-white uppercase border-b border-white/10 pb-3">
-                  BOOKING SUMMARY & REVIEW
+                  {lang === "id" ? "RINGKASAN & TINJAUAN BOOKING" : "BOOKING SUMMARY & REVIEW"}
                 </h3>
 
                 <div className="space-y-3 p-6 rounded-2xl bg-mad-bg border border-white/10 text-sm">
                   <div className="flex justify-between py-1 border-b border-white/5">
-                    <span className="text-mad-gray">Selected Coach:</span>
+                    <span className="text-mad-gray">{lang === "id" ? "Pelatih Dipilih:" : "Selected Coach:"}</span>
                     <strong className="text-white font-spartan">{selectedCoach}</strong>
                   </div>
                   <div className="flex justify-between py-1 border-b border-white/5">
-                    <span className="text-mad-gray">Coaching Package:</span>
+                    <span className="text-mad-gray">{lang === "id" ? "Paket Kepelatihan:" : "Coaching Package:"}</span>
                     <strong className="text-mad-lime font-spartan">{selectedPackage}</strong>
                   </div>
                   <div className="flex justify-between py-1 border-b border-white/5">
-                    <span className="text-mad-gray">Scheduled Date:</span>
+                    <span className="text-mad-gray">{lang === "id" ? "Tanggal Dijadwalkan:" : "Scheduled Date:"}</span>
                     <strong className="text-white font-mono">{selectedDate}</strong>
                   </div>
                   <div className="flex justify-between py-1">
-                    <span className="text-mad-gray">Time Slot:</span>
+                    <span className="text-mad-gray">{lang === "id" ? "Slot Waktu:" : "Time Slot:"}</span>
                     <strong className="text-white font-mono">{selectedTime}</strong>
                   </div>
                 </div>
@@ -232,7 +249,7 @@ export default function BookingPage() {
                   onClick={handleConfirmBooking}
                   className="w-full py-4 rounded-2xl bg-mad-lime text-mad-bg font-black text-base uppercase tracking-wider shadow-xl shadow-mad-lime/30 hover:bg-mad-lime-hover transition-all"
                 >
-                  CONFIRM & BOOK SESSION NOW
+                  {lang === "id" ? "KONFIRMASI & BOOKING SESI SEKARANG" : "CONFIRM & BOOK SESSION NOW"}
                 </button>
               </div>
             )}
@@ -245,18 +262,20 @@ export default function BookingPage() {
             </div>
 
             <h2 className="text-3xl font-black font-spartan uppercase text-white">
-              SESSION CONFIRMED!
+              {lang === "id" ? "SESI BERHASIL DI-BOOKING!" : "SESSION CONFIRMED!"}
             </h2>
 
             <p className="text-sm text-mad-gray max-w-md mx-auto">
-              Your consultation session with <strong>{selectedCoach}</strong> has been successfully booked for <strong>{selectedDate} at {selectedTime}</strong>. A calendar invite & Zoom link have been sent to your email.
+              {lang === "id"
+                ? `Sesi konsultasi Anda dengan Coach ${selectedCoach} telah berhasil dijadwalkan untuk ${selectedDate} pukul ${selectedTime}. Undangan kalender & link Zoom telah dikirim ke email Anda.`
+                : `Your consultation session with ${selectedCoach} has been successfully booked for ${selectedDate} at ${selectedTime}. A calendar invite & Zoom link have been sent to your email.`}
             </p>
 
             <button
               onClick={() => { setConfirmed(false); setStep(1); }}
               className="px-8 py-3.5 rounded-xl bg-mad-lime/10 text-mad-lime border border-mad-lime/30 font-bold text-xs uppercase"
             >
-              Book Another Session
+              {lang === "id" ? "Booking Sesi Lain" : "Book Another Session"}
             </button>
           </div>
         )}

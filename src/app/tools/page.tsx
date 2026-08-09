@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { SectionHeader } from "@/components/common/SectionHeader";
+import { useLanguage } from "@/components/common/LanguageProvider";
 import {
   Calculator,
   Flame,
@@ -15,6 +16,7 @@ import {
 } from "lucide-react";
 
 export default function ToolsPage() {
+  const { lang, t } = useLanguage();
   const [activeTab, setActiveTab] = useState<
     "tdee" | "protein" | "macro" | "water" | "1rm" | "ideal-weight" | "body-fat" | "hr-zones" | "bmi"
   >("tdee");
@@ -118,32 +120,32 @@ export default function ToolsPage() {
   const bmi = isInputValid && heightM > 0 ? (weight / (heightM * heightM)).toFixed(1) : "0.0";
 
   const getBmiCategory = (val: number) => {
-    if (val <= 0) return "Enter Parameters";
-    if (val < 18.5) return "Underweight";
-    if (val < 25) return "Optimal Healthy Weight";
-    if (val < 30) return "Overweight";
-    return "Obese";
+    if (val <= 0) return lang === "id" ? "Masukkan Parameter" : "Enter Parameters";
+    if (val < 18.5) return lang === "id" ? "Kekurangan Berat Badan" : "Underweight";
+    if (val < 25) return lang === "id" ? "Berat Badan Ideal Optimal" : "Optimal Healthy Weight";
+    if (val < 30) return lang === "id" ? "Kelebihan Berat Badan" : "Overweight";
+    return lang === "id" ? "Obesitas" : "Obese";
   };
 
   const toolsList = [
-    { id: "tdee", label: "1. TDEE & Calories", icon: Flame },
-    { id: "protein", label: "2. Protein Target", icon: Zap },
-    { id: "macro", label: "3. Macro Split", icon: Activity },
-    { id: "water", label: "4. Water Intake", icon: Droplet },
-    { id: "1rm", label: "5. 1 Rep Max (1RM)", icon: Dumbbell },
-    { id: "ideal-weight", label: "6. Ideal Weight", icon: Scale },
-    { id: "body-fat", label: "7. Body Fat %", icon: HeartPulse },
-    { id: "hr-zones", label: "8. Heart Rate Zones", icon: Heart },
-    { id: "bmi", label: "9. BMI & Risk Score", icon: Calculator },
+    { id: "tdee", label: lang === "id" ? "1. TDEE & Kalori" : "1. TDEE & Calories", icon: Flame },
+    { id: "protein", label: lang === "id" ? "2. Target Protein" : "2. Protein Target", icon: Zap },
+    { id: "macro", label: lang === "id" ? "3. Pembagian Makro" : "3. Macro Split", icon: Activity },
+    { id: "water", label: lang === "id" ? "4. Asupan Air" : "4. Water Intake", icon: Droplet },
+    { id: "1rm", label: lang === "id" ? "5. Estimasi 1RM" : "5. 1 Rep Max (1RM)", icon: Dumbbell },
+    { id: "ideal-weight", label: lang === "id" ? "6. Berat Ideal" : "6. Ideal Weight", icon: Scale },
+    { id: "body-fat", label: lang === "id" ? "7. Kadar Lemak %" : "7. Body Fat %", icon: HeartPulse },
+    { id: "hr-zones", label: lang === "id" ? "8. Zona Detak Jantung" : "8. Heart Rate Zones", icon: Heart },
+    { id: "bmi", label: lang === "id" ? "9. Skor BMI" : "9. BMI & Risk Score", icon: Calculator },
   ];
 
   return (
     <main className="pt-32 pb-24 bg-mad-bg text-white min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
-          badge="9 SCIENTIFIC FITNESS CALCULATORS"
-          title="ACCURATE ATHLETIC CALCULATORS"
-          subtitle="Suite of 9 precision formula tools built to optimize your diet, macros, body fat, 1RM, and cardio zones."
+          badge={t("tools_header_badge")}
+          title={t("tools_header_title")}
+          subtitle={t("tools_header_subtitle")}
         />
 
         {/* Tools Tabs - Exactly 9 Interactive Calculators */}
@@ -170,13 +172,15 @@ export default function ToolsPage() {
             {/* Input Controls */}
             <div className="space-y-5">
               <h3 className="text-xl font-bold font-spartan text-white uppercase border-b border-white/10 pb-3">
-                INPUT PARAMETERS
+                {lang === "id" ? "PARAMETER INPUT" : "INPUT PARAMETERS"}
               </h3>
 
               {activeTab === "1rm" ? (
                 <>
                   <div>
-                    <label className="text-xs font-mono text-mad-gray uppercase block mb-1">Lift Weight (KG)</label>
+                    <label className="text-xs font-mono text-mad-gray uppercase block mb-1">
+                      {lang === "id" ? "Beban Angkatan (KG)" : "Lift Weight (KG)"}
+                    </label>
                     <input
                       type="number"
                       value={liftWeightStr}
@@ -187,7 +191,9 @@ export default function ToolsPage() {
                   </div>
 
                   <div>
-                    <label className="text-xs font-mono text-mad-gray uppercase block mb-1">Repetitions Performed</label>
+                    <label className="text-xs font-mono text-mad-gray uppercase block mb-1">
+                      {lang === "id" ? "Jumlah Repetisi" : "Repetitions Performed"}
+                    </label>
                     <input
                       type="number"
                       value={repsStr}
@@ -201,19 +207,23 @@ export default function ToolsPage() {
                 <>
                   <div className="grid grid-cols-2 gap-3">
                     <div>
-                      <label className="text-xs font-mono text-mad-gray uppercase block mb-1">Gender</label>
+                      <label className="text-xs font-mono text-mad-gray uppercase block mb-1">
+                        {lang === "id" ? "Jenis Kelamin" : "Gender"}
+                      </label>
                       <select
                         value={gender}
                         onChange={(e) => setGender(e.target.value as any)}
                         className="w-full bg-mad-bg border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-mad-lime font-mono"
                       >
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
+                        <option value="male">{lang === "id" ? "Pria" : "Male"}</option>
+                        <option value="female">{lang === "id" ? "Wanita" : "Female"}</option>
                       </select>
                     </div>
 
                     <div>
-                      <label className="text-xs font-mono text-mad-gray uppercase block mb-1">Height (CM)</label>
+                      <label className="text-xs font-mono text-mad-gray uppercase block mb-1">
+                        {lang === "id" ? "Tinggi (CM)" : "Height (CM)"}
+                      </label>
                       <input
                         type="number"
                         value={heightStr}
@@ -226,7 +236,9 @@ export default function ToolsPage() {
 
                   <div className="grid grid-cols-2 gap-3">
                     <div>
-                      <label className="text-xs font-mono text-mad-gray uppercase block mb-1">Waist (CM)</label>
+                      <label className="text-xs font-mono text-mad-gray uppercase block mb-1">
+                        {lang === "id" ? "Lingkar Pinggang (CM)" : "Waist (CM)"}
+                      </label>
                       <input
                         type="number"
                         value={waistStr}
@@ -237,7 +249,9 @@ export default function ToolsPage() {
                     </div>
 
                     <div>
-                      <label className="text-xs font-mono text-mad-gray uppercase block mb-1">Neck (CM)</label>
+                      <label className="text-xs font-mono text-mad-gray uppercase block mb-1">
+                        {lang === "id" ? "Lingkar Leher (CM)" : "Neck (CM)"}
+                      </label>
                       <input
                         type="number"
                         value={neckStr}
@@ -250,7 +264,9 @@ export default function ToolsPage() {
 
                   {gender === "female" && (
                     <div>
-                      <label className="text-xs font-mono text-mad-gray uppercase block mb-1">Hip (CM)</label>
+                      <label className="text-xs font-mono text-mad-gray uppercase block mb-1">
+                        {lang === "id" ? "Lingkar Pinggul (CM)" : "Hip (CM)"}
+                      </label>
                       <input
                         type="number"
                         value={hipStr}
@@ -265,19 +281,23 @@ export default function ToolsPage() {
                 <>
                   <div className="grid grid-cols-2 gap-3">
                     <div>
-                      <label className="text-xs font-mono text-mad-gray uppercase block mb-1">Gender</label>
+                      <label className="text-xs font-mono text-mad-gray uppercase block mb-1">
+                        {lang === "id" ? "Jenis Kelamin" : "Gender"}
+                      </label>
                       <select
                         value={gender}
                         onChange={(e) => setGender(e.target.value as any)}
                         className="w-full bg-mad-bg border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-mad-lime font-mono"
                       >
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
+                        <option value="male">{lang === "id" ? "Pria" : "Male"}</option>
+                        <option value="female">{lang === "id" ? "Wanita" : "Female"}</option>
                       </select>
                     </div>
 
                     <div>
-                      <label className="text-xs font-mono text-mad-gray uppercase block mb-1">Age</label>
+                      <label className="text-xs font-mono text-mad-gray uppercase block mb-1">
+                        {lang === "id" ? "Usia (Tahun)" : "Age"}
+                      </label>
                       <input
                         type="number"
                         value={ageStr}
@@ -290,7 +310,9 @@ export default function ToolsPage() {
 
                   <div className="grid grid-cols-2 gap-3">
                     <div>
-                      <label className="text-xs font-mono text-mad-gray uppercase block mb-1">Weight (KG)</label>
+                      <label className="text-xs font-mono text-mad-gray uppercase block mb-1">
+                        {lang === "id" ? "Berat Badan (KG)" : "Weight (KG)"}
+                      </label>
                       <input
                         type="number"
                         value={weightStr}
@@ -301,7 +323,9 @@ export default function ToolsPage() {
                     </div>
 
                     <div>
-                      <label className="text-xs font-mono text-mad-gray uppercase block mb-1">Height (CM)</label>
+                      <label className="text-xs font-mono text-mad-gray uppercase block mb-1">
+                        {lang === "id" ? "Tinggi Badan (CM)" : "Height (CM)"}
+                      </label>
                       <input
                         type="number"
                         value={heightStr}
@@ -314,12 +338,14 @@ export default function ToolsPage() {
 
                   {activeTab !== "hr-zones" && activeTab !== "bmi" && (
                     <div>
-                      <label className="text-xs font-mono text-mad-gray uppercase block mb-1">Physique Goal</label>
+                      <label className="text-xs font-mono text-mad-gray uppercase block mb-1">
+                        {lang === "id" ? "Target Bentuk Tubuh" : "Physique Goal"}
+                      </label>
                       <div className="grid grid-cols-3 gap-2">
                         {[
-                          { id: "cut", label: "Fat Loss" },
-                          { id: "maintain", label: "Maintain" },
-                          { id: "bulk", label: "Build Muscle" },
+                          { id: "cut", label: lang === "id" ? "Bakar Lemak" : "Fat Loss" },
+                          { id: "maintain", label: lang === "id" ? "Stabil" : "Maintain" },
+                          { id: "bulk", label: lang === "id" ? "Bentuk Otot" : "Build Muscle" },
                         ].map((g) => (
                           <button
                             key={g.id}
@@ -346,19 +372,21 @@ export default function ToolsPage() {
               <div className="absolute top-0 right-0 w-32 h-32 bg-mad-lime/10 rounded-full blur-2xl pointer-events-none" />
 
               <span className="text-xs font-mono text-mad-lime uppercase tracking-widest block">
-                CALCULATED ESTIMATE
+                {lang === "id" ? "ESTIMASI KALKULASI SAINS" : "CALCULATED ESTIMATE"}
               </span>
 
               {activeTab === "tdee" && (
                 <div className="space-y-4">
                   <div>
-                    <span className="text-xs text-mad-gray uppercase block">Daily Calorie Target</span>
+                    <span className="text-xs text-mad-gray uppercase block">
+                      {lang === "id" ? "Target Kalori Harian" : "Daily Calorie Target"}
+                    </span>
                     <span className="text-5xl font-black font-spartan text-mad-lime">{targetCalories}</span>
-                    <span className="text-xs text-mad-gray block mt-1">kcal / day</span>
+                    <span className="text-xs text-mad-gray block mt-1">kcal / {lang === "id" ? "hari" : "day"}</span>
                   </div>
                   <div className="pt-4 border-t border-white/10 text-xs text-mad-gray space-y-1">
-                    <p>Base BMR: <strong className="text-white">{Math.round(bmr)} kcal</strong></p>
-                    <p>TDEE Maintenance: <strong className="text-white">{tdee} kcal</strong></p>
+                    <p>BMR {lang === "id" ? "Dasar:" : "Base:"} <strong className="text-white">{Math.round(bmr)} kcal</strong></p>
+                    <p>TDEE {lang === "id" ? "Maintenance:" : "Maintenance:"} <strong className="text-white">{tdee} kcal</strong></p>
                   </div>
                 </div>
               )}
@@ -366,9 +394,13 @@ export default function ToolsPage() {
               {activeTab === "protein" && (
                 <div className="space-y-4">
                   <div>
-                    <span className="text-xs text-mad-gray uppercase block">Optimal Daily Protein</span>
+                    <span className="text-xs text-mad-gray uppercase block">
+                      {lang === "id" ? "Protein Harian Optimal" : "Optimal Daily Protein"}
+                    </span>
                     <span className="text-5xl font-black font-spartan text-mad-lime">{proteinGrams}g</span>
-                    <span className="text-xs text-mad-gray block mt-1">based on 2.2g per kg bodyweight</span>
+                    <span className="text-xs text-mad-gray block mt-1">
+                      {lang === "id" ? "berdasarkan 2.2g per kg berat badan" : "based on 2.2g per kg bodyweight"}
+                    </span>
                   </div>
                 </div>
               )}
@@ -380,11 +412,15 @@ export default function ToolsPage() {
                     <span className="text-xl font-bold font-spartan text-white">{proteinGrams}g</span>
                   </div>
                   <div className="p-3 rounded-2xl bg-mad-surface border border-white/10">
-                    <span className="text-[10px] font-mono text-mad-lime uppercase block">Carbs</span>
+                    <span className="text-[10px] font-mono text-mad-lime uppercase block">
+                      {lang === "id" ? "Karbo" : "Carbs"}
+                    </span>
                     <span className="text-xl font-bold font-spartan text-white">{carbGrams}g</span>
                   </div>
                   <div className="p-3 rounded-2xl bg-mad-surface border border-white/10">
-                    <span className="text-[10px] font-mono text-mad-lime uppercase block">Fat</span>
+                    <span className="text-[10px] font-mono text-mad-lime uppercase block">
+                      {lang === "id" ? "Lemak" : "Fat"}
+                    </span>
                     <span className="text-xl font-bold font-spartan text-white">{fatGrams}g</span>
                   </div>
                 </div>
@@ -393,9 +429,13 @@ export default function ToolsPage() {
               {activeTab === "water" && (
                 <div className="space-y-4">
                   <div>
-                    <span className="text-xs text-mad-gray uppercase block">Hydration Target</span>
+                    <span className="text-xs text-mad-gray uppercase block">
+                      {lang === "id" ? "Target Hidrasi Air" : "Hydration Target"}
+                    </span>
                     <span className="text-5xl font-black font-spartan text-sky-400">{waterLiters} L</span>
-                    <span className="text-xs text-mad-gray block mt-1">Liters of water daily</span>
+                    <span className="text-xs text-mad-gray block mt-1">
+                      {lang === "id" ? "Liter air per hari" : "Liters of water daily"}
+                    </span>
                   </div>
                 </div>
               )}
@@ -403,9 +443,13 @@ export default function ToolsPage() {
               {activeTab === "1rm" && (
                 <div className="space-y-4">
                   <div>
-                    <span className="text-xs text-mad-gray uppercase block">Estimated 1 Rep Max</span>
+                    <span className="text-xs text-mad-gray uppercase block">
+                      {lang === "id" ? "Estimasi 1 Rep Max" : "Estimated 1 Rep Max"}
+                    </span>
                     <span className="text-5xl font-black font-spartan text-mad-lime">{oneRepMax} KG</span>
-                    <span className="text-xs text-mad-gray block mt-1">Epley Formula Standard</span>
+                    <span className="text-xs text-mad-gray block mt-1">
+                      {lang === "id" ? "Formula Epley Standar" : "Epley Formula Standard"}
+                    </span>
                   </div>
                   <div className="pt-3 border-t border-white/10 grid grid-cols-3 gap-2 text-[11px] text-mad-gray">
                     <p>80% 1RM: <strong className="text-white">{Math.round(oneRepMax * 0.8)}kg</strong></p>
@@ -418,9 +462,13 @@ export default function ToolsPage() {
               {activeTab === "ideal-weight" && (
                 <div className="space-y-4">
                   <div>
-                    <span className="text-xs text-mad-gray uppercase block">Est. Ideal Athletic Weight</span>
+                    <span className="text-xs text-mad-gray uppercase block">
+                      {lang === "id" ? "Estimasi Berat Ideal Atletis" : "Est. Ideal Athletic Weight"}
+                    </span>
                     <span className="text-5xl font-black font-spartan text-mad-lime">{idealWeightKg} KG</span>
-                    <span className="text-xs text-mad-gray block mt-1">Hamwi Athletic Standard</span>
+                    <span className="text-xs text-mad-gray block mt-1">
+                      {lang === "id" ? "Standar Atletis Hamwi" : "Hamwi Athletic Standard"}
+                    </span>
                   </div>
                 </div>
               )}
@@ -428,9 +476,13 @@ export default function ToolsPage() {
               {activeTab === "body-fat" && (
                 <div className="space-y-4">
                   <div>
-                    <span className="text-xs text-mad-gray uppercase block">Estimated Body Fat %</span>
+                    <span className="text-xs text-mad-gray uppercase block">
+                      {lang === "id" ? "Estimasi Kadar Lemak %" : "Estimated Body Fat %"}
+                    </span>
                     <span className="text-5xl font-black font-spartan text-mad-lime">{bodyFatPct}%</span>
-                    <span className="text-xs text-mad-gray block mt-1">US Navy Method Algorithm</span>
+                    <span className="text-xs text-mad-gray block mt-1">
+                      {lang === "id" ? "Metode US Navy Algorithm" : "US Navy Method Algorithm"}
+                    </span>
                   </div>
                 </div>
               )}
@@ -438,9 +490,14 @@ export default function ToolsPage() {
               {activeTab === "hr-zones" && (
                 <div className="space-y-4">
                   <div>
-                    <span className="text-xs text-mad-gray uppercase block">Estimated Max Heart Rate</span>
+                    <span className="text-xs text-mad-gray uppercase block">
+                      {lang === "id" ? "Estimasi Detak Jantung Max" : "Estimated Max Heart Rate"}
+                    </span>
                     <span className="text-5xl font-black font-spartan text-rose-500">{maxHR} BPM</span>
-                    <span className="text-xs text-mad-gray block mt-1">Zone 2 Aerobic Range: <strong className="text-mad-lime font-mono">{zone2Min} - {zone2Max} BPM</strong></span>
+                    <span className="text-xs text-mad-gray block mt-1">
+                      {lang === "id" ? "Rentang Aerobik Zona 2:" : "Zone 2 Aerobic Range:"}{" "}
+                      <strong className="text-mad-lime font-mono">{zone2Min} - {zone2Max} BPM</strong>
+                    </span>
                   </div>
                 </div>
               )}
@@ -448,9 +505,14 @@ export default function ToolsPage() {
               {activeTab === "bmi" && (
                 <div className="space-y-4">
                   <div>
-                    <span className="text-xs text-mad-gray uppercase block">Body Mass Index (BMI)</span>
+                    <span className="text-xs text-mad-gray uppercase block">
+                      {lang === "id" ? "Indeks Massa Tubuh (BMI)" : "Body Mass Index (BMI)"}
+                    </span>
                     <span className="text-5xl font-black font-spartan text-mad-lime">{bmi}</span>
-                    <span className="text-xs text-mad-gray block mt-1">Category: <strong className="text-white">{getBmiCategory(parseFloat(bmi))}</strong></span>
+                    <span className="text-xs text-mad-gray block mt-1">
+                      {lang === "id" ? "Kategori:" : "Category:"}{" "}
+                      <strong className="text-white">{getBmiCategory(parseFloat(bmi))}</strong>
+                    </span>
                   </div>
                 </div>
               )}

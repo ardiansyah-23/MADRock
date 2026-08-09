@@ -3,8 +3,10 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Dumbbell, Mail, Lock, ArrowRight, Chrome, AlertCircle, ShieldCheck, UserCheck } from "lucide-react";
+import { useLanguage } from "@/components/common/LanguageProvider";
 
 export default function LoginPage() {
+  const { lang, t } = useLanguage();
   const [role, setRole] = useState<"user" | "admin">("user");
   const [email, setEmail] = useState("athlete@madrock.fit");
   const [password, setPassword] = useState("athlete123");
@@ -75,10 +77,14 @@ export default function LoginPage() {
           </Link>
 
           <h1 className="text-2xl font-black font-spartan uppercase text-white">
-            {role === "admin" ? "ADMIN & COACH PORTAL" : "ATHLETE MEMBER LOGIN"}
+            {role === "admin"
+              ? (lang === "id" ? "PORTAL ADMIN & PELATIH" : "ADMIN & COACH PORTAL")
+              : (lang === "id" ? "LOGIN MEMBER ATLET" : "ATHLETE MEMBER LOGIN")}
           </h1>
           <p className="text-xs text-mad-gray">
-            Unified login portal for MADRock Athletes & Platform Administrators.
+            {lang === "id"
+              ? "Portal masuk resmi untuk Atlet & Administrator Platform MADRock."
+              : "Unified login portal for MADRock Athletes & Platform Administrators."}
           </p>
         </div>
 
@@ -94,7 +100,7 @@ export default function LoginPage() {
             }`}
           >
             <UserCheck className="w-4 h-4" />
-            <span>ATHLETE USER</span>
+            <span>{lang === "id" ? "USER ATLET" : "ATHLETE USER"}</span>
           </button>
 
           <button
@@ -107,14 +113,14 @@ export default function LoginPage() {
             }`}
           >
             <ShieldCheck className="w-4 h-4" />
-            <span>ADMIN / COACH</span>
+            <span>ADMIN / PELATIH</span>
           </button>
         </div>
 
         {/* 2 Demo Account Quick Selector Cards */}
         <div className="space-y-2">
           <span className="text-[10px] font-mono uppercase tracking-widest text-mad-gray block text-center">
-            SELECT A DEMO ACCOUNT TO TEST INSTANTLY:
+            {lang === "id" ? "PILIH AKUN DEMO UNTUK COBA INSTAN:" : "SELECT A DEMO ACCOUNT TO TEST INSTANTLY:"}
           </span>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -125,11 +131,11 @@ export default function LoginPage() {
               className="p-3.5 rounded-2xl bg-mad-bg border border-mad-lime/40 text-left hover:border-mad-lime transition-all space-y-1 group"
             >
               <div className="flex items-center justify-between">
-                <span className="text-[10px] font-mono text-mad-lime font-bold uppercase">1. USER DEMO</span>
-                <span className="text-[9px] px-2 py-0.5 rounded bg-mad-lime/10 text-mad-lime font-mono font-bold">ATHLETE</span>
+                <span className="text-[10px] font-mono text-mad-lime font-bold uppercase">1. DEMO USER</span>
+                <span className="text-[9px] px-2 py-0.5 rounded bg-mad-lime/10 text-mad-lime font-mono font-bold">ATLET</span>
               </div>
               <p className="text-xs font-bold text-white group-hover:text-mad-lime transition-colors">athlete@madrock.fit</p>
-              <p className="text-[10px] text-mad-gray font-mono">Pass: athlete123</p>
+              <p className="text-[10px] text-mad-gray font-mono">Sandi: athlete123</p>
             </button>
 
             {/* Admin Demo Card */}
@@ -139,11 +145,11 @@ export default function LoginPage() {
               className="p-3.5 rounded-2xl bg-mad-bg border border-rose-500/40 text-left hover:border-rose-500 transition-all space-y-1 group"
             >
               <div className="flex items-center justify-between">
-                <span className="text-[10px] font-mono text-rose-400 font-bold uppercase">2. ADMIN DEMO</span>
+                <span className="text-[10px] font-mono text-rose-400 font-bold uppercase">2. DEMO ADMIN</span>
                 <span className="text-[9px] px-2 py-0.5 rounded bg-rose-500/10 text-rose-400 font-mono font-bold">ADMIN</span>
               </div>
               <p className="text-xs font-bold text-white group-hover:text-rose-400 transition-colors">admin@madrock.fit</p>
-              <p className="text-[10px] text-mad-gray font-mono">Pass: admin123</p>
+              <p className="text-[10px] text-mad-gray font-mono">Sandi: admin123</p>
             </button>
           </div>
         </div>
@@ -158,7 +164,9 @@ export default function LoginPage() {
         {/* Custom Login Form */}
         <form onSubmit={handleLogin} className="space-y-4">
           <div>
-            <label className="text-xs font-mono text-mad-gray uppercase block mb-1">Email Address</label>
+            <label className="text-xs font-mono text-mad-gray uppercase block mb-1">
+              {lang === "id" ? "Alamat Email" : "Email Address"}
+            </label>
             <div className="relative">
               <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-mad-gray" />
               <input
@@ -174,9 +182,11 @@ export default function LoginPage() {
 
           <div>
             <div className="flex justify-between items-center mb-1">
-              <label className="text-xs font-mono text-mad-gray uppercase">Password</label>
+              <label className="text-xs font-mono text-mad-gray uppercase">
+                {lang === "id" ? "Kata Sandi" : "Password"}
+              </label>
               <Link href="/forgot-password" className="text-xs text-mad-lime hover:underline font-mono">
-                Forgot password?
+                {lang === "id" ? "Lupa kata sandi?" : "Forgot password?"}
               </Link>
             </div>
             <div className="relative">
@@ -201,14 +211,22 @@ export default function LoginPage() {
                 : "bg-mad-lime text-mad-bg hover:bg-mad-lime-hover shadow-mad-lime/20"
             }`}
           >
-            <span>{loading ? "AUTHENTICATING..." : role === "admin" ? "ENTER ADMIN CONSOLE" : "LOG IN TO ATHLETE DASHBOARD"}</span>
+            <span>
+              {loading
+                ? (lang === "id" ? "PROSES AUTENTIKASI..." : "AUTHENTICATING...")
+                : role === "admin"
+                ? (lang === "id" ? "MASUK KONSOL ADMIN" : "ENTER ADMIN CONSOLE")
+                : (lang === "id" ? "MASUK DASHBOARD ATLET" : "LOG IN TO ATHLETE DASHBOARD")}
+            </span>
             <ArrowRight className="w-4 h-4" />
           </button>
         </form>
 
         <div className="relative flex items-center justify-center my-4">
           <div className="border-t border-white/10 w-full" />
-          <span className="bg-mad-surface px-3 text-[10px] font-mono text-mad-gray uppercase absolute">OR</span>
+          <span className="bg-mad-surface px-3 text-[10px] font-mono text-mad-gray uppercase absolute">
+            {lang === "id" ? "ATAU" : "OR"}
+          </span>
         </div>
 
         {/* Google OAuth Button */}
@@ -218,13 +236,13 @@ export default function LoginPage() {
           className="w-full py-3.5 rounded-xl bg-mad-bg border border-white/10 text-white font-bold text-xs uppercase hover:bg-white/5 transition-all flex items-center justify-center gap-2"
         >
           <Chrome className="w-4 h-4 text-mad-lime" />
-          <span>Continue with Google</span>
+          <span>{lang === "id" ? "Lanjutkan dengan Google" : "Continue with Google"}</span>
         </button>
 
         <p className="text-center text-xs text-mad-gray pt-2">
-          Don't have an account yet?{" "}
+          {lang === "id" ? "Belum memiliki akun?" : "Don't have an account yet?"}{" "}
           <Link href="/register" className="text-mad-lime font-bold hover:underline">
-            Register Now
+            {lang === "id" ? "Daftar Sekarang" : "Register Now"}
           </Link>
         </p>
       </div>
