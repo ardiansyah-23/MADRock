@@ -246,7 +246,6 @@ export default function AICoachPage() {
     <main className="pt-32 pb-24 bg-mad-bg text-white min-h-screen">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
-          badge={lang === "id" ? "MESIN AI FITNES" : "AI FITNESS ENGINE"}
           title={lang === "id" ? "AI COACH ATLET MADROCK" : "MADROCK AI ATHLETE COACH"}
           subtitle={
             lang === "id"
@@ -265,11 +264,10 @@ export default function AICoachPage() {
             <button
               key={mode.id}
               onClick={() => setActiveMode(mode.id as any)}
-              className={`flex items-center gap-2 px-6 py-3.5 rounded-2xl font-bold text-xs uppercase transition-all ${
-                activeMode === mode.id
-                  ? "bg-mad-lime text-mad-bg shadow-xl shadow-mad-lime/20 font-extrabold"
-                  : "bg-mad-surface text-mad-gray border border-white/10 hover:text-white"
-              }`}
+              className={`flex items-center gap-2 px-6 py-3.5 rounded-2xl font-bold text-xs uppercase transition-all ${activeMode === mode.id
+                ? "bg-mad-lime text-mad-bg shadow-xl shadow-mad-lime/20 font-extrabold"
+                : "bg-mad-surface text-mad-gray border border-white/10 hover:text-white"
+                }`}
             >
               <mode.icon className="w-4 h-4" />
               <span>{mode.label}</span>
@@ -325,11 +323,10 @@ export default function AICoachPage() {
                       )}
 
                       <div
-                        className={`p-4 rounded-2xl text-xs sm:text-sm leading-relaxed ${
-                          m.sender === "user"
-                            ? "bg-mad-lime text-mad-bg font-semibold rounded-tr-none shadow-lg"
-                            : "bg-mad-bg text-mad-gray border border-white/10 rounded-tl-none"
-                        }`}
+                        className={`p-4 rounded-2xl text-xs sm:text-sm leading-relaxed ${m.sender === "user"
+                          ? "bg-mad-lime text-mad-bg font-semibold rounded-tr-none shadow-lg"
+                          : "bg-mad-bg text-mad-gray border border-white/10 rounded-tl-none"
+                          }`}
                       >
                         {m.text}
                       </div>
@@ -444,11 +441,10 @@ export default function AICoachPage() {
                           key={num}
                           type="button"
                           onClick={() => setTrainingDays(num)}
-                          className={`flex-1 py-2.5 rounded-xl text-xs font-bold font-mono transition-all ${
-                            trainingDays === num
-                              ? "bg-mad-lime text-mad-bg font-extrabold shadow-md"
-                              : "bg-mad-bg text-mad-gray border border-white/10 hover:text-white"
-                          }`}
+                          className={`flex-1 py-2.5 rounded-xl text-xs font-bold font-mono transition-all ${trainingDays === num
+                            ? "bg-mad-lime text-mad-bg font-extrabold shadow-md"
+                            : "bg-mad-bg text-mad-gray border border-white/10 hover:text-white"
+                            }`}
                         >
                           {num}D
                         </button>
@@ -511,8 +507,8 @@ export default function AICoachPage() {
                           ? `PROSES PROTOKOL ${trainingDays} HARI LATIHAN`
                           : `GENERATE ${trainingDays}-DAY WORKOUT PROTOCOL`
                         : lang === "id"
-                        ? "PROSES PROTOKOL NUTRISI SEKARANG"
-                        : "GENERATE NUTRITION PROTOCOL NOW"}
+                          ? "PROSES PROTOKOL NUTRISI SEKARANG"
+                          : "GENERATE NUTRITION PROTOCOL NOW"}
                     </span>
                   </>
                 )}
