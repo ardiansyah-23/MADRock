@@ -18,7 +18,6 @@ export default function ContactPage() {
     <main className="pt-32 pb-24 bg-mad-bg text-white min-h-screen">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
-          badge={lang === "id" ? "HUBUNGI KAMI" : "GET IN TOUCH"}
           title={lang === "id" ? "KONTAK MARKAS MADROCK" : "CONTACT MADROCK HEADQUARTERS"}
           subtitle={
             lang === "id"
