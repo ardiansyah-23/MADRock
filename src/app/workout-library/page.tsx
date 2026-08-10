@@ -160,7 +160,6 @@ export default function WorkoutLibraryPage() {
     <main className="pt-32 pb-24 bg-mad-bg text-white min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
-          badge={t("work_header_badge")}
           title={t("work_header_title")}
           subtitle={t("work_header_subtitle")}
         />
@@ -185,11 +184,10 @@ export default function WorkoutLibraryPage() {
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-4 py-2 rounded-xl text-xs font-bold uppercase transition-all ${
-                  selectedCategory === cat
+                className={`px-4 py-2 rounded-xl text-xs font-bold uppercase transition-all ${selectedCategory === cat
                     ? "bg-mad-lime text-mad-bg shadow-md"
                     : "bg-mad-surface text-slate-700 border border-white/10 hover:text-slate-900 hover:border-mad-lime/30"
-                }`}
+                  }`}
               >
                 {getCategoryLabel(cat)}
               </button>
