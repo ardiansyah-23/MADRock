@@ -55,7 +55,7 @@ export function HeroSection() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full my-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-          
+
           {/* Left Side Content */}
           <div className="lg:col-span-7 xl:col-span-7 space-y-6">
             <ScrollReveal delay={0.1}>
@@ -92,79 +92,64 @@ export function HeroSection() {
               </div>
             </ScrollReveal>
 
-            {/* Quick Badges */}
-            <ScrollReveal delay={0.25}>
-              <div className="pt-2 flex items-center gap-6 text-xs text-slate-600 font-medium">
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-mad-lime" />
-                  <span>100% Customized Plans</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-mad-lime" />
-                  <span>24/7 Coach Access</span>
-                </div>
-              </div>
-            </ScrollReveal>
-          </div>
-
-          {/* Right Side Image Card - RICH DARK GRADIENT OVERLAY */}
-          <div className="lg:col-span-5 xl:col-span-5 relative">
-            <ScrollReveal direction="left" delay={0.15}>
-              <div className="relative mx-auto max-w-md lg:max-w-none">
-                <div className="relative rounded-3xl overflow-hidden border border-slate-200 bg-slate-900 shadow-2xl transform-gpu">
-                  <div className="relative h-[380px] sm:h-[450px] lg:h-[480px] w-full">
-                    <Image
-                      src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1470&auto=format&fit=crop"
-                      alt="Head Coach Ahmad Hudzaifah"
-                      fill
-                      sizes="(max-width: 768px) 100vw, 40vw"
-                      className="object-cover object-top hover:scale-105 transition-transform duration-500 transform-gpu"
-                    />
-                  </div>
-
-                  {/* Floating Overlay Badge on Dark Gradient */}
-                  <div className="absolute bottom-5 left-5 right-5 p-3.5 rounded-2xl bg-black/80 backdrop-blur-md border border-white/20 flex items-center gap-3.5 shadow-2xl">
-                    <div className="w-10 h-10 rounded-xl bg-mad-lime flex items-center justify-center text-white shrink-0 font-black text-lg shadow-md">
-                      AH
+            {/* Right Side Image Card - RICH DARK GRADIENT OVERLAY */}
+            <div className="lg:col-span-5 xl:col-span-5 relative">
+              <ScrollReveal direction="left" delay={0.15}>
+                <div className="relative mx-auto max-w-md lg:max-w-none">
+                  <div className="relative rounded-3xl overflow-hidden border border-slate-200 bg-slate-900 shadow-2xl transform-gpu">
+                    <div className="relative h-[380px] sm:h-[450px] lg:h-[480px] w-full">
+                      <Image
+                        src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1470&auto=format&fit=crop"
+                        alt="Head Coach Ahmad Hudzaifah"
+                        fill
+                        sizes="(max-width: 768px) 100vw, 40vw"
+                        className="object-cover object-top hover:scale-105 transition-transform duration-500 transform-gpu"
+                      />
                     </div>
-                    <div>
-                      <h4 className="text-white keep-white font-bold text-xs sm:text-sm uppercase tracking-wide">
-                        Coach Ahmad Hudzaifah
-                      </h4>
-                      <p className="text-[11px] text-lime-400 font-semibold">
-                        Head Strength & Recomp Specialist
-                      </p>
+
+                    {/* Floating Overlay Badge on Dark Gradient */}
+                    <div className="absolute bottom-5 left-5 right-5 p-3.5 rounded-2xl bg-black/80 backdrop-blur-md border border-white/20 flex items-center gap-3.5 shadow-2xl">
+                      <div className="w-10 h-10 rounded-xl bg-mad-lime flex items-center justify-center text-white shrink-0 font-black text-lg shadow-md">
+                        AH
+                      </div>
+                      <div>
+                        <h4 className="text-white keep-white font-bold text-xs sm:text-sm uppercase tracking-wide">
+                          Coach Ahmad Hudzaifah
+                        </h4>
+                        <p className="text-[11px] text-lime-400 font-semibold">
+                          Head Strength & Recomp Specialist
+                        </p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            </ScrollReveal>
-          </div>
-        </div>
-
-        {/* Bottom Statistics Bar */}
-        <div className="mt-12 sm:mt-16 pt-8 border-t border-slate-200">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-            {stats.map((stat, index) => (
-              <ScrollReveal key={index} delay={0.05 * index}>
-                <div className="p-4 rounded-2xl bg-white border border-slate-200 hover:border-mad-lime transition-all duration-300 shadow-sm transform-gpu">
-                  <stat.icon className="w-5 h-5 text-mad-lime mx-auto mb-2 opacity-90" />
-                  <div className="text-2xl sm:text-3xl lg:text-4xl font-black font-spartan text-slate-900">
-                    <AnimatedCounter
-                      end={stat.value}
-                      suffix={stat.suffix}
-                      decimals={stat.decimals || 0}
-                    />
-                  </div>
-                  <p className="text-xs text-slate-600 uppercase tracking-wider font-semibold mt-1">
-                    {stat.label}
-                  </p>
                 </div>
               </ScrollReveal>
-            ))}
+            </div>
+          </div>
+
+          {/* Bottom Statistics Bar */}
+          <div className="mt-12 sm:mt-16 pt-8 border-t border-slate-200">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+              {stats.map((stat, index) => (
+                <ScrollReveal key={index} delay={0.05 * index}>
+                  <div className="p-4 rounded-2xl bg-white border border-slate-200 hover:border-mad-lime transition-all duration-300 shadow-sm transform-gpu">
+                    <stat.icon className="w-5 h-5 text-mad-lime mx-auto mb-2 opacity-90" />
+                    <div className="text-2xl sm:text-3xl lg:text-4xl font-black font-spartan text-slate-900">
+                      <AnimatedCounter
+                        end={stat.value}
+                        suffix={stat.suffix}
+                        decimals={stat.decimals || 0}
+                      />
+                    </div>
+                    <p className="text-xs text-slate-600 uppercase tracking-wider font-semibold mt-1">
+                      {stat.label}
+                    </p>
+                  </div>
+                </ScrollReveal>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
     </section>
   );
 }
