@@ -110,7 +110,6 @@ export default function MealPlannerPage() {
     <main className="pt-32 pb-24 bg-mad-bg text-white min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
-          badge={t("meal_header_badge")}
           title={t("meal_header_title")}
           subtitle={t("meal_header_subtitle")}
         />
@@ -121,11 +120,10 @@ export default function MealPlannerPage() {
             <button
               key={cat}
               onClick={() => setSelectedGoal(cat)}
-              className={`px-5 py-2.5 rounded-2xl text-xs font-bold uppercase transition-all ${
-                selectedGoal === cat
+              className={`px-5 py-2.5 rounded-2xl text-xs font-bold uppercase transition-all ${selectedGoal === cat
                   ? "bg-mad-lime text-mad-bg shadow-lg font-extrabold"
                   : "bg-mad-surface text-mad-gray border border-white/10 hover:text-white"
-              }`}
+                }`}
             >
               {getCategoryLabel(cat)}
             </button>
