@@ -49,12 +49,8 @@ export function HeroSection() {
           priority
           className="object-cover object-center opacity-15 filter blur-[1px]"
         />
-        {/* Dark Ambient Vignette Gradients */}
         <div className="absolute inset-0 bg-gradient-to-t from-mad-bg via-transparent to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-r from-mad-bg via-transparent to-transparent" />
-        
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-lime-500/15 rounded-full blur-3xl will-change-transform transform-gpu" />
-        <div className="absolute bottom-10 right-10 w-80 h-80 bg-lime-500/20 rounded-full blur-3xl will-change-transform transform-gpu" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full my-auto">
@@ -100,11 +96,11 @@ export function HeroSection() {
             <ScrollReveal delay={0.25}>
               <div className="pt-2 flex items-center gap-6 text-xs text-slate-600 font-medium">
                 <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-mad-lime animate-pulse" />
+                  <div className="w-2 h-2 rounded-full bg-mad-lime" />
                   <span>100% Customized Plans</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-mad-lime animate-pulse" />
+                  <div className="w-2 h-2 rounded-full bg-mad-lime" />
                   <span>24/7 Coach Access</span>
                 </div>
               </div>
@@ -115,8 +111,6 @@ export function HeroSection() {
           <div className="lg:col-span-5 xl:col-span-5 relative">
             <ScrollReveal direction="left" delay={0.15}>
               <div className="relative mx-auto max-w-md lg:max-w-none">
-                <div className="absolute -inset-1 rounded-3xl bg-gradient-to-tr from-lime-500/30 via-transparent to-lime-500/20 blur-xl opacity-70 pointer-events-none transform-gpu" />
-
                 <div className="relative rounded-3xl overflow-hidden border border-slate-200 bg-slate-900 shadow-2xl transform-gpu">
                   <div className="relative h-[380px] sm:h-[450px] lg:h-[480px] w-full">
                     <Image

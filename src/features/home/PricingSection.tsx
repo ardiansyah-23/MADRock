@@ -118,7 +118,7 @@ export function PricingSection() {
                 <div
                   className={`rounded-3xl p-8 flex flex-col justify-between h-full relative transition-all duration-300 ${
                     plan.highlighted
-                      ? "bg-mad-surface border-2 border-mad-lime shadow-2xl shadow-mad-lime/15 lg:-translate-y-4"
+                      ? "bg-mad-surface border-2 border-mad-lime shadow-2xl shadow-slate-900/10 lg:-translate-y-4"
                       : "bg-mad-surface/60 border border-white/10 hover:border-white/20"
                   }`}
                 >
@@ -164,7 +164,7 @@ export function PricingSection() {
                       href="/booking"
                       className={`w-full inline-flex items-center justify-center gap-2 py-4 rounded-2xl font-extrabold text-xs uppercase tracking-wider transition-all ${
                         plan.highlighted
-                          ? "bg-mad-lime text-mad-bg hover:bg-mad-lime-hover shadow-xl shadow-mad-lime/20"
+                          ? "bg-mad-lime text-mad-bg hover:bg-mad-lime-hover shadow-xl shadow-slate-900/10"
                           : "bg-white/10 text-white hover:bg-mad-lime hover:text-mad-bg border border-white/15"
                       }`}
                     >

@@ -12,9 +12,7 @@ export function CTASection() {
     <section className="py-24 bg-mad-bg relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
-          <div className="relative rounded-3xl overflow-hidden bg-gradient-to-r from-mad-surface via-mad-surface-2 to-mad-surface border border-mad-lime/40 p-10 sm:p-16 text-center space-y-8 shadow-2xl">
-            {/* Ambient Background Glow */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-mad-lime/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="relative rounded-3xl overflow-hidden bg-mad-surface border border-slate-300 p-10 sm:p-16 text-center space-y-8 shadow-2xl">
 
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-mad-lime/10 border border-mad-lime/30 text-mad-lime text-xs font-semibold uppercase tracking-wider">
               <Flame className="w-3.5 h-3.5 fill-mad-lime" />

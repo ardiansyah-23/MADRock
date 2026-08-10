@@ -18,7 +18,7 @@ export function TestimonialsSection() {
       review:
         lang === "id"
           ? "MADRock adalah satu-satunya platform kepelatihan yang benar-benar memahami kesibukan saya. Turun 10kg lemak dalam 12 minggu sambil menaikkan angkatan deadlift 27kg. Sangat sepadan dengan setiap rupiah."
-          : "MADRock is the only coaching platform that actually understands busy schedules. Down 22lbs of fat in 12 weeks while increasing my deadlift by 60lbs. Worth every single penny.",
+          : "MADRock is the only coaching platform that understands busy schedules. Down 22lbs of fat in 12 weeks while increasing my deadlift by 60lbs. Worth every single penny.",
       avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop",
     },
     {
@@ -61,7 +61,7 @@ export function TestimonialsSection() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {reviews.map((item, idx) => (
             <ScrollReveal key={idx} delay={0.15 * idx}>
-              <div className="p-8 rounded-3xl bg-mad-bg border border-white/10 flex flex-col justify-between h-full hover:border-mad-lime/40 transition-colors">
+              <div className="p-8 rounded-3xl bg-mad-bg border border-white/10 flex flex-col justify-between h-full hover:border-slate-400 transition-colors">
                 <div className="space-y-4">
                   {/* Rating Stars */}
                   <div className="flex items-center gap-1 text-mad-lime">

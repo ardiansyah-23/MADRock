@@ -253,6 +253,7 @@ export default function AdminPage() {
   ];
 
   return (
+    <>
     <div className="min-h-screen bg-mad-bg text-white flex flex-col md:flex-row">
       {/* Mobile Top App Bar */}
       <div className="md:hidden bg-mad-surface border-b border-rose-500/20 p-4 flex items-center justify-between sticky top-0 z-50">
@@ -499,7 +500,7 @@ export default function AdminPage() {
             </div>
           </div>
         )}
-      </main>
+      </div>
     </div>
 
       {/* ARTICLE DUAL LANGUAGE MODAL */ }
@@ -623,6 +624,6 @@ export default function AdminPage() {
       </div>
     )
   }
-    </div >
+    </>
   );
 }
