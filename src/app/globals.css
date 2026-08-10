@@ -86,15 +86,10 @@ body {
   background: #FFFFFF;
   border-color: var(--mad-lime);
   transform: translateY(-4px);
-  box-shadow: 0 10px 30px -10px rgba(101, 163, 13, 0.25);
+  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.15);
 }
 
-/* Text Gradients */
-.text-gradient-lime {
-  background: linear-gradient(135deg, var(--mad-text) 0%, var(--mad-lime) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
+/* Text Gradients (Removed to avoid AI slop) */
 
 /* Slate-Gray Utility Overrides */
 .text-white:not(.keep-white) {
