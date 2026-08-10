@@ -44,7 +44,6 @@ export function CoachesSection() {
     <section className="py-24 bg-mad-bg relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
-          badge={lang === "id" ? "TIM KEPELATIHAN ELIT" : "ELITE COACHING TEAM"}
           title={lang === "id" ? "BIMBINGAN DARI AHLI TERBAIK" : "LEARN FROM THE BEST"}
           subtitle={
             lang === "id"

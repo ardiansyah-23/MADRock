@@ -49,7 +49,6 @@ export function TestimonialsSection() {
     <section className="py-24 bg-mad-surface relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
-          badge={lang === "id" ? "ULASAN ATLET" : "ATHLETE REVIEWS"}
           title={lang === "id" ? "APA KATA KLIEN KAMI" : "WHAT OUR CLIENTS SAY"}
           subtitle={
             lang === "id"

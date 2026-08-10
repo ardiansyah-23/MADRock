@@ -56,7 +56,6 @@ export function AboutSection() {
     <section className="py-24 bg-mad-bg relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
-          badge={lang === "id" ? "TENTANG HEAD COACH" : "ABOUT THE COACH"}
           title={lang === "id" ? "DIRANCANG UNTUK HASIL NYATA" : "ENGINEERED FOR REAL RESULTS"}
           subtitle={
             lang === "id"

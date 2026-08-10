@@ -33,8 +33,8 @@ export function FitnessToolsSection() {
   // BMR (Mifflin-St Jeor)
   const bmr = isInputValid
     ? (gender === "male"
-        ? 10 * weight + 6.25 * height - 5 * age + 5
-        : 10 * weight + 6.25 * height - 5 * age - 161)
+      ? 10 * weight + 6.25 * height - 5 * age + 5
+      : 10 * weight + 6.25 * height - 5 * age - 161)
     : 0;
 
   const tdee = isInputValid ? Math.round(bmr * activity) : 0;
@@ -54,7 +54,6 @@ export function FitnessToolsSection() {
     <section className="py-24 bg-mad-surface relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
-          badge={lang === "id" ? "KALKULATOR FITNES GRATIS" : "FREE FITNESS CALCULATORS"}
           title={lang === "id" ? "HITUNG ANGKAN METABOLISME ANDA" : "CALCULATE YOUR NUMBERS"}
           subtitle={
             lang === "id"
@@ -89,22 +88,20 @@ export function FitnessToolsSection() {
                   <button
                     type="button"
                     onClick={() => setGender("male")}
-                    className={`py-2.5 rounded-xl text-xs font-bold uppercase transition-all ${
-                      gender === "male"
+                    className={`py-2.5 rounded-xl text-xs font-bold uppercase transition-all ${gender === "male"
                         ? "bg-mad-lime text-mad-bg font-extrabold"
                         : "bg-mad-surface text-mad-gray border border-white/10"
-                    }`}
+                      }`}
                   >
                     {lang === "id" ? "Pria" : "Male"}
                   </button>
                   <button
                     type="button"
                     onClick={() => setGender("female")}
-                    className={`py-2.5 rounded-xl text-xs font-bold uppercase transition-all ${
-                      gender === "female"
+                    className={`py-2.5 rounded-xl text-xs font-bold uppercase transition-all ${gender === "female"
                         ? "bg-mad-lime text-mad-bg font-extrabold"
                         : "bg-mad-surface text-mad-gray border border-white/10"
-                    }`}
+                      }`}
                   >
                     {lang === "id" ? "Wanita" : "Female"}
                   </button>

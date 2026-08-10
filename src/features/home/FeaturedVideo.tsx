@@ -23,7 +23,6 @@ export function FeaturedVideo() {
     <section className="py-24 bg-mad-bg relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
-          badge={lang === "id" ? "DEMO LATIHAN UNGGULAN" : "FEATURED WORKOUT DEMO"}
           title={lang === "id" ? "RASAKAN INTENSITAS KEPELATIHAN" : "EXPERIENCE THE TRAINING INTENSITY"}
           subtitle={
             lang === "id"
