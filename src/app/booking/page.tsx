@@ -59,7 +59,6 @@ export default function BookingPage() {
     <main className="pt-32 pb-24 bg-mad-bg text-white min-h-screen">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
-          badge={lang === "id" ? "KONSULTASI & KEPELATIHAN VIP" : "VIP CONSULTATION & COACHING"}
           title={lang === "id" ? "JADWALKAN SESI ANDA" : "BOOK YOUR SESSION"}
           subtitle={
             lang === "id"
@@ -77,18 +76,16 @@ export default function BookingPage() {
           ].map((s) => (
             <div key={s.num} className="flex items-center gap-3">
               <div
-                className={`w-10 h-10 rounded-xl flex items-center justify-center font-bold text-sm transition-all ${
-                  step >= s.num
+                className={`w-10 h-10 rounded-xl flex items-center justify-center font-bold text-sm transition-all ${step >= s.num
                     ? "bg-mad-lime text-mad-bg shadow-md shadow-mad-lime/20"
                     : "bg-mad-surface text-mad-gray border border-white/10"
-                }`}
+                  }`}
               >
                 {step > s.num ? <Check className="w-5 h-5" /> : s.num}
               </div>
               <span
-                className={`text-xs font-mono uppercase tracking-wider hidden sm:block ${
-                  step >= s.num ? "text-white font-bold" : "text-mad-gray"
-                }`}
+                className={`text-xs font-mono uppercase tracking-wider hidden sm:block ${step >= s.num ? "text-white font-bold" : "text-mad-gray"
+                  }`}
               >
                 {s.label}
               </span>
@@ -113,11 +110,10 @@ export default function BookingPage() {
                       <button
                         key={c.name}
                         onClick={() => setSelectedCoach(c.name)}
-                        className={`p-5 rounded-2xl text-left border transition-all ${
-                          selectedCoach === c.name
+                        className={`p-5 rounded-2xl text-left border transition-all ${selectedCoach === c.name
                             ? "bg-mad-bg border-mad-lime shadow-lg"
                             : "bg-mad-bg/50 border-white/10 hover:border-white/20"
-                        }`}
+                          }`}
                       >
                         <h4 className="font-bold text-white font-spartan text-lg uppercase">{c.name}</h4>
                         <p className="text-xs text-mad-lime font-mono mt-1">{c.role}</p>
@@ -138,11 +134,10 @@ export default function BookingPage() {
                       <button
                         key={pkg.title}
                         onClick={() => setSelectedPackage(pkg.title)}
-                        className={`p-5 rounded-2xl text-left border transition-all ${
-                          selectedPackage === pkg.title
+                        className={`p-5 rounded-2xl text-left border transition-all ${selectedPackage === pkg.title
                             ? "bg-mad-bg border-mad-lime shadow-lg"
                             : "bg-mad-bg/50 border-white/10 hover:border-white/20"
-                        }`}
+                          }`}
                       >
                         <h4 className="font-bold text-white font-spartan text-lg uppercase">{pkg.title}</h4>
                         <span className="text-xs text-mad-gray block mt-1">{pkg.sessions}</span>
@@ -189,11 +184,10 @@ export default function BookingPage() {
                         <button
                           key={time}
                           onClick={() => setSelectedTime(time)}
-                          className={`py-3 rounded-xl text-xs font-bold font-mono uppercase transition-all ${
-                            selectedTime === time
+                          className={`py-3 rounded-xl text-xs font-bold font-mono uppercase transition-all ${selectedTime === time
                               ? "bg-mad-lime text-mad-bg"
                               : "bg-mad-bg text-mad-gray border border-white/10"
-                          }`}
+                            }`}
                         >
                           {time}
                         </button>
