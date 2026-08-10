@@ -44,20 +44,6 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Tools & Resources (Col 3, aligned right inside grid) */}
-          <div className="lg:col-span-1 space-y-4 lg:pl-4">
-            <h4 className="text-slate-900 font-bold text-sm tracking-wider uppercase font-spartan">
-              {lang === "id" ? "FITUR & ALAT UKUR" : "RESOURCES & TOOLS"}
-            </h4>
-            <ul className="space-y-2.5 text-sm">
-              <li><Link href="/workout-library" className="hover:text-mad-lime transition-colors">{lang === "id" ? "Perpustakaan Latihan" : "Workout Library"}</Link></li>
-              <li><Link href="/meal-planner" className="hover:text-mad-lime transition-colors">{lang === "id" ? "AI Meal Planner Nutrisi" : "AI Meal Planner"}</Link></li>
-              <li><Link href="/tools" className="hover:text-mad-lime transition-colors">{lang === "id" ? "9 Kalkulator Fitnes Sains" : "TDEE & Macro Calculator"}</Link></li>
-              <li><Link href="/blog" className="hover:text-mad-lime transition-colors">{lang === "id" ? "Jurnal & Artikel Fitnes" : "Fitness Science Blog"}</Link></li>
-              <li><Link href="/transformations" className="hover:text-mad-lime transition-colors">{lang === "id" ? "Transformasi Atlet" : "Client Transformations"}</Link></li>
-            </ul>
-          </div>
-
           {/* Contact / Newsletter (Cols 4-5, stretched to far right edge) */}
           <div className="lg:col-span-2 space-y-4 lg:pl-8">
             <h4 className="text-slate-900 font-bold text-sm tracking-wider uppercase font-spartan">
