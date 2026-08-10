@@ -20,7 +20,6 @@ export default function PrivacyPage() {
         </Link>
 
         <SectionHeader
-          badge={lang === "id" ? "KEBIJAKAN PRIVASI" : "PRIVACY POLICY"}
           title="MADROCK PRIVACY PROTOCOL"
           subtitle={
             lang === "id"
