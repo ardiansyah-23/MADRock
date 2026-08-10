@@ -186,7 +186,6 @@ export default function ProgramsPage() {
     <main className="pt-32 pb-24 bg-mad-bg text-white min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
-          badge={t("prog_header_badge")}
           title={t("prog_header_title")}
           subtitle={t("prog_header_subtitle")}
         />
@@ -197,11 +196,10 @@ export default function ProgramsPage() {
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-5 py-2.5 rounded-2xl text-xs font-bold uppercase transition-all ${
-                activeCategory === cat
+              className={`px-5 py-2.5 rounded-2xl text-xs font-bold uppercase transition-all ${activeCategory === cat
                   ? "bg-mad-lime text-mad-bg shadow-lg shadow-mad-lime/20 font-extrabold"
                   : "bg-mad-surface text-mad-gray border border-white/10 hover:text-white"
-              }`}
+                }`}
             >
               {getCategoryLabel(cat)}
             </button>
