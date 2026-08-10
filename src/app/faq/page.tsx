@@ -52,7 +52,6 @@ export default function FAQPage() {
     <main className="pt-32 pb-24 bg-mad-bg text-white min-h-screen">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
-          badge={lang === "id" ? "PERTANYAAN SERING DIAJUKAN" : "FREQUENTLY ASKED QUESTIONS"}
           title={lang === "id" ? "SEGALA HAL YANG PERLU ANDA KETAHUI" : "EVERYTHING YOU NEED TO KNOW"}
           subtitle={
             lang === "id"
@@ -74,9 +73,8 @@ export default function FAQPage() {
                     {faq.q}
                   </span>
                   <ChevronDown
-                    className={`w-5 h-5 text-mad-lime transition-transform duration-300 ${
-                      openIdx === idx ? "rotate-180" : ""
-                    }`}
+                    className={`w-5 h-5 text-mad-lime transition-transform duration-300 ${openIdx === idx ? "rotate-180" : ""
+                      }`}
                   />
                 </button>
 
