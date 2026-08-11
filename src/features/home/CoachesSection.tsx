@@ -80,14 +80,14 @@ export function CoachesSection() {
                     </p>
                   </div>
 
-                  <div className="space-y-2 text-xs text-slate-600">
-                    <div className="flex items-center justify-between py-2 border-b border-slate-100">
-                      <span className="text-slate-500 font-medium">{lang === "id" ? "Spesialisasi" : "Specialization"}</span>
-                      <span className="text-slate-900 font-bold text-right max-w-[55%]">{coach.specialization}</span>
+                  <div className="space-y-2 text-xs text-mad-gray">
+                    <div className="flex items-center justify-between py-2 border-b border-white/10">
+                      <span className="text-mad-gray font-medium">{lang === "id" ? "Spesialisasi" : "Specialization"}</span>
+                      <span className="text-white font-bold text-right max-w-[55%]">{coach.specialization}</span>
                     </div>
-                    <div className="flex items-center justify-between py-2 border-b border-slate-100">
-                      <span className="text-slate-500 font-medium">{lang === "id" ? "Pengalaman" : "Experience"}</span>
-                      <span className="text-slate-900 font-bold">{coach.experience}</span>
+                    <div className="flex items-center justify-between py-2 border-b border-white/10">
+                      <span className="text-mad-gray font-medium">{lang === "id" ? "Pengalaman" : "Experience"}</span>
+                      <span className="text-white font-bold">{coach.experience}</span>
                     </div>
                   </div>
 

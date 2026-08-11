@@ -83,8 +83,8 @@ export default function BlogPage() {
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
                 className={`px-5 py-2.5 rounded-2xl text-xs font-bold uppercase transition-all ${selectedCategory === cat
-                    ? "bg-mad-lime text-white font-extrabold shadow-lg"
-                    : "bg-mad-surface text-slate-700 border border-white/10 hover:text-slate-900 hover:border-mad-lime/30"
+                    ? "bg-mad-lime text-mad-bg font-extrabold"
+                    : "bg-mad-surface text-mad-gray border border-white/10 hover:text-white hover:border-mad-lime/30"
                   }`}
               >
                 {getCategoryLabel(cat)}
@@ -113,7 +113,7 @@ export default function BlogPage() {
 
             return (
               <ScrollReveal key={post.id} delay={0.1 * idx}>
-                <div className="group rounded-3xl bg-mad-surface border border-white/10 overflow-hidden hover:border-mad-lime/40 transition-all duration-300 flex flex-col justify-between h-full shadow-sm hover:shadow-lg hover:shadow-mad-lime/10 hover:-translate-y-1">
+                <div className="group rounded-3xl bg-mad-surface border border-white/10 overflow-hidden hover:border-mad-lime/40 transition-all duration-300 flex flex-col justify-between h-full hover:-translate-y-1">
                   <div>
                     <div className="relative h-60 w-full overflow-hidden bg-mad-surface-2">
                       {post.image ? (
@@ -128,7 +128,7 @@ export default function BlogPage() {
                           MADROCK JOURNAL
                         </div>
                       )}
-                      <div className="absolute top-4 left-4 px-3.5 py-1.5 rounded-full bg-slate-900 text-white font-mono text-[11px] uppercase font-extrabold border border-slate-700 shadow-xl z-10">
+                      <div className="absolute top-4 left-4 px-3.5 py-1.5 rounded-full bg-mad-bg border border-white/10 text-white font-mono text-[11px] uppercase font-extrabold z-10">
                         <span className="keep-white text-white">{getCategoryLabel(category)}</span>
                       </div>
                     </div>
@@ -143,7 +143,7 @@ export default function BlogPage() {
                         </span>
                       </div>
 
-                      <h3 className="text-xl font-bold font-spartan text-slate-900 uppercase group-hover:text-mad-lime transition-colors leading-snug">
+                      <h3 className="text-xl font-bold font-spartan text-white uppercase group-hover:text-mad-lime transition-colors leading-snug">
                         {title}
                       </h3>
 

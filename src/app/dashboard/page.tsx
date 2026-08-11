@@ -19,7 +19,6 @@ import {
   X,
   Check,
 } from "lucide-react";
-import confetti from "canvas-confetti";
 import { LanguageToggle } from "@/components/common/LanguageToggle";
 import { useLanguage } from "@/components/common/LanguageProvider";
 
@@ -67,11 +66,6 @@ export default function DashboardPage() {
   const handleInDashboardBooking = (e: React.FormEvent) => {
     e.preventDefault();
     setBookingSuccess(true);
-    confetti({
-      particleCount: 100,
-      spread: 70,
-      origin: { y: 0.6 },
-    });
   };
 
   const navItems = [
@@ -111,8 +105,8 @@ export default function DashboardPage() {
         <div className="space-y-8">
           {/* Logo Brand */}
           <Link href="/" className="flex items-center gap-2.5 group pt-2">
-            <div className="w-10 h-10 rounded-xl bg-mad-lime flex items-center justify-center text-mad-bg shadow-lg shadow-mad-lime/20">
-              <Dumbbell className="w-6 h-6 stroke-[2.5]" />
+            <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white shadow-sm">
+              <Dumbbell className="w-6 h-6 stroke-[2]" />
             </div>
             <div className="flex flex-col">
               <span className="font-spartan font-black text-xl tracking-tighter text-white uppercase leading-none">
@@ -135,7 +129,7 @@ export default function DashboardPage() {
                 onClick={() => changeTab(item.id as any)}
                 className={`w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-xs font-bold uppercase transition-all ${
                   activeTab === item.id
-                    ? "bg-mad-lime text-mad-bg font-extrabold shadow-lg shadow-mad-lime/20"
+                    ? "bg-white text-mad-bg font-extrabold shadow-sm"
                     : "text-mad-gray hover:text-white hover:bg-white/5"
                 }`}
               >
@@ -216,11 +210,9 @@ export default function DashboardPage() {
         {/* Main Content Area */}
         <main className="p-4 sm:p-8 space-y-8 flex-1">
           {/* User Welcome Banner */}
-          <div className="rounded-3xl bg-mad-surface border border-white/10 p-6 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-2xl relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-mad-lime/5 rounded-full blur-3xl pointer-events-none" />
-
+          <div className="rounded-3xl bg-mad-surface border border-white/10 p-6 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-sm relative overflow-hidden">
             <div className="flex items-center gap-4 z-10">
-              <div className="w-16 h-16 rounded-2xl bg-mad-lime text-mad-bg flex items-center justify-center font-black text-2xl font-spartan shadow-lg shadow-mad-lime/20 shrink-0">
+              <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 text-white flex items-center justify-center font-black text-2xl font-spartan shrink-0">
                 MR
               </div>
               <div>
@@ -481,7 +473,7 @@ export default function DashboardPage() {
                     setBookingSuccess(false);
                     setBookingModalOpen(true);
                   }}
-                  className="px-5 py-2.5 rounded-xl bg-mad-lime text-mad-bg font-extrabold text-xs uppercase hover:bg-mad-lime-hover transition-all shadow-lg shadow-mad-lime/20"
+                  className="px-5 py-2.5 rounded-xl bg-white text-mad-bg font-extrabold text-xs uppercase hover:bg-gray-200 transition-all shadow-sm"
                 >
                   {lang === "id" ? "Jadwalkan Sesi Baru" : "Book New Session"}
                 </button>
@@ -585,7 +577,7 @@ export default function DashboardPage() {
 
                 <button
                   type="submit"
-                  className="w-full py-4 rounded-2xl bg-mad-lime text-mad-bg font-extrabold text-sm uppercase tracking-wider hover:bg-mad-lime-hover shadow-lg shadow-mad-lime/20"
+                  className="w-full py-4 rounded-2xl bg-white text-mad-bg font-extrabold text-sm uppercase tracking-wider hover:bg-gray-200 shadow-sm"
                 >
                   {lang === "id" ? "KONFIRMASI JADWAL SESI SEKARANG" : "CONFIRM IN-DASHBOARD BOOKING NOW"}
                 </button>

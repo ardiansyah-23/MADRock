@@ -197,7 +197,7 @@ export default function ProgramsPage() {
               key={cat}
               onClick={() => setActiveCategory(cat)}
               className={`px-5 py-2.5 rounded-2xl text-xs font-bold uppercase transition-all ${activeCategory === cat
-                  ? "bg-mad-lime text-mad-bg shadow-lg shadow-mad-lime/20 font-extrabold"
+                  ? "bg-mad-lime text-mad-bg font-extrabold"
                   : "bg-mad-surface text-mad-gray border border-white/10 hover:text-white"
                 }`}
             >
@@ -210,7 +210,7 @@ export default function ProgramsPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredPrograms.map((program, idx) => (
             <ScrollReveal key={program.id} delay={0.1 * idx}>
-              <div className="group rounded-3xl bg-mad-surface border border-white/10 overflow-hidden hover:border-mad-lime/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-mad-lime/10 flex flex-col h-full">
+              <div className="group rounded-3xl bg-mad-surface border border-white/10 overflow-hidden hover:border-mad-lime/50 transition-all duration-500 hover:-translate-y-2 flex flex-col h-full">
                 {/* Image Header */}
                 <div className="relative h-56 w-full overflow-hidden">
                   <Image
@@ -221,7 +221,7 @@ export default function ProgramsPage() {
                   />
 
                   {program.badge && (
-                    <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-slate-900 text-white font-extrabold text-[10px] uppercase tracking-wider border border-slate-700 shadow-xl z-10">
+                    <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-mad-bg text-white font-extrabold text-[10px] uppercase tracking-wider border border-white/10 z-10">
                       <span className="keep-white text-white">{program.badge}</span>
                     </div>
                   )}
@@ -233,7 +233,7 @@ export default function ProgramsPage() {
                     <span className="text-[11px] font-mono text-mad-lime font-bold uppercase tracking-widest block">
                       {getCategoryLabel(program.category)}
                     </span>
-                    <h3 className="text-2xl font-black font-spartan text-slate-900 uppercase leading-tight">
+                    <h3 className="text-2xl font-black font-spartan text-white uppercase leading-tight">
                       {program.title}
                     </h3>
                   </div>
@@ -306,7 +306,7 @@ export default function ProgramsPage() {
                 {selectedProgram.features.map((feat: string, i: number) => (
                   <div key={i} className="flex items-center gap-2.5 text-xs">
                     <CheckCircle2 className="w-4 h-4 text-mad-lime shrink-0" />
-                    <span className="text-slate-800 font-semibold">{feat}</span>
+                    <span className="text-white font-semibold">{feat}</span>
                   </div>
                 ))}
               </div>
@@ -321,7 +321,7 @@ export default function ProgramsPage() {
 
                 <Link
                   href="/booking"
-                  className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-mad-lime text-mad-bg font-black text-sm uppercase tracking-wider hover:bg-mad-lime-hover shadow-xl shadow-mad-lime/30"
+                  className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-mad-lime text-mad-bg font-black text-sm uppercase tracking-wider hover:bg-mad-lime-hover"
                 >
                   <span>{t("prog_cta")}</span>
                   <ArrowRight className="w-4 h-4" />

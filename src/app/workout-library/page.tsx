@@ -185,8 +185,8 @@ export default function WorkoutLibraryPage() {
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
                 className={`px-4 py-2 rounded-xl text-xs font-bold uppercase transition-all ${selectedCategory === cat
-                    ? "bg-mad-lime text-mad-bg shadow-md"
-                    : "bg-mad-surface text-slate-700 border border-white/10 hover:text-slate-900 hover:border-mad-lime/30"
+                    ? "bg-mad-lime text-mad-bg"
+                    : "bg-mad-surface text-mad-gray border border-white/10 hover:text-white hover:border-mad-lime/30"
                   }`}
               >
                 {getCategoryLabel(cat)}

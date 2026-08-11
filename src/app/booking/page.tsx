@@ -77,7 +77,7 @@ export default function BookingPage() {
             <div key={s.num} className="flex items-center gap-3">
               <div
                 className={`w-10 h-10 rounded-xl flex items-center justify-center font-bold text-sm transition-all ${step >= s.num
-                    ? "bg-mad-lime text-mad-bg shadow-md shadow-mad-lime/20"
+                    ? "bg-mad-lime text-mad-bg font-extrabold"
                     : "bg-mad-surface text-mad-gray border border-white/10"
                   }`}
               >
@@ -95,14 +95,13 @@ export default function BookingPage() {
 
         {/* Step Content */}
         {!confirmed ? (
-          <div className="rounded-3xl bg-mad-surface border border-white/10 p-8 sm:p-12 shadow-2xl space-y-8">
+          <div className="rounded-3xl bg-mad-surface border border-white/10 p-8 sm:p-12 space-y-8">
             {step === 1 && (
               <div className="space-y-8">
                 {/* Select Coach */}
                 <div className="space-y-4">
-                  <h3 className="text-xl font-bold font-spartan text-white uppercase flex items-center gap-2">
-                    <User className="w-5 h-5 text-mad-lime" />
-                    <span>{lang === "id" ? "1. PILIH HEAD COACH" : "1. SELECT HEAD COACH"}</span>
+                  <h3 className="text-xl font-bold font-spartan text-white uppercase">
+                    {lang === "id" ? "1. PILIH HEAD COACH" : "1. SELECT HEAD COACH"}
                   </h3>
 
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -111,7 +110,7 @@ export default function BookingPage() {
                         key={c.name}
                         onClick={() => setSelectedCoach(c.name)}
                         className={`p-5 rounded-2xl text-left border transition-all ${selectedCoach === c.name
-                            ? "bg-mad-bg border-mad-lime shadow-lg"
+                            ? "bg-mad-bg border-mad-lime"
                             : "bg-mad-bg/50 border-white/10 hover:border-white/20"
                           }`}
                       >
@@ -124,9 +123,8 @@ export default function BookingPage() {
 
                 {/* Select Package */}
                 <div className="space-y-4 pt-4 border-t border-white/10">
-                  <h3 className="text-xl font-bold font-spartan text-white uppercase flex items-center gap-2">
-                    <Sparkles className="w-5 h-5 text-mad-lime" />
-                    <span>{lang === "id" ? "2. PILIH PAKET KEPELATIHAN" : "2. SELECT COACHING PACKAGE"}</span>
+                  <h3 className="text-xl font-bold font-spartan text-white uppercase">
+                    {lang === "id" ? "2. PILIH PAKET KEPELATIHAN" : "2. SELECT COACHING PACKAGE"}
                   </h3>
 
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -135,7 +133,7 @@ export default function BookingPage() {
                         key={pkg.title}
                         onClick={() => setSelectedPackage(pkg.title)}
                         className={`p-5 rounded-2xl text-left border transition-all ${selectedPackage === pkg.title
-                            ? "bg-mad-bg border-mad-lime shadow-lg"
+                            ? "bg-mad-bg border-mad-lime"
                             : "bg-mad-bg/50 border-white/10 hover:border-white/20"
                           }`}
                       >
@@ -148,7 +146,7 @@ export default function BookingPage() {
 
                 <button
                   onClick={() => setStep(2)}
-                  className="w-full inline-flex items-center justify-center gap-2 py-4 rounded-2xl bg-mad-lime text-mad-bg font-extrabold text-sm uppercase tracking-wider hover:bg-mad-lime-hover shadow-lg"
+                  className="w-full inline-flex items-center justify-center gap-2 py-4 rounded-2xl bg-mad-lime text-mad-bg font-extrabold text-sm uppercase tracking-wider hover:bg-mad-lime-hover"
                 >
                   <span>{lang === "id" ? "LANJUT KE TANGGAL & WAKTU" : "PROCEED TO DATE & TIME"}</span>
                   <ArrowRight className="w-4 h-4" />
@@ -241,7 +239,7 @@ export default function BookingPage() {
 
                 <button
                   onClick={handleConfirmBooking}
-                  className="w-full py-4 rounded-2xl bg-mad-lime text-mad-bg font-black text-base uppercase tracking-wider shadow-xl shadow-mad-lime/30 hover:bg-mad-lime-hover transition-all"
+                  className="w-full py-4 rounded-2xl bg-mad-lime text-mad-bg font-black text-base uppercase tracking-wider hover:bg-mad-lime-hover transition-all"
                 >
                   {lang === "id" ? "KONFIRMASI & BOOKING SESI SEKARANG" : "CONFIRM & BOOK SESSION NOW"}
                 </button>
@@ -250,8 +248,8 @@ export default function BookingPage() {
           </div>
         ) : (
           /* Confirmation Success Card */
-          <div className="rounded-3xl bg-mad-surface border border-mad-lime/40 p-12 text-center space-y-6 shadow-2xl">
-            <div className="w-20 h-20 rounded-full bg-mad-lime text-mad-bg flex items-center justify-center mx-auto text-3xl shadow-xl shadow-mad-lime/30">
+          <div className="rounded-3xl bg-mad-surface border border-mad-lime/40 p-12 text-center space-y-6">
+            <div className="w-20 h-20 rounded-full bg-mad-lime text-mad-bg flex items-center justify-center mx-auto text-3xl">
               <Check className="w-10 h-10 stroke-[3]" />
             </div>
 

@@ -156,7 +156,7 @@ export default function ToolsPage() {
               onClick={() => setActiveTab(tab.id as any)}
               className={`flex items-center gap-2 px-4 py-3 rounded-2xl text-xs font-bold uppercase transition-all ${
                 activeTab === tab.id
-                  ? "bg-mad-lime text-mad-bg shadow-lg shadow-mad-lime/20 font-extrabold"
+                  ? "bg-mad-lime text-mad-bg font-extrabold"
                   : "bg-mad-surface text-mad-gray border border-white/10 hover:text-white"
               }`}
             >
@@ -167,7 +167,7 @@ export default function ToolsPage() {
         </div>
 
         {/* Main Calculator Card */}
-        <div className="max-w-4xl mx-auto rounded-3xl bg-mad-surface border border-white/10 p-8 sm:p-12 shadow-2xl">
+        <div className="max-w-4xl mx-auto rounded-3xl bg-mad-surface border border-white/10 p-8 sm:p-12">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             {/* Input Controls */}
             <div className="space-y-5">
@@ -369,7 +369,7 @@ export default function ToolsPage() {
 
             {/* Calculated Output Box */}
             <div className="rounded-3xl bg-mad-bg border border-mad-lime/30 p-8 space-y-6 text-center relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-mad-lime/10 rounded-full blur-2xl pointer-events-none" />
+
 
               <span className="text-xs font-mono text-mad-lime uppercase tracking-widest block">
                 {lang === "id" ? "ESTIMASI KALKULASI SAINS" : "CALCULATED ESTIMATE"}

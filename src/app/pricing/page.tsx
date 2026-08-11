@@ -124,7 +124,7 @@ export default function PricingPage() {
             <button
               onClick={() => setBillingCycle("monthly")}
               className={`px-6 py-2.5 rounded-full text-xs font-bold uppercase transition-all ${billingCycle === "monthly"
-                  ? "bg-mad-lime text-mad-bg shadow-md font-extrabold"
+                  ? "bg-mad-lime text-mad-bg font-extrabold"
                   : "text-mad-gray hover:text-white"
                 }`}
             >
@@ -133,7 +133,7 @@ export default function PricingPage() {
             <button
               onClick={() => setBillingCycle("yearly")}
               className={`px-6 py-2.5 rounded-full text-xs font-bold uppercase transition-all flex items-center gap-2 ${billingCycle === "yearly"
-                  ? "bg-mad-lime text-mad-bg shadow-md font-extrabold"
+                  ? "bg-mad-lime text-mad-bg font-extrabold"
                   : "text-mad-gray hover:text-white"
                 }`}
             >
@@ -151,12 +151,12 @@ export default function PricingPage() {
               <ScrollReveal key={idx} delay={0.15 * idx}>
                 <div
                   className={`rounded-3xl p-8 flex flex-col justify-between h-full relative transition-all duration-300 ${plan.highlighted
-                      ? "bg-mad-surface border-2 border-mad-lime shadow-2xl shadow-mad-lime/15 lg:-translate-y-4"
+                      ? "bg-mad-surface border-2 border-mad-lime lg:-translate-y-4"
                       : "bg-mad-surface/60 border border-white/10 hover:border-white/20"
                     }`}
                 >
                   {plan.badge && (
-                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-mad-lime text-mad-bg font-extrabold text-[10px] uppercase tracking-wider shadow-lg whitespace-nowrap">
+                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-mad-lime text-mad-bg font-extrabold text-[10px] uppercase tracking-wider whitespace-nowrap">
                       {plan.badge}
                     </div>
                   )}
@@ -196,7 +196,7 @@ export default function PricingPage() {
                     <Link
                       href="/booking"
                       className={`w-full inline-flex items-center justify-center gap-2 py-4 rounded-2xl font-extrabold text-xs uppercase tracking-wider transition-all ${plan.highlighted
-                          ? "bg-mad-lime text-mad-bg hover:bg-mad-lime-hover shadow-xl shadow-mad-lime/20"
+                          ? "bg-mad-lime text-mad-bg hover:bg-mad-lime-hover"
                           : "bg-white/10 text-white hover:bg-mad-lime hover:text-mad-bg border border-white/15"
                         }`}
                     >
@@ -211,7 +211,7 @@ export default function PricingPage() {
         </div>
 
         {/* 100% Satisfaction Guarantee Bar */}
-        <div className="rounded-3xl bg-mad-surface border border-white/10 p-8 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
+        <div className="rounded-3xl bg-mad-surface border border-white/10 p-8 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 rounded-2xl bg-mad-lime/10 border border-mad-lime/30 flex items-center justify-center text-mad-lime shrink-0">
               <ShieldCheck className="w-6 h-6" />
@@ -224,7 +224,7 @@ export default function PricingPage() {
 
           <Link
             href="/booking"
-            className="px-6 py-3 rounded-xl bg-mad-lime text-mad-bg font-extrabold text-xs uppercase whitespace-nowrap shadow-lg"
+            className="px-6 py-3 rounded-xl bg-mad-lime text-mad-bg font-extrabold text-xs uppercase whitespace-nowrap"
           >
             {lang === "id" ? "MULAI TANPA RISIKO" : "GET STARTED RISK-FREE"}
           </Link>

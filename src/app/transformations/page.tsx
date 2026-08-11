@@ -147,7 +147,7 @@ export default function TransformationsPage() {
           </p>
           <Link
             href="/booking"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-mad-lime text-mad-bg font-extrabold text-sm uppercase tracking-wider hover:bg-mad-lime-hover shadow-xl shadow-mad-lime/20"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-mad-lime text-mad-bg font-extrabold text-sm uppercase tracking-wider hover:bg-mad-lime-hover"
           >
             <span>{lang === "id" ? "MULAI TRANSFORMASI ANDA" : "START YOUR TRANSFORMATION"}</span>
             <ArrowRight className="w-4 h-4" />

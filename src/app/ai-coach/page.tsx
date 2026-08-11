@@ -265,7 +265,7 @@ export default function AICoachPage() {
               key={mode.id}
               onClick={() => setActiveMode(mode.id as any)}
               className={`flex items-center gap-2 px-6 py-3.5 rounded-2xl font-bold text-xs uppercase transition-all ${activeMode === mode.id
-                ? "bg-mad-lime text-mad-bg shadow-xl shadow-mad-lime/20 font-extrabold"
+                ? "bg-mad-lime text-mad-bg font-extrabold"
                 : "bg-mad-surface text-mad-gray border border-white/10 hover:text-white"
                 }`}
             >
@@ -491,7 +491,7 @@ export default function AICoachPage() {
               <button
                 onClick={handleGeneratePlan}
                 disabled={loading}
-                className="w-full py-4.5 rounded-2xl bg-mad-lime text-mad-bg font-extrabold text-sm uppercase tracking-wider hover:bg-mad-lime-hover shadow-xl shadow-mad-lime/20 transition-all flex items-center justify-center gap-2"
+                className="w-full py-4.5 rounded-2xl bg-mad-lime text-mad-bg font-extrabold text-sm uppercase tracking-wider hover:bg-mad-lime-hover transition-all flex items-center justify-center gap-2"
               >
                 {loading ? (
                   <>

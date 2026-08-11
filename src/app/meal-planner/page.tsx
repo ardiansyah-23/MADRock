@@ -121,7 +121,7 @@ export default function MealPlannerPage() {
               key={cat}
               onClick={() => setSelectedGoal(cat)}
               className={`px-5 py-2.5 rounded-2xl text-xs font-bold uppercase transition-all ${selectedGoal === cat
-                  ? "bg-mad-lime text-mad-bg shadow-lg font-extrabold"
+                  ? "bg-mad-lime text-mad-bg font-extrabold"
                   : "bg-mad-surface text-mad-gray border border-white/10 hover:text-white"
                 }`}
             >

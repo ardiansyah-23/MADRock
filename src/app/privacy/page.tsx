@@ -30,9 +30,8 @@ export default function PrivacyPage() {
 
         <div className="rounded-3xl bg-mad-surface border border-white/10 p-8 sm:p-10 space-y-8 text-mad-gray leading-relaxed text-sm">
           <div className="space-y-3 border-b border-white/10 pb-6">
-            <h3 className="text-xl font-bold font-spartan text-white uppercase flex items-center gap-2">
-              <ShieldCheck className="w-5 h-5 text-mad-lime" />
-              <span>{lang === "id" ? "1. Informasi yang Kami Kumpulkan" : "1. Information We Collect"}</span>
+            <h3 className="text-xl font-bold font-spartan text-white uppercase">
+              {lang === "id" ? "1. Informasi yang Kami Kumpulkan" : "1. Information We Collect"}
             </h3>
             <p>
               {lang === "id"
@@ -42,9 +41,8 @@ export default function PrivacyPage() {
           </div>
 
           <div className="space-y-3 border-b border-white/10 pb-6">
-            <h3 className="text-xl font-bold font-spartan text-white uppercase flex items-center gap-2">
-              <Lock className="w-5 h-5 text-mad-lime" />
-              <span>{lang === "id" ? "2. Penggunaan Data Anda" : "2. How We Use Your Data"}</span>
+            <h3 className="text-xl font-bold font-spartan text-white uppercase">
+              {lang === "id" ? "2. Penggunaan Data Anda" : "2. How We Use Your Data"}
             </h3>
             <p>
               {lang === "id"
@@ -54,9 +52,8 @@ export default function PrivacyPage() {
           </div>
 
           <div className="space-y-3 border-b border-white/10 pb-6">
-            <h3 className="text-xl font-bold font-spartan text-white uppercase flex items-center gap-2">
-              <Eye className="w-5 h-5 text-mad-lime" />
-              <span>{lang === "id" ? "3. Keamanan & Penyimpanan Data" : "3. Data Security & Storage"}</span>
+            <h3 className="text-xl font-bold font-spartan text-white uppercase">
+              {lang === "id" ? "3. Keamanan & Penyimpanan Data" : "3. Data Security & Storage"}
             </h3>
             <p>
               {lang === "id"
@@ -66,9 +63,8 @@ export default function PrivacyPage() {
           </div>
 
           <div className="space-y-3">
-            <h3 className="text-xl font-bold font-spartan text-white uppercase flex items-center gap-2">
-              <FileText className="w-5 h-5 text-mad-lime" />
-              <span>{lang === "id" ? "4. Hak Anda & Penghapusan Akun" : "4. Your Rights & Account Deletion"}</span>
+            <h3 className="text-xl font-bold font-spartan text-white uppercase">
+              {lang === "id" ? "4. Hak Anda & Penghapusan Akun" : "4. Your Rights & Account Deletion"}
             </h3>
             <p>
               {lang === "id"

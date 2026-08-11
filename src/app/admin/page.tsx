@@ -29,7 +29,6 @@ import {
   AlertCircle,
   Save,
 } from "lucide-react";
-import confetti from "canvas-confetti";
 import {
   ArticleItem,
   ProgramItem,
@@ -165,7 +164,6 @@ export default function AdminPage() {
         status: "Published",
       };
       updated = [newArt, ...articles];
-      confetti({ particleCount: 80, spread: 60, origin: { y: 0.6 } });
     }
 
     setArticles(updated);
@@ -222,7 +220,6 @@ export default function AdminPage() {
     savePrograms(updated);
     setNewProgName("");
     setProgramModalOpen(false);
-    confetti({ particleCount: 70, spread: 60, origin: { y: 0.6 } });
   };
 
   const handleToggleBookingStatus = (id: number | string) => {
@@ -258,11 +255,11 @@ export default function AdminPage() {
       {/* Mobile Top App Bar */}
       <div className="md:hidden bg-mad-surface border-b border-rose-500/20 p-4 flex items-center justify-between sticky top-0 z-50">
         <Link href="/" className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-rose-500 flex items-center justify-center text-white font-black">
+          <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center text-mad-bg font-black">
             <ShieldCheck className="w-5 h-5" />
           </div>
           <span className="font-spartan font-black text-lg tracking-tighter uppercase">
-            MADROCK <span className="text-rose-400">ADMIN</span>
+            MADROCK <span className="text-white/50">ADMIN</span>
           </span>
         </Link>
 
@@ -281,14 +278,14 @@ export default function AdminPage() {
       >
         <div className="space-y-8">
           <Link href="/" className="flex items-center gap-2.5 group pt-2">
-            <div className="w-10 h-10 rounded-xl bg-rose-500/20 border border-rose-500/40 flex items-center justify-center text-rose-400 shadow-lg">
-              <ShieldCheck className="w-6 h-6 stroke-[2.5]" />
+            <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white shadow-sm">
+              <ShieldCheck className="w-6 h-6 stroke-[2]" />
             </div>
             <div className="flex flex-col">
               <span className="font-spartan font-black text-xl tracking-tighter text-white uppercase leading-none">
-                MAD<span className="text-rose-400">ROCK</span>
+                MAD<span className="text-white/50">ROCK</span>
               </span>
-              <span className="text-[9px] font-mono tracking-widest text-rose-400 uppercase font-bold mt-0.5">
+              <span className="text-[9px] font-mono tracking-widest text-white/50 uppercase font-bold mt-0.5">
                 ADMIN CONSOLE
               </span>
             </div>
@@ -303,7 +300,7 @@ export default function AdminPage() {
                 key={item.id}
                 onClick={() => changeTab(item.id as any)}
                 className={`w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-xs font-bold uppercase transition-all ${activeTab === item.id
-                  ? "bg-rose-500 text-white font-extrabold shadow-lg shadow-rose-500/20"
+                  ? "bg-white text-mad-bg font-extrabold shadow-sm"
                   : "text-mad-gray hover:text-white hover:bg-white/5"
                   }`}
               >
@@ -323,18 +320,18 @@ export default function AdminPage() {
             <span>Back to Main Web</span>
           </Link>
 
-          <div className="p-3.5 rounded-2xl bg-mad-bg border border-rose-500/20 flex items-center justify-between">
+          <div className="p-3.5 rounded-2xl bg-mad-bg border border-white/10 flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-xl bg-rose-500/20 text-rose-400 font-extrabold flex items-center justify-center text-sm font-spartan border border-rose-500/30">
+              <div className="w-9 h-9 rounded-xl bg-white/5 text-white font-extrabold flex items-center justify-center text-sm font-spartan border border-white/10">
                 AH
               </div>
               <div className="text-left">
                 <h5 className="font-bold text-white text-xs leading-none">Ahmad Hudzaifah</h5>
-                <span className="text-[10px] text-rose-400 font-mono">Platform Admin</span>
+                <span className="text-[10px] text-white/50 font-mono">Platform Admin</span>
               </div>
             </div>
             <Link href="/login" title="Sign Out">
-              <LogOut className="w-4 h-4 text-mad-gray hover:text-rose-400 transition-colors" />
+              <LogOut className="w-4 h-4 text-mad-gray hover:text-white transition-colors" />
             </Link>
           </div>
         </div>
@@ -342,9 +339,9 @@ export default function AdminPage() {
 
       {/* Main Workspace Canvas */}
       <div className="flex-1 min-w-0 flex flex-col min-h-screen">
-        <header className="hidden md:flex items-center justify-between px-8 py-5 bg-mad-surface/50 border-b border-rose-500/20 backdrop-blur-md sticky top-0 z-30">
+        <header className="hidden md:flex items-center justify-between px-8 py-5 bg-mad-surface/50 border-b border-white/10 backdrop-blur-md sticky top-0 z-30">
           <div className="flex items-center gap-3">
-            <span className="px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/30 text-rose-400 font-mono text-[10px] uppercase font-bold flex items-center gap-1.5">
+            <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-white/70 font-mono text-[10px] uppercase font-bold flex items-center gap-1.5">
               <Save className="w-3 h-3 text-emerald-400 animate-pulse" />
               <span>DUAL LANGUAGE ADMIN CONTROL (ID & EN)</span>
             </span>
@@ -360,7 +357,7 @@ export default function AdminPage() {
           <div className="flex items-center gap-3">
             <button
               onClick={handleOpenCreateArticle}
-              className="px-4 py-2 rounded-xl bg-rose-500 text-white font-extrabold text-xs uppercase flex items-center gap-2 hover:bg-rose-600 transition-all shadow-lg shadow-rose-500/20"
+              className="px-4 py-2 rounded-xl bg-white text-mad-bg font-extrabold text-xs uppercase flex items-center gap-2 hover:bg-gray-200 transition-all shadow-sm"
             >
               <Plus className="w-4 h-4" />
               <span>Create Article</span>
@@ -391,7 +388,7 @@ export default function AdminPage() {
 
               <button
                 onClick={handleOpenCreateArticle}
-                className="px-5 py-2.5 rounded-xl bg-rose-500 text-white font-extrabold text-xs uppercase flex items-center gap-2 hover:bg-rose-600 transition-all shadow-lg"
+                className="px-5 py-2.5 rounded-xl bg-white text-mad-bg font-extrabold text-xs uppercase flex items-center gap-2 hover:bg-gray-200 transition-all shadow-sm"
               >
                 <Plus className="w-4 h-4" />
                 <span>Add Article</span>
@@ -433,7 +430,7 @@ export default function AdminPage() {
                         </button>
                         <button
                           onClick={() => handleDeleteArticle(art.id)}
-                          className="px-3 py-1 rounded-lg bg-rose-500/10 text-rose-400 border border-rose-500/30 hover:bg-rose-500/20"
+                          className="px-3 py-1 rounded-lg bg-white/5 text-white/70 border border-white/10 hover:bg-white/10"
                         >
                           <Trash2 className="w-3.5 h-3.5 inline mr-1" />
                           Delete
@@ -516,7 +513,7 @@ export default function AdminPage() {
           </button>
 
           <div className="pb-3 border-b border-white/10">
-            <span className="px-3 py-1 rounded-full bg-rose-500/10 text-rose-400 font-mono text-[10px] font-bold uppercase">
+            <span className="px-3 py-1 rounded-full bg-white/5 text-white/70 font-mono text-[10px] font-bold uppercase">
               DUAL LANGUAGE ARTICLE EDITOR (ID & EN)
             </span>
             <h3 className="text-2xl font-black font-spartan text-white uppercase mt-1">
@@ -536,7 +533,7 @@ export default function AdminPage() {
                   setArticleTitleID(e.target.value);
                   if (!articleTitleEN) setArticleTitleEN(e.target.value);
                 }}
-                className="w-full bg-mad-bg border border-white/10 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-rose-500"
+                className="w-full bg-mad-bg border border-white/10 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-white/50"
               />
             </div>
 
@@ -546,7 +543,7 @@ export default function AdminPage() {
                 <select
                   value={articleCategory}
                   onChange={(e) => setArticleCategory(e.target.value)}
-                  className="w-full bg-mad-bg border border-white/10 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-rose-500"
+                  className="w-full bg-mad-bg border border-white/10 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-white/50"
                 >
                   <option value="Workout Science">Workout Science</option>
                   <option value="Nutrition">Nutrition</option>
@@ -563,7 +560,7 @@ export default function AdminPage() {
                   required
                   value={articleAuthor}
                   onChange={(e) => setArticleAuthor(e.target.value)}
-                  className="w-full bg-mad-bg border border-white/10 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-rose-500"
+                  className="w-full bg-mad-bg border border-white/10 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-white/50"
                 />
               </div>
             </div>
@@ -579,13 +576,13 @@ export default function AdminPage() {
                   setArticleExcerptID(e.target.value);
                   if (!articleExcerptEN) setArticleExcerptEN(e.target.value);
                 }}
-                className="w-full bg-mad-bg border border-white/10 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-rose-500"
+                className="w-full bg-mad-bg border border-white/10 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-white/50"
               />
             </div>
 
             {/* Optional English Title Override */}
             <details className="bg-mad-bg/50 border border-white/10 rounded-xl p-3 text-[11px]">
-              <summary className="cursor-pointer font-bold text-rose-400 uppercase">
+              <summary className="cursor-pointer font-bold text-white/70 uppercase">
                 + Opsional: Atur Judul & Rangkuman Bahasa Inggris Khusus (EN)
               </summary>
               <div className="space-y-3 pt-3 mt-2 border-t border-white/10">
@@ -614,7 +611,7 @@ export default function AdminPage() {
 
             <button
               type="submit"
-              className="w-full py-3.5 rounded-xl bg-rose-500 text-white font-extrabold text-xs uppercase tracking-wider hover:bg-rose-600 shadow-lg shadow-rose-500/20 flex items-center justify-center gap-2"
+              className="w-full py-3.5 rounded-xl bg-white text-mad-bg font-extrabold text-xs uppercase tracking-wider hover:bg-gray-200 shadow-sm flex items-center justify-center gap-2"
             >
               <Save className="w-4 h-4" />
               <span>{editingArticleId ? "SAVE DUAL-LANGUAGE ARTICLE" : "PUBLISH DUAL-LANGUAGE ARTICLE"}</span>

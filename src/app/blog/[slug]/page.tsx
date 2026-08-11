@@ -122,7 +122,7 @@ export default function BlogDetailPage() {
           </div>
           <Link
             href="/login"
-            className="px-6 py-3.5 rounded-xl bg-mad-lime text-mad-bg font-extrabold text-xs uppercase shadow-lg hover:bg-mad-lime-hover transition-all"
+            className="px-6 py-3.5 rounded-xl bg-mad-lime text-mad-bg font-extrabold text-xs uppercase hover:bg-mad-lime-hover transition-all"
           >
             {lang === "id" ? "Mulai Latihan Sekarang" : "Start Training Now"}
           </Link>

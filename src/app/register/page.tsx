@@ -49,7 +49,7 @@ export default function RegisterPage() {
 
   return (
     <main className="min-h-screen bg-mad-bg text-white flex items-center justify-center p-4 pt-28 pb-16">
-      <div className="w-full max-w-md space-y-8 rounded-3xl bg-mad-surface border border-white/10 p-8 sm:p-10 shadow-2xl">
+      <div className="w-full max-w-md space-y-8 rounded-3xl bg-mad-surface border border-white/10 p-8 sm:p-10">
         <div className="text-center space-y-3">
           <Link href="/" className="inline-flex items-center gap-2">
             <div className="w-10 h-10 rounded-xl bg-mad-lime flex items-center justify-center text-mad-bg">
@@ -156,7 +156,7 @@ export default function RegisterPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-4 rounded-xl bg-mad-lime text-mad-bg font-extrabold text-sm uppercase tracking-wider hover:bg-mad-lime-hover transition-all flex items-center justify-center gap-2 shadow-lg shadow-mad-lime/20"
+            className="w-full py-4 rounded-xl bg-mad-lime text-mad-bg font-extrabold text-sm uppercase tracking-wider hover:bg-mad-lime-hover transition-all flex items-center justify-center gap-2"
           >
             <span>
               {loading

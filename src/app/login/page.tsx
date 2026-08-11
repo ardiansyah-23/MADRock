@@ -62,17 +62,17 @@ export default function LoginPage() {
 
   return (
     <main className="min-h-screen bg-mad-bg text-white flex items-center justify-center p-4 pt-28 pb-16">
-      <div className="w-full max-w-lg space-y-8 rounded-3xl bg-mad-surface border border-white/10 p-8 sm:p-10 shadow-2xl relative overflow-hidden">
+      <div className="w-full max-w-lg space-y-8 rounded-3xl bg-mad-surface border border-white/10 p-8 sm:p-10 relative overflow-hidden">
         {/* Top Accent Bar */}
-        <div className={`absolute top-0 inset-x-0 h-1.5 transition-colors ${role === "admin" ? "bg-rose-500" : "bg-mad-lime"}`} />
+        <div className={`absolute top-0 inset-x-0 h-1.5 transition-colors ${role === "admin" ? "bg-white" : "bg-mad-lime"}`} />
 
         <div className="text-center space-y-3">
           <Link href="/" className="inline-flex items-center gap-2">
-            <div className={`w-10 h-10 rounded-xl flex items-center justify-center font-black transition-colors ${role === "admin" ? "bg-rose-500 text-white" : "bg-mad-lime text-mad-bg"}`}>
+            <div className={`w-10 h-10 rounded-xl flex items-center justify-center font-black transition-colors ${role === "admin" ? "bg-white text-mad-bg" : "bg-mad-lime text-mad-bg"}`}>
               {role === "admin" ? <ShieldCheck className="w-6 h-6 stroke-[2.5]" /> : <Dumbbell className="w-6 h-6 stroke-[2.5]" />}
             </div>
             <span className="font-spartan font-black text-2xl tracking-tighter text-white uppercase">
-              MAD<span className={role === "admin" ? "text-rose-400" : "text-mad-lime"}>ROCK</span>
+              MAD<span className={role === "admin" ? "text-white" : "text-mad-lime"}>ROCK</span>
             </span>
           </Link>
 
@@ -108,7 +108,7 @@ export default function LoginPage() {
             onClick={() => handleRoleChange("admin")}
             className={`py-3 rounded-xl text-xs font-extrabold uppercase transition-all flex items-center justify-center gap-2 ${
               role === "admin"
-                ? "bg-rose-500 text-white shadow-md"
+                ? "bg-white text-mad-bg shadow-sm"
                 : "text-mad-gray hover:text-white"
             }`}
           >
@@ -142,13 +142,13 @@ export default function LoginPage() {
             <button
               type="button"
               onClick={() => handleQuickDemoLogin("admin")}
-              className="p-3.5 rounded-2xl bg-mad-bg border border-rose-500/40 text-left hover:border-rose-500 transition-all space-y-1 group"
+              className="p-3.5 rounded-2xl bg-mad-bg border border-white/20 text-left hover:border-white transition-all space-y-1 group"
             >
               <div className="flex items-center justify-between">
-                <span className="text-[10px] font-mono text-rose-400 font-bold uppercase">2. DEMO ADMIN</span>
-                <span className="text-[9px] px-2 py-0.5 rounded bg-rose-500/10 text-rose-400 font-mono font-bold">ADMIN</span>
+                <span className="text-[10px] font-mono text-white font-bold uppercase">2. DEMO ADMIN</span>
+                <span className="text-[9px] px-2 py-0.5 rounded bg-white/10 text-white font-mono font-bold">ADMIN</span>
               </div>
-              <p className="text-xs font-bold text-white group-hover:text-rose-400 transition-colors">admin@madrock.fit</p>
+              <p className="text-xs font-bold text-white group-hover:text-gray-300 transition-colors">admin@madrock.fit</p>
               <p className="text-[10px] text-mad-gray font-mono">Sandi: admin123</p>
             </button>
           </div>
@@ -205,10 +205,10 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className={`w-full py-4 rounded-xl font-extrabold text-sm uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-lg ${
+            className={`w-full py-4 rounded-xl font-extrabold text-sm uppercase tracking-wider transition-all flex items-center justify-center gap-2 ${
               role === "admin"
-                ? "bg-rose-500 text-white hover:bg-rose-600 shadow-rose-500/20"
-                : "bg-mad-lime text-mad-bg hover:bg-mad-lime-hover shadow-mad-lime/20"
+                ? "bg-white text-mad-bg hover:bg-gray-200"
+                : "bg-mad-lime text-mad-bg hover:bg-mad-lime-hover"
             }`}
           >
             <span>
