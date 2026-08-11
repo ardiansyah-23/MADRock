@@ -108,8 +108,8 @@ export default function LoginPage() {
             onClick={() => handleRoleChange("admin")}
             className={`py-3 rounded-xl text-xs font-extrabold uppercase transition-all flex items-center justify-center gap-2 ${
               role === "admin"
-                ? "bg-white text-mad-bg shadow-sm"
-                : "text-mad-gray hover:text-white"
+                ? "bg-slate-900 text-white shadow-sm"
+                : "text-slate-700 hover:text-slate-900 font-bold"
             }`}
           >
             <ShieldCheck className="w-4 h-4" />
@@ -207,8 +207,8 @@ export default function LoginPage() {
             disabled={loading}
             className={`w-full py-4 rounded-xl font-extrabold text-sm uppercase tracking-wider transition-all flex items-center justify-center gap-2 ${
               role === "admin"
-                ? "bg-white text-mad-bg hover:bg-gray-200"
-                : "bg-mad-lime text-mad-bg hover:bg-mad-lime-hover"
+                ? "bg-slate-900 text-white hover:bg-slate-800"
+                : "bg-mad-lime text-slate-900 font-extrabold hover:bg-mad-lime-hover"
             }`}
           >
             <span>

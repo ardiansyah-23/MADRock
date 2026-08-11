@@ -21,6 +21,13 @@ import {
 } from "lucide-react";
 import { LanguageToggle } from "@/components/common/LanguageToggle";
 import { useLanguage } from "@/components/common/LanguageProvider";
+import {
+  BookingItem,
+  CoachSlot,
+  getSavedBookings,
+  saveBookings,
+  getSavedSlots,
+} from "@/lib/adminDataStore";
 
 export default function DashboardPage() {
   const { lang, t } = useLanguage();
@@ -47,12 +54,49 @@ export default function DashboardPage() {
     setSidebarOpen(false);
   };
 
-  // In-Dashboard Booking Modal state
+  // In-Dashboard Booking & Synchronized Coaching Session State
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
-  const [bookingCoach, setBookingCoach] = useState("Ahmad Hudzaifah");
+  const [bookingCoach, setBookingCoach] = useState("Coach Ahmad Hudzaifah");
   const [bookingDate, setBookingDate] = useState("2026-08-12");
   const [bookingTime, setBookingTime] = useState("10:00 AM");
   const [bookingSuccess, setBookingSuccess] = useState(false);
+
+  // Persistent Booking & Time Slots State
+  const [bookingsList, setBookingsList] = useState<BookingItem[]>([]);
+  const [coachSlots, setCoachSlots] = useState<CoachSlot[]>([]);
+
+  // Notification Bell Popover State
+  const [notifOpen, setNotifOpen] = useState(false);
+  const [notifications, setNotifications] = useState([
+    {
+      id: 1,
+      title: lang === "id" ? "Status Jadwal Kepelatihan" : "Coaching Session Status",
+      desc: lang === "id" ? "Pengajuan reschedule Anda telah dikirim ke Coach Ahmad Hudzaifah (Menunggu Persetujuan)." : "Your reschedule request has been sent to Coach Ahmad (Pending Approval).",
+      time: "10 menit lalu",
+      unread: true,
+    },
+    {
+      id: 2,
+      title: lang === "id" ? "Program Hipertrofi Diperbarui" : "Hypertrophy Program Updated",
+      desc: lang === "id" ? "Coach menambahkan target beban baru untuk Barbell Press." : "Coach updated working weights for Barbell Press.",
+      time: "2 jam lalu",
+      unread: true,
+    },
+  ]);
+
+  useEffect(() => {
+    setBookingsList(getSavedBookings());
+    setCoachSlots(getSavedSlots());
+  }, []);
+
+  const activeBooking = bookingsList[0] || {
+    id: 1,
+    name: "Marcus Rock",
+    pkg: "Evaluasi Mingguan Biomekanika & Form Latihan",
+    date: "Besok",
+    timeSlot: "10:00 AM",
+    status: "Pending",
+  };
 
   // State for logged workout items
   const [loggedSets, setLoggedSets] = useState<{ [key: number]: boolean }>({
@@ -65,6 +109,32 @@ export default function DashboardPage() {
 
   const handleInDashboardBooking = (e: React.FormEvent) => {
     e.preventDefault();
+    const newBooking: BookingItem = {
+      id: Date.now(),
+      name: "Marcus Rock",
+      pkg: "1-on-1 VIP Coaching Session",
+      date: bookingDate,
+      timeSlot: bookingTime,
+      coachName: bookingCoach,
+      status: "Pending",
+    };
+
+    const updatedBookings = [newBooking, ...bookingsList];
+    setBookingsList(updatedBookings);
+    saveBookings(updatedBookings);
+
+    const newNotif = {
+      id: Date.now(),
+      title: lang === "id" ? "Pengajuan Reschedule Terkirim" : "Reschedule Submitted",
+      desc:
+        lang === "id"
+          ? `Jadwal ${bookingDate} (${bookingTime}) dikirim ke Coach Ahmad (Menunggu Persetujuan).`
+          : `Requested ${bookingDate} (${bookingTime}) sent to Coach (Pending Approval).`,
+      time: "Baru saja",
+      unread: true,
+    };
+    setNotifications((prev) => [newNotif, ...prev]);
+
     setBookingSuccess(true);
   };
 
@@ -200,10 +270,60 @@ export default function DashboardPage() {
               />
             </div>
 
-            <button className="p-2.5 rounded-xl bg-mad-bg border border-white/10 text-mad-gray hover:text-mad-lime relative">
-              <Bell className="w-4 h-4" />
-              <span className="w-2 h-2 rounded-full bg-mad-lime absolute top-2 right-2 animate-pulse" />
-            </button>
+            {/* Notification Bell Dropdown Button */}
+            <div className="relative">
+              <button
+                onClick={() => setNotifOpen(!notifOpen)}
+                className="p-2 rounded-xl bg-mad-bg border border-white/10 text-mad-gray hover:text-white relative transition-colors"
+                title="Notifikasi"
+              >
+                <Bell className="w-5 h-5" />
+                {notifications.some((n) => n.unread) && (
+                  <span className="w-2.5 h-2.5 rounded-full bg-mad-lime absolute top-1 right-1 ring-2 ring-mad-bg animate-pulse" />
+                )}
+              </button>
+
+              {/* Notification Popover Card */}
+              {notifOpen && (
+                <div className="absolute right-0 top-full mt-3 w-80 sm:w-96 rounded-2xl bg-mad-surface border border-white/10 p-4 shadow-2xl z-50 animate-fadeIn space-y-3">
+                  <div className="flex items-center justify-between pb-2 border-b border-white/10">
+                    <span className="font-spartan font-bold text-sm text-white uppercase flex items-center gap-2">
+                      <Bell className="w-4 h-4 text-mad-lime" />
+                      <span>{lang === "id" ? "NOTIFIKASI ATLET" : "ATHLETE NOTIFICATIONS"}</span>
+                    </span>
+                    <button
+                      onClick={() => setNotifications((prev) => prev.map((n) => ({ ...n, unread: false })))}
+                      className="text-[10px] font-mono text-mad-lime hover:underline"
+                    >
+                      {lang === "id" ? "Tandai Semua Dibaca" : "Mark All Read"}
+                    </button>
+                  </div>
+
+                  <div className="space-y-2 max-h-72 overflow-y-auto">
+                    {notifications.length === 0 ? (
+                      <p className="text-xs text-mad-gray text-center py-4">Belum ada notifikasi.</p>
+                    ) : (
+                      notifications.map((n) => (
+                        <div
+                          key={n.id}
+                          className={`p-3 rounded-xl border text-xs transition-all space-y-1 ${
+                            n.unread
+                              ? "bg-mad-lime/5 border-mad-lime/40"
+                              : "bg-mad-bg/50 border-white/5 opacity-80"
+                          }`}
+                        >
+                          <div className="flex items-center justify-between">
+                            <h5 className="font-bold text-white font-spartan">{n.title}</h5>
+                            <span className="text-[9px] text-mad-gray font-mono">{n.time}</span>
+                          </div>
+                          <p className="text-[11px] text-mad-gray leading-tight">{n.desc}</p>
+                        </div>
+                      ))
+                    )}
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
         </header>
 
@@ -473,34 +593,52 @@ export default function DashboardPage() {
                     setBookingSuccess(false);
                     setBookingModalOpen(true);
                   }}
-                  className="px-5 py-2.5 rounded-xl bg-white text-mad-bg font-extrabold text-xs uppercase hover:bg-gray-200 transition-all shadow-sm"
+                  className="px-5 py-2.5 rounded-xl bg-slate-900 text-white font-extrabold text-xs uppercase hover:bg-slate-800 transition-all shadow-sm"
                 >
                   {lang === "id" ? "Jadwalkan Sesi Baru" : "Book New Session"}
                 </button>
               </div>
 
               <div className="space-y-4">
-                <div className="p-5 rounded-2xl bg-mad-bg border border-mad-lime/30 flex items-center justify-between">
-                  <div className="space-y-1">
-                    <span className="px-2.5 py-0.5 rounded bg-mad-lime/10 text-mad-lime font-mono text-[10px] font-bold uppercase">
-                      {lang === "id" ? "MENDATANG TERKONFIRMASI" : "CONFIRMED UPCOMING"}
-                    </span>
-                    <h4 className="font-bold text-white text-base">
-                      {lang === "id" ? "Evaluasi Mingguan Biomekanika & Form Latihan" : "Weekly Technique & Form Video Review"}
-                    </h4>
-                    <p className="text-xs text-mad-gray font-mono">Besok, 10:00 WIB • Zoom Video Call</p>
-                  </div>
+                {bookingsList.map((b) => (
+                  <div key={b.id} className="p-5 rounded-2xl bg-mad-bg border border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <div className="space-y-1">
+                      <div className="flex items-center gap-2">
+                        {b.status === "Confirmed" && (
+                          <span className="px-2.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 font-mono text-[10px] font-bold uppercase">
+                            ✓ {lang === "id" ? "TERKONFIRMASI DISETUJUI" : "CONFIRMED APPROVED"}
+                          </span>
+                        )}
+                        {b.status === "Pending" && (
+                          <span className="px-2.5 py-0.5 rounded bg-amber-500/20 text-amber-400 border border-amber-500/30 font-mono text-[10px] font-bold uppercase animate-pulse">
+                            ⏳ {lang === "id" ? "MENUNGGU PERSETUJUAN COACH" : "PENDING COACH APPROVAL"}
+                          </span>
+                        )}
+                        {b.status === "Rejected" && (
+                          <span className="px-2.5 py-0.5 rounded bg-rose-500/20 text-rose-400 border border-rose-500/30 font-mono text-[10px] font-bold uppercase">
+                            ✕ {lang === "id" ? "DITOLAK - SILAKAN JADWALKAN ULANG" : "REJECTED - PLEASE RESCHEDULE"}
+                          </span>
+                        )}
+                      </div>
+                      <h4 className="font-bold text-white text-base font-spartan">
+                        {b.pkg}
+                      </h4>
+                      <p className="text-xs text-mad-gray font-mono">
+                        {b.date} {b.timeSlot ? `• Pukul ${b.timeSlot}` : ""} • Zoom Video Call
+                      </p>
+                    </div>
 
-                  <button
-                    onClick={() => {
-                      setBookingSuccess(false);
-                      setBookingModalOpen(true);
-                    }}
-                    className="px-4 py-2 rounded-xl bg-mad-surface border border-white/10 text-xs font-mono text-white hover:text-mad-lime"
-                  >
-                    {lang === "id" ? "Ubah Jadwal" : "Reschedule"}
-                  </button>
-                </div>
+                    <button
+                      onClick={() => {
+                        setBookingSuccess(false);
+                        setBookingModalOpen(true);
+                      }}
+                      className="px-4 py-2 rounded-xl bg-slate-900 text-white border border-slate-700 text-xs font-mono font-bold hover:bg-slate-800"
+                    >
+                      {lang === "id" ? "Ubah Jadwal" : "Reschedule"}
+                    </button>
+                  </div>
+                ))}
               </div>
             </div>
           )}
@@ -522,7 +660,7 @@ export default function DashboardPage() {
               <form onSubmit={handleInDashboardBooking} className="space-y-5">
                 <div className="pb-3 border-b border-white/10">
                   <span className="px-3 py-1 rounded-full bg-mad-lime/10 text-mad-lime font-mono text-[10px] font-bold uppercase">
-                    IN-DASHBOARD BOOKING
+                    IN-DASHBOARD BOOKING & RESCHEDULE
                   </span>
                   <h3 className="text-2xl font-black font-spartan text-white uppercase mt-1">
                     {lang === "id" ? "JADWALKAN SESI KEPELATIHAN" : "BOOK COACHING SESSION"}
@@ -538,7 +676,7 @@ export default function DashboardPage() {
                     onChange={(e) => setBookingCoach(e.target.value)}
                     className="w-full bg-mad-bg border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-mad-lime font-mono"
                   >
-                    <option value="Ahmad Hudzaifah">Coach Ahmad Hudzaifah (Head Coach)</option>
+                    <option value="Coach Ahmad Hudzaifah">Coach Ahmad Hudzaifah (Head Coach)</option>
                     <option value="Elena Vance">Elena Vance (Nutrition Specialist)</option>
                     <option value="David Vance">David Vance (Powerlifting Coach)</option>
                   </select>
@@ -558,26 +696,26 @@ export default function DashboardPage() {
                   </div>
 
                   <div>
-                    <label className="text-xs font-mono text-mad-gray uppercase block mb-1">
-                      {lang === "id" ? "Slot Waktu" : "Time Slot"}
+                    <label className="text-xs font-mono text-mad-gray uppercase block mb-1 flex items-center justify-between">
+                      <span>{lang === "id" ? "Slot Waktu (Synced)" : "Time Slot (Synced)"}</span>
                     </label>
                     <select
                       value={bookingTime}
                       onChange={(e) => setBookingTime(e.target.value)}
                       className="w-full bg-mad-bg border border-white/10 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-mad-lime font-mono"
                     >
-                      <option value="09:00 AM">09:00 AM</option>
-                      <option value="10:00 AM">10:00 AM</option>
-                      <option value="11:30 AM">11:30 AM</option>
-                      <option value="02:00 PM">02:00 PM</option>
-                      <option value="04:00 PM">04:00 PM</option>
+                      {coachSlots.filter((s) => s.available).map((s) => (
+                        <option key={s.id} value={s.time}>
+                          {s.time}
+                        </option>
+                      ))}
                     </select>
                   </div>
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full py-4 rounded-2xl bg-white text-mad-bg font-extrabold text-sm uppercase tracking-wider hover:bg-gray-200 shadow-sm"
+                  className="w-full py-4 rounded-2xl bg-mad-lime text-slate-900 font-extrabold text-sm uppercase tracking-wider hover:bg-mad-lime-hover shadow-sm"
                 >
                   {lang === "id" ? "KONFIRMASI JADWAL SESI SEKARANG" : "CONFIRM IN-DASHBOARD BOOKING NOW"}
                 </button>

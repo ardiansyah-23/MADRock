@@ -43,7 +43,16 @@ export interface BookingItem {
   name: string;
   pkg: string;
   date: string;
-  status: "Confirmed" | "Pending" | "Cancelled";
+  timeSlot?: string;
+  coachName?: string;
+  status: "Confirmed" | "Pending" | "Rejected" | "Cancelled";
+  requestedAt?: string;
+}
+
+export interface CoachSlot {
+  id: string;
+  time: string;
+  available: boolean;
 }
 
 // DUAL-LANGUAGE DEFAULT SEED ARTICLES
@@ -194,4 +203,29 @@ export function getSavedBookings(): BookingItem[] {
 export function saveBookings(bookings: BookingItem[]) {
   if (typeof window === "undefined") return;
   localStorage.setItem("madrock_bookings", JSON.stringify(bookings));
+}
+
+const DEFAULT_SLOTS: CoachSlot[] = [
+  { id: "1", time: "09:00 AM", available: true },
+  { id: "2", time: "10:00 AM", available: true },
+  { id: "3", time: "11:30 AM", available: true },
+  { id: "4", time: "02:00 PM", available: true },
+  { id: "5", time: "04:00 PM", available: true },
+  { id: "6", time: "07:00 PM", available: true },
+];
+
+export function getSavedSlots(): CoachSlot[] {
+  if (typeof window === "undefined") return DEFAULT_SLOTS;
+  try {
+    const raw = localStorage.getItem("madrock_coach_slots");
+    if (!raw) return DEFAULT_SLOTS;
+    return JSON.parse(raw);
+  } catch (e) {
+    return DEFAULT_SLOTS;
+  }
+}
+
+export function saveSlots(slots: CoachSlot[]) {
+  if (typeof window === "undefined") return;
+  localStorage.setItem("madrock_coach_slots", JSON.stringify(slots));
 }
