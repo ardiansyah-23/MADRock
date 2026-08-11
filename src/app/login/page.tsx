@@ -69,7 +69,7 @@ export default function LoginPage() {
 
         <div className="text-center space-y-3">
           <Link href="/" className="inline-flex items-center gap-2">
-            <div className={`w-10 h-10 rounded-xl flex items-center justify-center font-black transition-colors ${role === "admin" ? "bg-white text-mad-bg" : "bg-mad-lime text-mad-bg"}`}>
+            <div className={`w-10 h-10 rounded-xl flex items-center justify-center font-black transition-colors ${role === "admin" ? "bg-slate-900 text-white" : "bg-mad-lime text-mad-bg"}`}>
               {role === "admin" ? <ShieldCheck className="w-6 h-6 stroke-[2.5]" /> : <Dumbbell className="w-6 h-6 stroke-[2.5]" />}
             </div>
             <span className="font-spartan font-black text-2xl tracking-tighter text-slate-900 uppercase">
@@ -147,7 +147,7 @@ export default function LoginPage() {
             >
               <div className="flex items-center justify-between">
                 <span className="text-[10px] font-mono text-slate-900 font-bold uppercase">2. DEMO ADMIN</span>
-                <span className="text-[9px] px-2 py-0.5 rounded bg-slate-900/10 text-white font-mono font-bold">ADMIN</span>
+                <span className="text-[9px] px-2 py-0.5 rounded bg-slate-900/10 text-slate-900 font-mono font-bold">ADMIN</span>
               </div>
               <p className="text-xs font-bold text-slate-900 group-hover:text-gray-300 transition-colors">admin@madrock.fit</p>
               <p className="text-[10px] text-mad-gray font-mono">Sandi: admin123</p>

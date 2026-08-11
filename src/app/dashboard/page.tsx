@@ -175,7 +175,7 @@ export default function DashboardPage() {
         <div className="space-y-8">
           {/* Logo Brand */}
           <Link href="/" className="flex items-center gap-2.5 group pt-2">
-            <div className="w-10 h-10 rounded-xl bg-slate-900/5 border border-slate-900/10 flex items-center justify-center text-white shadow-sm">
+            <div className="w-10 h-10 rounded-xl bg-slate-900/5 border border-slate-900/10 flex items-center justify-center text-slate-900 shadow-sm">
               <Dumbbell className="w-6 h-6 stroke-[2]" />
             </div>
             <div className="flex flex-col">
@@ -199,7 +199,7 @@ export default function DashboardPage() {
                 onClick={() => changeTab(item.id as any)}
                 className={`w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-xs font-bold uppercase transition-all ${
                   activeTab === item.id
-                    ? "bg-white text-mad-bg font-extrabold shadow-sm"
+                    ? "bg-slate-900 text-white font-extrabold shadow-sm"
                     : "text-mad-gray hover:text-slate-900 hover:bg-slate-900/5"
                 }`}
               >
@@ -332,7 +332,7 @@ export default function DashboardPage() {
           {/* User Welcome Banner */}
           <div className="rounded-3xl bg-mad-surface border border-slate-900/10 p-6 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-sm relative overflow-hidden">
             <div className="flex items-center gap-4 z-10">
-              <div className="w-16 h-16 rounded-2xl bg-slate-900/5 border border-slate-900/10 text-white flex items-center justify-center font-black text-2xl font-spartan shrink-0">
+              <div className="w-16 h-16 rounded-2xl bg-slate-900/5 border border-slate-900/10 text-slate-900 flex items-center justify-center font-black text-2xl font-spartan shrink-0">
                 MR
               </div>
               <div>

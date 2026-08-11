@@ -260,7 +260,7 @@ export default function AdminPage() {
       {/* Mobile Top App Bar */}
       <div className="md:hidden bg-mad-surface border-b border-rose-500/20 p-4 flex items-center justify-between sticky top-0 z-50">
         <Link href="/" className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center text-mad-bg font-black">
+          <div className="w-8 h-8 rounded-lg bg-slate-900 flex items-center justify-center text-white font-black">
             <ShieldCheck className="w-5 h-5" />
           </div>
           <span className="font-spartan font-black text-lg tracking-tighter uppercase">
@@ -283,7 +283,7 @@ export default function AdminPage() {
       >
         <div className="space-y-8">
           <Link href="/" className="flex items-center gap-2.5 group pt-2">
-            <div className="w-10 h-10 rounded-xl bg-slate-900/5 border border-slate-900/10 flex items-center justify-center text-white shadow-sm">
+            <div className="w-10 h-10 rounded-xl bg-slate-900/5 border border-slate-900/10 flex items-center justify-center text-slate-900 shadow-sm">
               <ShieldCheck className="w-6 h-6 stroke-[2]" />
             </div>
             <div className="flex flex-col">
@@ -305,7 +305,7 @@ export default function AdminPage() {
                 key={item.id}
                 onClick={() => changeTab(item.id as any)}
                 className={`w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-xs font-bold uppercase transition-all ${activeTab === item.id
-                  ? "bg-white text-mad-bg font-extrabold shadow-sm"
+                  ? "bg-slate-900 text-white font-extrabold shadow-sm"
                   : "text-mad-gray hover:text-slate-900 hover:bg-slate-900/5"
                   }`}
               >
@@ -327,7 +327,7 @@ export default function AdminPage() {
 
           <div className="p-3.5 rounded-2xl bg-mad-bg border border-slate-900/10 flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-xl bg-slate-900/5 text-white font-extrabold flex items-center justify-center text-sm font-spartan border border-slate-900/10">
+              <div className="w-9 h-9 rounded-xl bg-slate-900/5 text-slate-900 font-extrabold flex items-center justify-center text-sm font-spartan border border-slate-900/10">
                 AH
               </div>
               <div className="text-left">
@@ -634,7 +634,7 @@ export default function AdminPage() {
           </button>
 
           <div className="pb-3 border-b border-slate-900/10">
-            <span className="px-3 py-1 rounded-full bg-slate-900/5 text-white/70 font-mono text-[10px] font-bold uppercase">
+            <span className="px-3 py-1 rounded-full bg-slate-900/5 text-slate-900/70 font-mono text-[10px] font-bold uppercase">
               DUAL LANGUAGE ARTICLE EDITOR (ID & EN)
             </span>
             <h3 className="text-2xl font-black font-spartan text-slate-900 uppercase mt-1">
