@@ -157,7 +157,7 @@ export default function WorkoutLibraryPage() {
   });
 
   return (
-    <main className="pt-32 pb-24 bg-mad-bg text-white min-h-screen">
+    <main className="pt-32 pb-24 bg-mad-bg text-slate-900 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
           title={t("work_header_title")}
@@ -174,7 +174,7 @@ export default function WorkoutLibraryPage() {
               placeholder={t("search_placeholder")}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-mad-surface border border-white/10 rounded-2xl pl-12 pr-4 py-3.5 text-sm text-white placeholder-mad-gray focus:outline-none focus:border-mad-lime font-mono"
+              className="w-full bg-mad-surface border border-slate-900/10 rounded-2xl pl-12 pr-4 py-3.5 text-sm text-slate-900 placeholder-mad-gray focus:outline-none focus:border-mad-lime font-mono"
             />
           </div>
 
@@ -186,7 +186,7 @@ export default function WorkoutLibraryPage() {
                 onClick={() => setSelectedCategory(cat)}
                 className={`px-4 py-2 rounded-xl text-xs font-bold uppercase transition-all ${selectedCategory === cat
                     ? "bg-mad-lime text-mad-bg"
-                    : "bg-mad-surface text-mad-gray border border-white/10 hover:text-white hover:border-mad-lime/30"
+                    : "bg-mad-surface text-mad-gray border border-slate-900/10 hover:text-slate-900 hover:border-mad-lime/30"
                   }`}
               >
                 {getCategoryLabel(cat)}
@@ -199,7 +199,7 @@ export default function WorkoutLibraryPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredExercises.map((exercise, idx) => (
             <ScrollReveal key={exercise.id} delay={0.1 * idx}>
-              <div className="rounded-3xl bg-mad-surface border border-white/10 overflow-hidden hover:border-mad-lime/40 transition-all duration-300 flex flex-col h-full">
+              <div className="rounded-3xl bg-mad-surface border border-slate-900/10 overflow-hidden hover:border-mad-lime/40 transition-all duration-300 flex flex-col h-full">
                 <div className="relative h-56 w-full">
                   <Image
                     src={exercise.image}
@@ -210,14 +210,14 @@ export default function WorkoutLibraryPage() {
                   <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-slate-900/80 text-lime-400 font-mono text-[10px] uppercase font-bold border border-slate-700">
                     {getCategoryLabel(exercise.category)}
                   </div>
-                  <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-mad-lime text-white font-extrabold text-[10px] uppercase">
+                  <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-mad-lime text-slate-900 font-extrabold text-[10px] uppercase">
                     {getDifficultyLabel(exercise.difficulty)}
                   </div>
                 </div>
 
                 <div className="p-6 flex flex-col justify-between flex-1 space-y-4">
                   <div>
-                    <h3 className="text-xl font-bold font-spartan text-white uppercase">
+                    <h3 className="text-xl font-bold font-spartan text-slate-900 uppercase">
                       {exercise.title}
                     </h3>
                     <div className="flex items-center gap-2 text-xs text-mad-lime font-mono mt-1">
@@ -226,9 +226,9 @@ export default function WorkoutLibraryPage() {
                     </div>
                   </div>
 
-                  <div className="space-y-3 text-xs text-mad-gray pt-3 border-t border-white/10">
+                  <div className="space-y-3 text-xs text-mad-gray pt-3 border-t border-slate-900/10">
                     <div>
-                      <strong className="text-white block uppercase text-[10px] font-mono">
+                      <strong className="text-slate-900 block uppercase text-[10px] font-mono">
                         {lang === "id" ? "Eksekusi Gerakan:" : "Execution:"}
                       </strong>
                       <p>{exercise.instructions}</p>

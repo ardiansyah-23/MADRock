@@ -70,7 +70,7 @@ export default function HomePage() {
   };
 
   return (
-    <main className="min-h-screen bg-mad-bg text-white overflow-hidden">
+    <main className="min-h-screen bg-mad-bg text-slate-900 overflow-hidden">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

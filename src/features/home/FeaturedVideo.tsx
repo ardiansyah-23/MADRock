@@ -32,7 +32,7 @@ export function FeaturedVideo() {
         />
 
         <ScrollReveal>
-          <div className="relative rounded-3xl overflow-hidden border border-white/15 bg-mad-surface shadow-2xl group max-w-5xl mx-auto">
+          <div className="relative rounded-3xl overflow-hidden border border-slate-900/15 bg-mad-surface shadow-2xl group max-w-5xl mx-auto">
             {/* Video Thumbnail */}
             <div className="relative h-[380px] sm:h-[500px] lg:h-[580px] w-full">
               <Image
@@ -51,7 +51,7 @@ export function FeaturedVideo() {
                 >
                   <Play className="w-10 h-10 ml-1 fill-mad-bg stroke-none" />
                 </button>
-                <span className="mt-4 text-xs font-mono tracking-widest keep-white text-white uppercase font-bold bg-mad-bg/80 px-4 py-1.5 rounded-full border border-white/10">
+                <span className="mt-4 text-xs font-mono tracking-widest keep-white text-white uppercase font-bold bg-mad-bg/80 px-4 py-1.5 rounded-full border border-slate-900/10">
                   {lang === "id" ? "TONTON EVALUASI GERAKAN (3:45)" : "WATCH WORKOUT BREAKDOWN (3:45)"}
                 </span>
               </div>
@@ -61,7 +61,7 @@ export function FeaturedVideo() {
                 {tags.map((tag, idx) => (
                   <div
                     key={idx}
-                    className="flex items-center gap-2 px-4 py-2 rounded-2xl glass-panel border border-white/15 text-xs font-bold text-white uppercase tracking-wider backdrop-blur-xl"
+                    className="flex items-center gap-2 px-4 py-2 rounded-2xl glass-panel border border-slate-900/15 text-xs font-bold text-slate-900 uppercase tracking-wider backdrop-blur-xl"
                   >
                     <tag.icon className={`w-4 h-4 ${tag.color}`} />
                     <span>{tag.label}</span>
@@ -75,10 +75,10 @@ export function FeaturedVideo() {
         {/* Modal Video Player */}
         {isPlaying && (
           <div className="fixed inset-0 z-50 bg-black/90 backdrop-blur-xl flex items-center justify-center p-4">
-            <div className="relative w-full max-w-4xl bg-mad-surface rounded-3xl overflow-hidden border border-white/20">
+            <div className="relative w-full max-w-4xl bg-mad-surface rounded-3xl overflow-hidden border border-slate-900/20">
               <button
                 onClick={() => setIsPlaying(false)}
-                className="absolute top-4 right-4 z-10 p-3 rounded-full bg-mad-bg/80 text-white hover:text-mad-lime border border-white/10"
+                className="absolute top-4 right-4 z-10 p-3 rounded-full bg-mad-bg/80 text-slate-900 hover:text-mad-lime border border-slate-900/10"
               >
                 <X className="w-6 h-6" />
               </button>

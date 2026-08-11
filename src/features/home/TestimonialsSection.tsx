@@ -60,7 +60,7 @@ export function TestimonialsSection() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {reviews.map((item, idx) => (
             <ScrollReveal key={idx} delay={0.15 * idx}>
-              <div className="p-8 rounded-3xl bg-mad-bg border border-white/10 flex flex-col justify-between h-full hover:border-slate-400 transition-colors">
+              <div className="p-8 rounded-3xl bg-mad-bg border border-slate-900/10 flex flex-col justify-between h-full hover:border-slate-400 transition-colors">
                 <div className="space-y-4">
                   {/* Rating Stars */}
                   <div className="flex items-center gap-1 text-mad-lime">
@@ -74,7 +74,7 @@ export function TestimonialsSection() {
                   </p>
                 </div>
 
-                <div className="pt-6 mt-6 border-t border-white/10 flex items-center gap-4">
+                <div className="pt-6 mt-6 border-t border-slate-900/10 flex items-center gap-4">
                   <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-mad-lime/40">
                     <Image
                       src={item.avatar}
@@ -84,7 +84,7 @@ export function TestimonialsSection() {
                     />
                   </div>
                   <div>
-                    <h4 className="text-white font-bold text-base font-spartan uppercase">
+                    <h4 className="text-slate-900 font-bold text-base font-spartan uppercase">
                       {item.name}
                     </h4>
                     <span className="text-xs text-mad-gray block">{item.role}</span>

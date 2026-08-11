@@ -183,7 +183,7 @@ export default function ProgramsPage() {
   );
 
   return (
-    <main className="pt-32 pb-24 bg-mad-bg text-white min-h-screen">
+    <main className="pt-32 pb-24 bg-mad-bg text-slate-900 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
           title={t("prog_header_title")}
@@ -198,7 +198,7 @@ export default function ProgramsPage() {
               onClick={() => setActiveCategory(cat)}
               className={`px-5 py-2.5 rounded-2xl text-xs font-bold uppercase transition-all ${activeCategory === cat
                   ? "bg-mad-lime text-mad-bg font-extrabold"
-                  : "bg-mad-surface text-mad-gray border border-white/10 hover:text-white"
+                  : "bg-mad-surface text-mad-gray border border-slate-900/10 hover:text-slate-900"
                 }`}
             >
               {getCategoryLabel(cat)}
@@ -210,7 +210,7 @@ export default function ProgramsPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredPrograms.map((program, idx) => (
             <ScrollReveal key={program.id} delay={0.1 * idx}>
-              <div className="group rounded-3xl bg-mad-surface border border-white/10 overflow-hidden hover:border-mad-lime/50 transition-all duration-500 hover:-translate-y-2 flex flex-col h-full">
+              <div className="group rounded-3xl bg-mad-surface border border-slate-900/10 overflow-hidden hover:border-mad-lime/50 transition-all duration-500 hover:-translate-y-2 flex flex-col h-full">
                 {/* Image Header */}
                 <div className="relative h-56 w-full overflow-hidden">
                   <Image
@@ -221,7 +221,7 @@ export default function ProgramsPage() {
                   />
 
                   {program.badge && (
-                    <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-white font-extrabold text-[10px] uppercase tracking-wider border border-white/20 z-10">
+                    <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-slate-900 font-extrabold text-[10px] uppercase tracking-wider border border-slate-900/20 z-10">
                       <span className="keep-white text-white">{program.badge}</span>
                     </div>
                   )}
@@ -233,7 +233,7 @@ export default function ProgramsPage() {
                     <span className="text-[11px] font-mono text-mad-lime font-bold uppercase tracking-widest block">
                       {getCategoryLabel(program.category)}
                     </span>
-                    <h3 className="text-2xl font-black font-spartan text-white uppercase leading-tight">
+                    <h3 className="text-2xl font-black font-spartan text-slate-900 uppercase leading-tight">
                       {program.title}
                     </h3>
                   </div>
@@ -241,7 +241,7 @@ export default function ProgramsPage() {
                     {program.description}
                   </p>
 
-                  <div className="space-y-2 pt-2 border-t border-white/10">
+                  <div className="space-y-2 pt-2 border-t border-slate-900/10">
                     <span className="text-[10px] font-mono text-mad-lime uppercase block font-bold">
                       {lang === "id" ? "Fitur Utama Termasuk:" : "Key Included Features:"}
                     </span>
@@ -253,12 +253,12 @@ export default function ProgramsPage() {
                     ))}
                   </div>
 
-                  <div className="pt-4 border-t border-white/10 flex items-center justify-between gap-4">
+                  <div className="pt-4 border-t border-slate-900/10 flex items-center justify-between gap-4">
                     <div>
                       <span className="text-[10px] font-mono text-mad-gray uppercase block">
                         {lang === "id" ? "Investasi" : "Investment"}
                       </span>
-                      <span className="text-2xl font-black font-spartan text-white">{program.price}</span>
+                      <span className="text-2xl font-black font-spartan text-slate-900">{program.price}</span>
                     </div>
 
                     <button
@@ -278,10 +278,10 @@ export default function ProgramsPage() {
         {/* Detail Modal */}
         {selectedProgram && (
           <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-xl flex items-center justify-center p-4">
-            <div className="relative w-full max-w-2xl bg-mad-surface rounded-3xl border border-white/20 p-8 space-y-6 overflow-y-auto max-h-[90vh]">
+            <div className="relative w-full max-w-2xl bg-mad-surface rounded-3xl border border-slate-900/20 p-8 space-y-6 overflow-y-auto max-h-[90vh]">
               <button
                 onClick={() => setSelectedProgram(null)}
-                className="absolute top-6 right-6 p-2 rounded-full bg-mad-bg text-white hover:text-mad-lime border border-white/10"
+                className="absolute top-6 right-6 p-2 rounded-full bg-mad-bg text-slate-900 hover:text-mad-lime border border-slate-900/10"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -290,7 +290,7 @@ export default function ProgramsPage() {
                 <span className="text-xs font-mono text-mad-lime uppercase tracking-widest">
                   {getCategoryLabel(selectedProgram.category)} • {selectedProgram.duration} • {getDifficultyLabel(selectedProgram.difficulty)}
                 </span>
-                <h2 className="text-3xl font-black font-spartan uppercase text-white">
+                <h2 className="text-3xl font-black font-spartan uppercase text-slate-900">
                   {selectedProgram.title}
                 </h2>
               </div>
@@ -299,19 +299,19 @@ export default function ProgramsPage() {
                 {selectedProgram.description}
               </p>
 
-              <div className="space-y-3 p-5 rounded-2xl bg-mad-bg border border-white/10">
-                <h4 className="text-xs font-mono text-white font-bold uppercase tracking-wider mb-2">
+              <div className="space-y-3 p-5 rounded-2xl bg-mad-bg border border-slate-900/10">
+                <h4 className="text-xs font-mono text-slate-900 font-bold uppercase tracking-wider mb-2">
                   {lang === "id" ? "SELURUH FITUR PROTOKOL:" : "FULL PROTOCOL INCLUSIONS:"}
                 </h4>
                 {selectedProgram.features.map((feat: string, i: number) => (
                   <div key={i} className="flex items-center gap-2.5 text-xs">
                     <CheckCircle2 className="w-4 h-4 text-mad-lime shrink-0" />
-                    <span className="text-white font-semibold">{feat}</span>
+                    <span className="text-slate-900 font-semibold">{feat}</span>
                   </div>
                 ))}
               </div>
 
-              <div className="flex items-center justify-between pt-4 border-t border-white/10">
+              <div className="flex items-center justify-between pt-4 border-t border-slate-900/10">
                 <div>
                   <span className="text-xs font-mono text-mad-gray uppercase block">
                     {lang === "id" ? "Total Harga" : "Total Price"}

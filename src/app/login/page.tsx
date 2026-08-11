@@ -62,8 +62,8 @@ export default function LoginPage() {
   };
 
   return (
-    <main className="min-h-screen bg-mad-bg text-white flex items-center justify-center p-4 pt-28 pb-16">
-      <div className="w-full max-w-lg space-y-8 rounded-3xl bg-mad-surface border border-white/10 p-8 sm:p-10 relative overflow-hidden">
+    <main className="min-h-screen bg-mad-bg text-slate-900 flex items-center justify-center p-4 pt-28 pb-16">
+      <div className="w-full max-w-lg space-y-8 rounded-3xl bg-mad-surface border border-slate-900/10 p-8 sm:p-10 relative overflow-hidden">
         {/* Top Accent Bar */}
         <div className={`absolute top-0 inset-x-0 h-1.5 transition-colors ${role === "admin" ? "bg-white" : "bg-mad-lime"}`} />
 
@@ -72,12 +72,12 @@ export default function LoginPage() {
             <div className={`w-10 h-10 rounded-xl flex items-center justify-center font-black transition-colors ${role === "admin" ? "bg-white text-mad-bg" : "bg-mad-lime text-mad-bg"}`}>
               {role === "admin" ? <ShieldCheck className="w-6 h-6 stroke-[2.5]" /> : <Dumbbell className="w-6 h-6 stroke-[2.5]" />}
             </div>
-            <span className="font-spartan font-black text-2xl tracking-tighter text-white uppercase">
-              MAD<span className={role === "admin" ? "text-white" : "text-mad-lime"}>ROCK</span>
+            <span className="font-spartan font-black text-2xl tracking-tighter text-slate-900 uppercase">
+              MAD<span className={role === "admin" ? "text-slate-900" : "text-mad-lime"}>ROCK</span>
             </span>
           </Link>
 
-          <h1 className="text-2xl font-black font-spartan uppercase text-white">
+          <h1 className="text-2xl font-black font-spartan uppercase text-slate-900">
             {role === "admin"
               ? (lang === "id" ? "PORTAL ADMIN & PELATIH" : "ADMIN & COACH PORTAL")
               : (lang === "id" ? "LOGIN MEMBER ATLET" : "ATHLETE MEMBER LOGIN")}
@@ -90,7 +90,7 @@ export default function LoginPage() {
         </div>
 
         {/* Role Switcher Tabs */}
-        <div className="grid grid-cols-2 gap-2 p-1.5 rounded-2xl bg-mad-bg border border-white/10">
+        <div className="grid grid-cols-2 gap-2 p-1.5 rounded-2xl bg-mad-bg border border-slate-900/10">
           <button
             type="button"
             onClick={() => handleRoleChange("user")}
@@ -135,7 +135,7 @@ export default function LoginPage() {
                 <span className="text-[10px] font-mono text-mad-lime font-bold uppercase">1. DEMO USER</span>
                 <span className="text-[9px] px-2 py-0.5 rounded bg-mad-lime/10 text-mad-lime font-mono font-bold">ATLET</span>
               </div>
-              <p className="text-xs font-bold text-white group-hover:text-mad-lime transition-colors">athlete@madrock.fit</p>
+              <p className="text-xs font-bold text-slate-900 group-hover:text-mad-lime transition-colors">athlete@madrock.fit</p>
               <p className="text-[10px] text-mad-gray font-mono">Sandi: athlete123</p>
             </button>
 
@@ -143,13 +143,13 @@ export default function LoginPage() {
             <button
               type="button"
               onClick={() => handleQuickDemoLogin("admin")}
-              className="p-3.5 rounded-2xl bg-mad-bg border border-white/20 text-left hover:border-white transition-all space-y-1 group"
+              className="p-3.5 rounded-2xl bg-mad-bg border border-slate-900/20 text-left hover:border-white transition-all space-y-1 group"
             >
               <div className="flex items-center justify-between">
-                <span className="text-[10px] font-mono text-white font-bold uppercase">2. DEMO ADMIN</span>
-                <span className="text-[9px] px-2 py-0.5 rounded bg-white/10 text-white font-mono font-bold">ADMIN</span>
+                <span className="text-[10px] font-mono text-slate-900 font-bold uppercase">2. DEMO ADMIN</span>
+                <span className="text-[9px] px-2 py-0.5 rounded bg-slate-900/10 text-white font-mono font-bold">ADMIN</span>
               </div>
-              <p className="text-xs font-bold text-white group-hover:text-gray-300 transition-colors">admin@madrock.fit</p>
+              <p className="text-xs font-bold text-slate-900 group-hover:text-gray-300 transition-colors">admin@madrock.fit</p>
               <p className="text-[10px] text-mad-gray font-mono">Sandi: admin123</p>
             </button>
           </div>
@@ -176,7 +176,7 @@ export default function LoginPage() {
                 placeholder="user@madrock.fit"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full bg-mad-bg border border-white/10 rounded-xl pl-10 pr-4 py-3 text-sm text-white placeholder-mad-gray focus:outline-none focus:border-mad-lime font-mono"
+                className="w-full bg-mad-bg border border-slate-900/10 rounded-xl pl-10 pr-4 py-3 text-sm text-slate-900 placeholder-mad-gray focus:outline-none focus:border-mad-lime font-mono"
               />
             </div>
           </div>
@@ -198,7 +198,7 @@ export default function LoginPage() {
                 placeholder="••••••••"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full bg-mad-bg border border-white/10 rounded-xl pl-10 pr-10 py-3 text-sm text-white placeholder-mad-gray focus:outline-none focus:border-mad-lime font-mono"
+                className="w-full bg-mad-bg border border-slate-900/10 rounded-xl pl-10 pr-10 py-3 text-sm text-slate-900 placeholder-mad-gray focus:outline-none focus:border-mad-lime font-mono"
               />
               <button
                 type="button"
@@ -232,7 +232,7 @@ export default function LoginPage() {
         </form>
 
         <div className="relative flex items-center justify-center my-4">
-          <div className="border-t border-white/10 w-full" />
+          <div className="border-t border-slate-900/10 w-full" />
           <span className="bg-mad-surface px-3 text-[10px] font-mono text-mad-gray uppercase absolute">
             {lang === "id" ? "ATAU" : "OR"}
           </span>
@@ -242,7 +242,7 @@ export default function LoginPage() {
         <button
           onClick={() => handleQuickDemoLogin("user")}
           type="button"
-          className="w-full py-3.5 rounded-xl bg-mad-bg border border-white/10 text-white font-bold text-xs uppercase hover:bg-white/5 transition-all flex items-center justify-center gap-2"
+          className="w-full py-3.5 rounded-xl bg-mad-bg border border-slate-900/10 text-slate-900 font-bold text-xs uppercase hover:bg-slate-900/5 transition-all flex items-center justify-center gap-2"
         >
           <Chrome className="w-4 h-4 text-mad-lime" />
           <span>{lang === "id" ? "Lanjutkan dengan Google" : "Continue with Google"}</span>

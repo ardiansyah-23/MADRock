@@ -51,9 +51,9 @@ export function TransformationSection() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {transformations.map((item, idx) => (
             <ScrollReveal key={idx} delay={0.15 * idx}>
-              <div className="rounded-3xl bg-mad-bg border border-white/10 p-6 flex flex-col justify-between space-y-6 hover:border-mad-lime/40 transition-all duration-300">
+              <div className="rounded-3xl bg-mad-bg border border-slate-900/10 p-6 flex flex-col justify-between space-y-6 hover:border-mad-lime/40 transition-all duration-300">
                 {/* Before / After Images Comparison */}
-                <div className="grid grid-cols-2 gap-3 relative rounded-2xl overflow-hidden border border-white/10 bg-mad-surface p-2">
+                <div className="grid grid-cols-2 gap-3 relative rounded-2xl overflow-hidden border border-slate-900/10 bg-mad-surface p-2">
                   <div className="relative h-56 rounded-xl overflow-hidden">
                     <Image
                       src={item.beforeImg}
@@ -81,13 +81,13 @@ export function TransformationSection() {
 
                 {/* Stats Pill */}
                 <div className="grid grid-cols-2 gap-2 text-center">
-                  <div className="p-3 rounded-xl bg-mad-surface border border-white/5">
+                  <div className="p-3 rounded-xl bg-mad-surface border border-slate-900/5">
                     <span className="text-[10px] font-mono text-mad-lime uppercase block">Fat Loss</span>
-                    <span className="text-white font-extrabold text-sm font-spartan">{item.lost}</span>
+                    <span className="text-slate-900 font-extrabold text-sm font-spartan">{item.lost}</span>
                   </div>
-                  <div className="p-3 rounded-xl bg-mad-surface border border-white/5">
+                  <div className="p-3 rounded-xl bg-mad-surface border border-slate-900/5">
                     <span className="text-[10px] font-mono text-mad-lime uppercase block">Muscle Gain</span>
-                    <span className="text-white font-extrabold text-sm font-spartan">{item.gained}</span>
+                    <span className="text-slate-900 font-extrabold text-sm font-spartan">{item.gained}</span>
                   </div>
                 </div>
 
@@ -100,9 +100,9 @@ export function TransformationSection() {
                 </div>
 
                 {/* Client Info */}
-                <div className="pt-4 border-t border-white/10 flex items-center justify-between">
+                <div className="pt-4 border-t border-slate-900/10 flex items-center justify-between">
                   <div>
-                    <h4 className="text-white font-bold text-base font-spartan uppercase">
+                    <h4 className="text-slate-900 font-bold text-base font-spartan uppercase">
                       {item.name}, {item.age}
                     </h4>
                     <span className="text-[11px] text-mad-gray font-mono">

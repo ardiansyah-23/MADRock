@@ -55,7 +55,7 @@ export function CoachesSection() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {coaches.map((coach, idx) => (
             <ScrollReveal key={idx} delay={0.15 * idx}>
-              <div className="group rounded-3xl bg-mad-surface border border-white/10 overflow-hidden hover:border-mad-lime/50 transition-all duration-300">
+              <div className="group rounded-3xl bg-mad-surface border border-slate-900/10 overflow-hidden hover:border-mad-lime/50 transition-all duration-300">
                 <div className="relative h-80 w-full overflow-hidden">
                   <Image
                     src={coach.image}
@@ -72,7 +72,7 @@ export function CoachesSection() {
 
                 <div className="p-6 space-y-4">
                   <div>
-                    <h3 className="text-2xl font-black font-spartan text-white uppercase">
+                    <h3 className="text-2xl font-black font-spartan text-slate-900 uppercase">
                       {coach.name}
                     </h3>
                     <p className="text-xs text-mad-lime font-mono uppercase tracking-wider mt-0.5">
@@ -81,13 +81,13 @@ export function CoachesSection() {
                   </div>
 
                   <div className="space-y-2 text-xs text-mad-gray">
-                    <div className="flex items-center justify-between py-2 border-b border-white/10">
+                    <div className="flex items-center justify-between py-2 border-b border-slate-900/10">
                       <span className="text-mad-gray font-medium">{lang === "id" ? "Spesialisasi" : "Specialization"}</span>
-                      <span className="text-white font-bold text-right max-w-[55%]">{coach.specialization}</span>
+                      <span className="text-slate-900 font-bold text-right max-w-[55%]">{coach.specialization}</span>
                     </div>
-                    <div className="flex items-center justify-between py-2 border-b border-white/10">
+                    <div className="flex items-center justify-between py-2 border-b border-slate-900/10">
                       <span className="text-mad-gray font-medium">{lang === "id" ? "Pengalaman" : "Experience"}</span>
-                      <span className="text-white font-bold">{coach.experience}</span>
+                      <span className="text-slate-900 font-bold">{coach.experience}</span>
                     </div>
                   </div>
 

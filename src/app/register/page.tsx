@@ -49,19 +49,19 @@ export default function RegisterPage() {
   };
 
   return (
-    <main className="min-h-screen bg-mad-bg text-white flex items-center justify-center p-4 pt-28 pb-16">
-      <div className="w-full max-w-md space-y-8 rounded-3xl bg-mad-surface border border-white/10 p-8 sm:p-10">
+    <main className="min-h-screen bg-mad-bg text-slate-900 flex items-center justify-center p-4 pt-28 pb-16">
+      <div className="w-full max-w-md space-y-8 rounded-3xl bg-mad-surface border border-slate-900/10 p-8 sm:p-10">
         <div className="text-center space-y-3">
           <Link href="/" className="inline-flex items-center gap-2">
             <div className="w-10 h-10 rounded-xl bg-mad-lime flex items-center justify-center text-mad-bg">
               <Dumbbell className="w-6 h-6 stroke-[2.5]" />
             </div>
-            <span className="font-spartan font-black text-2xl tracking-tighter text-white uppercase">
+            <span className="font-spartan font-black text-2xl tracking-tighter text-slate-900 uppercase">
               MAD<span className="text-mad-lime">ROCK</span>
             </span>
           </Link>
 
-          <h1 className="text-2xl font-black font-spartan uppercase text-white">
+          <h1 className="text-2xl font-black font-spartan uppercase text-slate-900">
             {lang === "id" ? "GABUNG ATLET MADROCK" : "JOIN MADROCK ATHLETES"}
           </h1>
           <p className="text-xs text-mad-gray">
@@ -98,7 +98,7 @@ export default function RegisterPage() {
                 placeholder="Marcus Vance"
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
-                className="w-full bg-mad-bg border border-white/10 rounded-xl pl-10 pr-4 py-3 text-sm text-white placeholder-mad-gray focus:outline-none focus:border-mad-lime font-mono"
+                className="w-full bg-mad-bg border border-slate-900/10 rounded-xl pl-10 pr-4 py-3 text-sm text-slate-900 placeholder-mad-gray focus:outline-none focus:border-mad-lime font-mono"
               />
             </div>
           </div>
@@ -115,7 +115,7 @@ export default function RegisterPage() {
                 placeholder="athlete@madrock.fit"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full bg-mad-bg border border-white/10 rounded-xl pl-10 pr-4 py-3 text-sm text-white placeholder-mad-gray focus:outline-none focus:border-mad-lime font-mono"
+                className="w-full bg-mad-bg border border-slate-900/10 rounded-xl pl-10 pr-4 py-3 text-sm text-slate-900 placeholder-mad-gray focus:outline-none focus:border-mad-lime font-mono"
               />
             </div>
           </div>
@@ -133,7 +133,7 @@ export default function RegisterPage() {
                 placeholder="••••••••"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full bg-mad-bg border border-white/10 rounded-xl pl-10 pr-10 py-3 text-sm text-white placeholder-mad-gray focus:outline-none focus:border-mad-lime font-mono"
+                className="w-full bg-mad-bg border border-slate-900/10 rounded-xl pl-10 pr-10 py-3 text-sm text-slate-900 placeholder-mad-gray focus:outline-none focus:border-mad-lime font-mono"
               />
               <button
                 type="button"
@@ -153,7 +153,7 @@ export default function RegisterPage() {
             <select
               value={goal}
               onChange={(e) => setGoal(e.target.value)}
-              className="w-full bg-mad-bg border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-mad-lime font-mono"
+              className="w-full bg-mad-bg border border-slate-900/10 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-mad-lime font-mono"
             >
               <option value="Fat Loss">{lang === "id" ? "Fat Loss (Bakar Lemak)" : "Fat Loss Masterclass"}</option>
               <option value="Muscle Building">{lang === "id" ? "Hipertrofi & Otot" : "Hypertrophy Muscle Build"}</option>

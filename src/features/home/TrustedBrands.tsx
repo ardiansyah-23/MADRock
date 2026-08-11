@@ -35,7 +35,7 @@ export function TrustedBrands() {
   ];
 
   return (
-    <section className="py-12 bg-mad-surface/80 border-y border-white/5 overflow-hidden">
+    <section className="py-12 bg-mad-surface/80 border-y border-slate-900/5 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 mb-6 text-center">
         <p className="text-xs uppercase font-mono tracking-widest text-mad-gray font-bold">
           {lang === "id"
@@ -50,13 +50,13 @@ export function TrustedBrands() {
           {partners.concat(partners).map((partner, index) => (
             <div
               key={index}
-              className="flex items-center gap-3 px-6 py-3 rounded-2xl glass-card border border-white/5 shrink-0 hover:border-mad-lime/40 transition-colors group"
+              className="flex items-center gap-3 px-6 py-3 rounded-2xl glass-card border border-slate-900/5 shrink-0 hover:border-mad-lime/40 transition-colors group"
             >
               <div className="w-8 h-8 rounded-lg bg-mad-lime/10 flex items-center justify-center text-mad-lime group-hover:bg-mad-lime group-hover:text-mad-bg transition-colors">
                 <Dumbbell className="w-4 h-4" />
               </div>
               <div>
-                <span className="font-spartan font-black text-base tracking-wider text-white uppercase block">
+                <span className="font-spartan font-black text-base tracking-wider text-slate-900 uppercase block">
                   {partner.name}
                 </span>
                 <span className="text-[10px] text-mad-gray uppercase tracking-widest block font-mono">

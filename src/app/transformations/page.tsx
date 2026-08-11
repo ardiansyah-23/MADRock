@@ -53,7 +53,7 @@ export default function TransformationsPage() {
   ];
 
   return (
-    <main className="pt-32 pb-24 bg-mad-bg text-white min-h-screen">
+    <main className="pt-32 pb-24 bg-mad-bg text-slate-900 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
           badge={t("trans_header_badge")}
@@ -64,9 +64,9 @@ export default function TransformationsPage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           {transformations.map((item, idx) => (
             <ScrollReveal key={idx} delay={0.15 * idx}>
-              <div className="rounded-3xl bg-mad-surface border border-white/10 p-6 flex flex-col justify-between space-y-6 hover:border-mad-lime/40 transition-all duration-300">
+              <div className="rounded-3xl bg-mad-surface border border-slate-900/10 p-6 flex flex-col justify-between space-y-6 hover:border-mad-lime/40 transition-all duration-300">
                 {/* Images Comparison */}
-                <div className="grid grid-cols-2 gap-3 relative rounded-2xl overflow-hidden border border-white/10 bg-mad-bg p-2">
+                <div className="grid grid-cols-2 gap-3 relative rounded-2xl overflow-hidden border border-slate-900/10 bg-mad-bg p-2">
                   <div className="relative h-56 rounded-xl overflow-hidden">
                     <Image
                       src={item.beforeImg}
@@ -94,17 +94,17 @@ export default function TransformationsPage() {
 
                 {/* Stats Pill */}
                 <div className="grid grid-cols-2 gap-2 text-center">
-                  <div className="p-3 rounded-xl bg-mad-bg border border-white/5">
+                  <div className="p-3 rounded-xl bg-mad-bg border border-slate-900/5">
                     <span className="text-[10px] font-mono text-mad-lime uppercase block">
                       {lang === "id" ? "Penurunan Lemak" : "Fat Loss"}
                     </span>
-                    <span className="text-white font-extrabold text-sm font-spartan">{item.lost}</span>
+                    <span className="text-slate-900 font-extrabold text-sm font-spartan">{item.lost}</span>
                   </div>
-                  <div className="p-3 rounded-xl bg-mad-bg border border-white/5">
+                  <div className="p-3 rounded-xl bg-mad-bg border border-slate-900/5">
                     <span className="text-[10px] font-mono text-mad-lime uppercase block">
                       {lang === "id" ? "Pertumbuhan Otot" : "Muscle Gain"}
                     </span>
-                    <span className="text-white font-extrabold text-sm font-spartan">{item.gained}</span>
+                    <span className="text-slate-900 font-extrabold text-sm font-spartan">{item.gained}</span>
                   </div>
                 </div>
 
@@ -117,9 +117,9 @@ export default function TransformationsPage() {
                 </div>
 
                 {/* Client Info */}
-                <div className="pt-4 border-t border-white/10 flex items-center justify-between">
+                <div className="pt-4 border-t border-slate-900/10 flex items-center justify-between">
                   <div>
-                    <h4 className="text-white font-bold text-base font-spartan uppercase">
+                    <h4 className="text-slate-900 font-bold text-base font-spartan uppercase">
                       {item.name}, {item.age} {lang === "id" ? "Tahun" : "Yrs"}
                     </h4>
                     <span className="text-[11px] text-mad-gray font-mono">
@@ -137,7 +137,7 @@ export default function TransformationsPage() {
 
         {/* CTA Box */}
         <div className="p-10 rounded-3xl bg-mad-surface border border-mad-lime/30 text-center space-y-6 max-w-3xl mx-auto">
-          <h3 className="text-3xl font-black font-spartan uppercase text-white">
+          <h3 className="text-3xl font-black font-spartan uppercase text-slate-900">
             {lang === "id" ? "SIAP MENJADI KISAH SUKSES BERIKUTNYA?" : "READY TO BE OUR NEXT SUCCESS STORY?"}
           </h3>
           <p className="text-sm text-mad-gray max-w-lg mx-auto">

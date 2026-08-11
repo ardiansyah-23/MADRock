@@ -49,7 +49,7 @@ export default function FAQPage() {
   ];
 
   return (
-    <main className="pt-32 pb-24 bg-mad-bg text-white min-h-screen">
+    <main className="pt-32 pb-24 bg-mad-bg text-slate-900 min-h-screen">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
           title={lang === "id" ? "SEGALA HAL YANG PERLU ANDA KETAHUI" : "EVERYTHING YOU NEED TO KNOW"}
@@ -63,10 +63,10 @@ export default function FAQPage() {
         <div className="space-y-4">
           {faqs.map((faq, idx) => (
             <ScrollReveal key={idx} delay={0.1 * idx}>
-              <div className="rounded-2xl bg-mad-surface border border-white/10 overflow-hidden">
+              <div className="rounded-2xl bg-mad-surface border border-slate-900/10 overflow-hidden">
                 <button
                   onClick={() => setOpenIdx(openIdx === idx ? null : idx)}
-                  className="w-full p-6 text-left flex items-center justify-between gap-4 font-bold text-white uppercase font-spartan text-lg hover:text-mad-lime transition-colors"
+                  className="w-full p-6 text-left flex items-center justify-between gap-4 font-bold text-slate-900 uppercase font-spartan text-lg hover:text-mad-lime transition-colors"
                 >
                   <span className="flex items-center gap-3">
                     <HelpCircle className="w-5 h-5 text-mad-lime shrink-0" />
@@ -79,7 +79,7 @@ export default function FAQPage() {
                 </button>
 
                 {openIdx === idx && (
-                  <div className="px-6 pb-6 text-sm text-mad-gray leading-relaxed border-t border-white/5 pt-4">
+                  <div className="px-6 pb-6 text-sm text-mad-gray leading-relaxed border-t border-slate-900/5 pt-4">
                     {faq.a}
                   </div>
                 )}

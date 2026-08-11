@@ -243,7 +243,7 @@ export default function AICoachPage() {
   ];
 
   return (
-    <main className="pt-32 pb-24 bg-mad-bg text-white min-h-screen">
+    <main className="pt-32 pb-24 bg-mad-bg text-slate-900 min-h-screen">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
           title={lang === "id" ? "AI COACH ATLET MADROCK" : "MADROCK AI ATHLETE COACH"}
@@ -266,7 +266,7 @@ export default function AICoachPage() {
               onClick={() => setActiveMode(mode.id as any)}
               className={`flex items-center gap-2 px-6 py-3.5 rounded-2xl font-bold text-xs uppercase transition-all ${activeMode === mode.id
                 ? "bg-mad-lime text-mad-bg font-extrabold"
-                : "bg-mad-surface text-mad-gray border border-white/10 hover:text-white"
+                : "bg-mad-surface text-mad-gray border border-slate-900/10 hover:text-slate-900"
                 }`}
             >
               <mode.icon className="w-4 h-4" />
@@ -284,22 +284,22 @@ export default function AICoachPage() {
                 <button
                   key={idx}
                   onClick={() => handleSendMessage(prompt)}
-                  className="px-4 py-2 rounded-xl bg-mad-surface border border-white/10 text-xs text-mad-gray hover:text-mad-lime hover:border-mad-lime/40 transition-all font-mono"
+                  className="px-4 py-2 rounded-xl bg-mad-surface border border-slate-900/10 text-xs text-mad-gray hover:text-mad-lime hover:border-mad-lime/40 transition-all font-mono"
                 >
                   ⚡ {prompt}
                 </button>
               ))}
             </div>
 
-            <div className="rounded-3xl bg-mad-surface border border-white/10 overflow-hidden flex flex-col h-[580px] shadow-2xl">
+            <div className="rounded-3xl bg-mad-surface border border-slate-900/10 overflow-hidden flex flex-col h-[580px] shadow-2xl">
               {/* Header */}
-              <div className="p-4 bg-mad-surface-2 border-b border-white/10 flex items-center justify-between">
+              <div className="p-4 bg-mad-surface-2 border-b border-slate-900/10 flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl bg-mad-lime/10 border border-mad-lime/30 flex items-center justify-center text-mad-lime">
                     <Sparkles className="w-5 h-5" />
                   </div>
                   <div>
-                    <h4 className="font-bold font-spartan text-white uppercase text-base">MADRock AI Intelligence</h4>
+                    <h4 className="font-bold font-spartan text-slate-900 uppercase text-base">MADRock AI Intelligence</h4>
                     <span className="text-[10px] font-mono text-mad-lime uppercase flex items-center gap-1">
                       <span className="w-1.5 h-1.5 rounded-full bg-mad-lime animate-pulse" />
                       Gemini Fitness Engine Active
@@ -325,7 +325,7 @@ export default function AICoachPage() {
                       <div
                         className={`p-4 rounded-2xl text-xs sm:text-sm leading-relaxed ${m.sender === "user"
                           ? "bg-mad-lime text-mad-bg font-semibold rounded-tr-none shadow-lg"
-                          : "bg-mad-bg text-mad-gray border border-white/10 rounded-tl-none"
+                          : "bg-mad-bg text-mad-gray border border-slate-900/10 rounded-tl-none"
                           }`}
                       >
                         {m.text}
@@ -343,7 +343,7 @@ export default function AICoachPage() {
               </div>
 
               {/* Input Bar */}
-              <div className="p-4 bg-mad-surface-2 border-t border-white/10 flex gap-2">
+              <div className="p-4 bg-mad-surface-2 border-t border-slate-900/10 flex gap-2">
                 <input
                   type="text"
                   placeholder={
@@ -354,7 +354,7 @@ export default function AICoachPage() {
                   value={inputMessage}
                   onChange={(e) => setInputMessage(e.target.value)}
                   onKeyDown={(e) => e.key === "Enter" && handleSendMessage()}
-                  className="flex-1 bg-mad-bg border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-mad-gray focus:outline-none focus:border-mad-lime font-mono"
+                  className="flex-1 bg-mad-bg border border-slate-900/10 rounded-xl px-4 py-3 text-sm text-slate-900 placeholder-mad-gray focus:outline-none focus:border-mad-lime font-mono"
                 />
                 <button
                   onClick={() => handleSendMessage()}
@@ -371,14 +371,14 @@ export default function AICoachPage() {
         {(activeMode === "workout" || activeMode === "meal") && (
           <div className="max-w-4xl mx-auto space-y-8">
             {/* Input Form Card */}
-            <div className="rounded-3xl bg-mad-surface border border-white/10 p-8 space-y-6 shadow-2xl">
-              <div className="flex items-center justify-between pb-4 border-b border-white/10">
+            <div className="rounded-3xl bg-mad-surface border border-slate-900/10 p-8 space-y-6 shadow-2xl">
+              <div className="flex items-center justify-between pb-4 border-b border-slate-900/10">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl bg-mad-lime/10 border border-mad-lime/30 flex items-center justify-center text-mad-lime">
                     {activeMode === "workout" ? <Dumbbell className="w-5 h-5" /> : <Utensils className="w-5 h-5" />}
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold font-spartan text-white uppercase">
+                    <h3 className="text-xl font-bold font-spartan text-slate-900 uppercase">
                       {activeMode === "workout"
                         ? (lang === "id" ? "GENERATOR PROTOKOL LATIHAN AI" : "WORKOUT PROTOCOL GENERATOR")
                         : (lang === "id" ? "GENERATOR RENCANA MAKAN AI" : "CUSTOM MEAL PLAN GENERATOR")}
@@ -404,7 +404,7 @@ export default function AICoachPage() {
                     <select
                       value={goal}
                       onChange={(e) => setGoal(e.target.value)}
-                      className="w-full bg-mad-bg border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-mad-lime font-mono"
+                      className="w-full bg-mad-bg border border-slate-900/10 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-mad-lime font-mono"
                     >
                       <option value="Fat Loss">{lang === "id" ? "Fat Loss (Bakar Lemak)" : "Fat Loss"}</option>
                       <option value="Muscle Building">{lang === "id" ? "Otot & Hipertrofi" : "Muscle Building"}</option>
@@ -420,7 +420,7 @@ export default function AICoachPage() {
                     <select
                       value={experience}
                       onChange={(e) => setExperience(e.target.value)}
-                      className="w-full bg-mad-bg border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-mad-lime font-mono"
+                      className="w-full bg-mad-bg border border-slate-900/10 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-mad-lime font-mono"
                     >
                       <option value="Beginner">{lang === "id" ? "Pemula (0-1 tahun)" : "Beginner (0-1 yrs)"}</option>
                       <option value="Intermediate">{lang === "id" ? "Menengah (1-3 tahun)" : "Intermediate (1-3 yrs)"}</option>
@@ -443,7 +443,7 @@ export default function AICoachPage() {
                           onClick={() => setTrainingDays(num)}
                           className={`flex-1 py-2.5 rounded-xl text-xs font-bold font-mono transition-all ${trainingDays === num
                             ? "bg-mad-lime text-mad-bg font-extrabold shadow-md"
-                            : "bg-mad-bg text-mad-gray border border-white/10 hover:text-white"
+                            : "bg-mad-bg text-mad-gray border border-slate-900/10 hover:text-slate-900"
                             }`}
                         >
                           {num}D
@@ -462,7 +462,7 @@ export default function AICoachPage() {
                     <select
                       value={goal}
                       onChange={(e) => setGoal(e.target.value)}
-                      className="w-full bg-mad-bg border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-mad-lime font-mono"
+                      className="w-full bg-mad-bg border border-slate-900/10 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-mad-lime font-mono"
                     >
                       <option value="Fat Loss">{lang === "id" ? "Fat Loss (Bakar Lemak)" : "Fat Loss"}</option>
                       <option value="Muscle Building">{lang === "id" ? "Otot & Hipertrofi" : "Muscle Building"}</option>
@@ -477,7 +477,7 @@ export default function AICoachPage() {
                     <select
                       value={dietaryApproach}
                       onChange={(e) => setDietaryApproach(e.target.value)}
-                      className="w-full bg-mad-bg border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-mad-lime font-mono"
+                      className="w-full bg-mad-bg border border-slate-900/10 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-mad-lime font-mono"
                     >
                       <option value="High Protein Standard">High Protein Standard</option>
                       <option value="Ketogenic Low-Carb">Ketogenic Low-Carb</option>
@@ -518,9 +518,9 @@ export default function AICoachPage() {
             {/* Structured Visual Workout Protocol Cards */}
             {activeMode === "workout" && workoutProtocol && (
               <div className="space-y-6">
-                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-3 border-b border-white/10">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-3 border-b border-slate-900/10">
                   <div>
-                    <h3 className="text-2xl font-black font-spartan text-white uppercase tracking-tight">
+                    <h3 className="text-2xl font-black font-spartan text-slate-900 uppercase tracking-tight">
                       {lang === "id"
                         ? `CETAK BIRU LATIHAN AI (${workoutProtocol.length} HARI)`
                         : `GENERATED WORKOUT BLUEPRINT (${workoutProtocol.length} DAYS)`}
@@ -532,7 +532,7 @@ export default function AICoachPage() {
 
                   <button
                     onClick={handleCopyProtocol}
-                    className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-mad-surface border border-white/10 text-xs font-mono text-white hover:text-mad-lime hover:border-mad-lime/40 transition-all"
+                    className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-mad-surface border border-slate-900/10 text-xs font-mono text-slate-900 hover:text-mad-lime hover:border-mad-lime/40 transition-all"
                   >
                     {copied ? <Check className="w-4 h-4 text-mad-lime" /> : <Copy className="w-4 h-4 text-mad-lime" />}
                     <span>
@@ -547,11 +547,11 @@ export default function AICoachPage() {
                   {workoutProtocol.map((dayBlock, dIdx) => (
                     <div
                       key={dIdx}
-                      className="rounded-3xl bg-mad-surface border border-white/10 p-6 space-y-4 hover:border-mad-lime/40 transition-all flex flex-col justify-start h-auto"
+                      className="rounded-3xl bg-mad-surface border border-slate-900/10 p-6 space-y-4 hover:border-mad-lime/40 transition-all flex flex-col justify-start h-auto"
                     >
-                      <div className="pb-3 border-b border-white/10 flex items-start justify-between gap-4">
+                      <div className="pb-3 border-b border-slate-900/10 flex items-start justify-between gap-4">
                         <div className="space-y-1">
-                          <h4 className="font-black font-spartan text-lg text-white uppercase leading-snug">
+                          <h4 className="font-black font-spartan text-lg text-slate-900 uppercase leading-snug">
                             {dayBlock.dayTitle}
                           </h4>
                           <span className="text-[11px] text-mad-lime font-mono uppercase block font-semibold">
@@ -567,10 +567,10 @@ export default function AICoachPage() {
                         {dayBlock.exercises.map((ex: any, eIdx: number) => (
                           <div
                             key={eIdx}
-                            className="p-3.5 rounded-xl bg-mad-bg border border-white/5 flex items-center justify-between text-xs"
+                            className="p-3.5 rounded-xl bg-mad-bg border border-slate-900/5 flex items-center justify-between text-xs"
                           >
                             <div className="space-y-0.5">
-                              <strong className="text-white font-bold block">{ex.name}</strong>
+                              <strong className="text-slate-900 font-bold block">{ex.name}</strong>
                               <span className="text-mad-gray font-mono text-[11px]">{ex.sets}</span>
                             </div>
                             <div className="text-right shrink-0 ml-3">
@@ -593,9 +593,9 @@ export default function AICoachPage() {
             {/* Structured Visual Meal Plan Cards */}
             {activeMode === "meal" && mealProtocol && (
               <div className="space-y-6">
-                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-3 border-b border-white/10">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-3 border-b border-slate-900/10">
                   <div>
-                    <h3 className="text-2xl font-black font-spartan text-white uppercase tracking-tight">
+                    <h3 className="text-2xl font-black font-spartan text-slate-900 uppercase tracking-tight">
                       {lang === "id" ? "PROTOKOL NUTRISI TERBENTUK" : "GENERATED NUTRITION PROTOCOL"}
                     </h3>
                     <p className="text-xs text-mad-lime font-mono mt-1">
@@ -605,7 +605,7 @@ export default function AICoachPage() {
 
                   <button
                     onClick={handleCopyProtocol}
-                    className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-mad-surface border border-white/10 text-xs font-mono text-white hover:text-mad-lime hover:border-mad-lime/40 transition-all"
+                    className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-mad-surface border border-slate-900/10 text-xs font-mono text-slate-900 hover:text-mad-lime hover:border-mad-lime/40 transition-all"
                   >
                     {copied ? <Check className="w-4 h-4 text-mad-lime" /> : <Copy className="w-4 h-4 text-mad-lime" />}
                     <span>
@@ -620,18 +620,18 @@ export default function AICoachPage() {
                   {mealProtocol.map((mBlock, mIdx) => (
                     <div
                       key={mIdx}
-                      className="rounded-3xl bg-mad-surface border border-white/10 p-6 space-y-4 hover:border-mad-lime/40 transition-all flex flex-col justify-start h-auto"
+                      className="rounded-3xl bg-mad-surface border border-slate-900/10 p-6 space-y-4 hover:border-mad-lime/40 transition-all flex flex-col justify-start h-auto"
                     >
-                      <div className="flex items-center justify-between pb-3 border-b border-white/10">
+                      <div className="flex items-center justify-between pb-3 border-b border-slate-900/10">
                         <div>
-                          <h4 className="font-black font-spartan text-lg text-white uppercase">
+                          <h4 className="font-black font-spartan text-lg text-slate-900 uppercase">
                             {mBlock.meal}
                           </h4>
                           <span className="text-[10px] text-mad-lime font-mono uppercase block mt-1 font-semibold">
                             Target: {mBlock.calories} • {mBlock.macros}
                           </span>
                         </div>
-                        <span className="px-2.5 py-1 rounded-lg bg-mad-bg border border-white/10 text-xs font-mono text-mad-gray shrink-0">
+                        <span className="px-2.5 py-1 rounded-lg bg-mad-bg border border-slate-900/10 text-xs font-mono text-mad-gray shrink-0">
                           {mBlock.time}
                         </span>
                       </div>

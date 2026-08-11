@@ -97,7 +97,7 @@ export function Navbar() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="w-10 h-10 rounded-xl bg-mad-lime flex items-center justify-center text-white transition-transform duration-300 group-hover:scale-105 group-hover:rotate-3 shadow-md shadow-lime-600/20">
+            <div className="w-10 h-10 rounded-xl bg-mad-lime flex items-center justify-center text-slate-900 transition-transform duration-300 group-hover:scale-105 group-hover:rotate-3 shadow-md shadow-lime-600/20">
               <Dumbbell className="w-6 h-6 stroke-[2.5]" />
             </div>
             <div className="flex flex-col">
@@ -163,7 +163,7 @@ export function Navbar() {
                         onClick={() => setDropdownOpen(false)}
                         className="flex items-start gap-3 p-3 rounded-xl hover:bg-slate-100 transition-all duration-200 group/item"
                       >
-                        <div className="w-9 h-9 rounded-xl bg-lime-50 border border-lime-200 flex items-center justify-center text-mad-lime group-hover/item:bg-mad-lime group-hover/item:text-white transition-colors shrink-0">
+                        <div className="w-9 h-9 rounded-xl bg-lime-50 border border-lime-200 flex items-center justify-center text-mad-lime group-hover/item:bg-mad-lime group-hover/item:text-slate-900 transition-colors shrink-0">
                           <item.icon className="w-4 h-4" />
                         </div>
                         <div>
@@ -227,10 +227,10 @@ export function Navbar() {
 
             <Link
               href="/login"
-              className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold bg-mad-lime text-white hover:bg-mad-lime-hover transition-all duration-300 shadow-md shadow-lime-600/20 hover:scale-[1.02]"
+              className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold bg-mad-lime text-slate-900 hover:bg-mad-lime-hover transition-all duration-300 shadow-md shadow-lime-600/20 hover:scale-[1.02]"
             >
               <span className="keep-white text-white font-extrabold">{t("nav_start_training")}</span>
-              <ArrowRight className="w-4 h-4 text-white transition-transform group-hover:translate-x-1" />
+              <ArrowRight className="w-4 h-4 text-slate-900 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
 
@@ -349,7 +349,7 @@ export function Navbar() {
               <Link
                 href="/login"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-center gap-2 py-3.5 rounded-xl bg-mad-lime text-white font-extrabold text-sm uppercase tracking-wider shadow-md"
+                className="flex items-center justify-center gap-2 py-3.5 rounded-xl bg-mad-lime text-slate-900 font-extrabold text-sm uppercase tracking-wider shadow-md"
               >
                 <span className="keep-white text-white">{t("nav_start_training")}</span>
               </Link>

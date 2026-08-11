@@ -107,7 +107,7 @@ export default function MealPlannerPage() {
   );
 
   return (
-    <main className="pt-32 pb-24 bg-mad-bg text-white min-h-screen">
+    <main className="pt-32 pb-24 bg-mad-bg text-slate-900 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
           title={t("meal_header_title")}
@@ -122,7 +122,7 @@ export default function MealPlannerPage() {
               onClick={() => setSelectedGoal(cat)}
               className={`px-5 py-2.5 rounded-2xl text-xs font-bold uppercase transition-all ${selectedGoal === cat
                   ? "bg-mad-lime text-mad-bg font-extrabold"
-                  : "bg-mad-surface text-mad-gray border border-white/10 hover:text-white"
+                  : "bg-mad-surface text-mad-gray border border-slate-900/10 hover:text-slate-900"
                 }`}
             >
               {getCategoryLabel(cat)}
@@ -134,7 +134,7 @@ export default function MealPlannerPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {filteredMeals.map((meal, idx) => (
             <ScrollReveal key={meal.id} delay={0.1 * idx}>
-              <div className="rounded-3xl bg-mad-surface border border-white/10 overflow-hidden hover:border-mad-lime/40 transition-all duration-300">
+              <div className="rounded-3xl bg-mad-surface border border-slate-900/10 overflow-hidden hover:border-mad-lime/40 transition-all duration-300">
                 <div className="grid grid-cols-1 sm:grid-cols-12 gap-0">
                   {/* Image */}
                   <div className="sm:col-span-5 relative h-64 sm:h-auto min-h-[220px]">
@@ -144,7 +144,7 @@ export default function MealPlannerPage() {
                       fill
                       className="object-cover"
                     />
-                    <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-mad-bg/80 text-mad-lime font-mono text-[10px] uppercase font-bold border border-white/10">
+                    <div className="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-mad-bg/80 text-mad-lime font-mono text-[10px] uppercase font-bold border border-slate-900/10">
                       {getCategoryLabel(meal.category)}
                     </div>
                   </div>
@@ -152,7 +152,7 @@ export default function MealPlannerPage() {
                   {/* Details */}
                   <div className="sm:col-span-7 p-6 space-y-4 flex flex-col justify-between">
                     <div>
-                      <h3 className="text-xl font-bold font-spartan text-white uppercase">
+                      <h3 className="text-xl font-bold font-spartan text-slate-900 uppercase">
                         {meal.title}
                       </h3>
                       <div className="flex items-center gap-3 text-xs text-mad-gray mt-1">
@@ -164,7 +164,7 @@ export default function MealPlannerPage() {
                     </div>
 
                     {/* Macros breakdown */}
-                    <div className="grid grid-cols-4 gap-1 text-center p-3 rounded-2xl bg-mad-bg border border-white/5">
+                    <div className="grid grid-cols-4 gap-1 text-center p-3 rounded-2xl bg-mad-bg border border-slate-900/5">
                       <div>
                         <span className="text-[9px] font-mono text-mad-gray block">
                           {lang === "id" ? "KALORI" : "CALORIES"}
@@ -173,15 +173,15 @@ export default function MealPlannerPage() {
                       </div>
                       <div>
                         <span className="text-[9px] font-mono text-mad-gray block">PROTEIN</span>
-                        <span className="text-sm font-bold font-spartan text-white">{meal.protein}</span>
+                        <span className="text-sm font-bold font-spartan text-slate-900">{meal.protein}</span>
                       </div>
                       <div>
                         <span className="text-[9px] font-mono text-mad-gray block">KARBO</span>
-                        <span className="text-sm font-bold font-spartan text-white">{meal.carbs}</span>
+                        <span className="text-sm font-bold font-spartan text-slate-900">{meal.carbs}</span>
                       </div>
                       <div>
                         <span className="text-[9px] font-mono text-mad-gray block">LEMAK</span>
-                        <span className="text-sm font-bold font-spartan text-white">{meal.fat}</span>
+                        <span className="text-sm font-bold font-spartan text-slate-900">{meal.fat}</span>
                       </div>
                     </div>
 

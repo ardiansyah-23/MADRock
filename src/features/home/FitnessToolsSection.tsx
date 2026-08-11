@@ -64,11 +64,11 @@ export function FitnessToolsSection() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           {/* Interactive Calculator Form */}
-          <div className="lg:col-span-7 rounded-3xl bg-mad-bg border border-white/10 p-6 sm:p-8 space-y-6">
-            <div className="flex items-center justify-between pb-4 border-b border-white/10">
+          <div className="lg:col-span-7 rounded-3xl bg-mad-bg border border-slate-900/10 p-6 sm:p-8 space-y-6">
+            <div className="flex items-center justify-between pb-4 border-b border-slate-900/10">
               <div className="flex items-center gap-2">
                 <Calculator className="w-5 h-5 text-mad-lime" />
-                <span className="font-spartan font-bold text-white uppercase text-lg">
+                <span className="font-spartan font-bold text-slate-900 uppercase text-lg">
                   {lang === "id" ? "KALKULATOR METABOLIK CEPAT" : "QUICK METABOLIC ESTIMATOR"}
                 </span>
               </div>
@@ -90,7 +90,7 @@ export function FitnessToolsSection() {
                     onClick={() => setGender("male")}
                     className={`py-2.5 rounded-xl text-xs font-bold uppercase transition-all ${gender === "male"
                         ? "bg-mad-lime text-mad-bg font-extrabold"
-                        : "bg-mad-surface text-mad-gray border border-white/10"
+                        : "bg-mad-surface text-mad-gray border border-slate-900/10"
                       }`}
                   >
                     {lang === "id" ? "Pria" : "Male"}
@@ -100,7 +100,7 @@ export function FitnessToolsSection() {
                     onClick={() => setGender("female")}
                     className={`py-2.5 rounded-xl text-xs font-bold uppercase transition-all ${gender === "female"
                         ? "bg-mad-lime text-mad-bg font-extrabold"
-                        : "bg-mad-surface text-mad-gray border border-white/10"
+                        : "bg-mad-surface text-mad-gray border border-slate-900/10"
                       }`}
                   >
                     {lang === "id" ? "Wanita" : "Female"}
@@ -118,7 +118,7 @@ export function FitnessToolsSection() {
                   value={ageStr}
                   placeholder="e.g. 25"
                   onChange={(e) => handleCleanInput(e.target.value, setAgeStr)}
-                  className="w-full bg-mad-surface border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-mad-lime font-mono"
+                  className="w-full bg-mad-surface border border-slate-900/10 rounded-xl px-4 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-mad-lime font-mono"
                 />
               </div>
 
@@ -132,7 +132,7 @@ export function FitnessToolsSection() {
                   value={weightStr}
                   placeholder="e.g. 75"
                   onChange={(e) => handleCleanInput(e.target.value, setWeightStr)}
-                  className="w-full bg-mad-surface border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-mad-lime font-mono"
+                  className="w-full bg-mad-surface border border-slate-900/10 rounded-xl px-4 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-mad-lime font-mono"
                 />
               </div>
 
@@ -146,7 +146,7 @@ export function FitnessToolsSection() {
                   value={heightStr}
                   placeholder="e.g. 175"
                   onChange={(e) => handleCleanInput(e.target.value, setHeightStr)}
-                  className="w-full bg-mad-surface border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-mad-lime font-mono"
+                  className="w-full bg-mad-surface border border-slate-900/10 rounded-xl px-4 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-mad-lime font-mono"
                 />
               </div>
             </div>
@@ -159,7 +159,7 @@ export function FitnessToolsSection() {
               <select
                 value={activity}
                 onChange={(e) => setActivity(Number(e.target.value))}
-                className="w-full bg-mad-surface border border-white/10 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-mad-lime font-mono"
+                className="w-full bg-mad-surface border border-slate-900/10 rounded-xl px-4 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-mad-lime font-mono"
               >
                 <option value={1.2}>{lang === "id" ? "Ringan / Duduk (Pekerja Kantor)" : "Sedentary (Office Job)"}</option>
                 <option value={1.375}>{lang === "id" ? "Aktif Ringan (1-3 hari/mgg)" : "Lightly Active (1-3 days/wk)"}</option>
@@ -173,24 +173,24 @@ export function FitnessToolsSection() {
           <div className="lg:col-span-5 rounded-3xl bg-mad-bg border border-mad-lime/30 p-6 sm:p-8 space-y-6 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-32 h-32 bg-mad-lime/10 rounded-full blur-2xl pointer-events-none" />
 
-            <h3 className="text-xl font-bold font-spartan text-white uppercase border-b border-white/10 pb-3">
+            <h3 className="text-xl font-bold font-spartan text-slate-900 uppercase border-b border-slate-900/10 pb-3">
               {lang === "id" ? "PROFIL METABOLIK ANDA" : "YOUR METABOLIC PROFILE"}
             </h3>
 
             <div className="space-y-4">
               {/* BMI Card */}
-              <div className="p-4 rounded-2xl bg-mad-surface border border-white/10 flex items-center justify-between">
+              <div className="p-4 rounded-2xl bg-mad-surface border border-slate-900/10 flex items-center justify-between">
                 <div>
                   <span className="text-xs text-mad-gray font-mono block">
                     {lang === "id" ? "INDEKS MASSA TUBUH (BMI)" : "BODY MASS INDEX (BMI)"}
                   </span>
                   <span className={`text-xs font-bold ${bmiData.color}`}>{bmiData.category}</span>
                 </div>
-                <span className="text-3xl font-black font-spartan text-white">{bmi.toFixed(1)}</span>
+                <span className="text-3xl font-black font-spartan text-slate-900">{bmi.toFixed(1)}</span>
               </div>
 
               {/* TDEE Card */}
-              <div className="p-4 rounded-2xl bg-mad-surface border border-white/10 flex items-center justify-between">
+              <div className="p-4 rounded-2xl bg-mad-surface border border-slate-900/10 flex items-center justify-between">
                 <div>
                   <span className="text-xs text-mad-gray font-mono block">
                     {lang === "id" ? "KALORI HARIAN (TDEE)" : "DAILY CALORIES (TDEE)"}
@@ -203,7 +203,7 @@ export function FitnessToolsSection() {
               </div>
 
               {/* Protein Target */}
-              <div className="p-4 rounded-2xl bg-mad-surface border border-white/10 flex items-center justify-between">
+              <div className="p-4 rounded-2xl bg-mad-surface border border-slate-900/10 flex items-center justify-between">
                 <div>
                   <span className="text-xs text-mad-gray font-mono block">
                     {lang === "id" ? "TARGET PROTEIN HARIAN" : "DAILY PROTEIN TARGET"}
@@ -212,7 +212,7 @@ export function FitnessToolsSection() {
                     {lang === "id" ? "Sintesis Otot Optimal" : "Optimal Muscle Synthesis"}
                   </span>
                 </div>
-                <span className="text-3xl font-black font-spartan text-white">{protein}g</span>
+                <span className="text-3xl font-black font-spartan text-slate-900">{protein}g</span>
               </div>
             </div>
 

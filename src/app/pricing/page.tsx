@@ -110,7 +110,7 @@ export default function PricingPage() {
   ];
 
   return (
-    <main className="pt-32 pb-24 bg-mad-bg text-white min-h-screen">
+    <main className="pt-32 pb-24 bg-mad-bg text-slate-900 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         <SectionHeader
           badge={t("price_header_badge")}
@@ -120,12 +120,12 @@ export default function PricingPage() {
 
         {/* Billing Toggle */}
         <div className="flex justify-center">
-          <div className="p-1.5 rounded-full bg-mad-surface border border-white/10 flex items-center gap-1">
+          <div className="p-1.5 rounded-full bg-mad-surface border border-slate-900/10 flex items-center gap-1">
             <button
               onClick={() => setBillingCycle("monthly")}
               className={`px-6 py-2.5 rounded-full text-xs font-bold uppercase transition-all ${billingCycle === "monthly"
                   ? "bg-mad-lime text-mad-bg font-extrabold"
-                  : "text-mad-gray hover:text-white"
+                  : "text-mad-gray hover:text-slate-900"
                 }`}
             >
               {t("price_monthly")}
@@ -134,7 +134,7 @@ export default function PricingPage() {
               onClick={() => setBillingCycle("yearly")}
               className={`px-6 py-2.5 rounded-full text-xs font-bold uppercase transition-all flex items-center gap-2 ${billingCycle === "yearly"
                   ? "bg-mad-lime text-mad-bg font-extrabold"
-                  : "text-mad-gray hover:text-white"
+                  : "text-mad-gray hover:text-slate-900"
                 }`}
             >
               <span>{t("price_yearly")}</span>
@@ -152,7 +152,7 @@ export default function PricingPage() {
                 <div
                   className={`rounded-3xl p-8 flex flex-col justify-between h-full relative transition-all duration-300 ${plan.highlighted
                       ? "bg-mad-surface border-2 border-mad-lime lg:-translate-y-4"
-                      : "bg-mad-surface/60 border border-white/10 hover:border-white/20"
+                      : "bg-mad-surface/60 border border-slate-900/10 hover:border-slate-900/20"
                     }`}
                 >
                   {plan.badge && (
@@ -163,7 +163,7 @@ export default function PricingPage() {
 
                   <div className="space-y-6">
                     <div>
-                      <h3 className="text-2xl font-black font-spartan text-white uppercase">
+                      <h3 className="text-2xl font-black font-spartan text-slate-900 uppercase">
                         {plan.name}
                       </h3>
                       <p className="text-xs text-mad-gray mt-1 leading-relaxed">
@@ -171,8 +171,8 @@ export default function PricingPage() {
                       </p>
                     </div>
 
-                    <div className="flex items-baseline gap-1 py-4 border-y border-white/10">
-                      <span className="text-5xl font-black font-spartan text-white">
+                    <div className="flex items-baseline gap-1 py-4 border-y border-slate-900/10">
+                      <span className="text-5xl font-black font-spartan text-slate-900">
                         ${price}
                       </span>
                       <span className="text-xs font-mono text-mad-gray uppercase">
@@ -184,7 +184,7 @@ export default function PricingPage() {
                       {plan.features.map((feature, fIdx) => (
                         <li key={fIdx} className="flex items-start gap-3">
                           <Check className="w-4 h-4 text-mad-lime shrink-0 mt-0.5" />
-                          <span className={feature.startsWith("EVERYTHING") || feature.startsWith("SEMUA") ? "font-bold text-white uppercase" : ""}>
+                          <span className={feature.startsWith("EVERYTHING") || feature.startsWith("SEMUA") ? "font-bold text-slate-900 uppercase" : ""}>
                             {feature}
                           </span>
                         </li>
@@ -197,7 +197,7 @@ export default function PricingPage() {
                       href="/booking"
                       className={`w-full inline-flex items-center justify-center gap-2 py-4 rounded-2xl font-extrabold text-xs uppercase tracking-wider transition-all ${plan.highlighted
                           ? "bg-mad-lime text-mad-bg hover:bg-mad-lime-hover"
-                          : "bg-white/10 text-white hover:bg-mad-lime hover:text-mad-bg border border-white/15"
+                          : "bg-slate-900/10 text-white hover:bg-mad-lime hover:text-mad-bg border border-slate-900/15"
                         }`}
                     >
                       <span>{plan.cta}</span>
@@ -211,13 +211,13 @@ export default function PricingPage() {
         </div>
 
         {/* 100% Satisfaction Guarantee Bar */}
-        <div className="rounded-3xl bg-mad-surface border border-white/10 p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="rounded-3xl bg-mad-surface border border-slate-900/10 p-8 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 rounded-2xl bg-mad-lime/10 border border-mad-lime/30 flex items-center justify-center text-mad-lime shrink-0">
               <ShieldCheck className="w-6 h-6" />
             </div>
             <div>
-              <h4 className="text-lg font-bold font-spartan text-white uppercase">{t("price_guarantee_title")}</h4>
+              <h4 className="text-lg font-bold font-spartan text-slate-900 uppercase">{t("price_guarantee_title")}</h4>
               <p className="text-xs text-mad-gray">{t("price_guarantee_desc")}</p>
             </div>
           </div>
@@ -233,7 +233,7 @@ export default function PricingPage() {
         {/* FAQ Section */}
         <div className="max-w-3xl mx-auto space-y-6 pt-8">
           <div className="text-center space-y-2">
-            <h3 className="text-2xl font-black font-spartan uppercase text-white">
+            <h3 className="text-2xl font-black font-spartan uppercase text-slate-900">
               {lang === "id" ? "PERTANYAAN SERING DIAJUKAN (FAQ)" : "FREQUENTLY ASKED QUESTIONS"}
             </h3>
             <p className="text-xs text-mad-gray">
@@ -249,17 +249,17 @@ export default function PricingPage() {
               return (
                 <div
                   key={idx}
-                  className="rounded-2xl bg-mad-surface border border-white/10 overflow-hidden transition-all"
+                  className="rounded-2xl bg-mad-surface border border-slate-900/10 overflow-hidden transition-all"
                 >
                   <button
                     onClick={() => toggleFaq(idx)}
-                    className="w-full p-5 text-left font-bold text-sm text-white flex items-center justify-between gap-4 uppercase font-spartan"
+                    className="w-full p-5 text-left font-bold text-sm text-slate-900 flex items-center justify-between gap-4 uppercase font-spartan"
                   >
                     <span>{faq.q}</span>
                     <ChevronDown className={`w-4 h-4 text-mad-lime transition-transform ${isOpen ? "rotate-180" : ""}`} />
                   </button>
                   {isOpen && (
-                    <div className="px-5 pb-5 text-xs text-mad-gray leading-relaxed border-t border-white/5 pt-3">
+                    <div className="px-5 pb-5 text-xs text-mad-gray leading-relaxed border-t border-slate-900/5 pt-3">
                       {faq.a}
                     </div>
                   )}

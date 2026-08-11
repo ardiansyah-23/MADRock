@@ -49,7 +49,7 @@ export default function BlogPage() {
   });
 
   return (
-    <main className="pt-32 pb-24 bg-mad-bg text-white min-h-screen">
+    <main className="pt-32 pb-24 bg-mad-bg text-slate-900 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
           title="MADROCK FITNESS JOURNAL"
@@ -73,7 +73,7 @@ export default function BlogPage() {
               }
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-mad-surface border border-white/10 rounded-2xl pl-12 pr-4 py-3.5 text-sm text-slate-900 placeholder-mad-gray focus:outline-none focus:border-mad-lime font-mono"
+              className="w-full bg-mad-surface border border-slate-900/10 rounded-2xl pl-12 pr-4 py-3.5 text-sm text-slate-900 placeholder-mad-gray focus:outline-none focus:border-mad-lime font-mono"
             />
           </div>
 
@@ -84,7 +84,7 @@ export default function BlogPage() {
                 onClick={() => setSelectedCategory(cat)}
                 className={`px-5 py-2.5 rounded-2xl text-xs font-bold uppercase transition-all ${selectedCategory === cat
                     ? "bg-mad-lime text-mad-bg font-extrabold"
-                    : "bg-mad-surface text-mad-gray border border-white/10 hover:text-white hover:border-mad-lime/30"
+                    : "bg-mad-surface text-mad-gray border border-slate-900/10 hover:text-slate-900 hover:border-mad-lime/30"
                   }`}
               >
                 {getCategoryLabel(cat)}
@@ -113,7 +113,7 @@ export default function BlogPage() {
 
             return (
               <ScrollReveal key={post.id} delay={0.1 * idx}>
-                <div className="group rounded-3xl bg-mad-surface border border-white/10 overflow-hidden hover:border-mad-lime/40 transition-all duration-300 flex flex-col justify-between h-full hover:-translate-y-1">
+                <div className="group rounded-3xl bg-mad-surface border border-slate-900/10 overflow-hidden hover:border-mad-lime/40 transition-all duration-300 flex flex-col justify-between h-full hover:-translate-y-1">
                   <div>
                     <div className="relative h-60 w-full overflow-hidden bg-mad-surface-2">
                       {post.image ? (
@@ -128,7 +128,7 @@ export default function BlogPage() {
                           MADROCK JOURNAL
                         </div>
                       )}
-                      <div className="absolute top-4 left-4 px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white font-mono text-[11px] uppercase font-extrabold z-10">
+                      <div className="absolute top-4 left-4 px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-slate-900/20 text-slate-900 font-mono text-[11px] uppercase font-extrabold z-10">
                         <span className="keep-white text-white">{getCategoryLabel(category)}</span>
                       </div>
                     </div>
@@ -143,7 +143,7 @@ export default function BlogPage() {
                         </span>
                       </div>
 
-                      <h3 className="text-xl font-bold font-spartan text-white uppercase group-hover:text-mad-lime transition-colors leading-snug">
+                      <h3 className="text-xl font-bold font-spartan text-slate-900 uppercase group-hover:text-mad-lime transition-colors leading-snug">
                         {title}
                       </h3>
 

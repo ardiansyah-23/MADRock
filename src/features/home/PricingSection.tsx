@@ -83,12 +83,12 @@ export function PricingSection() {
 
         {/* Billing Toggle */}
         <div className="flex justify-center mb-16">
-          <div className="p-1.5 rounded-full bg-mad-surface border border-white/10 flex items-center gap-1">
+          <div className="p-1.5 rounded-full bg-mad-surface border border-slate-900/10 flex items-center gap-1">
             <button
               onClick={() => setBillingCycle("monthly")}
               className={`px-5 py-2 rounded-full text-xs font-bold uppercase transition-all ${billingCycle === "monthly"
                   ? "bg-mad-lime text-mad-bg shadow-md"
-                  : "text-mad-gray hover:text-white"
+                  : "text-mad-gray hover:text-slate-900"
                 }`}
             >
               {t("price_monthly")}
@@ -97,7 +97,7 @@ export function PricingSection() {
               onClick={() => setBillingCycle("yearly")}
               className={`px-5 py-2 rounded-full text-xs font-bold uppercase transition-all flex items-center gap-1.5 ${billingCycle === "yearly"
                   ? "bg-mad-lime text-mad-bg shadow-md"
-                  : "text-mad-gray hover:text-white"
+                  : "text-mad-gray hover:text-slate-900"
                 }`}
             >
               <span>{t("price_yearly")}</span>
@@ -115,7 +115,7 @@ export function PricingSection() {
                 <div
                   className={`rounded-3xl p-8 flex flex-col justify-between h-full relative transition-all duration-300 ${plan.highlighted
                       ? "bg-mad-surface border-2 border-mad-lime shadow-2xl shadow-slate-900/10 lg:-translate-y-4"
-                      : "bg-mad-surface/60 border border-white/10 hover:border-white/20"
+                      : "bg-mad-surface/60 border border-slate-900/10 hover:border-slate-900/20"
                     }`}
                 >
                   {plan.badge && (
@@ -126,7 +126,7 @@ export function PricingSection() {
 
                   <div className="space-y-6">
                     <div>
-                      <h3 className="text-2xl font-black font-spartan text-white uppercase">
+                      <h3 className="text-2xl font-black font-spartan text-slate-900 uppercase">
                         {plan.name}
                       </h3>
                       <p className="text-xs text-mad-gray mt-1 leading-relaxed">
@@ -134,8 +134,8 @@ export function PricingSection() {
                       </p>
                     </div>
 
-                    <div className="flex items-baseline gap-1 py-4 border-y border-white/10">
-                      <span className="text-5xl font-black font-spartan text-white">
+                    <div className="flex items-baseline gap-1 py-4 border-y border-slate-900/10">
+                      <span className="text-5xl font-black font-spartan text-slate-900">
                         ${price}
                       </span>
                       <span className="text-xs font-mono text-mad-gray uppercase">
@@ -147,7 +147,7 @@ export function PricingSection() {
                       {plan.features.map((feature, fIdx) => (
                         <li key={fIdx} className="flex items-start gap-3">
                           <Check className="w-4 h-4 text-mad-lime shrink-0 mt-0.5" />
-                          <span className={feature.startsWith("EVERYTHING") || feature.startsWith("SEMUA") ? "font-bold text-white uppercase" : ""}>
+                          <span className={feature.startsWith("EVERYTHING") || feature.startsWith("SEMUA") ? "font-bold text-slate-900 uppercase" : ""}>
                             {feature}
                           </span>
                         </li>
@@ -160,7 +160,7 @@ export function PricingSection() {
                       href="/booking"
                       className={`w-full inline-flex items-center justify-center gap-2 py-4 rounded-2xl font-extrabold text-xs uppercase tracking-wider transition-all ${plan.highlighted
                           ? "bg-mad-lime text-mad-bg hover:bg-mad-lime-hover shadow-xl shadow-slate-900/10"
-                          : "bg-white/10 text-white hover:bg-mad-lime hover:text-mad-bg border border-white/15"
+                          : "bg-slate-900/10 text-white hover:bg-mad-lime hover:text-mad-bg border border-slate-900/15"
                         }`}
                     >
                       <span>{plan.cta}</span>

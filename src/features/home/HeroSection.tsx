@@ -59,7 +59,7 @@ export function HeroSection() {
           {/* Left Side Content */}
           <div className="lg:col-span-7 xl:col-span-7 space-y-6">
             <ScrollReveal delay={0.1}>
-              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black uppercase font-spartan tracking-tight text-white leading-[1.02]">
+              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black uppercase font-spartan tracking-tight text-slate-900 leading-[1.02]">
                 {t("hero_title_1")} <br />
                 <span className="text-mad-lime">{t("hero_title_2")}</span>
               </h1>
@@ -84,7 +84,7 @@ export function HeroSection() {
 
                 <Link
                   href="/programs"
-                  className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-2xl text-sm font-bold bg-white border border-white/10 text-mad-bg hover:bg-gray-200 transition-all duration-300"
+                  className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-2xl text-sm font-bold bg-white border border-slate-900/10 text-mad-bg hover:bg-gray-200 transition-all duration-300"
                 >
                   <Calendar className="w-4 h-4 text-mad-lime" />
                   <span>{t("hero_cta_secondary")}</span>
@@ -109,12 +109,12 @@ export function HeroSection() {
                     </div>
 
                     {/* Floating Overlay Badge on Dark Gradient */}
-                    <div className="absolute bottom-5 left-5 right-5 p-3.5 rounded-2xl bg-mad-bg/80 backdrop-blur-md border border-white/10 flex items-center gap-3.5">
+                    <div className="absolute bottom-5 left-5 right-5 p-3.5 rounded-2xl bg-mad-bg/80 backdrop-blur-md border border-slate-900/10 flex items-center gap-3.5">
                       <div className="w-10 h-10 rounded-xl bg-mad-lime flex items-center justify-center text-mad-bg shrink-0 font-black text-lg">
                         AH
                       </div>
                       <div>
-                        <h4 className="text-white keep-white font-bold text-xs sm:text-sm uppercase tracking-wide">
+                        <h4 className="text-slate-900 keep-white font-bold text-xs sm:text-sm uppercase tracking-wide">
                           Coach Ahmad Hudzaifah
                         </h4>
                         <p className="text-[11px] text-lime-400 font-semibold">
@@ -133,9 +133,9 @@ export function HeroSection() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
               {stats.map((stat, index) => (
                 <ScrollReveal key={index} delay={0.05 * index}>
-                  <div className="p-4 rounded-2xl bg-mad-surface border border-white/10 hover:border-mad-lime transition-all duration-300">
+                  <div className="p-4 rounded-2xl bg-mad-surface border border-slate-900/10 hover:border-mad-lime transition-all duration-300">
                     <stat.icon className="w-5 h-5 text-mad-lime mx-auto mb-2 opacity-90" />
-                    <div className="text-2xl sm:text-3xl lg:text-4xl font-black font-spartan text-white">
+                    <div className="text-2xl sm:text-3xl lg:text-4xl font-black font-spartan text-slate-900">
                       <AnimatedCounter
                         end={stat.value}
                         suffix={stat.suffix}

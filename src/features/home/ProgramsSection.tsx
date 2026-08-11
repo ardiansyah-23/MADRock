@@ -72,7 +72,7 @@ export function ProgramsSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {programs.map((program, idx) => (
             <ScrollReveal key={idx} delay={0.1 * idx}>
-              <div className="group rounded-3xl overflow-hidden bg-mad-bg border border-white/10 hover:border-mad-lime/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-mad-lime/10 flex flex-col h-full">
+              <div className="group rounded-3xl overflow-hidden bg-mad-bg border border-slate-900/10 hover:border-mad-lime/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-mad-lime/10 flex flex-col h-full">
                 {/* Image Header */}
                 <div className="relative h-64 w-full overflow-hidden">
                   <Image
@@ -93,7 +93,7 @@ export function ProgramsSection() {
                     <span className="text-xs font-mono text-mad-lime uppercase tracking-widest block mb-1">
                       {program.category}
                     </span>
-                    <h3 className="text-2xl font-black font-spartan text-white uppercase leading-tight">
+                    <h3 className="text-2xl font-black font-spartan text-slate-900 uppercase leading-tight">
                       {program.title}
                     </h3>
                   </div>
@@ -105,7 +105,7 @@ export function ProgramsSection() {
                     {program.description}
                   </p>
 
-                  <div className="pt-4 border-t border-white/10 space-y-4">
+                  <div className="pt-4 border-t border-slate-900/10 space-y-4">
                     <div className="grid grid-cols-2 gap-2 text-xs text-mad-gray">
                       <div className="flex items-center gap-2">
                         <Clock className="w-4 h-4 text-mad-lime" />
@@ -119,7 +119,7 @@ export function ProgramsSection() {
 
                     <Link
                       href="/booking"
-                      className="w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-2xl bg-mad-surface hover:bg-mad-lime text-white hover:text-mad-bg font-extrabold text-sm uppercase tracking-wider border border-white/10 hover:border-mad-lime transition-all duration-300 group/btn"
+                      className="w-full inline-flex items-center justify-center gap-2 py-3.5 rounded-2xl bg-mad-surface hover:bg-mad-lime text-slate-900 hover:text-mad-bg font-extrabold text-sm uppercase tracking-wider border border-slate-900/10 hover:border-mad-lime transition-all duration-300 group/btn"
                     >
                       <span>VIEW PROGRAM</span>
                       <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />

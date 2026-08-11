@@ -19,7 +19,7 @@ export function CTASection() {
               <span>{lang === "id" ? "TRANSFORMASI ANDA DIMULAI HARI INI" : "YOUR TRANSFORMATION STARTS TODAY"}</span>
             </div>
 
-            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black uppercase font-spartan text-white tracking-tight max-w-4xl mx-auto leading-none">
+            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black uppercase font-spartan text-slate-900 tracking-tight max-w-4xl mx-auto leading-none">
               {lang === "id" ? "BERHENTI BUANG WAKTU DI GYM." : "STOP WASTING TIME IN THE GYM."} <br />
               <span className="text-mad-lime">
                 {lang === "id" ? "BANGUN BENTUK TUBUH IMPIANMU." : "START BUILDING YOUR LEGACY."}
@@ -43,7 +43,7 @@ export function CTASection() {
 
               <Link
                 href="/tools"
-                className="inline-flex items-center gap-2 px-8 py-4.5 rounded-2xl text-base font-bold bg-white/5 border border-white/15 text-white hover:bg-white/10 transition-all duration-300"
+                className="inline-flex items-center gap-2 px-8 py-4.5 rounded-2xl text-base font-bold bg-slate-900/5 border border-slate-900/15 text-white hover:bg-slate-900/10 transition-all duration-300"
               >
                 <span>{lang === "id" ? "Coba Kalkulator Gratis" : "Try Free Fitness Calculators"}</span>
               </Link>

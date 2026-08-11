@@ -15,7 +15,7 @@ export default function ContactPage() {
   };
 
   return (
-    <main className="pt-32 pb-24 bg-mad-bg text-white min-h-screen">
+    <main className="pt-32 pb-24 bg-mad-bg text-slate-900 min-h-screen">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
           title={lang === "id" ? "KONTAK MARKAS MADROCK" : "CONTACT MADROCK HEADQUARTERS"}
@@ -29,8 +29,8 @@ export default function ContactPage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Contact Details */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="p-8 rounded-3xl bg-mad-surface border border-white/10 space-y-6">
-              <h3 className="text-xl font-bold font-spartan text-white uppercase border-b border-white/10 pb-3">
+            <div className="p-8 rounded-3xl bg-mad-surface border border-slate-900/10 space-y-6">
+              <h3 className="text-xl font-bold font-spartan text-slate-900 uppercase border-b border-slate-900/10 pb-3">
                 {lang === "id" ? "KANTOR PUSAT" : "DIRECT HEADQUARTERS"}
               </h3>
 
@@ -38,7 +38,7 @@ export default function ContactPage() {
                 <div className="flex items-start gap-3">
                   <MapPin className="w-5 h-5 text-mad-lime shrink-0" />
                   <div>
-                    <strong className="text-white block uppercase">MADRock Performance Lab</strong>
+                    <strong className="text-slate-900 block uppercase">MADRock Performance Lab</strong>
                     <span>742 Evergreen Athletic Plaza, Suite 400</span>
                   </div>
                 </div>
@@ -46,7 +46,7 @@ export default function ContactPage() {
                 <div className="flex items-center gap-3">
                   <Mail className="w-5 h-5 text-mad-lime shrink-0" />
                   <div>
-                    <strong className="text-white block uppercase">Email Contact</strong>
+                    <strong className="text-slate-900 block uppercase">Email Contact</strong>
                     <span>support@madrock.fit</span>
                   </div>
                 </div>
@@ -54,7 +54,7 @@ export default function ContactPage() {
                 <div className="flex items-center gap-3">
                   <Phone className="w-5 h-5 text-mad-lime shrink-0" />
                   <div>
-                    <strong className="text-white block uppercase">Phone / WhatsApp</strong>
+                    <strong className="text-slate-900 block uppercase">Phone / WhatsApp</strong>
                     <span>+1 (800) 555-ROCK</span>
                   </div>
                 </div>
@@ -63,10 +63,10 @@ export default function ContactPage() {
           </div>
 
           {/* Contact Form */}
-          <div className="lg:col-span-7 rounded-3xl bg-mad-surface border border-white/10 p-8 sm:p-10 space-y-6">
+          <div className="lg:col-span-7 rounded-3xl bg-mad-surface border border-slate-900/10 p-8 sm:p-10 space-y-6">
             {!submitted ? (
               <form onSubmit={handleSubmit} className="space-y-4">
-                <h3 className="text-xl font-bold font-spartan text-white uppercase border-b border-white/10 pb-3">
+                <h3 className="text-xl font-bold font-spartan text-slate-900 uppercase border-b border-slate-900/10 pb-3">
                   {lang === "id" ? "KIRIM PESAN KEPADA KAMI" : "SEND US A MESSAGE"}
                 </h3>
 
@@ -79,7 +79,7 @@ export default function ContactPage() {
                       type="text"
                       required
                       placeholder="Alex Rivera"
-                      className="w-full bg-mad-bg border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-mad-lime font-mono"
+                      className="w-full bg-mad-bg border border-slate-900/10 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-mad-lime font-mono"
                     />
                   </div>
 
@@ -91,7 +91,7 @@ export default function ContactPage() {
                       type="email"
                       required
                       placeholder="alex@gmail.com"
-                      className="w-full bg-mad-bg border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-mad-lime font-mono"
+                      className="w-full bg-mad-bg border border-slate-900/10 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-mad-lime font-mono"
                     />
                   </div>
                 </div>
@@ -104,7 +104,7 @@ export default function ContactPage() {
                     type="text"
                     required
                     placeholder={lang === "id" ? "Pertanyaan Kepelatihan 1-on-1 VIP" : "1-on-1 VIP Coaching Inquiry"}
-                    className="w-full bg-mad-bg border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-mad-lime font-mono"
+                    className="w-full bg-mad-bg border border-slate-900/10 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-mad-lime font-mono"
                   />
                 </div>
 
@@ -120,7 +120,7 @@ export default function ContactPage() {
                         ? "Tuliskan target fitnes Anda dan pertanyaan yang ingin diajukan..."
                         : "Tell us about your fitness goals and any questions..."
                     }
-                    className="w-full bg-mad-bg border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-mad-lime font-mono"
+                    className="w-full bg-mad-bg border border-slate-900/10 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-mad-lime font-mono"
                   />
                 </div>
 
@@ -137,7 +137,7 @@ export default function ContactPage() {
                 <div className="w-16 h-16 rounded-full bg-mad-lime text-mad-bg flex items-center justify-center mx-auto text-2xl">
                   <CheckCircle className="w-8 h-8" />
                 </div>
-                <h3 className="text-2xl font-bold font-spartan text-white uppercase">
+                <h3 className="text-2xl font-bold font-spartan text-slate-900 uppercase">
                   {lang === "id" ? "PESAN TERKIRIM!" : "MESSAGE RECEIVED!"}
                 </h3>
                 <p className="text-xs text-mad-gray max-w-sm mx-auto">

@@ -17,7 +17,7 @@ export function SectionHeader({
     <div className={`mb-12 md:mb-16 ${centered ? "text-center" : "text-left"}`}>
       <ScrollReveal>
 
-        <h2 className="text-3xl md:text-5xl lg:text-6xl font-extrabold uppercase tracking-tight font-spartan text-white">
+        <h2 className="text-3xl md:text-5xl lg:text-6xl font-extrabold uppercase tracking-tight font-spartan text-slate-900">
           {title}
         </h2>
         {subtitle && (

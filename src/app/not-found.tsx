@@ -3,7 +3,7 @@ import { Dumbbell, ArrowLeft } from "lucide-react";
 
 export default function NotFound() {
   return (
-    <main className="min-h-screen bg-mad-bg text-white flex items-center justify-center p-4">
+    <main className="min-h-screen bg-mad-bg text-slate-900 flex items-center justify-center p-4">
       <div className="text-center space-y-6 max-w-md">
         <div className="w-20 h-20 rounded-3xl bg-mad-lime/10 border border-mad-lime/30 flex items-center justify-center text-mad-lime mx-auto">
           <Dumbbell className="w-10 h-10 stroke-[2.5]" />
@@ -11,7 +11,7 @@ export default function NotFound() {
 
         <span className="text-6xl font-black font-spartan text-mad-lime block">404</span>
 
-        <h1 className="text-3xl font-black font-spartan uppercase text-white">
+        <h1 className="text-3xl font-black font-spartan uppercase text-slate-900">
           YOU'RE OUT OF BOUNDS
         </h1>
 

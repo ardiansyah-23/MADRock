@@ -41,7 +41,7 @@ export function LanguageToggle({ className = "" }: { className?: string }) {
             }}
             className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-mono font-bold transition-all ${
               lang === "id"
-                ? "bg-mad-lime text-white font-extrabold"
+                ? "bg-mad-lime text-slate-900 font-extrabold"
                 : "text-slate-700 hover:text-slate-900 hover:bg-slate-100"
             }`}
           >
@@ -56,7 +56,7 @@ export function LanguageToggle({ className = "" }: { className?: string }) {
             }}
             className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-mono font-bold transition-all ${
               lang === "en"
-                ? "bg-mad-lime text-white font-extrabold"
+                ? "bg-mad-lime text-slate-900 font-extrabold"
                 : "text-slate-700 hover:text-slate-900 hover:bg-slate-100"
             }`}
           >

@@ -140,7 +140,7 @@ export default function ToolsPage() {
   ];
 
   return (
-    <main className="pt-32 pb-24 bg-mad-bg text-white min-h-screen">
+    <main className="pt-32 pb-24 bg-mad-bg text-slate-900 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
           badge={t("tools_header_badge")}
@@ -157,7 +157,7 @@ export default function ToolsPage() {
               className={`flex items-center gap-2 px-4 py-3 rounded-2xl text-xs font-bold uppercase transition-all ${
                 activeTab === tab.id
                   ? "bg-mad-lime text-mad-bg font-extrabold"
-                  : "bg-mad-surface text-mad-gray border border-white/10 hover:text-white"
+                  : "bg-mad-surface text-mad-gray border border-slate-900/10 hover:text-slate-900"
               }`}
             >
               <tab.icon className="w-4 h-4" />
@@ -167,11 +167,11 @@ export default function ToolsPage() {
         </div>
 
         {/* Main Calculator Card */}
-        <div className="max-w-4xl mx-auto rounded-3xl bg-mad-surface border border-white/10 p-8 sm:p-12">
+        <div className="max-w-4xl mx-auto rounded-3xl bg-mad-surface border border-slate-900/10 p-8 sm:p-12">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             {/* Input Controls */}
             <div className="space-y-5">
-              <h3 className="text-xl font-bold font-spartan text-white uppercase border-b border-white/10 pb-3">
+              <h3 className="text-xl font-bold font-spartan text-slate-900 uppercase border-b border-slate-900/10 pb-3">
                 {lang === "id" ? "PARAMETER INPUT" : "INPUT PARAMETERS"}
               </h3>
 
@@ -186,7 +186,7 @@ export default function ToolsPage() {
                       value={liftWeightStr}
                       placeholder="e.g. 100"
                       onChange={(e) => handleCleanInput(e.target.value, setLiftWeightStr)}
-                      className="w-full bg-mad-bg border border-white/10 rounded-xl px-4 py-3 text-base text-white focus:outline-none focus:border-mad-lime font-mono"
+                      className="w-full bg-mad-bg border border-slate-900/10 rounded-xl px-4 py-3 text-base text-slate-900 focus:outline-none focus:border-mad-lime font-mono"
                     />
                   </div>
 
@@ -199,7 +199,7 @@ export default function ToolsPage() {
                       value={repsStr}
                       placeholder="e.g. 5"
                       onChange={(e) => handleCleanInput(e.target.value, setRepsStr)}
-                      className="w-full bg-mad-bg border border-white/10 rounded-xl px-4 py-3 text-base text-white focus:outline-none focus:border-mad-lime font-mono"
+                      className="w-full bg-mad-bg border border-slate-900/10 rounded-xl px-4 py-3 text-base text-slate-900 focus:outline-none focus:border-mad-lime font-mono"
                     />
                   </div>
                 </>
@@ -213,7 +213,7 @@ export default function ToolsPage() {
                       <select
                         value={gender}
                         onChange={(e) => setGender(e.target.value as any)}
-                        className="w-full bg-mad-bg border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-mad-lime font-mono"
+                        className="w-full bg-mad-bg border border-slate-900/10 rounded-xl px-3 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-mad-lime font-mono"
                       >
                         <option value="male">{lang === "id" ? "Pria" : "Male"}</option>
                         <option value="female">{lang === "id" ? "Wanita" : "Female"}</option>
@@ -229,7 +229,7 @@ export default function ToolsPage() {
                         value={heightStr}
                         placeholder="e.g. 175"
                         onChange={(e) => handleCleanInput(e.target.value, setHeightStr)}
-                        className="w-full bg-mad-bg border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-mad-lime font-mono"
+                        className="w-full bg-mad-bg border border-slate-900/10 rounded-xl px-3 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-mad-lime font-mono"
                       />
                     </div>
                   </div>
@@ -244,7 +244,7 @@ export default function ToolsPage() {
                         value={waistStr}
                         placeholder="e.g. 82"
                         onChange={(e) => handleCleanInput(e.target.value, setWaistStr)}
-                        className="w-full bg-mad-bg border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-mad-lime font-mono"
+                        className="w-full bg-mad-bg border border-slate-900/10 rounded-xl px-3 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-mad-lime font-mono"
                       />
                     </div>
 
@@ -257,7 +257,7 @@ export default function ToolsPage() {
                         value={neckStr}
                         placeholder="e.g. 38"
                         onChange={(e) => handleCleanInput(e.target.value, setNeckStr)}
-                        className="w-full bg-mad-bg border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-mad-lime font-mono"
+                        className="w-full bg-mad-bg border border-slate-900/10 rounded-xl px-3 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-mad-lime font-mono"
                       />
                     </div>
                   </div>
@@ -272,7 +272,7 @@ export default function ToolsPage() {
                         value={hipStr}
                         placeholder="e.g. 95"
                         onChange={(e) => handleCleanInput(e.target.value, setHipStr)}
-                        className="w-full bg-mad-bg border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-mad-lime font-mono"
+                        className="w-full bg-mad-bg border border-slate-900/10 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:border-mad-lime font-mono"
                       />
                     </div>
                   )}
@@ -287,7 +287,7 @@ export default function ToolsPage() {
                       <select
                         value={gender}
                         onChange={(e) => setGender(e.target.value as any)}
-                        className="w-full bg-mad-bg border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-mad-lime font-mono"
+                        className="w-full bg-mad-bg border border-slate-900/10 rounded-xl px-3 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-mad-lime font-mono"
                       >
                         <option value="male">{lang === "id" ? "Pria" : "Male"}</option>
                         <option value="female">{lang === "id" ? "Wanita" : "Female"}</option>
@@ -303,7 +303,7 @@ export default function ToolsPage() {
                         value={ageStr}
                         placeholder="e.g. 25"
                         onChange={(e) => handleCleanInput(e.target.value, setAgeStr)}
-                        className="w-full bg-mad-bg border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-mad-lime font-mono"
+                        className="w-full bg-mad-bg border border-slate-900/10 rounded-xl px-3 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-mad-lime font-mono"
                       />
                     </div>
                   </div>
@@ -318,7 +318,7 @@ export default function ToolsPage() {
                         value={weightStr}
                         placeholder="e.g. 75"
                         onChange={(e) => handleCleanInput(e.target.value, setWeightStr)}
-                        className="w-full bg-mad-bg border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-mad-lime font-mono"
+                        className="w-full bg-mad-bg border border-slate-900/10 rounded-xl px-3 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-mad-lime font-mono"
                       />
                     </div>
 
@@ -331,7 +331,7 @@ export default function ToolsPage() {
                         value={heightStr}
                         placeholder="e.g. 175"
                         onChange={(e) => handleCleanInput(e.target.value, setHeightStr)}
-                        className="w-full bg-mad-bg border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-mad-lime font-mono"
+                        className="w-full bg-mad-bg border border-slate-900/10 rounded-xl px-3 py-2.5 text-sm text-slate-900 focus:outline-none focus:border-mad-lime font-mono"
                       />
                     </div>
                   </div>
@@ -354,7 +354,7 @@ export default function ToolsPage() {
                             className={`py-2 rounded-xl text-xs font-bold uppercase transition-all ${
                               goal === g.id
                                 ? "bg-mad-lime text-mad-bg font-extrabold"
-                                : "bg-mad-bg text-mad-gray border border-white/10 hover:text-white"
+                                : "bg-mad-bg text-mad-gray border border-slate-900/10 hover:text-slate-900"
                             }`}
                           >
                             {g.label}
@@ -384,9 +384,9 @@ export default function ToolsPage() {
                     <span className="text-5xl font-black font-spartan text-mad-lime">{targetCalories}</span>
                     <span className="text-xs text-mad-gray block mt-1">kcal / {lang === "id" ? "hari" : "day"}</span>
                   </div>
-                  <div className="pt-4 border-t border-white/10 text-xs text-mad-gray space-y-1">
-                    <p>BMR {lang === "id" ? "Dasar:" : "Base:"} <strong className="text-white">{Math.round(bmr)} kcal</strong></p>
-                    <p>TDEE {lang === "id" ? "Maintenance:" : "Maintenance:"} <strong className="text-white">{tdee} kcal</strong></p>
+                  <div className="pt-4 border-t border-slate-900/10 text-xs text-mad-gray space-y-1">
+                    <p>BMR {lang === "id" ? "Dasar:" : "Base:"} <strong className="text-slate-900">{Math.round(bmr)} kcal</strong></p>
+                    <p>TDEE {lang === "id" ? "Maintenance:" : "Maintenance:"} <strong className="text-slate-900">{tdee} kcal</strong></p>
                   </div>
                 </div>
               )}
@@ -407,21 +407,21 @@ export default function ToolsPage() {
 
               {activeTab === "macro" && (
                 <div className="grid grid-cols-3 gap-2 text-center pt-2">
-                  <div className="p-3 rounded-2xl bg-mad-surface border border-white/10">
+                  <div className="p-3 rounded-2xl bg-mad-surface border border-slate-900/10">
                     <span className="text-[10px] font-mono text-mad-lime uppercase block">Protein</span>
-                    <span className="text-xl font-bold font-spartan text-white">{proteinGrams}g</span>
+                    <span className="text-xl font-bold font-spartan text-slate-900">{proteinGrams}g</span>
                   </div>
-                  <div className="p-3 rounded-2xl bg-mad-surface border border-white/10">
+                  <div className="p-3 rounded-2xl bg-mad-surface border border-slate-900/10">
                     <span className="text-[10px] font-mono text-mad-lime uppercase block">
                       {lang === "id" ? "Karbo" : "Carbs"}
                     </span>
-                    <span className="text-xl font-bold font-spartan text-white">{carbGrams}g</span>
+                    <span className="text-xl font-bold font-spartan text-slate-900">{carbGrams}g</span>
                   </div>
-                  <div className="p-3 rounded-2xl bg-mad-surface border border-white/10">
+                  <div className="p-3 rounded-2xl bg-mad-surface border border-slate-900/10">
                     <span className="text-[10px] font-mono text-mad-lime uppercase block">
                       {lang === "id" ? "Lemak" : "Fat"}
                     </span>
-                    <span className="text-xl font-bold font-spartan text-white">{fatGrams}g</span>
+                    <span className="text-xl font-bold font-spartan text-slate-900">{fatGrams}g</span>
                   </div>
                 </div>
               )}
@@ -451,10 +451,10 @@ export default function ToolsPage() {
                       {lang === "id" ? "Formula Epley Standar" : "Epley Formula Standard"}
                     </span>
                   </div>
-                  <div className="pt-3 border-t border-white/10 grid grid-cols-3 gap-2 text-[11px] text-mad-gray">
-                    <p>80% 1RM: <strong className="text-white">{Math.round(oneRepMax * 0.8)}kg</strong></p>
-                    <p>85% 1RM: <strong className="text-white">{Math.round(oneRepMax * 0.85)}kg</strong></p>
-                    <p>90% 1RM: <strong className="text-white">{Math.round(oneRepMax * 0.9)}kg</strong></p>
+                  <div className="pt-3 border-t border-slate-900/10 grid grid-cols-3 gap-2 text-[11px] text-mad-gray">
+                    <p>80% 1RM: <strong className="text-slate-900">{Math.round(oneRepMax * 0.8)}kg</strong></p>
+                    <p>85% 1RM: <strong className="text-slate-900">{Math.round(oneRepMax * 0.85)}kg</strong></p>
+                    <p>90% 1RM: <strong className="text-slate-900">{Math.round(oneRepMax * 0.9)}kg</strong></p>
                   </div>
                 </div>
               )}
@@ -511,7 +511,7 @@ export default function ToolsPage() {
                     <span className="text-5xl font-black font-spartan text-mad-lime">{bmi}</span>
                     <span className="text-xs text-mad-gray block mt-1">
                       {lang === "id" ? "Kategori:" : "Category:"}{" "}
-                      <strong className="text-white">{getBmiCategory(parseFloat(bmi))}</strong>
+                      <strong className="text-slate-900">{getBmiCategory(parseFloat(bmi))}</strong>
                     </span>
                   </div>
                 </div>

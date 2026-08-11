@@ -68,7 +68,7 @@ export function AboutSection() {
           {/* Coach Image */}
           <div className="lg:col-span-5 relative">
             <ScrollReveal direction="right">
-              <div className="relative rounded-3xl overflow-hidden border border-white/15 bg-mad-surface shadow-2xl">
+              <div className="relative rounded-3xl overflow-hidden border border-slate-900/15 bg-mad-surface shadow-2xl">
                 <div className="relative h-[520px] w-full">
                   <Image
                     src="https://images.unsplash.com/photo-1594381898411-846e7d193883?q=80&w=1000&auto=format&fit=crop"
@@ -88,7 +88,7 @@ export function AboutSection() {
           {/* Story & Vision */}
           <div className="lg:col-span-7 space-y-6">
             <ScrollReveal>
-              <h3 className="text-2xl sm:text-3xl font-extrabold uppercase font-spartan text-white">
+              <h3 className="text-2xl sm:text-3xl font-extrabold uppercase font-spartan text-slate-900">
                 {lang === "id"
                   ? '"FITNES BUKAN SOLUSI 12-MINGGU SERBA INSTAN. INI ADALAH ARSITEKTUR PERFORMA HIDUP ANDA."'
                   : '"FITNESS IS NOT A 12-WEEK QUICK FIX. IT IS YOUR LIFE PERFORMANCE ARCHITECTURE."'}
@@ -103,23 +103,23 @@ export function AboutSection() {
             {/* Achievements & Badges */}
             <ScrollReveal delay={0.2}>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-2">
-                <div className="p-4 rounded-2xl bg-mad-surface border border-white/10">
+                <div className="p-4 rounded-2xl bg-mad-surface border border-slate-900/10">
                   <span className="text-mad-lime font-mono text-xs uppercase block">
                     {lang === "id" ? "Pengalaman" : "Experience"}
                   </span>
-                  <span className="text-white font-bold text-lg font-spartan">8+ {lang === "id" ? "Tahun" : "Years"}</span>
+                  <span className="text-slate-900 font-bold text-lg font-spartan">8+ {lang === "id" ? "Tahun" : "Years"}</span>
                 </div>
-                <div className="p-4 rounded-2xl bg-mad-surface border border-white/10">
+                <div className="p-4 rounded-2xl bg-mad-surface border border-slate-900/10">
                   <span className="text-mad-lime font-mono text-xs uppercase block">
                     {lang === "id" ? "Sertifikasi" : "Certifications"}
                   </span>
-                  <span className="text-white font-bold text-lg font-spartan">NSCA & NASM</span>
+                  <span className="text-slate-900 font-bold text-lg font-spartan">NSCA & NASM</span>
                 </div>
-                <div className="p-4 rounded-2xl bg-mad-surface border border-white/10">
+                <div className="p-4 rounded-2xl bg-mad-surface border border-slate-900/10">
                   <span className="text-mad-lime font-mono text-xs uppercase block">
                     {lang === "id" ? "Transformasi" : "Transformations"}
                   </span>
-                  <span className="text-white font-bold text-lg font-spartan">600+ {lang === "id" ? "Klien" : "Clients"}</span>
+                  <span className="text-slate-900 font-bold text-lg font-spartan">600+ {lang === "id" ? "Klien" : "Clients"}</span>
                 </div>
               </div>
             </ScrollReveal>
@@ -154,11 +154,11 @@ export function AboutSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((feature, idx) => (
             <ScrollReveal key={idx} delay={0.1 * idx}>
-              <div className="p-8 rounded-3xl glass-card glass-card-hover border border-white/10 relative group">
+              <div className="p-8 rounded-3xl glass-card glass-card-hover border border-slate-900/10 relative group">
                 <div className="w-14 h-14 rounded-2xl bg-mad-lime/10 border border-mad-lime/30 flex items-center justify-center text-mad-lime mb-6 group-hover:bg-mad-lime group-hover:text-mad-bg transition-colors duration-300">
                   <feature.icon className="w-7 h-7" />
                 </div>
-                <h4 className="text-xl font-bold font-spartan text-white uppercase mb-2">
+                <h4 className="text-xl font-bold font-spartan text-slate-900 uppercase mb-2">
                   {feature.title}
                 </h4>
                 <p className="text-sm text-mad-gray leading-relaxed">

@@ -14,7 +14,7 @@ export function Footer() {
           {/* Brand Info (Cols 1-2) */}
           <div className="lg:col-span-2 space-y-5">
             <Link href="/" className="flex items-center gap-2.5">
-              <div className="w-10 h-10 rounded-xl bg-mad-lime flex items-center justify-center text-white">
+              <div className="w-10 h-10 rounded-xl bg-mad-lime flex items-center justify-center text-slate-900">
                 <Dumbbell className="w-6 h-6 stroke-[2.5]" />
               </div>
               <span className="font-spartan font-black text-2xl tracking-tighter text-slate-900 uppercase">
@@ -63,9 +63,9 @@ export function Footer() {
                 />
                 <button
                   type="submit"
-                  className="absolute right-1.5 top-1.5 bottom-1.5 px-3 bg-mad-lime text-white rounded-lg font-bold hover:bg-mad-lime-hover transition-colors flex items-center justify-center shadow-sm"
+                  className="absolute right-1.5 top-1.5 bottom-1.5 px-3 bg-mad-lime text-slate-900 rounded-lg font-bold hover:bg-mad-lime-hover transition-colors flex items-center justify-center shadow-sm"
                 >
-                  <ArrowRight className="w-3.5 h-3.5 text-white" />
+                  <ArrowRight className="w-3.5 h-3.5 text-slate-900" />
                 </button>
               </div>
             </form>
