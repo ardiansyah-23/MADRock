@@ -128,7 +128,7 @@ export default function BlogPage() {
                           MADROCK JOURNAL
                         </div>
                       )}
-                      <div className="absolute top-4 left-4 px-3.5 py-1.5 rounded-full bg-mad-bg border border-white/10 text-white font-mono text-[11px] uppercase font-extrabold z-10">
+                      <div className="absolute top-4 left-4 px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white font-mono text-[11px] uppercase font-extrabold z-10">
                         <span className="keep-white text-white">{getCategoryLabel(category)}</span>
                       </div>
                     </div>

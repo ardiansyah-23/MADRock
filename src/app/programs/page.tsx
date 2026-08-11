@@ -221,7 +221,7 @@ export default function ProgramsPage() {
                   />
 
                   {program.badge && (
-                    <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-mad-bg text-white font-extrabold text-[10px] uppercase tracking-wider border border-white/10 z-10">
+                    <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-white font-extrabold text-[10px] uppercase tracking-wider border border-white/20 z-10">
                       <span className="keep-white text-white">{program.badge}</span>
                     </div>
                   )}
