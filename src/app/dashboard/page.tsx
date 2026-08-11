@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import {
   Dumbbell,
@@ -67,6 +67,26 @@ export default function DashboardPage() {
 
   // Notification Bell Popover State
   const [notifOpen, setNotifOpen] = useState(false);
+  const notifRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (notifRef.current && !notifRef.current.contains(event.target as Node)) {
+        setNotifOpen(false);
+      }
+    };
+
+    if (notifOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [notifOpen]);
+
   const [notifications, setNotifications] = useState([
     {
       id: 1,
@@ -271,7 +291,7 @@ export default function DashboardPage() {
             </div>
 
             {/* Notification Bell Dropdown Button */}
-            <div className="relative">
+            <div className="relative" ref={notifRef}>
               <button
                 onClick={() => setNotifOpen(!notifOpen)}
                 className="p-2 rounded-xl bg-mad-bg border border-slate-900/10 text-mad-gray hover:text-slate-900 relative transition-colors"
@@ -717,7 +737,7 @@ export default function DashboardPage() {
                   type="submit"
                   className="w-full py-4 rounded-2xl bg-mad-lime text-slate-900 font-extrabold text-sm uppercase tracking-wider hover:bg-mad-lime-hover shadow-sm"
                 >
-                  {lang === "id" ? "KONFIRMASI JADWAL SESI SEKARANG" : "CONFIRM IN-DASHBOARD BOOKING NOW"}
+                  {lang === "id" ? "AJUKAN JADWAL SESI SEKARANG" : "SUBMIT SCHEDULE REQUEST NOW"}
                 </button>
               </form>
             ) : (
@@ -727,13 +747,13 @@ export default function DashboardPage() {
                 </div>
 
                 <h2 className="text-2xl font-black font-spartan uppercase text-slate-900">
-                  {lang === "id" ? "SESI BERHASIL DIJADWALKAN!" : "SESSION BOOKED IN DASHBOARD!"}
+                  {lang === "id" ? "PENGAJUAN JADWAL TERKIRIM!" : "SCHEDULE REQUEST SENT!"}
                 </h2>
 
                 <p className="text-xs text-mad-gray">
                   {lang === "id"
-                    ? `Sesi 1-on-1 Anda dengan ${bookingCoach} terkonfirmasi untuk ${bookingDate} pukul ${bookingTime}.`
-                    : `Your 1-on-1 session with ${bookingCoach} is confirmed for ${bookingDate} at ${bookingTime}.`}
+                    ? `Pengajuan jadwal Anda dengan ${bookingCoach} untuk ${bookingDate} pukul ${bookingTime} sedang menunggu persetujuan coach.`
+                    : `Your schedule request with ${bookingCoach} for ${bookingDate} at ${bookingTime} is pending coach approval.`}
                 </p>
 
                 <button

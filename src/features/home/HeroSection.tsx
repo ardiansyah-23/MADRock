@@ -84,7 +84,7 @@ export function HeroSection() {
 
                 <Link
                   href="/programs"
-                  className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-2xl text-sm font-bold bg-white border border-slate-900/10 text-mad-bg hover:bg-gray-200 transition-all duration-300"
+                  className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-2xl text-sm font-bold bg-white border border-slate-900/10 text-slate-900 hover:bg-gray-200 transition-all duration-300"
                 >
                   <Calendar className="w-4 h-4 text-mad-lime" />
                   <span>{t("hero_cta_secondary")}</span>

@@ -28,6 +28,11 @@ import {
   Check,
   AlertCircle,
   Save,
+  Bold,
+  Italic,
+  Link as LinkIcon,
+  Image,
+  Video,
 } from "lucide-react";
 import {
   ArticleItem,
@@ -62,6 +67,7 @@ export default function AdminPage() {
   const [bookings, setBookings] = useState<BookingItem[]>([]);
   // 5. COACH MANAGED TIME SLOTS STATE
   const [slots, setSlots] = useState<CoachSlot[]>([]);
+  const [selectedSlotDate, setSelectedSlotDate] = useState<string>(new Date().toISOString().split("T")[0]);
 
   // Restore active tab and load persistent data on client mount
   useEffect(() => {
@@ -346,10 +352,6 @@ export default function AdminPage() {
       <div className="flex-1 min-w-0 flex flex-col min-h-screen">
         <header className="hidden md:flex items-center justify-between px-8 py-5 bg-mad-surface/50 border-b border-slate-900/10 backdrop-blur-md sticky top-0 z-30">
           <div className="flex items-center gap-3">
-            <span className="px-3 py-1 rounded-full bg-slate-200 border border-slate-300 text-slate-800 font-mono text-[10px] uppercase font-bold flex items-center gap-1.5">
-              <Save className="w-3 h-3 text-emerald-600 animate-pulse" />
-              <span>DUAL LANGUAGE ADMIN CONTROL (ID & EN)</span>
-            </span>
             <h2 className="text-lg font-black font-spartan text-slate-900 uppercase tracking-wide">
               {activeTab === "overview" && "Analytics & Overview Desk"}
               {activeTab === "articles" && "Blog & Article Content Manager"}
@@ -508,18 +510,26 @@ export default function AdminPage() {
           <div className="space-y-8">
             {/* Slot Manager Header Card */}
             <div className="rounded-3xl bg-mad-surface border border-slate-900/10 p-6 sm:p-8 space-y-4">
-              <div className="flex items-center justify-between pb-3 border-b border-slate-900/10">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-slate-900/10 gap-4">
                 <div>
                   <h3 className="text-xl font-bold font-spartan text-slate-900 uppercase">
                     PENGATURAN SLOT WAKTU KEPELATIHAN COACH
                   </h3>
                   <p className="text-xs text-mad-gray font-mono mt-0.5">
-                    Slot jam yang diaktifkan di sini akan tersinkronisasi langsung ke modal booking atlet.
+                    Pilih tanggal dan atur slot jam yang tersedia.
                   </p>
                 </div>
-                <span className="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 font-mono text-xs font-bold">
-                  SINKRONISASI AKTIF
-                </span>
+                <div className="flex items-center gap-3">
+                  <input
+                    type="date"
+                    value={selectedSlotDate}
+                    onChange={(e) => setSelectedSlotDate(e.target.value)}
+                    className="px-3 py-1.5 rounded-xl border border-slate-300 bg-white text-slate-900 text-sm font-bold font-mono focus:outline-none focus:ring-2 focus:ring-mad-lime"
+                  />
+                  <span className="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 border border-emerald-500/20 font-mono text-[10px] font-bold whitespace-nowrap">
+                    SINKRONISASI AKTIF
+                  </span>
+                </div>
               </div>
 
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
@@ -599,13 +609,13 @@ export default function AdminPage() {
                         <td className="p-3 text-right space-x-2">
                           <button
                             onClick={() => handleUpdateBookingStatus(b.id, "Confirmed")}
-                            className="px-3 py-1.5 rounded-xl bg-emerald-600 text-white font-extrabold text-[11px] hover:bg-emerald-700"
+                            className="px-4 py-2 rounded-xl bg-emerald-500/10 text-emerald-600 border border-emerald-500/20 font-bold text-xs hover:bg-emerald-500/20 hover:border-emerald-500/40 transition-all"
                           >
                             Setujui
                           </button>
                           <button
                             onClick={() => handleUpdateBookingStatus(b.id, "Rejected")}
-                            className="px-3 py-1.5 rounded-xl bg-rose-600 text-white font-extrabold text-[11px] hover:bg-rose-700"
+                            className="px-4 py-2 rounded-xl bg-rose-500/10 text-rose-600 border border-rose-500/20 font-bold text-xs hover:bg-rose-500/20 hover:border-rose-500/40 transition-all"
                           >
                             Tolak
                           </button>
@@ -687,7 +697,10 @@ export default function AdminPage() {
             </div>
 
             <div>
-              <label className="text-slate-900 font-bold uppercase block mb-1">Excerpt / Rangkuman Artikel</label>
+              <label className="text-slate-900 font-bold uppercase block mb-1 flex items-center justify-between">
+                <span>Excerpt / Rangkuman Artikel</span>
+                <span className="text-[10px] text-mad-gray font-normal normal-case">Tampil di beranda (max 150 char)</span>
+              </label>
               <textarea
                 rows={2}
                 required
@@ -701,10 +714,36 @@ export default function AdminPage() {
               />
             </div>
 
+            <div>
+              <label className="text-slate-900 font-bold uppercase block mb-1 flex items-center justify-between">
+                <span>Content / Isi Artikel Lengkap</span>
+                <span className="text-[10px] text-mad-gray font-normal normal-case">Dukung format media & link</span>
+              </label>
+              <div className="border border-slate-900/10 border-b-0 rounded-t-xl bg-slate-900/5 p-2 flex items-center gap-1.5 overflow-x-auto">
+                <button type="button" className="p-1.5 hover:bg-slate-900/10 rounded text-slate-700 transition-colors" title="Bold"><Bold className="w-4 h-4" /></button>
+                <button type="button" className="p-1.5 hover:bg-slate-900/10 rounded text-slate-700 transition-colors" title="Italic"><Italic className="w-4 h-4" /></button>
+                <button type="button" className="p-1.5 hover:bg-slate-900/10 rounded text-slate-700 transition-colors" title="Link"><LinkIcon className="w-4 h-4" /></button>
+                <div className="w-px h-4 bg-slate-900/20 mx-1"></div>
+                <button type="button" className="p-1.5 hover:bg-slate-900/10 rounded text-slate-700 transition-colors" title="Add Image"><Image className="w-4 h-4" /></button>
+                <button type="button" className="p-1.5 hover:bg-slate-900/10 rounded text-slate-700 transition-colors" title="Add Video"><Video className="w-4 h-4" /></button>
+              </div>
+              <textarea
+                rows={10}
+                required
+                placeholder="Tulis isi artikel lengkap di sini... Anda bisa menambahkan gambar, video, dan link menggunakan toolbar di atas."
+                value={articleContentID}
+                onChange={(e) => {
+                  setArticleContentID(e.target.value);
+                  if (!articleContentEN) setArticleContentEN(e.target.value);
+                }}
+                className="w-full bg-mad-bg border border-slate-900/10 rounded-b-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-slate-900/50 leading-relaxed"
+              />
+            </div>
+
             {/* Optional English Title Override */}
             <details className="bg-mad-bg/50 border border-slate-900/10 rounded-xl p-3 text-[11px]">
               <summary className="cursor-pointer font-bold text-slate-900/70 uppercase">
-                + Opsional: Atur Judul & Rangkuman Bahasa Inggris Khusus (EN)
+                + Opsional: Atur Judul, Rangkuman & Isi Bahasa Inggris Khusus (EN)
               </summary>
               <div className="space-y-3 pt-3 mt-2 border-t border-slate-900/10">
                 <div>
@@ -724,6 +763,16 @@ export default function AdminPage() {
                     placeholder="Custom English excerpt..."
                     value={articleExcerptEN}
                     onChange={(e) => setArticleExcerptEN(e.target.value)}
+                    className="w-full bg-mad-bg border border-slate-900/10 rounded-xl px-3 py-2 text-slate-900"
+                  />
+                </div>
+                <div>
+                  <label className="text-mad-gray uppercase block mb-1">English Content</label>
+                  <textarea
+                    rows={6}
+                    placeholder="Custom English content..."
+                    value={articleContentEN}
+                    onChange={(e) => setArticleContentEN(e.target.value)}
                     className="w-full bg-mad-bg border border-slate-900/10 rounded-xl px-3 py-2 text-slate-900"
                   />
                 </div>

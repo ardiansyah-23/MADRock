@@ -43,7 +43,7 @@ export function CTASection() {
 
               <Link
                 href="/tools"
-                className="inline-flex items-center gap-2 px-8 py-4.5 rounded-2xl text-base font-bold bg-slate-900/5 border border-slate-900/15 text-white hover:bg-slate-900/10 transition-all duration-300"
+                className="inline-flex items-center gap-2 px-8 py-4.5 rounded-2xl text-base font-bold bg-slate-900/5 border border-slate-900/15 text-slate-900 hover:bg-slate-900/10 transition-all duration-300"
               >
                 <span>{lang === "id" ? "Coba Kalkulator Gratis" : "Try Free Fitness Calculators"}</span>
               </Link>
