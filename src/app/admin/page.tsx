@@ -451,6 +451,58 @@ export default function AdminPage() {
           </div>
         )}
 
+        {/* Athlete Members Tab */}
+        {activeTab === "members" && (
+          <div className="rounded-3xl bg-mad-surface border border-slate-900/10 p-6 sm:p-8 space-y-6">
+            <div className="flex items-center justify-between pb-4 border-b border-slate-900/10">
+              <h3 className="text-xl font-bold font-spartan text-slate-900 uppercase">ATHLETE MEMBERS DIRECTORY ({filteredMembers.length})</h3>
+            </div>
+
+            <div className="overflow-x-auto">
+              <table className="w-full text-left text-xs text-mad-gray font-mono">
+                <thead className="bg-mad-bg text-slate-900 uppercase border-b border-slate-900/10">
+                  <tr>
+                    <th className="p-3">Nama Atlet</th>
+                    <th className="p-3">Email</th>
+                    <th className="p-3">Program Latihan</th>
+                    <th className="p-3">Status</th>
+                    <th className="p-3">Tanggal Bergabung</th>
+                    <th className="p-3 text-right">Aksi</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-white/5">
+                  {filteredMembers.map((m) => (
+                    <tr key={m.id} className="hover:bg-slate-900/5">
+                      <td className="p-3 font-bold text-slate-900">{m.name}</td>
+                      <td className="p-3">{m.email}</td>
+                      <td className="p-3 text-mad-lime">{m.program}</td>
+                      <td className="p-3">
+                        <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
+                          m.status === "Active" ? "bg-emerald-500/20 text-emerald-600 border border-emerald-500/30" :
+                          m.status === "Pending" ? "bg-amber-500/20 text-amber-600 border border-amber-500/30" :
+                          "bg-slate-500/20 text-slate-600 border border-slate-500/30"
+                        }`}>
+                          {m.status}
+                        </span>
+                      </td>
+                      <td className="p-3">{m.joined}</td>
+                      <td className="p-3 text-right">
+                        <button
+                          onClick={() => handleOpenEditMember(m)}
+                          className="px-3 py-1.5 rounded-xl bg-slate-100 border border-slate-300 text-slate-900 font-bold hover:bg-slate-200"
+                        >
+                          <Edit className="w-3.5 h-3.5 inline mr-1" />
+                          Edit
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
+
         {/* Overview Tab */}
         {activeTab === "overview" && (
           <div className="space-y-8">
@@ -789,8 +841,146 @@ export default function AdminPage() {
           </form>
         </div>
       </div>
-    )
-  }
+      {/* MEMBER EDIT MODAL */}
+      {memberModalOpen && selectedMember && (
+        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+          <div className="w-full max-w-md rounded-3xl bg-mad-surface border border-slate-900/10 p-6 sm:p-8 space-y-5 relative shadow-2xl animate-fadeIn">
+            <button
+              onClick={() => setMemberModalOpen(false)}
+              className="absolute top-5 right-5 p-2 rounded-xl bg-mad-bg text-mad-gray hover:text-slate-900"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            <div className="pb-3 border-b border-slate-900/10">
+              <h3 className="text-2xl font-black font-spartan text-slate-900 uppercase">
+                EDIT MEMBER DETAILS
+              </h3>
+            </div>
+
+            <form onSubmit={handleSaveMember} className="space-y-4 text-xs font-mono">
+              <div>
+                <label className="text-slate-900 font-bold uppercase block mb-1">Nama Atlet</label>
+                <input
+                  type="text"
+                  required
+                  value={selectedMember.name}
+                  onChange={(e) => setSelectedMember({ ...selectedMember, name: e.target.value })}
+                  className="w-full bg-mad-bg border border-slate-900/10 rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:border-slate-900/50"
+                />
+              </div>
+
+              <div>
+                <label className="text-slate-900 font-bold uppercase block mb-1">Email</label>
+                <input
+                  type="email"
+                  required
+                  value={selectedMember.email}
+                  onChange={(e) => setSelectedMember({ ...selectedMember, email: e.target.value })}
+                  className="w-full bg-mad-bg border border-slate-900/10 rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:border-slate-900/50"
+                />
+              </div>
+
+              <div>
+                <label className="text-slate-900 font-bold uppercase block mb-1">Program Latihan</label>
+                <input
+                  type="text"
+                  required
+                  value={selectedMember.program}
+                  onChange={(e) => setSelectedMember({ ...selectedMember, program: e.target.value })}
+                  className="w-full bg-mad-bg border border-slate-900/10 rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:border-slate-900/50"
+                />
+              </div>
+
+              <div>
+                <label className="text-slate-900 font-bold uppercase block mb-1">Status Keanggotaan</label>
+                <select
+                  value={selectedMember.status}
+                  onChange={(e) => setSelectedMember({ ...selectedMember, status: e.target.value as any })}
+                  className="w-full bg-mad-bg border border-slate-900/10 rounded-xl px-3 py-2 text-slate-900 focus:outline-none focus:border-slate-900/50"
+                >
+                  <option value="Active">Active</option>
+                  <option value="Pending">Pending</option>
+                  <option value="Completed">Completed</option>
+                </select>
+              </div>
+
+              <button
+                type="submit"
+                className="w-full py-3.5 rounded-xl bg-slate-900 text-white font-extrabold text-xs uppercase tracking-wider hover:bg-slate-800 shadow-sm flex items-center justify-center gap-2"
+              >
+                <Save className="w-4 h-4" />
+                <span>SAVE MEMBER CHANGES</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* PROGRAM ADD MODAL */}
+      {programModalOpen && (
+        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+          <div className="w-full max-w-md rounded-3xl bg-mad-surface border border-slate-900/10 p-6 sm:p-8 space-y-5 relative shadow-2xl animate-fadeIn">
+            <button
+              onClick={() => setProgramModalOpen(false)}
+              className="absolute top-5 right-5 p-2 rounded-xl bg-mad-bg text-mad-gray hover:text-slate-900"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            <div className="pb-3 border-b border-slate-900/10">
+              <h3 className="text-2xl font-black font-spartan text-slate-900 uppercase">
+                ADD NEW PROGRAM
+              </h3>
+            </div>
+
+            <form onSubmit={handleSaveProgram} className="space-y-4 text-xs font-mono">
+              <div>
+                <label className="text-slate-900 font-bold uppercase block mb-1">Program Name</label>
+                <input
+                  type="text"
+                  required
+                  value={newProgName}
+                  onChange={(e) => setNewProgName(e.target.value)}
+                  placeholder="e.g. Masterclass Defisit Lemak"
+                  className="w-full bg-mad-bg border border-slate-900/10 rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:border-slate-900/50"
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="text-slate-900 font-bold uppercase block mb-1">Price</label>
+                  <input
+                    type="text"
+                    required
+                    value={newProgPrice}
+                    onChange={(e) => setNewProgPrice(e.target.value)}
+                    className="w-full bg-mad-bg border border-slate-900/10 rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:border-slate-900/50"
+                  />
+                </div>
+                <div>
+                  <label className="text-slate-900 font-bold uppercase block mb-1">Duration</label>
+                  <input
+                    type="text"
+                    required
+                    value={newProgDuration}
+                    onChange={(e) => setNewProgDuration(e.target.value)}
+                    className="w-full bg-mad-bg border border-slate-900/10 rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:border-slate-900/50"
+                  />
+                </div>
+              </div>
+
+              <button
+                type="submit"
+                className="w-full py-3.5 rounded-xl bg-slate-900 text-white font-extrabold text-xs uppercase tracking-wider hover:bg-slate-800 shadow-sm flex items-center justify-center gap-2"
+              >
+                <Save className="w-4 h-4" />
+                <span>SAVE PROGRAM</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
     </>
   );
 }
