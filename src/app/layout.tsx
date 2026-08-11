@@ -43,26 +43,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="light scroll-smooth">
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  var saved = localStorage.getItem('madrock-theme');
-                  if (!saved || saved === 'dark') {
-                    localStorage.setItem('madrock-theme', 'light');
-                    saved = 'light';
-                  }
-                  document.documentElement.classList.remove('dark');
-                  document.documentElement.classList.add(saved);
-                } catch (e) {}
-              })();
-            `,
-          }}
-        />
-      </head>
+    <html lang="en" className="scroll-smooth">
       <body className="bg-mad-bg text-mad-text antialiased min-h-screen flex flex-col justify-between">
         <ClientLayoutWrapper>{children}</ClientLayoutWrapper>
       </body>
