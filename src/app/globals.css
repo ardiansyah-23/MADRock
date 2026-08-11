@@ -92,10 +92,6 @@ body {
 /* Text Gradients (Removed to avoid AI slop) */
 
 /* Slate-Gray Utility Overrides */
-.text-white:not(.keep-white) {
-  color: var(--mad-text) !important;
-}
-
 .text-mad-gray {
   color: var(--mad-gray) !important;
   font-weight: 550 !important;
