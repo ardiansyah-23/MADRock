@@ -73,7 +73,7 @@ export default function LoginPage() {
               {role === "admin" ? <ShieldCheck className="w-6 h-6 stroke-[2.5]" /> : <Dumbbell className="w-6 h-6 stroke-[2.5]" />}
             </div>
             <span className="font-spartan font-black text-2xl tracking-tighter text-slate-900 uppercase">
-              MAD<span className={role === "admin" ? "text-slate-900" : "text-mad-lime"}>ROCK</span>
+              Training by <span className={role === "admin" ? "text-slate-900" : "text-mad-lime"}>MAD</span>
             </span>
           </Link>
 
@@ -84,8 +84,8 @@ export default function LoginPage() {
           </h1>
           <p className="text-xs text-mad-gray">
             {lang === "id"
-              ? "Portal masuk resmi untuk Atlet & Administrator Platform MADRock."
-              : "Unified login portal for MADRock Athletes & Platform Administrators."}
+              ? "Portal masuk resmi untuk Atlet & Administrator Platform Training by MAD."
+              : "Unified login portal for Training by MAD Athletes & Platform Administrators."}
           </p>
         </div>
 

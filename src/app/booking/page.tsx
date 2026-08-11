@@ -20,8 +20,6 @@ export default function BookingPage() {
 
   const coaches = [
     { name: "Ahmad Hudzaifah", role: lang === "id" ? "Head Strength & Biomekanika" : "Head Strength & Biomechanics", price: "$199/bln" },
-    { name: "Elena Vance", role: lang === "id" ? "Spesialis Nutrisi & Rekomposisi" : "Nutrition & Metabolic Recomp", price: "$179/bln" },
-    { name: "David Vance", role: lang === "id" ? "Spesialis Powerlifting & Mobilitas" : "Powerlifting & Mobility Specialist", price: "$189/bln" },
   ];
 
   const packages = [

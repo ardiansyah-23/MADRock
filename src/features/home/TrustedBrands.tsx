@@ -1,66 +1,49 @@
 "use client";
 
-import { Dumbbell } from "lucide-react";
+import { Mountain } from "lucide-react";
 import { useLanguage } from "@/components/common/LanguageProvider";
 
 export function TrustedBrands() {
   const { lang } = useLanguage();
 
-  const getPartnerCategory = (cat: string) => {
-    if (lang === "id") {
-      switch (cat) {
-        case "Gym Partner": return "Partner Gym";
-        case "Equipment": return "Peralatan";
-        case "Nutrition": return "Nutrisi";
-        case "Performance": return "Performa";
-        case "Certification": return "Sertifikasi";
-        case "Sports": return "Olahraga";
-        case "Supplements": return "Suplemen";
-        case "Apparel": return "Pakaian Latihan";
-        default: return cat;
-      }
-    }
-    return cat;
-  };
-
-  const partners = [
-    { name: "ELEIKO SPORT", category: "Gym Partner" },
-    { name: "ROGUE FITNESS", category: "Equipment" },
-    { name: "OPTIMUM NUTRITION", category: "Nutrition" },
-    { name: "WHOOP STRAP", category: "Performance" },
-    { name: "NSCA CERTIFIED", category: "Certification" },
-    { name: "HYROX COMMUNITY", category: "Sports" },
-    { name: "MYPROTEIN LABS", category: "Supplements" },
-    { name: "GYMSHARK TEAM", category: "Apparel" },
+  const institutions = [
+    { name: "KONI DKI Jakarta", category: lang === "id" ? "Induk Olahraga" : "Sports Committee" },
+    { name: "Dispora DKI Jakarta", category: lang === "id" ? "Pemerintah" : "Government" },
+    { name: "FPTI", category: lang === "id" ? "Federasi Panjat Tebing" : "Climbing Federation" },
+    { name: "KONI Kota Depok", category: lang === "id" ? "Induk Olahraga" : "Sports Committee" },
+    { name: "Nusa Climb Jakarta", category: lang === "id" ? "Climbing Gym" : "Climbing Gym" },
+    { name: "Otista Climbing Lab", category: lang === "id" ? "Climbing Gym" : "Climbing Gym" },
+    { name: "ABB Brotherhood", category: lang === "id" ? "Tim Tinju" : "Boxing Team" },
+    { name: "Training by MAD", category: lang === "id" ? "Platform Edukasi" : "Education Platform" },
   ];
 
   return (
-    <section className="py-12 bg-mad-surface/80 border-y border-slate-900/5 overflow-hidden">
+    <section className="py-12 bg-mad-surface/40 border-y border-white/5 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 mb-6 text-center">
         <p className="text-xs uppercase font-mono tracking-widest text-mad-gray font-bold">
           {lang === "id"
-            ? "DIPERCAYA OLEH PEMIMPIN INDUSTRI & ORGANISASI TERSERTIFIKASI"
-            : "TRUSTED BY INDUSTRY LEADERS & CERTIFIED ORGANIZATIONS"}
+            ? "INSTITUSI & ORGANISASI TEMPAT BERKARYA"
+            : "INSTITUTIONS & ORGANIZATIONS"}
         </p>
       </div>
 
-      {/* Infinite Scroll Container */}
+      {/* Infinite Scroll */}
       <div className="relative w-full flex overflow-x-hidden">
-        <div className="animate-marquee flex items-center gap-12 whitespace-nowrap">
-          {partners.concat(partners).map((partner, index) => (
+        <div className="animate-marquee flex items-center gap-10 whitespace-nowrap">
+          {institutions.concat(institutions).map((inst, index) => (
             <div
               key={index}
-              className="flex items-center gap-3 px-6 py-3 rounded-2xl glass-card border border-slate-900/5 shrink-0 hover:border-mad-lime/40 transition-colors group"
+              className="flex items-center gap-3 px-6 py-3 rounded-2xl glass-card border border-white/5 shrink-0 hover:border-mad-lime/30 transition-colors group"
             >
               <div className="w-8 h-8 rounded-lg bg-mad-lime/10 flex items-center justify-center text-mad-lime group-hover:bg-mad-lime group-hover:text-mad-bg transition-colors">
-                <Dumbbell className="w-4 h-4" />
+                <Mountain className="w-4 h-4" />
               </div>
               <div>
-                <span className="font-spartan font-black text-base tracking-wider text-slate-900 uppercase block">
-                  {partner.name}
+                <span className="font-spartan font-black text-base tracking-wider text-white uppercase block">
+                  {inst.name}
                 </span>
                 <span className="text-[10px] text-mad-gray uppercase tracking-widest block font-mono">
-                  {getPartnerCategory(partner.category)}
+                  {inst.category}
                 </span>
               </div>
             </div>

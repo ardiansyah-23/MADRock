@@ -262,21 +262,21 @@ export default function AdminPage() {
 
   return (
     <>
-    <div className="min-h-screen bg-mad-bg text-slate-900 flex flex-col md:flex-row">
+    <div className="min-h-screen bg-mad-bg text-white flex flex-col md:flex-row">
       {/* Mobile Top App Bar */}
-      <div className="md:hidden bg-mad-surface border-b border-rose-500/20 p-4 flex items-center justify-between sticky top-0 z-50">
+      <div className="md:hidden glass-panel border-b border-white/10 p-4 flex items-center justify-between sticky top-0 z-50">
         <Link href="/" className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-slate-900 flex items-center justify-center text-white font-black">
+          <div className="w-8 h-8 rounded-lg bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/10 flex items-center justify-center text-white font-black">
             <ShieldCheck className="w-5 h-5" />
           </div>
           <span className="font-spartan font-black text-lg tracking-tighter uppercase">
-            MADROCK <span className="text-slate-900/50">ADMIN</span>
+            Training by <span className="text-mad-lime">MAD</span> <span className="text-[10px] text-mad-gray tracking-widest block -mt-1">ADMIN</span>
           </span>
         </Link>
 
         <button
           onClick={() => setSidebarOpen(!sidebarOpen)}
-          className="p-2 rounded-xl bg-mad-bg border border-slate-900/10 text-slate-900"
+          className="p-2 rounded-xl glass-card border border-white/10 text-white"
         >
           {sidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </button>
@@ -284,19 +284,19 @@ export default function AdminPage() {
 
       {/* Standalone Admin Sidebar */}
       <aside
-        className={`fixed md:sticky top-0 left-0 z-40 h-screen w-64 bg-mad-surface border-r border-rose-500/20 p-6 flex flex-col justify-between transition-transform duration-300 ${sidebarOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
+        className={`fixed md:sticky top-0 left-0 z-40 h-screen w-64 glass-panel border-r border-white/10 p-6 flex flex-col justify-between transition-transform duration-300 ${sidebarOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
           }`}
       >
         <div className="space-y-8">
           <Link href="/" className="flex items-center gap-2.5 group pt-2">
-            <div className="w-10 h-10 rounded-xl bg-slate-900/5 border border-slate-900/10 flex items-center justify-center text-slate-900 shadow-sm">
+            <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white shadow-lg">
               <ShieldCheck className="w-6 h-6 stroke-[2]" />
             </div>
             <div className="flex flex-col">
-              <span className="font-spartan font-black text-xl tracking-tighter text-slate-900 uppercase leading-none">
-                MAD<span className="text-slate-900/50">ROCK</span>
+              <span className="font-spartan font-black text-xl tracking-tighter text-white uppercase leading-none">
+                Training by <span className="text-mad-lime">MAD</span>
               </span>
-              <span className="text-[9px] font-mono tracking-widest text-slate-900/50 uppercase font-bold mt-0.5">
+              <span className="text-[9px] font-mono tracking-widest text-mad-gray uppercase font-bold mt-0.5">
                 ADMIN CONSOLE
               </span>
             </div>
@@ -311,8 +311,8 @@ export default function AdminPage() {
                 key={item.id}
                 onClick={() => changeTab(item.id as any)}
                 className={`w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-xs font-bold uppercase transition-all ${activeTab === item.id
-                  ? "bg-slate-900 text-white font-extrabold shadow-sm"
-                  : "text-mad-gray hover:text-slate-900 hover:bg-slate-900/5"
+                  ? "bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/10 text-white font-extrabold shadow-lg"
+                  : "text-mad-gray hover:text-white hover:bg-white/5"
                   }`}
               >
                 <item.icon className="w-4 h-4 shrink-0" />
@@ -322,27 +322,27 @@ export default function AdminPage() {
           </nav>
         </div>
 
-        <div className="pt-6 border-t border-slate-900/10 space-y-3">
+        <div className="pt-6 border-t border-white/10 space-y-3">
           <Link
             href="/"
-            className="flex items-center gap-2 text-xs text-mad-gray hover:text-slate-900 font-mono px-2 transition-colors"
+            className="flex items-center gap-2 text-xs text-mad-gray hover:text-white font-mono px-2 transition-colors"
           >
             <Home className="w-4 h-4 text-rose-400" />
             <span>Back to Main Web</span>
           </Link>
 
-          <div className="p-3.5 rounded-2xl bg-mad-bg border border-slate-900/10 flex items-center justify-between">
+          <div className="p-3.5 rounded-2xl glass-card border border-white/10 flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-xl bg-slate-900/5 text-slate-900 font-extrabold flex items-center justify-center text-sm font-spartan border border-slate-900/10">
+              <div className="w-9 h-9 rounded-xl bg-white/5 text-white font-extrabold flex items-center justify-center text-sm font-spartan border border-white/10">
                 AH
               </div>
               <div className="text-left">
-                <h5 className="font-bold text-slate-900 text-xs leading-none">Ahmad Hudzaifah</h5>
-                <span className="text-[10px] text-slate-900/50 font-mono">Platform Admin</span>
+                <h5 className="font-bold text-white text-xs leading-none">Ahmad Hudzaifah</h5>
+                <span className="text-[10px] text-mad-gray font-mono">Platform Admin</span>
               </div>
             </div>
             <Link href="/login" title="Sign Out">
-              <LogOut className="w-4 h-4 text-mad-gray hover:text-slate-900 transition-colors" />
+              <LogOut className="w-4 h-4 text-mad-gray hover:text-white transition-colors" />
             </Link>
           </div>
         </div>
@@ -350,9 +350,9 @@ export default function AdminPage() {
 
       {/* Main Workspace Canvas */}
       <div className="flex-1 min-w-0 flex flex-col min-h-screen">
-        <header className="hidden md:flex items-center justify-between px-8 py-5 bg-mad-surface/50 border-b border-slate-900/10 backdrop-blur-md sticky top-0 z-30">
+        <header className="hidden md:flex items-center justify-between px-8 py-5 glass-panel/50 border-b border-white/10 backdrop-blur-md sticky top-0 z-30">
           <div className="flex items-center gap-3">
-            <h2 className="text-lg font-black font-spartan text-slate-900 uppercase tracking-wide">
+            <h2 className="text-lg font-black font-spartan text-white uppercase tracking-wide">
               {activeTab === "overview" && "Analytics & Overview Desk"}
               {activeTab === "articles" && "Blog & Article Content Manager"}
               {activeTab === "members" && "Athlete Members Directory"}
@@ -364,7 +364,7 @@ export default function AdminPage() {
           <div className="flex items-center gap-3">
             <button
               onClick={handleOpenCreateArticle}
-              className="px-4 py-2 rounded-xl bg-slate-900 text-white font-extrabold text-xs uppercase flex items-center gap-2 hover:bg-slate-800 transition-all shadow-sm"
+              className="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/10 text-white font-extrabold text-xs uppercase flex items-center gap-2 hover:bg-slate-800 transition-all shadow-lg"
             >
               <Plus className="w-4 h-4" />
               <span>Create Article</span>
@@ -372,7 +372,7 @@ export default function AdminPage() {
 
             <button
               onClick={() => setProgramModalOpen(true)}
-              className="px-4 py-2 rounded-xl bg-mad-lime text-slate-900 font-extrabold text-xs uppercase flex items-center gap-2 hover:bg-mad-lime-hover transition-all"
+              className="px-4 py-2 rounded-xl bg-mad-lime text-white font-extrabold text-xs uppercase flex items-center gap-2 hover:bg-mad-lime-hover transition-all"
             >
               <Plus className="w-4 h-4" />
               <span>Create Program</span>
@@ -382,10 +382,10 @@ export default function AdminPage() {
 
         {/* Articles Tab */}
         {activeTab === "articles" && (
-          <div className="rounded-3xl bg-mad-surface border border-slate-900/10 p-6 sm:p-8 space-y-6">
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-slate-900/10">
+          <div className="rounded-3xl glass-panel border border-white/10 p-6 sm:p-8 space-y-6">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-white/10">
               <div>
-                <h3 className="text-xl font-bold font-spartan text-slate-900 uppercase">
+                <h3 className="text-xl font-bold font-spartan text-white uppercase">
                   JOURNAL BLOG ARTICLES MANAGEMENT ({articles.length})
                 </h3>
                 <p className="text-xs text-emerald-400 font-mono mt-1">
@@ -395,7 +395,7 @@ export default function AdminPage() {
 
               <button
                 onClick={handleOpenCreateArticle}
-                className="px-5 py-2.5 rounded-xl bg-slate-900 text-white font-extrabold text-xs uppercase flex items-center gap-2 hover:bg-slate-800 transition-all shadow-sm"
+                className="px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/10 text-white font-extrabold text-xs uppercase flex items-center gap-2 hover:bg-slate-800 transition-all shadow-lg"
               >
                 <Plus className="w-4 h-4" />
                 <span>Add Article</span>
@@ -404,7 +404,7 @@ export default function AdminPage() {
 
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs text-mad-gray font-mono">
-                <thead className="bg-mad-bg text-slate-900 uppercase border-b border-slate-900/10">
+                <thead className="bg-mad-bg text-white uppercase border-b border-white/10">
                   <tr>
                     <th className="p-3">Title (ID & EN)</th>
                     <th className="p-3">Category</th>
@@ -415,9 +415,9 @@ export default function AdminPage() {
                 </thead>
                 <tbody className="divide-y divide-white/5">
                   {articles.map((art) => (
-                    <tr key={art.id} className="hover:bg-slate-900/5">
-                      <td className="p-3 font-bold text-slate-900 max-w-xs truncate">
-                        <span className="block text-slate-900">🇮🇩 {art.title_id}</span>
+                    <tr key={art.id} className="hover:bg-white/5">
+                      <td className="p-3 font-bold text-white max-w-xs truncate">
+                        <span className="block text-white">🇮🇩 {art.title_id}</span>
                         <span className="block text-mad-gray text-[11px]">🇺🇸 {art.title_en}</span>
                       </td>
                       <td className="p-3 text-mad-lime">{art.category_en}</td>
@@ -430,7 +430,7 @@ export default function AdminPage() {
                       <td className="p-3 text-right space-x-2">
                         <button
                           onClick={() => handleOpenEditArticle(art)}
-                          className="px-3 py-1.5 rounded-xl bg-slate-100 border border-slate-300 text-slate-900 font-bold hover:bg-slate-200"
+                          className="px-3 py-1.5 rounded-xl bg-white/10 border border-white/10 text-white font-bold hover:bg-white/20"
                         >
                           <Edit className="w-3.5 h-3.5 inline mr-1" />
                           Edit
@@ -453,14 +453,14 @@ export default function AdminPage() {
 
         {/* Athlete Members Tab */}
         {activeTab === "members" && (
-          <div className="rounded-3xl bg-mad-surface border border-slate-900/10 p-6 sm:p-8 space-y-6">
-            <div className="flex items-center justify-between pb-4 border-b border-slate-900/10">
-              <h3 className="text-xl font-bold font-spartan text-slate-900 uppercase">ATHLETE MEMBERS DIRECTORY ({filteredMembers.length})</h3>
+          <div className="rounded-3xl glass-panel border border-white/10 p-6 sm:p-8 space-y-6">
+            <div className="flex items-center justify-between pb-4 border-b border-white/10">
+              <h3 className="text-xl font-bold font-spartan text-white uppercase">ATHLETE MEMBERS DIRECTORY ({filteredMembers.length})</h3>
             </div>
 
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs text-mad-gray font-mono">
-                <thead className="bg-mad-bg text-slate-900 uppercase border-b border-slate-900/10">
+                <thead className="bg-mad-bg text-white uppercase border-b border-white/10">
                   <tr>
                     <th className="p-3">Nama Atlet</th>
                     <th className="p-3">Email</th>
@@ -472,8 +472,8 @@ export default function AdminPage() {
                 </thead>
                 <tbody className="divide-y divide-white/5">
                   {filteredMembers.map((m) => (
-                    <tr key={m.id} className="hover:bg-slate-900/5">
-                      <td className="p-3 font-bold text-slate-900">{m.name}</td>
+                    <tr key={m.id} className="hover:bg-white/5">
+                      <td className="p-3 font-bold text-white">{m.name}</td>
                       <td className="p-3">{m.email}</td>
                       <td className="p-3 text-mad-lime">{m.program}</td>
                       <td className="p-3">
@@ -489,7 +489,7 @@ export default function AdminPage() {
                       <td className="p-3 text-right">
                         <button
                           onClick={() => handleOpenEditMember(m)}
-                          className="px-3 py-1.5 rounded-xl bg-slate-100 border border-slate-300 text-slate-900 font-bold hover:bg-slate-200"
+                          className="px-3 py-1.5 rounded-xl bg-white/10 border border-white/10 text-white font-bold hover:bg-white/20"
                         >
                           <Edit className="w-3.5 h-3.5 inline mr-1" />
                           Edit
@@ -507,27 +507,27 @@ export default function AdminPage() {
         {activeTab === "overview" && (
           <div className="space-y-8">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              <div className="p-6 rounded-2xl bg-mad-surface border border-slate-900/10 space-y-2">
+              <div className="p-6 rounded-2xl glass-panel border border-white/10 space-y-2">
                 <span className="text-xs font-mono text-mad-gray uppercase">Total Active Members</span>
-                <div className="text-3xl font-black font-spartan text-slate-900">{membersList.length}</div>
+                <div className="text-3xl font-black font-spartan text-white">{membersList.length}</div>
                 <span className="text-[10px] text-emerald-400 font-mono">Active Athletes</span>
               </div>
 
-              <div className="p-6 rounded-2xl bg-mad-surface border border-slate-900/10 space-y-2">
+              <div className="p-6 rounded-2xl glass-panel border border-white/10 space-y-2">
                 <span className="text-xs font-mono text-mad-gray uppercase">Monthly Recurring Revenue</span>
                 <div className="text-3xl font-black font-spartan text-mad-lime">$48,250</div>
                 <span className="text-[10px] text-emerald-400 font-mono">+8.4% MRR Growth</span>
               </div>
 
-              <div className="p-6 rounded-2xl bg-mad-surface border border-slate-900/10 space-y-2">
+              <div className="p-6 rounded-2xl glass-panel border border-white/10 space-y-2">
                 <span className="text-xs font-mono text-mad-gray uppercase">Published Articles</span>
                 <div className="text-3xl font-black font-spartan text-rose-400">{articles.length} Posts</div>
                 <span className="text-[10px] text-emerald-400 font-mono font-bold">Dual Language (ID/EN)</span>
               </div>
 
-              <div className="p-6 rounded-2xl bg-mad-surface border border-slate-900/10 space-y-2">
+              <div className="p-6 rounded-2xl glass-panel border border-white/10 space-y-2">
                 <span className="text-xs font-mono text-mad-gray uppercase">Active VIP Bookings</span>
-                <div className="text-3xl font-black font-spartan text-slate-900">{bookings.length}</div>
+                <div className="text-3xl font-black font-spartan text-white">{bookings.length}</div>
                 <span className="text-[10px] text-mad-gray font-mono">Consultations scheduled</span>
               </div>
             </div>
@@ -536,18 +536,18 @@ export default function AdminPage() {
 
         {/* Programs Tab */}
         {activeTab === "programs" && (
-          <div className="rounded-3xl bg-mad-surface border border-slate-900/10 p-6 sm:p-8 space-y-6">
-            <div className="flex items-center justify-between pb-4 border-b border-slate-900/10">
-              <h3 className="text-xl font-bold font-spartan text-slate-900 uppercase">COACHING PROGRAM CATALOG</h3>
-              <button onClick={() => setProgramModalOpen(true)} className="px-4 py-2 rounded-xl bg-mad-lime text-slate-900 font-extrabold text-xs uppercase">
+          <div className="rounded-3xl glass-panel border border-white/10 p-6 sm:p-8 space-y-6">
+            <div className="flex items-center justify-between pb-4 border-b border-white/10">
+              <h3 className="text-xl font-bold font-spartan text-white uppercase">COACHING PROGRAM CATALOG</h3>
+              <button onClick={() => setProgramModalOpen(true)} className="px-4 py-2 rounded-xl bg-mad-lime text-white font-extrabold text-xs uppercase">
                 + Add Program
               </button>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {programs.map((p) => (
-                <div key={p.id} className="p-6 rounded-2xl bg-mad-bg border border-slate-900/10 space-y-4">
+                <div key={p.id} className="p-6 rounded-2xl glass-card border border-white/10 space-y-4">
                   <div className="space-y-1">
-                    <h4 className="font-bold font-spartan text-lg text-slate-900 uppercase">🇮🇩 {p.name_id}</h4>
+                    <h4 className="font-bold font-spartan text-lg text-white uppercase">🇮🇩 {p.name_id}</h4>
                     <h5 className="font-semibold text-sm text-mad-gray uppercase">🇺🇸 {p.name_en}</h5>
                     <span className="text-xs text-mad-lime font-mono block pt-1">{p.duration_en} • {p.price}</span>
                   </div>
@@ -561,10 +561,10 @@ export default function AdminPage() {
         {activeTab === "bookings" && (
           <div className="space-y-8">
             {/* Slot Manager Header Card */}
-            <div className="rounded-3xl bg-mad-surface border border-slate-900/10 p-6 sm:p-8 space-y-4">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-slate-900/10 gap-4">
+            <div className="rounded-3xl glass-panel border border-white/10 p-6 sm:p-8 space-y-4">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-white/10 gap-4">
                 <div>
-                  <h3 className="text-xl font-bold font-spartan text-slate-900 uppercase">
+                  <h3 className="text-xl font-bold font-spartan text-white uppercase">
                     PENGATURAN SLOT WAKTU KEPELATIHAN COACH
                   </h3>
                   <p className="text-xs text-mad-gray font-mono mt-0.5">
@@ -576,7 +576,7 @@ export default function AdminPage() {
                     type="date"
                     value={selectedSlotDate}
                     onChange={(e) => setSelectedSlotDate(e.target.value)}
-                    className="px-3 py-1.5 rounded-xl border border-slate-300 bg-white text-slate-900 text-sm font-bold font-mono focus:outline-none focus:ring-2 focus:ring-mad-lime"
+                    className="px-3 py-1.5 rounded-xl border border-white/10 bg-white text-white text-sm font-bold font-mono focus:outline-none focus:ring-2 focus:ring-mad-lime"
                   />
                   <span className="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 border border-emerald-500/20 font-mono text-[10px] font-bold whitespace-nowrap">
                     SINKRONISASI AKTIF
@@ -592,7 +592,7 @@ export default function AdminPage() {
                     className={`p-3.5 rounded-2xl border text-center font-mono text-xs font-bold transition-all ${
                       s.available
                         ? "bg-mad-lime/10 border-mad-lime text-mad-lime"
-                        : "bg-mad-bg border-slate-900/10 text-mad-gray opacity-50"
+                        : "glass-card border-white/10 text-mad-gray opacity-50"
                     }`}
                   >
                     <div>{s.time}</div>
@@ -605,10 +605,10 @@ export default function AdminPage() {
             </div>
 
             {/* Athlete Consultations Table */}
-            <div className="rounded-3xl bg-mad-surface border border-slate-900/10 p-6 sm:p-8 space-y-6">
-              <div className="flex items-center justify-between pb-4 border-b border-slate-900/10">
+            <div className="rounded-3xl glass-panel border border-white/10 p-6 sm:p-8 space-y-6">
+              <div className="flex items-center justify-between pb-4 border-b border-white/10">
                 <div>
-                  <h3 className="text-xl font-bold font-spartan text-slate-900 uppercase">
+                  <h3 className="text-xl font-bold font-spartan text-white uppercase">
                     PERMINTAAN JADWAL & RESCHEDULE ATLET ({bookings.length})
                   </h3>
                   <p className="text-xs text-mad-gray font-mono mt-0.5">
@@ -619,7 +619,7 @@ export default function AdminPage() {
 
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-xs text-mad-gray font-mono">
-                  <thead className="bg-mad-bg text-slate-900 uppercase border-b border-slate-900/10">
+                  <thead className="bg-mad-bg text-white uppercase border-b border-white/10">
                     <tr>
                       <th className="p-3">Nama Atlet</th>
                       <th className="p-3">Paket Sesi</th>
@@ -630,8 +630,8 @@ export default function AdminPage() {
                   </thead>
                   <tbody className="divide-y divide-white/5">
                     {bookings.map((b) => (
-                      <tr key={b.id} className="hover:bg-slate-900/5">
-                        <td className="p-3 font-bold text-slate-900">{b.name}</td>
+                      <tr key={b.id} className="hover:bg-white/5">
+                        <td className="p-3 font-bold text-white">{b.name}</td>
                         <td className="p-3">{b.pkg}</td>
                         <td className="p-3 text-mad-lime font-bold">
                           {b.date} {b.timeSlot ? `• ${b.timeSlot}` : ""}
@@ -667,7 +667,7 @@ export default function AdminPage() {
                           </button>
                           <button
                             onClick={() => handleUpdateBookingStatus(b.id, "Rejected")}
-                            className="px-4 py-2 rounded-xl bg-rose-500/10 text-rose-600 border border-rose-500/20 font-bold text-xs hover:bg-rose-500/20 hover:border-rose-500/40 transition-all"
+                            className="px-4 py-2 rounded-xl bg-rose-500/10 text-rose-600 border border-white/10 font-bold text-xs hover:bg-rose-500/20 hover:border-rose-500/40 transition-all"
                           >
                             Tolak
                           </button>
@@ -687,26 +687,26 @@ export default function AdminPage() {
   {
     articleModalOpen && (
       <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
-        <div className="w-full max-w-2xl rounded-3xl bg-mad-surface border border-slate-900/10 p-6 sm:p-8 space-y-5 relative shadow-2xl animate-fadeIn max-h-[90vh] overflow-y-auto">
+        <div className="w-full max-w-2xl rounded-3xl glass-panel border border-white/10 p-6 sm:p-8 space-y-5 relative shadow-2xl animate-fadeIn max-h-[90vh] overflow-y-auto">
           <button
             onClick={() => setArticleModalOpen(false)}
-            className="absolute top-5 right-5 p-2 rounded-xl bg-mad-bg text-mad-gray hover:text-slate-900"
+            className="absolute top-5 right-5 p-2 rounded-xl bg-mad-bg text-mad-gray hover:text-white"
           >
             <X className="w-5 h-5" />
           </button>
 
-          <div className="pb-3 border-b border-slate-900/10">
-            <span className="px-3 py-1 rounded-full bg-slate-900/5 text-slate-900/70 font-mono text-[10px] font-bold uppercase">
+          <div className="pb-3 border-b border-white/10">
+            <span className="px-3 py-1 rounded-full bg-white/5 text-mad-gray font-mono text-[10px] font-bold uppercase">
               DUAL LANGUAGE ARTICLE EDITOR (ID & EN)
             </span>
-            <h3 className="text-2xl font-black font-spartan text-slate-900 uppercase mt-1">
+            <h3 className="text-2xl font-black font-spartan text-white uppercase mt-1">
               {editingArticleId ? "EDIT JOURNAL ARTICLE" : "CREATE NEW JOURNAL ARTICLE"}
             </h3>
           </div>
 
           <form onSubmit={handleSaveArticle} className="space-y-4 text-xs font-mono">
             <div>
-              <label className="text-slate-900 font-bold uppercase block mb-1">Article Title / Judul Artikel</label>
+              <label className="text-white font-bold uppercase block mb-1">Article Title / Judul Artikel</label>
               <input
                 type="text"
                 required
@@ -716,7 +716,7 @@ export default function AdminPage() {
                   setArticleTitleID(e.target.value);
                   if (!articleTitleEN) setArticleTitleEN(e.target.value);
                 }}
-                className="w-full bg-mad-bg border border-slate-900/10 rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:border-slate-900/50"
+                className="w-full glass-card border border-white/10 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-white/20"
               />
             </div>
 
@@ -726,7 +726,7 @@ export default function AdminPage() {
                 <select
                   value={articleCategory}
                   onChange={(e) => setArticleCategory(e.target.value)}
-                  className="w-full bg-mad-bg border border-slate-900/10 rounded-xl px-3 py-2 text-slate-900 focus:outline-none focus:border-slate-900/50"
+                  className="w-full glass-card border border-white/10 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-white/20"
                 >
                   <option value="Workout Science">Workout Science</option>
                   <option value="Nutrition">Nutrition</option>
@@ -743,13 +743,13 @@ export default function AdminPage() {
                   required
                   value={articleAuthor}
                   onChange={(e) => setArticleAuthor(e.target.value)}
-                  className="w-full bg-mad-bg border border-slate-900/10 rounded-xl px-3 py-2 text-slate-900 focus:outline-none focus:border-slate-900/50"
+                  className="w-full glass-card border border-white/10 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-white/20"
                 />
               </div>
             </div>
 
             <div>
-              <label className="text-slate-900 font-bold uppercase block mb-1 flex items-center justify-between">
+              <label className="text-white font-bold uppercase block mb-1 flex items-center justify-between">
                 <span>Excerpt / Rangkuman Artikel</span>
                 <span className="text-[10px] text-mad-gray font-normal normal-case">Tampil di beranda (max 150 char)</span>
               </label>
@@ -762,22 +762,22 @@ export default function AdminPage() {
                   setArticleExcerptID(e.target.value);
                   if (!articleExcerptEN) setArticleExcerptEN(e.target.value);
                 }}
-                className="w-full bg-mad-bg border border-slate-900/10 rounded-xl px-4 py-2 text-slate-900 focus:outline-none focus:border-slate-900/50"
+                className="w-full glass-card border border-white/10 rounded-xl px-4 py-2 text-white focus:outline-none focus:border-white/20"
               />
             </div>
 
             <div>
-              <label className="text-slate-900 font-bold uppercase block mb-1 flex items-center justify-between">
+              <label className="text-white font-bold uppercase block mb-1 flex items-center justify-between">
                 <span>Content / Isi Artikel Lengkap</span>
                 <span className="text-[10px] text-mad-gray font-normal normal-case">Dukung format media & link</span>
               </label>
-              <div className="border border-slate-900/10 border-b-0 rounded-t-xl bg-slate-900/5 p-2 flex items-center gap-1.5 overflow-x-auto">
-                <button type="button" className="p-1.5 hover:bg-slate-900/10 rounded text-slate-700 transition-colors" title="Bold"><Bold className="w-4 h-4" /></button>
-                <button type="button" className="p-1.5 hover:bg-slate-900/10 rounded text-slate-700 transition-colors" title="Italic"><Italic className="w-4 h-4" /></button>
-                <button type="button" className="p-1.5 hover:bg-slate-900/10 rounded text-slate-700 transition-colors" title="Link"><LinkIcon className="w-4 h-4" /></button>
-                <div className="w-px h-4 bg-slate-900/20 mx-1"></div>
-                <button type="button" className="p-1.5 hover:bg-slate-900/10 rounded text-slate-700 transition-colors" title="Add Image"><Image className="w-4 h-4" /></button>
-                <button type="button" className="p-1.5 hover:bg-slate-900/10 rounded text-slate-700 transition-colors" title="Add Video"><Video className="w-4 h-4" /></button>
+              <div className="border border-white/10 border-b-0 rounded-t-xl bg-white/5 p-2 flex items-center gap-1.5 overflow-x-auto">
+                <button type="button" className="p-1.5 hover:bg-white/10 rounded text-slate-700 transition-colors" title="Bold"><Bold className="w-4 h-4" /></button>
+                <button type="button" className="p-1.5 hover:bg-white/10 rounded text-slate-700 transition-colors" title="Italic"><Italic className="w-4 h-4" /></button>
+                <button type="button" className="p-1.5 hover:bg-white/10 rounded text-slate-700 transition-colors" title="Link"><LinkIcon className="w-4 h-4" /></button>
+                <div className="w-px h-4 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/10/20 mx-1"></div>
+                <button type="button" className="p-1.5 hover:bg-white/10 rounded text-slate-700 transition-colors" title="Add Image"><Image className="w-4 h-4" /></button>
+                <button type="button" className="p-1.5 hover:bg-white/10 rounded text-slate-700 transition-colors" title="Add Video"><Video className="w-4 h-4" /></button>
               </div>
               <textarea
                 rows={10}
@@ -788,16 +788,16 @@ export default function AdminPage() {
                   setArticleContentID(e.target.value);
                   if (!articleContentEN) setArticleContentEN(e.target.value);
                 }}
-                className="w-full bg-mad-bg border border-slate-900/10 rounded-b-xl px-4 py-3 text-slate-900 focus:outline-none focus:border-slate-900/50 leading-relaxed"
+                className="w-full glass-card border border-white/10 rounded-b-xl px-4 py-3 text-white focus:outline-none focus:border-white/20 leading-relaxed"
               />
             </div>
 
             {/* Optional English Title Override */}
-            <details className="bg-mad-bg/50 border border-slate-900/10 rounded-xl p-3 text-[11px]">
-              <summary className="cursor-pointer font-bold text-slate-900/70 uppercase">
+            <details className="bg-mad-bg/50 border border-white/10 rounded-xl p-3 text-[11px]">
+              <summary className="cursor-pointer font-bold text-mad-gray uppercase">
                 + Opsional: Atur Judul, Rangkuman & Isi Bahasa Inggris Khusus (EN)
               </summary>
-              <div className="space-y-3 pt-3 mt-2 border-t border-slate-900/10">
+              <div className="space-y-3 pt-3 mt-2 border-t border-white/10">
                 <div>
                   <label className="text-mad-gray uppercase block mb-1">English Title</label>
                   <input
@@ -805,7 +805,7 @@ export default function AdminPage() {
                     placeholder="Custom English title..."
                     value={articleTitleEN}
                     onChange={(e) => setArticleTitleEN(e.target.value)}
-                    className="w-full bg-mad-bg border border-slate-900/10 rounded-xl px-3 py-2 text-slate-900"
+                    className="w-full glass-card border border-white/10 rounded-xl px-3 py-2 text-white"
                   />
                 </div>
                 <div>
@@ -815,7 +815,7 @@ export default function AdminPage() {
                     placeholder="Custom English excerpt..."
                     value={articleExcerptEN}
                     onChange={(e) => setArticleExcerptEN(e.target.value)}
-                    className="w-full bg-mad-bg border border-slate-900/10 rounded-xl px-3 py-2 text-slate-900"
+                    className="w-full glass-card border border-white/10 rounded-xl px-3 py-2 text-white"
                   />
                 </div>
                 <div>
@@ -825,7 +825,7 @@ export default function AdminPage() {
                     placeholder="Custom English content..."
                     value={articleContentEN}
                     onChange={(e) => setArticleContentEN(e.target.value)}
-                    className="w-full bg-mad-bg border border-slate-900/10 rounded-xl px-3 py-2 text-slate-900"
+                    className="w-full glass-card border border-white/10 rounded-xl px-3 py-2 text-white"
                   />
                 </div>
               </div>
@@ -833,7 +833,7 @@ export default function AdminPage() {
 
             <button
               type="submit"
-              className="w-full py-3.5 rounded-xl bg-slate-900 text-white font-extrabold text-xs uppercase tracking-wider hover:bg-slate-800 shadow-sm flex items-center justify-center gap-2"
+              className="w-full py-3.5 rounded-xl bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/10 text-white font-extrabold text-xs uppercase tracking-wider hover:bg-slate-800 shadow-lg flex items-center justify-center gap-2"
             >
               <Save className="w-4 h-4" />
               <span>{editingArticleId ? "SAVE DUAL-LANGUAGE ARTICLE" : "PUBLISH DUAL-LANGUAGE ARTICLE"}</span>
@@ -841,63 +841,65 @@ export default function AdminPage() {
           </form>
         </div>
       </div>
+    )
+  }
       {/* MEMBER EDIT MODAL */}
       {memberModalOpen && selectedMember && (
         <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
-          <div className="w-full max-w-md rounded-3xl bg-mad-surface border border-slate-900/10 p-6 sm:p-8 space-y-5 relative shadow-2xl animate-fadeIn">
+          <div className="w-full max-w-md rounded-3xl glass-panel border border-white/10 p-6 sm:p-8 space-y-5 relative shadow-2xl animate-fadeIn">
             <button
               onClick={() => setMemberModalOpen(false)}
-              className="absolute top-5 right-5 p-2 rounded-xl bg-mad-bg text-mad-gray hover:text-slate-900"
+              className="absolute top-5 right-5 p-2 rounded-xl bg-mad-bg text-mad-gray hover:text-white"
             >
               <X className="w-5 h-5" />
             </button>
 
-            <div className="pb-3 border-b border-slate-900/10">
-              <h3 className="text-2xl font-black font-spartan text-slate-900 uppercase">
+            <div className="pb-3 border-b border-white/10">
+              <h3 className="text-2xl font-black font-spartan text-white uppercase">
                 EDIT MEMBER DETAILS
               </h3>
             </div>
 
             <form onSubmit={handleSaveMember} className="space-y-4 text-xs font-mono">
               <div>
-                <label className="text-slate-900 font-bold uppercase block mb-1">Nama Atlet</label>
+                <label className="text-white font-bold uppercase block mb-1">Nama Atlet</label>
                 <input
                   type="text"
                   required
                   value={selectedMember.name}
                   onChange={(e) => setSelectedMember({ ...selectedMember, name: e.target.value })}
-                  className="w-full bg-mad-bg border border-slate-900/10 rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:border-slate-900/50"
+                  className="w-full glass-card border border-white/10 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-white/20"
                 />
               </div>
 
               <div>
-                <label className="text-slate-900 font-bold uppercase block mb-1">Email</label>
+                <label className="text-white font-bold uppercase block mb-1">Email</label>
                 <input
                   type="email"
                   required
                   value={selectedMember.email}
                   onChange={(e) => setSelectedMember({ ...selectedMember, email: e.target.value })}
-                  className="w-full bg-mad-bg border border-slate-900/10 rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:border-slate-900/50"
+                  className="w-full glass-card border border-white/10 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-white/20"
                 />
               </div>
 
               <div>
-                <label className="text-slate-900 font-bold uppercase block mb-1">Program Latihan</label>
+                <label className="text-white font-bold uppercase block mb-1">Program Latihan</label>
                 <input
                   type="text"
                   required
                   value={selectedMember.program}
                   onChange={(e) => setSelectedMember({ ...selectedMember, program: e.target.value })}
-                  className="w-full bg-mad-bg border border-slate-900/10 rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:border-slate-900/50"
+                  className="w-full glass-card border border-white/10 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-white/20"
                 />
               </div>
 
               <div>
-                <label className="text-slate-900 font-bold uppercase block mb-1">Status Keanggotaan</label>
+                <label className="text-white font-bold uppercase block mb-1">Status Keanggotaan</label>
                 <select
                   value={selectedMember.status}
                   onChange={(e) => setSelectedMember({ ...selectedMember, status: e.target.value as any })}
-                  className="w-full bg-mad-bg border border-slate-900/10 rounded-xl px-3 py-2 text-slate-900 focus:outline-none focus:border-slate-900/50"
+                  className="w-full glass-card border border-white/10 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-white/20"
                 >
                   <option value="Active">Active</option>
                   <option value="Pending">Pending</option>
@@ -907,7 +909,7 @@ export default function AdminPage() {
 
               <button
                 type="submit"
-                className="w-full py-3.5 rounded-xl bg-slate-900 text-white font-extrabold text-xs uppercase tracking-wider hover:bg-slate-800 shadow-sm flex items-center justify-center gap-2"
+                className="w-full py-3.5 rounded-xl bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/10 text-white font-extrabold text-xs uppercase tracking-wider hover:bg-slate-800 shadow-lg flex items-center justify-center gap-2"
               >
                 <Save className="w-4 h-4" />
                 <span>SAVE MEMBER CHANGES</span>
@@ -920,59 +922,59 @@ export default function AdminPage() {
       {/* PROGRAM ADD MODAL */}
       {programModalOpen && (
         <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
-          <div className="w-full max-w-md rounded-3xl bg-mad-surface border border-slate-900/10 p-6 sm:p-8 space-y-5 relative shadow-2xl animate-fadeIn">
+          <div className="w-full max-w-md rounded-3xl glass-panel border border-white/10 p-6 sm:p-8 space-y-5 relative shadow-2xl animate-fadeIn">
             <button
               onClick={() => setProgramModalOpen(false)}
-              className="absolute top-5 right-5 p-2 rounded-xl bg-mad-bg text-mad-gray hover:text-slate-900"
+              className="absolute top-5 right-5 p-2 rounded-xl bg-mad-bg text-mad-gray hover:text-white"
             >
               <X className="w-5 h-5" />
             </button>
 
-            <div className="pb-3 border-b border-slate-900/10">
-              <h3 className="text-2xl font-black font-spartan text-slate-900 uppercase">
+            <div className="pb-3 border-b border-white/10">
+              <h3 className="text-2xl font-black font-spartan text-white uppercase">
                 ADD NEW PROGRAM
               </h3>
             </div>
 
             <form onSubmit={handleSaveProgram} className="space-y-4 text-xs font-mono">
               <div>
-                <label className="text-slate-900 font-bold uppercase block mb-1">Program Name</label>
+                <label className="text-white font-bold uppercase block mb-1">Program Name</label>
                 <input
                   type="text"
                   required
                   value={newProgName}
                   onChange={(e) => setNewProgName(e.target.value)}
                   placeholder="e.g. Masterclass Defisit Lemak"
-                  className="w-full bg-mad-bg border border-slate-900/10 rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:border-slate-900/50"
+                  className="w-full glass-card border border-white/10 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-white/20"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="text-slate-900 font-bold uppercase block mb-1">Price</label>
+                  <label className="text-white font-bold uppercase block mb-1">Price</label>
                   <input
                     type="text"
                     required
                     value={newProgPrice}
                     onChange={(e) => setNewProgPrice(e.target.value)}
-                    className="w-full bg-mad-bg border border-slate-900/10 rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:border-slate-900/50"
+                    className="w-full glass-card border border-white/10 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-white/20"
                   />
                 </div>
                 <div>
-                  <label className="text-slate-900 font-bold uppercase block mb-1">Duration</label>
+                  <label className="text-white font-bold uppercase block mb-1">Duration</label>
                   <input
                     type="text"
                     required
                     value={newProgDuration}
                     onChange={(e) => setNewProgDuration(e.target.value)}
-                    className="w-full bg-mad-bg border border-slate-900/10 rounded-xl px-4 py-2.5 text-slate-900 focus:outline-none focus:border-slate-900/50"
+                    className="w-full glass-card border border-white/10 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-white/20"
                   />
                 </div>
               </div>
 
               <button
                 type="submit"
-                className="w-full py-3.5 rounded-xl bg-slate-900 text-white font-extrabold text-xs uppercase tracking-wider hover:bg-slate-800 shadow-sm flex items-center justify-center gap-2"
+                className="w-full py-3.5 rounded-xl bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/10 text-white font-extrabold text-xs uppercase tracking-wider hover:bg-slate-800 shadow-lg flex items-center justify-center gap-2"
               >
                 <Save className="w-4 h-4" />
                 <span>SAVE PROGRAM</span>

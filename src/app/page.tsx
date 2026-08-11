@@ -3,46 +3,49 @@ import { HeroSection } from "@/features/home/HeroSection";
 import { TrustedBrands } from "@/features/home/TrustedBrands";
 import { AboutSection } from "@/features/home/AboutSection";
 import { FeaturedVideo } from "@/features/home/FeaturedVideo";
-import { CoachesSection } from "@/features/home/CoachesSection";
+import { CareerTimeline } from "@/features/home/CareerTimeline";
+import { SpecializationsSection } from "@/features/home/SpecializationsSection";
+import { AthletesAchievements } from "@/features/home/AthletesAchievements";
 import { PricingSection } from "@/features/home/PricingSection";
 import { TestimonialsSection } from "@/features/home/TestimonialsSection";
 import { CTASection } from "@/features/home/CTASection";
 
 export const metadata: Metadata = {
-  title: "MADRock: Science-Based Fitness Coaching & AI Meal Planner",
+  title: "Training by MAD | Ahmad Hudzaifah — S&C Coach & Speed Climbing Indonesia",
   description:
-    "Build lean muscle and shred body fat without extreme diets. Certified 1-on-1 personal coaching, 12-week periodized workout splits, and AI nutrition generators.",
+    "Pelatih Strength & Conditioning dan Speed Climbing Indonesia. Head Coach PON 2024 DKI Jakarta. Founder Training by MAD. Metodologi berbasis sains untuk atlet elite dan pemula.",
   keywords: [
-    "Fitness Coaching",
-    "Personal Trainer Online",
-    "Hypertrophy Program",
-    "Fat Loss Protocol",
-    "Body Recomposition",
-    "AI Meal Planner",
-    "Workout Biomechanics",
-    "MADRock Fitness",
+    "Ahmad Hudzaifah",
+    "Training by MAD",
+    "Strength Conditioning Coach Indonesia",
+    "Speed Climbing Coach",
+    "KONI DKI Jakarta",
+    "PON 2024 Panjat Tebing",
+    "Pelatih Panjat Tebing",
+    "S&C Coach",
+    "Sport Climbing",
   ],
   openGraph: {
-    title: "MADRock: Science-Based Fitness Coaching & AI Meal Planner",
+    title: "Training by MAD | Ahmad Hudzaifah — S&C Coach & Speed Climbing Indonesia",
     description:
-      "Build lean muscle and shred body fat without extreme diets. Certified 1-on-1 personal coaching, periodized splits, and AI meal generators.",
+      "Pelatih Strength & Conditioning dan Speed Climbing Indonesia. Head Coach PON 2024 DKI Jakarta. Founder Training by MAD.",
     url: "https://mad-rock.vercel.app",
-    siteName: "MADRock Fitness Coaching",
+    siteName: "Training by MAD",
     images: [
       {
         url: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=1200&auto=format&fit=crop",
         width: 1200,
         height: 630,
-        alt: "MADRock Premium Science-Based Fitness Coaching",
+        alt: "Ahmad Hudzaifah - Training by MAD",
       },
     ],
-    locale: "en_US",
+    locale: "id_ID",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "MADRock: Science-Based Fitness Coaching & AI Meal Planner",
-    description: "Build lean muscle and shred body fat without extreme diets.",
+    title: "Training by MAD | Ahmad Hudzaifah",
+    description: "Pelatih S&C dan Speed Climbing Indonesia. Founder Training by MAD.",
     images: ["https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=1200&auto=format&fit=crop"],
   },
 };
@@ -50,27 +53,32 @@ export const metadata: Metadata = {
 export default function HomePage() {
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "SportsActivityLocation",
-    name: "MADRock Performance Coaching",
-    image: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=1200&auto=format&fit=crop",
+    "@type": "Person",
+    name: "Ahmad Hudzaifah",
+    jobTitle: "Strength and Conditioning Coach & Sport Climbing Coach",
+    description:
+      "Pelatih Strength & Conditioning dan Speed Climbing Indonesia. Head Coach PON 2024 DKI Jakarta. Founder Training by MAD.",
     "@id": "https://mad-rock.vercel.app",
     url: "https://mad-rock.vercel.app",
-    telephone: "+18005557625",
-    priceRange: "$$$",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "742 Evergreen Athletic Plaza, Suite 400",
-      addressLocality: "San Francisco",
-      addressRegion: "CA",
-      postalCode: "94105",
-      addressCountry: "US",
+    sameAs: [
+      "https://www.instagram.com/ahmadhudzaifaah",
+      "https://www.linkedin.com/in/ahmadhudzaifah",
+    ],
+    alumniOf: {
+      "@type": "EducationalOrganization",
+      name: "Universitas Negeri Jakarta",
     },
-    description:
-      "Evidence-based bodybuilding biomechanics coaching designed to help you gain muscle, shred fat, and maximize human strength safely.",
+    knowsAbout: [
+      "Strength and Conditioning",
+      "Speed Climbing",
+      "Sport Climbing",
+      "Athletic Performance",
+      "Periodization Training",
+    ],
   };
 
   return (
-    <main className="min-h-screen bg-mad-bg text-slate-900 overflow-hidden">
+    <main className="min-h-screen bg-mad-bg text-mad-text overflow-hidden">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -79,10 +87,13 @@ export default function HomePage() {
       <TrustedBrands />
       <AboutSection />
       <FeaturedVideo />
-      <CoachesSection />
+      <CareerTimeline />
+      <SpecializationsSection />
+      <AthletesAchievements />
       <PricingSection />
       <TestimonialsSection />
       <CTASection />
     </main>
   );
 }
+

@@ -5,31 +5,42 @@
 @tailwind utilities;
 
 :root, html {
-  color-scheme: light;
+  color-scheme: dark;
   --font-spartan: 'League Spartan', sans-serif;
   --font-bebas: 'Bebas Neue', cursive;
   --font-inter: 'Inter', sans-serif;
 
-  /* ⚙️ EXECUTIVE SLATE-GRAY THEME */
-  --mad-bg: #E2E8F0;              /* Neutral Slate-200 Gray background */
-  --mad-surface: #FFFFFF;         /* Pure white crisp surface cards */
-  --mad-surface-2: #F1F5F9;       /* Slate-100 secondary surface */
-  --mad-surface-3: #CBD5E1;       /* Slate-300 borders */
-  --mad-lime: #65A30D;            /* Lime-600 high contrast green */
-  --mad-lime-hover: #4D7C0F;      /* Lime-800 hover */
-  --mad-lime-light: #84CC16;
-  --mad-text: #0F172A;            /* Slate-900 sharp dark headings */
-  --mad-gray: #1E293B;            /* Slate-800 body text (high contrast) */
-  --mad-gray-dark: #334155;
-  --mad-border: rgba(15, 23, 42, 0.15);
-  --mad-glass: rgba(255, 255, 255, 0.95);
-  --mad-glass-border: rgba(15, 23, 42, 0.15);
-  --mad-input-bg: #FFFFFF;
-  --mad-input-border: #94A3B8;
+  /* ⚙️ PREMIUM DARK MODE THEME */
+  --mad-bg: #0B0F19;              /* Deep obsidian dark */
+  --mad-surface: #111827;         /* Sleek slate-900 surface */
+  --mad-surface-2: #1F2937;       /* Slate-800 secondary surface */
+  --mad-surface-3: #374151;       /* Slate-700 borders */
+  
+  /* ACCENTS */
+  --mad-lime: #10B981;            /* Vibrant Emerald Green */
+  --mad-lime-hover: #059669;      
+  --mad-lime-light: #34D399;
+  
+  /* TYPOGRAPHY */
+  --mad-text: #F8FAFC;            /* Sharp white headings */
+  --mad-gray: #94A3B8;            /* Slate-400 for secondary text */
+  --mad-gray-dark: #64748B;
+  
+  /* GLASSMORPHISM */
+  --mad-border: rgba(255, 255, 255, 0.1);
+  --mad-glass: rgba(17, 24, 39, 0.7);
+  --mad-glass-border: rgba(255, 255, 255, 0.05);
+  
+  /* INPUTS */
+  --mad-input-bg: rgba(31, 41, 55, 0.5);
+  --mad-input-border: rgba(255, 255, 255, 0.1);
 }
 
 body {
   background-color: var(--mad-bg);
+  background-image: 
+    radial-gradient(circle at 15% 50%, rgba(16, 185, 129, 0.04), transparent 25%),
+    radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.04), transparent 25%);
   color: var(--mad-text);
   font-family: var(--font-inter);
   font-weight: 500;
@@ -40,42 +51,44 @@ body {
 
 ::selection {
   background: var(--mad-lime);
-  color: #FFFFFF;
+  color: #0B0F19;
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--mad-bg);
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #CBD5E1;
-  border-radius: 4px;
+  background: var(--mad-surface-3);
+  border-radius: 8px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--mad-lime);
 }
 
-/* Glass Effect for Slate-Gray Theme */
+/* Glass Effect for Dark Theme */
 .glass-panel {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(15, 23, 42, 0.12);
-  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.08);
+  background: var(--mad-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--mad-border);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
 }
 
 .glass-card {
-  background: #FFFFFF;
+  background: rgba(17, 24, 39, 0.5);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(15, 23, 42, 0.1);
-  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06);
+  border: 1px solid var(--mad-border);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
 }
 
 .glass-card-hover {
@@ -83,18 +96,16 @@ body {
 }
 
 .glass-card-hover:hover {
-  background: #FFFFFF;
-  border-color: var(--mad-lime);
+  background: rgba(31, 41, 55, 0.7);
+  border-color: rgba(16, 185, 129, 0.4);
   transform: translateY(-4px);
-  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.15);
+  box-shadow: 0 10px 30px -10px rgba(16, 185, 129, 0.15);
 }
 
-/* Text Gradients (Removed to avoid AI slop) */
-
-/* Slate-Gray Utility Overrides */
+/* Utility Overrides for Dark Mode */
 .text-mad-gray {
   color: var(--mad-gray) !important;
-  font-weight: 550 !important;
+  font-weight: 400 !important;
 }
 
 .bg-mad-bg {
@@ -105,30 +116,42 @@ body {
   background-color: var(--mad-surface) !important;
 }
 
+/* Remove forced light mode borders */
 .border-white\/5, .border-white\/10, .border-white\/15, .border-white\/20 {
-  border-color: rgba(15, 23, 42, 0.12) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
 }
 
-.bg-white\/5, .bg-white\/10, .bg-white\/15 {
-  background-color: rgba(15, 23, 42, 0.05) !important;
+.bg-white\/5 {
+  background-color: rgba(255, 255, 255, 0.03) !important;
+}
+
+.bg-white\/10 {
+  background-color: rgba(255, 255, 255, 0.06) !important;
 }
 
 .bg-mad-lime {
   background-color: var(--mad-lime) !important;
-  color: #FFFFFF !important;
+  color: #0B0F19 !important;
+  box-shadow: 0 0 15px -3px rgba(16, 185, 129, 0.3);
 }
 
 .bg-mad-lime * {
-  color: #FFFFFF !important;
+  color: #0B0F19 !important;
 }
 
 /* Inputs & Form Controls */
 input, select, textarea {
-  background-color: #FFFFFF !important;
-  border-color: #CBD5E1 !important;
-  color: #0F172A !important;
+  background-color: var(--mad-input-bg) !important;
+  border-color: var(--mad-input-border) !important;
+  color: var(--mad-text) !important;
+  transition: all 0.2s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--mad-lime) !important;
+  box-shadow: 0 0 0 1px var(--mad-lime) !important;
 }
 
 input::placeholder, textarea::placeholder {
-  color: #64748B !important;
+  color: var(--mad-gray-dark) !important;
 }
