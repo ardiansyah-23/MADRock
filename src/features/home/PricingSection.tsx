@@ -12,7 +12,7 @@ export function PricingSection() {
   const plans = [
     {
       name: lang === "id" ? "S&C Online Coaching" : "S&C Online Coaching",
-      price: 99,
+      price: 1500000,
       description:
         lang === "id"
           ? "Program latihan Strength & Conditioning berbasis sains, dirancang khusus untuk atlet atau individu aktif."
@@ -30,7 +30,7 @@ export function PricingSection() {
     },
     {
       name: lang === "id" ? "Speed Climbing Coaching" : "Speed Climbing Coaching",
-      price: 149,
+      price: 2500000,
       badge: lang === "id" ? "SPESIALISASI UTAMA" : "MAIN SPECIALIZATION",
       description:
         lang === "id"
@@ -50,7 +50,7 @@ export function PricingSection() {
     },
     {
       name: lang === "id" ? "E-Book & Webinar" : "E-Book & Webinar",
-      price: 19,
+      price: 250000,
       description:
         lang === "id"
           ? "Akses materi edukasi strength training dan kepelatihan dari Training by MAD. Cocok untuk self-learner."
@@ -107,7 +107,7 @@ export function PricingSection() {
 
                   <div className="flex items-baseline gap-1 py-4 border-y border-white/10">
                     <span className="text-5xl font-black font-spartan text-white">
-                      ${plan.price}
+                      Rp {plan.price.toLocaleString("id-ID")}
                     </span>
                     <span className="text-xs font-mono text-mad-gray uppercase">
                       {lang === "id" ? "/ bulan" : "/ month"}

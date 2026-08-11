@@ -124,9 +124,9 @@ const DEFAULT_ARTICLES: ArticleItem[] = [
 ];
 
 const DEFAULT_PROGRAMS: ProgramItem[] = [
-  { id: 1, name_id: "Masterclass Defisit Lemak", name_en: "Fat Loss Masterclass", enrolled: 210, price: "$199", duration_id: "12 Minggu", duration_en: "12 Weeks" },
-  { id: 2, name_id: "Hipertrofi Pembentukan Otot", name_en: "Hypertrophy Muscle Build", enrolled: 284, price: "$249", duration_id: "16 Minggu", duration_en: "16 Weeks" },
-  { id: 3, name_id: "Rekomposisi Tubuh Total", name_en: "Body Recomposition", enrolled: 148, price: "$299", duration_id: "12 Minggu", duration_en: "12 Weeks" },
+  { id: 1, name_id: "Masterclass Defisit Lemak", name_en: "Fat Loss Masterclass", enrolled: 210, price: "Rp 1.500.000", duration_id: "12 Minggu", duration_en: "12 Weeks" },
+  { id: 2, name_id: "Hipertrofi Pembentukan Otot", name_en: "Hypertrophy Muscle Build", enrolled: 284, price: "Rp 2.500.000", duration_id: "16 Minggu", duration_en: "16 Weeks" },
+  { id: 3, name_id: "Rekomposisi Tubuh Total", name_en: "Body Recomposition", enrolled: 148, price: "Rp 3.500.000", duration_id: "12 Minggu", duration_en: "12 Weeks" },
 ];
 
 const DEFAULT_MEMBERS: MemberItem[] = [

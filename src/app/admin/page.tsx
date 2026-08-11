@@ -211,7 +211,7 @@ export default function AdminPage() {
 
   const [programModalOpen, setProgramModalOpen] = useState(false);
   const [newProgName, setNewProgName] = useState("");
-  const [newProgPrice, setNewProgPrice] = useState("$249");
+  const [newProgPrice, setNewProgPrice] = useState("Rp 2.500.000");
   const [newProgDuration, setNewProgDuration] = useState("12 Weeks");
 
   const handleSaveProgram = (e: React.FormEvent) => {
@@ -515,7 +515,7 @@ export default function AdminPage() {
 
               <div className="p-6 rounded-2xl glass-panel border border-white/10 space-y-2">
                 <span className="text-xs font-mono text-mad-gray uppercase">Monthly Recurring Revenue</span>
-                <div className="text-3xl font-black font-spartan text-mad-lime">$48,250</div>
+                <div className="text-3xl font-black font-spartan text-mad-lime">Rp 72.500.000</div>
                 <span className="text-[10px] text-emerald-400 font-mono">+8.4% MRR Growth</span>
               </div>
 

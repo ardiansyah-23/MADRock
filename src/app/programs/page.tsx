@@ -67,7 +67,7 @@ export default function ProgramsPage() {
       difficulty: "Intermediate - Advanced",
       image: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=1000&auto=format&fit=crop",
       badge: lang === "id" ? "Terpopuler" : "Most Popular",
-      price: "$199",
+      price: "Rp 1.500.000",
       features: [
         lang === "id" ? "100% Split Latihan Defisit Periodisasi" : "100% Periodized Cutting Training Split",
         lang === "id" ? "Struktur Defisit Kalori & Makro Kustom" : "Custom Calorie & Macro Deficit Structure",
@@ -88,7 +88,7 @@ export default function ProgramsPage() {
       difficulty: "All Levels",
       image: "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?q=80&w=1000&auto=format&fit=crop",
       badge: lang === "id" ? "Pertumbuhan Maksimal" : "High Growth",
-      price: "$249",
+      price: "Rp 2.500.000",
       features: [
         lang === "id" ? "Split Latihan Beban 4-5 Hari Seminggu" : "4 to 5 Day Compound Weightlifting Split",
         lang === "id" ? "Kerangka Makro Surplus Massa Otot Kering" : "Surplus Macro Framework for Lean Mass",
@@ -108,7 +108,7 @@ export default function ProgramsPage() {
       duration: lang === "id" ? "12 Minggu" : "12 Weeks",
       difficulty: "Intermediate",
       image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1000&auto=format&fit=crop",
-      price: "$219",
+      price: "Rp 2.000.000",
       features: [
         lang === "id" ? "Protokol Carb & Calorie Cycling" : "Calorie & Carb Cycling Protocol",
         lang === "id" ? "Kekuatan Compound + Kondisikan HIIT" : "Compound Strength + HIIT Conditioning",
@@ -128,7 +128,7 @@ export default function ProgramsPage() {
       duration: lang === "id" ? "10 Minggu" : "10 Weeks",
       difficulty: "Advanced",
       image: "https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=1000&auto=format&fit=crop",
-      price: "$229",
+      price: "Rp 2.200.000",
       features: [
         lang === "id" ? "Periodisasi Berbasis RPE & Persentase" : "RPE & Percentage-Based Periodization",
         lang === "id" ? "Penilaian Biomekanika & Bar Path" : "Bar Path & Biomechanics Assessment",
@@ -147,7 +147,7 @@ export default function ProgramsPage() {
       duration: lang === "id" ? "8 Minggu" : "8 Weeks",
       difficulty: "Beginner - Intermediate",
       image: "https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?q=80&w=1000&auto=format&fit=crop",
-      price: "$149",
+      price: "Rp 1.250.000",
       features: [
         lang === "id" ? "Kondisikan Dumbbell & Bodyweight" : "Dumbbell & Bodyweight Conditioning",
         lang === "id" ? "Sesi Efisien Waktu 30-45 Menit" : "30 to 45 Minute Time-Efficient Workouts",
@@ -167,7 +167,7 @@ export default function ProgramsPage() {
       difficulty: "Personalized",
       image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=1000&auto=format&fit=crop",
       badge: "Akses VIP",
-      price: "$349/mo",
+      price: "Rp 4.500.000/bln",
       features: [
         lang === "id" ? "100% Cetak Biru Latihan & Diet Kustom" : "100% Customized Training & Diet Blueprint",
         lang === "id" ? "Akses WhatsApp & Telepon Langsung ke Head Coach" : "Direct WhatsApp / Call Access to Head Coach",

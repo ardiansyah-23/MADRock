@@ -19,7 +19,7 @@ export default function BookingPage() {
   const [confirmed, setConfirmed] = useState(false);
 
   const coaches = [
-    { name: "Ahmad Hudzaifah", role: lang === "id" ? "Head Strength & Biomekanika" : "Head Strength & Biomechanics", price: "$199/bln" },
+    { name: "Ahmad Hudzaifah", role: lang === "id" ? "Head Strength & Biomekanika" : "Head Strength & Biomechanics", price: "Rp 1.500.000/bln" },
   ];
 
   const packages = [

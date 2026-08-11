@@ -19,8 +19,8 @@ export default function PricingPage() {
   const plans = [
     {
       name: "Starter Protocol",
-      priceMonthly: 79,
-      priceYearly: 65,
+      priceMonthly: 1200000,
+      priceYearly: 950000,
       description:
         lang === "id"
           ? "Alat ukur nutrisi & latihan berbasis sains esensial untuk atlet mandiri."
@@ -37,8 +37,8 @@ export default function PricingPage() {
     },
     {
       name: "Professional 1-on-1",
-      priceMonthly: 199,
-      priceYearly: 169,
+      priceMonthly: 2900000,
+      priceYearly: 2500000,
       description:
         lang === "id"
           ? "Program kepelatihan VIP 1-on-1 andalan kami dengan bimbingan & evaluasi langsung pelatih kepala."
@@ -59,8 +59,8 @@ export default function PricingPage() {
     },
     {
       name: "Elite Performance",
-      priceMonthly: 349,
-      priceYearly: 299,
+      priceMonthly: 5200000,
+      priceYearly: 4500000,
       description:
         lang === "id"
           ? "Kepelatihan privat komprehensif termasuk analisis laboratorium darah & optimasi biofeedback."
@@ -173,7 +173,7 @@ export default function PricingPage() {
 
                     <div className="flex items-baseline gap-1 py-4 border-y border-slate-900/10">
                       <span className="text-5xl font-black font-spartan text-slate-900">
-                        ${price}
+                        Rp {price.toLocaleString("id-ID")}
                       </span>
                       <span className="text-xs font-mono text-mad-gray uppercase">
                         {lang === "id" ? "/ bulan" : "/ month"}
