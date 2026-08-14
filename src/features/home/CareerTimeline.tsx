@@ -21,7 +21,7 @@ export function CareerTimeline() {
     {
       period: "Jul 2022 – Des 2024",
       org: "KONI DKI Jakarta",
-      role: lang === "id" ? "Head Sport Climbing Coach — PON 2024" : "Head Sport Climbing Coach — PON 2024",
+      role: lang === "id" ? "Head Sport Climbing Coach: PON 2024" : "Head Sport Climbing Coach: PON 2024",
       achievement: lang === "id" ? "Arya Arsyendi Putra: Medali Emas Speed PON 2024 · 15/16 Kuota Kualifikasi" : "Arya Arsyendi Putra: Speed Gold PON 2024 · 15/16 Qualification Quota",
       icon: Medal,
       color: "text-mad-lime",
@@ -48,7 +48,7 @@ export function CareerTimeline() {
     {
       period: "Jan – Des 2025",
       org: lang === "id" ? "Dispora DKI Jakarta" : "Dispora DKI Jakarta",
-      role: lang === "id" ? "Head Sport Climbing Coach — POMNAS 2025" : "Head Sport Climbing Coach — POMNAS 2025",
+      role: lang === "id" ? "Head Sport Climbing Coach: POMNAS 2025" : "Head Sport Climbing Coach: POMNAS 2025",
       achievement: lang === "id" ? "Medali Perunggu POMNAS 2025" : "Bronze Medal POMNAS 2025",
       icon: Medal,
       color: "text-amber-400",

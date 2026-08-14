@@ -11,7 +11,7 @@ import { TestimonialsSection } from "@/features/home/TestimonialsSection";
 import { CTASection } from "@/features/home/CTASection";
 
 export const metadata: Metadata = {
-  title: "Training by MAD | Ahmad Hudzaifah — S&C Coach & Speed Climbing Indonesia",
+  title: "Training by MAD | Ahmad Hudzaifah: S&C Coach & Speed Climbing Indonesia",
   description:
     "Pelatih Strength & Conditioning dan Speed Climbing Indonesia. Head Coach PON 2024 DKI Jakarta. Founder Training by MAD. Metodologi berbasis sains untuk atlet elite dan pemula.",
   keywords: [
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     "Sport Climbing",
   ],
   openGraph: {
-    title: "Training by MAD | Ahmad Hudzaifah — S&C Coach & Speed Climbing Indonesia",
+    title: "Training by MAD | Ahmad Hudzaifah: S&C Coach & Speed Climbing Indonesia",
     description:
       "Pelatih Strength & Conditioning dan Speed Climbing Indonesia. Head Coach PON 2024 DKI Jakarta. Founder Training by MAD.",
     url: "https://mad-rock.vercel.app",

@@ -63,7 +63,7 @@ export function AboutSection() {
                 <div className="relative h-[520px] w-full">
                   <Image
                     src="https://images.unsplash.com/photo-1522163182402-834f871fd851?q=80&w=1000&auto=format&fit=crop"
-                    alt="Ahmad Hudzaifah — Strength & Conditioning Coach"
+                    alt="Ahmad Hudzaifah: Strength & Conditioning Coach"
                     fill
                     className="object-cover"
                   />

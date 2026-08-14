@@ -128,8 +128,8 @@ export function AthletesAchievements() {
                 </h4>
                 <p className="text-mad-gray text-sm mt-1">
                   {lang === "id"
-                    ? "Medali Emas Speed Climbing — Pekan Olahraga Nasional (PON) 2024"
-                    : "Gold Medal Speed Climbing — National Sports Week (PON) 2024"}
+                    ? "Medali Emas Speed Climbing di Pekan Olahraga Nasional (PON) 2024"
+                    : "Gold Medal Speed Climbing at National Sports Week (PON) 2024"}
                 </p>
               </div>
             </ScrollReveal>

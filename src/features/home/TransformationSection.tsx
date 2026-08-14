@@ -45,7 +45,7 @@ export function TransformationSection() {
         <SectionHeader
           badge="REAL CLIENT RESULTS"
           title="PROVEN TRANSFORMATIONS"
-          subtitle="See how our science-backed periodization protocols unlock radical physical transformations."
+          subtitle="See the physical results driven by our science-backed periodization protocols."
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">

@@ -115,7 +115,7 @@ export function HeroSection() {
                   <div className="relative h-[380px] sm:h-[450px] lg:h-[480px] w-full">
                     <Image
                       src="https://images.unsplash.com/photo-1522163182402-834f871fd851?q=80&w=1000&auto=format&fit=crop"
-                      alt="Ahmad Hudzaifah — S&C Coach & Speed Climbing Indonesia"
+                      alt="Ahmad Hudzaifah: S&C Coach & Speed Climbing Indonesia"
                       fill
                       sizes="(max-width: 768px) 100vw, 40vw"
                       className="object-cover object-top hover:scale-105 transition-transform duration-500"

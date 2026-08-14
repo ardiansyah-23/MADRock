@@ -29,4 +29,8 @@ next-env.d.ts
 # local static template backup
 /Template MADRock
 /Template MADRock/
-
+/1.Template MADRock
+/2.Platform Personal Trainer
+/3.MADRock Coach Panjat Tebing
+*.rar
+*.zip

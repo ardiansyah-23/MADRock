@@ -17,7 +17,7 @@ export function TestimonialsSection() {
       date: lang === "id" ? "Ulasan Google Terverifikasi" : "Verified Google Review",
       review:
         lang === "id"
-          ? "MADRock adalah satu-satunya platform kepelatihan yang benar-benar memahami kesibukan saya. Turun 10kg lemak dalam 12 minggu sambil menaikkan angkatan deadlift 27kg. Sangat sepadan dengan setiap rupiah."
+          ? "MADRock adalah satu-satunya platform kepelatihan yang memahami kesibukan saya. Turun 10kg lemak dalam 12 minggu sambil menaikkan angkatan deadlift 27kg. Sepadan dengan setiap rupiah."
           : "MADRock is the only coaching platform that understands busy schedules. Down 22lbs of fat in 12 weeks while increasing my deadlift by 60lbs. Worth every single penny.",
       avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop",
     },
