@@ -1,20 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&family=League+Spartan:wght@400;600;700;800;900&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root, html {
-  color-scheme: dark;
-  --font-spartan: 'League Spartan', sans-serif;
-  --font-bebas: 'Bebas Neue', cursive;
-  --font-inter: 'Inter', sans-serif;
-
-  /* ⚙️ PREMIUM DARK MODE THEME */
-  --mad-bg: #0B0F19;              /* Deep obsidian dark */
-  --mad-surface: #111827;         /* Sleek slate-900 surface */
-  --mad-surface-2: #1F2937;       /* Slate-800 secondary surface */
-  --mad-surface-3: #374151;       /* Slate-700 borders */
+  color-scheme: light;
+  
+  /* ⚙️ PREMIUM LIGHT MODE THEME */
+  --mad-bg: #F8FAFC;              /* Slate-50 main background */
+  --mad-surface: #FFFFFF;         /* White sleek surface */
+  --mad-surface-2: #F1F5F9;       /* Slate-100 secondary surface */
+  --mad-surface-3: #E2E8F0;       /* Slate-200 borders */
   
   /* ACCENTS */
   --mad-lime: #10B981;            /* Vibrant Emerald Green */
@@ -22,18 +17,18 @@
   --mad-lime-light: #34D399;
   
   /* TYPOGRAPHY */
-  --mad-text: #F8FAFC;            /* Sharp white headings */
-  --mad-gray: #94A3B8;            /* Slate-400 for secondary text */
-  --mad-gray-dark: #64748B;
+  --mad-text: #0F172A;            /* Sharp slate-900 headings */
+  --mad-gray: #64748B;            /* Slate-500 for secondary text */
+  --mad-gray-dark: #475569;       /* Slate-600 */
   
   /* GLASSMORPHISM */
-  --mad-border: rgba(255, 255, 255, 0.1);
-  --mad-glass: rgba(17, 24, 39, 0.7);
-  --mad-glass-border: rgba(255, 255, 255, 0.05);
+  --mad-border: rgba(15, 23, 42, 0.1);
+  --mad-glass: rgba(255, 255, 255, 0.7);
+  --mad-glass-border: rgba(15, 23, 42, 0.05);
   
   /* INPUTS */
-  --mad-input-bg: rgba(31, 41, 55, 0.5);
-  --mad-input-border: rgba(255, 255, 255, 0.1);
+  --mad-input-bg: rgba(255, 255, 255, 0.8);
+  --mad-input-border: rgba(15, 23, 42, 0.1);
 }
 
 body {
@@ -42,7 +37,7 @@ body {
     radial-gradient(circle at 15% 50%, rgba(16, 185, 129, 0.04), transparent 25%),
     radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.04), transparent 25%);
   color: var(--mad-text);
-  font-family: var(--font-inter);
+  font-family: var(--font-inter), sans-serif;
   font-weight: 500;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

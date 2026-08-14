@@ -105,7 +105,7 @@ export function AboutSection() {
               <p className="text-xs font-mono uppercase tracking-widest text-mad-lime mb-2">
                 {lang === "id" ? "LATAR BELAKANG" : "BACKGROUND"}
               </p>
-              <h3 className="text-2xl sm:text-3xl font-extrabold uppercase font-spartan text-white">
+              <h3 className="text-2xl sm:text-3xl font-extrabold uppercase font-spartan text-slate-900">
                 {lang === "id"
                   ? '"GLORY LIKE PREPARATION"'
                   : '"GLORY LIKE PREPARATION"'}
@@ -141,7 +141,7 @@ export function AboutSection() {
                     <li key={i} className="flex items-center gap-3 p-3.5 rounded-2xl glass-card border border-white/10">
                       <CheckCircle2 className="w-4 h-4 text-mad-lime shrink-0" />
                       <div>
-                        <span className="text-white text-sm font-bold block">{cert.title}</span>
+                        <span className="text-slate-900 text-sm font-bold block">{cert.title}</span>
                         <span className="text-mad-gray text-[11px] font-mono">{cert.org}</span>
                       </div>
                     </li>
@@ -154,7 +154,7 @@ export function AboutSection() {
               <div className="p-5 rounded-2xl glass-card border border-white/10 flex items-start gap-4">
                 <GraduationCap className="w-8 h-8 text-mad-lime shrink-0 mt-0.5" />
                 <div>
-                  <p className="text-white font-bold text-sm">
+                  <p className="text-slate-900 font-bold text-sm">
                     {lang === "id" ? "Universitas Negeri Jakarta" : "State University of Jakarta"}
                   </p>
                   <p className="text-mad-gray text-xs mt-0.5">

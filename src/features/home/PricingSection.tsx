@@ -85,19 +85,19 @@ export function PricingSection() {
               <div
                 className={`rounded-3xl p-8 flex flex-col justify-between h-full relative transition-all duration-300 ${
                   plan.highlighted
-                    ? "glass-card border-2 border-mad-lime shadow-2xl shadow-mad-lime/10 lg:-translate-y-4"
-                    : "glass-card border border-white/10 hover:border-white/20"
+                    ? "bg-white border-2 border-mad-lime shadow-xl shadow-mad-lime/10 lg:-translate-y-4"
+                    : "bg-white border border-slate-200 hover:border-mad-lime/30 shadow-sm"
                 }`}
               >
                 {plan.badge && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-mad-lime text-mad-bg font-extrabold text-[10px] uppercase tracking-wider shadow-lg whitespace-nowrap">
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-mad-lime text-white font-extrabold text-[10px] uppercase tracking-wider shadow-lg whitespace-nowrap">
                     {plan.badge}
                   </div>
                 )}
 
                 <div className="space-y-6">
                   <div>
-                    <h3 className="text-2xl font-black font-spartan text-white uppercase">
+                    <h3 className="text-2xl font-black font-spartan text-slate-900 uppercase">
                       {plan.name}
                     </h3>
                     <p className="text-xs text-mad-gray mt-1 leading-relaxed">
@@ -105,8 +105,8 @@ export function PricingSection() {
                     </p>
                   </div>
 
-                  <div className="flex items-baseline gap-1 py-4 border-y border-white/10">
-                    <span className="text-5xl font-black font-spartan text-white">
+                  <div className="flex items-baseline gap-1 py-4 border-y border-slate-200">
+                    <span className="text-5xl font-black font-spartan text-slate-900">
                       Rp {plan.price.toLocaleString("id-ID")}
                     </span>
                     <span className="text-xs font-mono text-mad-gray uppercase">
@@ -132,8 +132,8 @@ export function PricingSection() {
                       rel="noopener noreferrer"
                       className={`w-full inline-flex items-center justify-center gap-2 py-4 rounded-2xl font-extrabold text-xs uppercase tracking-wider transition-all ${
                         plan.highlighted
-                          ? "bg-mad-lime text-mad-bg hover:bg-mad-lime-hover shadow-xl shadow-mad-lime/20"
-                          : "bg-white/10 text-white hover:bg-mad-lime hover:text-mad-bg border border-white/10"
+                          ? "bg-mad-lime text-white hover:bg-mad-lime-hover shadow-xl shadow-mad-lime/20"
+                          : "bg-slate-50 text-slate-700 hover:bg-mad-lime hover:text-white border border-slate-200 hover:border-mad-lime"
                       }`}
                     >
                       <span>{plan.cta}</span>
@@ -144,8 +144,8 @@ export function PricingSection() {
                       href={plan.href}
                       className={`w-full inline-flex items-center justify-center gap-2 py-4 rounded-2xl font-extrabold text-xs uppercase tracking-wider transition-all ${
                         plan.highlighted
-                          ? "bg-mad-lime text-mad-bg hover:bg-mad-lime-hover shadow-xl shadow-mad-lime/20"
-                          : "bg-white/10 text-white hover:bg-mad-lime hover:text-mad-bg border border-white/10"
+                          ? "bg-mad-lime text-white hover:bg-mad-lime-hover shadow-xl shadow-mad-lime/20"
+                          : "bg-slate-50 text-slate-700 hover:bg-mad-lime hover:text-white border border-slate-200 hover:border-mad-lime"
                       }`}
                     >
                       <span>{plan.cta}</span>
@@ -159,9 +159,9 @@ export function PricingSection() {
         </div>
 
         <ScrollReveal delay={0.4}>
-          <div className="mt-12 p-6 rounded-3xl glass-card border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+          <div className="mt-12 p-6 rounded-3xl bg-white border border-slate-200 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
             <div>
-              <p className="text-white font-bold font-spartan uppercase">
+              <p className="text-slate-900 font-bold font-spartan uppercase">
                 {lang === "id" ? "Tidak yakin paket mana yang cocok?" : "Not sure which package fits?"}
               </p>
               <p className="text-mad-gray text-xs mt-1">
@@ -172,7 +172,7 @@ export function PricingSection() {
               href="https://wa.me/62XXXXXXXXXX"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-mad-lime text-mad-bg font-extrabold text-xs uppercase tracking-wider hover:bg-mad-lime-hover transition-all shrink-0"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-mad-lime text-white font-extrabold text-xs uppercase tracking-wider hover:bg-mad-lime-hover transition-all shrink-0"
             >
               <MessageCircle className="w-4 h-4" />
               {lang === "id" ? "Konsultasi Gratis" : "Free Consultation"}

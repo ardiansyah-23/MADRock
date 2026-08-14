@@ -16,10 +16,10 @@ export function CTASection() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal>
-          <div className="relative rounded-3xl overflow-hidden glass-card border border-white/10 p-10 sm:p-16 text-center space-y-8">
+          <div className="relative rounded-3xl overflow-hidden bg-white border border-slate-200 shadow-sm p-10 sm:p-16 text-center space-y-8">
             {/* Subtle grid overlay */}
-            <div className="absolute inset-0 opacity-5"
-              style={{backgroundImage: "linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)", backgroundSize: "40px 40px"}}
+            <div className="absolute inset-0 opacity-[0.03]"
+              style={{backgroundImage: "linear-gradient(rgba(15,23,42,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(15,23,42,.1) 1px, transparent 1px)", backgroundSize: "40px 40px"}}
             />
 
             <div className="relative z-10 space-y-8">
@@ -28,7 +28,7 @@ export function CTASection() {
                 <span>{lang === "id" ? "MULAI PERJALANAN ANDA" : "START YOUR JOURNEY"}</span>
               </div>
 
-              <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black uppercase font-spartan text-white tracking-tight max-w-4xl mx-auto leading-none">
+              <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black uppercase font-spartan text-slate-900 tracking-tight max-w-4xl mx-auto leading-none">
                 {lang === "id" ? "SIAP LATIHAN" : "READY TO TRAIN"} <br />
                 <span className="text-mad-lime">
                   {lang === "id" ? "DENGAN BENAR?" : "THE RIGHT WAY?"}
@@ -46,7 +46,7 @@ export function CTASection() {
                   href="https://wa.me/62XXXXXXXXXX"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-3 px-9 py-4 rounded-2xl text-base font-extrabold bg-mad-lime text-mad-bg hover:bg-mad-lime-hover transition-all duration-300 shadow-xl shadow-mad-lime/25 hover:scale-105"
+                  className="group inline-flex items-center gap-3 px-9 py-4 rounded-2xl text-base font-extrabold bg-mad-lime text-white hover:bg-mad-lime-hover transition-all duration-300 shadow-xl shadow-mad-lime/25 hover:scale-105"
                 >
                   <MessageCircle className="w-5 h-5" />
                   <span>{lang === "id" ? "CHAT DI WHATSAPP" : "CHAT ON WHATSAPP"}</span>
@@ -57,7 +57,7 @@ export function CTASection() {
                   href="https://www.instagram.com/ahmadhudzaifaah"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2.5 px-8 py-4 rounded-2xl text-base font-bold glass-card border border-white/10 text-white hover:border-mad-lime/40 transition-all duration-300"
+                  className="inline-flex items-center gap-2.5 px-8 py-4 rounded-2xl text-base font-bold bg-white border border-slate-200 text-slate-800 hover:border-mad-lime/40 shadow-sm transition-all duration-300"
                 >
                   <Instagram className="w-5 h-5 text-mad-lime" />
                   <span>@ahmadhudzaifaah</span>

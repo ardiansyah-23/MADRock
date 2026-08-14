@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
+import { Inter, Bebas_Neue, League_Spartan } from "next/font/google";
 import "./globals.css";
 import { ClientLayoutWrapper } from "@/components/layout/ClientLayoutWrapper";
+
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const bebasNeue = Bebas_Neue({ weight: "400", subsets: ["latin"], variable: "--font-bebas" });
+const leagueSpartan = League_Spartan({ subsets: ["latin"], variable: "--font-spartan" });
 
 const BASE_URL = "https://mad-rock.vercel.app";
 
@@ -83,7 +88,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="id" className="scroll-smooth">
-      <body className="bg-mad-bg text-mad-text antialiased min-h-screen flex flex-col justify-between">
+      <body className={`${inter.variable} ${bebasNeue.variable} ${leagueSpartan.variable} bg-mad-bg text-mad-text antialiased min-h-screen flex flex-col justify-between`}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
