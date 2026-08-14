@@ -48,7 +48,7 @@ export function SpecializationsSection() {
   ];
 
   return (
-    <section className="py-24 bg-mad-bg relative overflow-hidden">
+    <section className="py-24 bg-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
           title={lang === "id" ? "SPESIALISASI & KEAHLIAN" : "SPECIALIZATIONS"}
@@ -62,19 +62,19 @@ export function SpecializationsSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {specs.map((spec, idx) => (
             <ScrollReveal key={idx} delay={0.1 * idx}>
-              <div className="p-8 rounded-3xl glass-card border border-white/10 hover:border-mad-lime/30 transition-all duration-300 group h-full flex flex-col">
-                <div className="w-14 h-14 rounded-2xl bg-mad-lime/10 border border-mad-lime/30 flex items-center justify-center text-mad-lime mb-6 group-hover:bg-mad-lime group-hover:text-mad-bg transition-colors duration-300">
+              <div className="p-8 rounded-3xl bg-white border border-slate-200 shadow-sm hover:border-emerald-300 transition-all duration-300 group h-full flex flex-col">
+                <div className="w-14 h-14 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-600 mb-6 group-hover:bg-emerald-600 group-hover:text-white transition-colors duration-300">
                   <spec.icon className="w-7 h-7" />
                 </div>
-                <h4 className="text-xl font-bold font-spartan text-white uppercase mb-3">
+                <h4 className="text-xl font-bold font-spartan text-slate-900 uppercase mb-3">
                   {spec.title}
                 </h4>
-                <p className="text-sm text-mad-gray leading-relaxed flex-1">
+                <p className="text-sm text-slate-700 font-medium leading-relaxed flex-1">
                   {spec.description}
                 </p>
-                <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t border-white/5">
+                <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t border-slate-100">
                   {spec.tags.map((tag, t) => (
-                    <span key={t} className="px-3 py-1 rounded-full text-[10px] font-mono font-bold uppercase bg-white/5 text-mad-gray border border-white/10">
+                    <span key={t} className="px-3 py-1 rounded-full text-[10px] font-mono font-extrabold uppercase bg-slate-50 text-slate-600 border border-slate-200">
                       {tag}
                     </span>
                   ))}

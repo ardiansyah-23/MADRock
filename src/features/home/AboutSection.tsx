@@ -81,7 +81,7 @@ export function AboutSection() {
                   href="https://www.instagram.com/ahmadhudzaifaah"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 flex items-center justify-center gap-2 py-3 rounded-2xl glass-card border border-white/10 text-mad-gray hover:text-mad-lime hover:border-mad-lime/30 transition-all text-xs font-mono font-bold uppercase"
+                  className="flex-1 flex items-center justify-center gap-2 py-3 rounded-2xl bg-white shadow-sm border border-slate-200 text-slate-600 hover:text-emerald-600 hover:border-emerald-300 transition-all text-xs font-mono font-bold uppercase"
                 >
                   <Instagram className="w-4 h-4" />
                   @ahmadhudzaifaah
@@ -90,7 +90,7 @@ export function AboutSection() {
                   href="https://www.linkedin.com/in/ahmadhudzaifah"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 flex items-center justify-center gap-2 py-3 rounded-2xl glass-card border border-white/10 text-mad-gray hover:text-mad-lime hover:border-mad-lime/30 transition-all text-xs font-mono font-bold uppercase"
+                  className="flex-1 flex items-center justify-center gap-2 py-3 rounded-2xl bg-white shadow-sm border border-slate-200 text-slate-600 hover:text-emerald-600 hover:border-emerald-300 transition-all text-xs font-mono font-bold uppercase"
                 >
                   <Linkedin className="w-4 h-4" />
                   LinkedIn
@@ -110,7 +110,7 @@ export function AboutSection() {
                   ? '"GLORY LIKE PREPARATION"'
                   : '"GLORY LIKE PREPARATION"'}
               </h3>
-              <p className="text-mad-gray text-base leading-relaxed mt-4">
+              <p className="text-slate-700 font-medium text-base leading-relaxed mt-4">
                 {lang === "id"
                   ? "Lulusan Pendidikan Olahraga Universitas Negeri Jakarta (2013–2018). Sejak 2019, Ahmad telah membangun karier kepelatihannya mulai dari Dispora DKI Jakarta, KONI DKI, hingga mendirikan platform edukasi Training by MAD. Pendekatannya: periodisasi latihan berbasis sains yang disesuaikan dengan kemampuan atlet, bukan program seragam."
                   : "Graduate of Sports Education at Universitas Negeri Jakarta (2013–2018). Since 2019, Ahmad has built his coaching career from Dispora DKI Jakarta, KONI DKI, to founding the Training by MAD education platform. His approach: science-based periodization training tailored to each athlete's ability."}
@@ -121,9 +121,9 @@ export function AboutSection() {
             <ScrollReveal delay={0.2}>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
                 {achievements.map((item, i) => (
-                  <div key={i} className="p-4 rounded-2xl glass-card border border-white/10 text-center">
-                    <span className="text-mad-lime font-spartan font-black text-lg block leading-tight">{item.value}</span>
-                    <span className="text-mad-gray font-mono text-[10px] uppercase block mt-1">{item.label}</span>
+                  <div key={i} className="p-4 rounded-2xl bg-white shadow-sm border border-slate-200 text-center">
+                    <span className="text-emerald-600 font-spartan font-black text-lg block leading-tight">{item.value}</span>
+                    <span className="text-slate-500 font-bold font-mono text-[10px] uppercase block mt-1">{item.label}</span>
                   </div>
                 ))}
               </div>
@@ -132,17 +132,17 @@ export function AboutSection() {
             {/* Certifications */}
             <ScrollReveal delay={0.3}>
               <div className="pt-2">
-                <p className="text-xs font-mono uppercase tracking-widest text-mad-gray mb-3 flex items-center gap-2">
-                  <Award className="w-3.5 h-3.5 text-mad-lime" />
+                <p className="text-xs font-mono uppercase tracking-widest text-slate-500 font-bold mb-3 flex items-center gap-2">
+                  <Award className="w-3.5 h-3.5 text-emerald-600" />
                   {lang === "id" ? "SERTIFIKASI PROFESIONAL" : "PROFESSIONAL CERTIFICATIONS"}
                 </p>
                 <ul className="space-y-2.5">
                   {certs.map((cert, i) => (
-                    <li key={i} className="flex items-center gap-3 p-3.5 rounded-2xl glass-card border border-white/10">
-                      <CheckCircle2 className="w-4 h-4 text-mad-lime shrink-0" />
+                    <li key={i} className="flex items-center gap-3 p-3.5 rounded-2xl bg-white shadow-sm border border-slate-200">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
                       <div>
-                        <span className="text-slate-900 text-sm font-bold block">{cert.title}</span>
-                        <span className="text-mad-gray text-[11px] font-mono">{cert.org}</span>
+                        <span className="text-slate-900 text-sm font-extrabold block">{cert.title}</span>
+                        <span className="text-slate-500 font-bold text-[11px] font-mono">{cert.org}</span>
                       </div>
                     </li>
                   ))}
@@ -151,13 +151,13 @@ export function AboutSection() {
             </ScrollReveal>
 
             <ScrollReveal delay={0.4}>
-              <div className="p-5 rounded-2xl glass-card border border-white/10 flex items-start gap-4">
-                <GraduationCap className="w-8 h-8 text-mad-lime shrink-0 mt-0.5" />
+              <div className="p-5 rounded-2xl bg-white shadow-sm border border-slate-200 flex items-start gap-4">
+                <GraduationCap className="w-8 h-8 text-emerald-600 shrink-0 mt-0.5" />
                 <div>
-                  <p className="text-slate-900 font-bold text-sm">
+                  <p className="text-slate-900 font-extrabold text-sm">
                     {lang === "id" ? "Universitas Negeri Jakarta" : "State University of Jakarta"}
                   </p>
-                  <p className="text-mad-gray text-xs mt-0.5">
+                  <p className="text-slate-500 font-bold text-xs mt-0.5">
                     {lang === "id" ? "S1 Pendidikan Olahraga · 2013–2018" : "Bachelor of Sports Education · 2013–2018"}
                   </p>
                 </div>

@@ -12,11 +12,11 @@ export function FeaturedVideo() {
   const [isPlaying, setIsPlaying] = useState(false);
 
   const tags = [
-    { label: lang === "id" ? "Kekuatan" : "Strength", icon: Dumbbell, color: "text-mad-lime" },
-    { label: lang === "id" ? "Mobilitas" : "Mobility", icon: Zap, color: "text-amber-400" },
-    { label: lang === "id" ? "Pemulihan" : "Recovery", icon: HeartPulse, color: "text-emerald-400" },
-    { label: lang === "id" ? "Nutrisi" : "Nutrition", icon: Apple, color: "text-rose-400" },
-    { label: lang === "id" ? "Pola Pikir" : "Mindset", icon: Brain, color: "text-sky-400" },
+    { label: lang === "id" ? "Kekuatan" : "Strength", icon: Dumbbell, color: "text-emerald-600" },
+    { label: lang === "id" ? "Mobilitas" : "Mobility", icon: Zap, color: "text-amber-600" },
+    { label: lang === "id" ? "Pemulihan" : "Recovery", icon: HeartPulse, color: "text-emerald-600" },
+    { label: lang === "id" ? "Nutrisi" : "Nutrition", icon: Apple, color: "text-rose-600" },
+    { label: lang === "id" ? "Pola Pikir" : "Mindset", icon: Brain, color: "text-sky-600" },
   ];
 
   return (
@@ -32,7 +32,7 @@ export function FeaturedVideo() {
         />
 
         <ScrollReveal>
-          <div className="relative rounded-3xl overflow-hidden border border-slate-900/15 bg-mad-surface shadow-2xl group max-w-5xl mx-auto">
+          <div className="relative rounded-3xl overflow-hidden border border-slate-200 bg-white shadow-xl shadow-slate-200/50 group max-w-5xl mx-auto">
             {/* Video Thumbnail */}
             <div className="relative h-[380px] sm:h-[500px] lg:h-[580px] w-full">
               <Image
@@ -51,7 +51,7 @@ export function FeaturedVideo() {
                 >
                   <Play className="w-10 h-10 ml-1 fill-mad-bg stroke-none" />
                 </button>
-                <span className="mt-4 text-xs font-mono tracking-widest keep-white text-white uppercase font-bold bg-mad-bg/80 px-4 py-1.5 rounded-full border border-slate-900/10">
+                <span className="mt-4 text-xs font-mono tracking-widest text-white uppercase font-extrabold bg-slate-900/90 px-4 py-1.5 rounded-full border border-slate-800 shadow-md">
                   {lang === "id" ? "TONTON EVALUASI GERAKAN (3:45)" : "WATCH WORKOUT BREAKDOWN (3:45)"}
                 </span>
               </div>
@@ -61,7 +61,7 @@ export function FeaturedVideo() {
                 {tags.map((tag, idx) => (
                   <div
                     key={idx}
-                    className="flex items-center gap-2 px-4 py-2 rounded-2xl glass-panel border border-slate-900/15 text-xs font-bold text-slate-900 uppercase tracking-wider backdrop-blur-xl"
+                    className="flex items-center gap-2 px-4 py-2 rounded-2xl bg-white/95 border border-slate-200 text-xs font-extrabold text-slate-900 uppercase tracking-wider shadow-sm"
                   >
                     <tag.icon className={`w-4 h-4 ${tag.color}`} />
                     <span>{tag.label}</span>
