@@ -90,7 +90,7 @@ export function PricingSection() {
                 }`}
               >
                 {plan.badge && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-mad-lime text-white font-extrabold text-[10px] uppercase tracking-wider shadow-lg whitespace-nowrap">
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-emerald-500 text-white font-extrabold text-[10px] uppercase tracking-wider shadow-lg whitespace-nowrap">
                     {plan.badge}
                   </div>
                 )}
@@ -100,7 +100,7 @@ export function PricingSection() {
                     <h3 className="text-2xl font-black font-spartan text-slate-900 uppercase">
                       {plan.name}
                     </h3>
-                    <p className="text-xs text-mad-gray mt-1 leading-relaxed">
+                    <p className="text-xs text-slate-600 font-medium mt-1 leading-relaxed">
                       {plan.description}
                     </p>
                   </div>
@@ -109,15 +109,15 @@ export function PricingSection() {
                     <span className="text-5xl font-black font-spartan text-slate-900">
                       Rp {plan.price.toLocaleString("id-ID")}
                     </span>
-                    <span className="text-xs font-mono text-mad-gray uppercase">
+                    <span className="text-xs font-mono text-slate-500 font-bold uppercase">
                       {lang === "id" ? "/ bulan" : "/ month"}
                     </span>
                   </div>
 
-                  <ul className="space-y-3.5 text-xs text-mad-gray">
+                  <ul className="space-y-3.5 text-xs text-slate-700 font-medium">
                     {plan.features.map((feature, fIdx) => (
                       <li key={fIdx} className="flex items-start gap-3">
-                        <Check className="w-4 h-4 text-mad-lime shrink-0 mt-0.5" />
+                        <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
                         <span>{feature}</span>
                       </li>
                     ))}
@@ -132,8 +132,8 @@ export function PricingSection() {
                       rel="noopener noreferrer"
                       className={`w-full inline-flex items-center justify-center gap-2 py-4 rounded-2xl font-extrabold text-xs uppercase tracking-wider transition-all ${
                         plan.highlighted
-                          ? "bg-mad-lime text-white hover:bg-mad-lime-hover shadow-xl shadow-mad-lime/20"
-                          : "bg-slate-50 text-slate-700 hover:bg-mad-lime hover:text-white border border-slate-200 hover:border-mad-lime"
+                          ? "bg-emerald-600 text-white hover:bg-emerald-700 shadow-xl shadow-emerald-600/20"
+                          : "bg-slate-50 text-slate-700 hover:bg-emerald-600 hover:text-white border border-slate-200 hover:border-emerald-600"
                       }`}
                     >
                       <span>{plan.cta}</span>
@@ -144,8 +144,8 @@ export function PricingSection() {
                       href={plan.href}
                       className={`w-full inline-flex items-center justify-center gap-2 py-4 rounded-2xl font-extrabold text-xs uppercase tracking-wider transition-all ${
                         plan.highlighted
-                          ? "bg-mad-lime text-white hover:bg-mad-lime-hover shadow-xl shadow-mad-lime/20"
-                          : "bg-slate-50 text-slate-700 hover:bg-mad-lime hover:text-white border border-slate-200 hover:border-mad-lime"
+                          ? "bg-emerald-600 text-white hover:bg-emerald-700 shadow-xl shadow-emerald-600/20"
+                          : "bg-slate-50 text-slate-700 hover:bg-emerald-600 hover:text-white border border-slate-200 hover:border-emerald-600"
                       }`}
                     >
                       <span>{plan.cta}</span>
@@ -164,7 +164,7 @@ export function PricingSection() {
               <p className="text-slate-900 font-bold font-spartan uppercase">
                 {lang === "id" ? "Tidak yakin paket mana yang cocok?" : "Not sure which package fits?"}
               </p>
-              <p className="text-mad-gray text-xs mt-1">
+              <p className="text-slate-600 font-medium text-xs mt-1">
                 {lang === "id" ? "Chat langsung untuk konsultasi gratis." : "Chat directly for a free consultation."}
               </p>
             </div>
@@ -172,7 +172,7 @@ export function PricingSection() {
               href="https://wa.me/62XXXXXXXXXX"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-mad-lime text-white font-extrabold text-xs uppercase tracking-wider hover:bg-mad-lime-hover transition-all shrink-0"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-emerald-600 text-white font-extrabold text-xs uppercase tracking-wider hover:bg-emerald-700 transition-all shrink-0"
             >
               <MessageCircle className="w-4 h-4" />
               {lang === "id" ? "Konsultasi Gratis" : "Free Consultation"}

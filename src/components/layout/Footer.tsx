@@ -29,9 +29,9 @@ export function Footer() {
   ];
 
   return (
-    <footer className="bg-mad-surface/50 border-t border-white/5 pt-16 pb-12 text-white">
+    <footer className="bg-slate-50 border-t border-slate-200 pt-16 pb-12 text-slate-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-slate-200">
           {/* Brand */}
           <div className="lg:col-span-2 space-y-5">
             <Link href="/" className="flex items-center gap-2.5">
@@ -39,13 +39,13 @@ export function Footer() {
                 <Mountain className="w-6 h-6 stroke-[2.5]" />
               </div>
               <div>
-                <span className="font-spartan font-black text-xl tracking-tighter text-white uppercase leading-none block">
+                <span className="font-spartan font-black text-xl tracking-tighter text-slate-900 uppercase leading-none block">
                   Training by <span className="text-mad-lime">MAD</span>
                 </span>
-                <span className="text-[10px] font-mono text-mad-gray uppercase tracking-widest">Ahmad Hudzaifah</span>
+                <span className="text-[10px] font-mono font-bold text-slate-500 uppercase tracking-widest">Ahmad Hudzaifah</span>
               </div>
             </Link>
-            <p className="text-sm text-mad-gray max-w-sm leading-relaxed">
+            <p className="text-sm text-slate-600 font-medium max-w-sm leading-relaxed">
               {lang === "id"
                 ? "S&C Coach dan Pelatih Speed Climbing Indonesia. Founder Training by MAD. Berbasis di Jakarta, aktif membina atlet dari usia dini hingga level elite nasional."
                 : "S&C Coach and Speed Climbing Indonesia. Founder of Training by MAD. Based in Jakarta, actively developing athletes from youth to national elite level."}
@@ -55,7 +55,7 @@ export function Footer() {
                 href="https://www.instagram.com/ahmadhudzaifaah"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-xl glass-card border border-white/10 flex items-center justify-center text-mad-gray hover:text-mad-lime hover:border-mad-lime/40 transition-all duration-300"
+                className="w-10 h-10 rounded-xl bg-white border border-slate-200 shadow-sm flex items-center justify-center text-slate-500 hover:text-emerald-600 hover:border-emerald-300 hover:bg-emerald-50 transition-all duration-300"
               >
                 <Instagram className="w-4 h-4" />
               </a>
@@ -63,7 +63,7 @@ export function Footer() {
                 href="https://www.linkedin.com/in/ahmadhudzaifah"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-xl glass-card border border-white/10 flex items-center justify-center text-mad-gray hover:text-mad-lime hover:border-mad-lime/40 transition-all duration-300"
+                className="w-10 h-10 rounded-xl bg-white border border-slate-200 shadow-sm flex items-center justify-center text-slate-500 hover:text-emerald-600 hover:border-emerald-300 hover:bg-emerald-50 transition-all duration-300"
               >
                 <Linkedin className="w-4 h-4" />
               </a>
@@ -71,7 +71,7 @@ export function Footer() {
                 href="https://wa.me/62XXXXXXXXXX"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-xl glass-card border border-white/10 flex items-center justify-center text-mad-gray hover:text-mad-lime hover:border-mad-lime/40 transition-all duration-300"
+                className="w-10 h-10 rounded-xl bg-white border border-slate-200 shadow-sm flex items-center justify-center text-slate-500 hover:text-emerald-600 hover:border-emerald-300 hover:bg-emerald-50 transition-all duration-300"
               >
                 <MessageCircle className="w-4 h-4" />
               </a>
@@ -81,7 +81,7 @@ export function Footer() {
           {/* Links */}
           {links.map((group, i) => (
             <div key={i} className="space-y-4">
-              <h4 className="text-white font-bold text-sm tracking-wider uppercase font-spartan">
+              <h4 className="text-slate-900 font-extrabold text-sm tracking-wider uppercase font-spartan">
                 {group.heading}
               </h4>
               <ul className="space-y-2.5">
@@ -89,7 +89,7 @@ export function Footer() {
                   <li key={j}>
                     <Link
                       href={item.href}
-                      className="text-sm text-mad-gray hover:text-mad-lime transition-colors"
+                      className="text-sm text-slate-600 font-medium hover:text-emerald-600 transition-colors"
                     >
                       {item.label}
                     </Link>
@@ -101,11 +101,11 @@ export function Footer() {
         </div>
 
         {/* Bottom */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-mad-gray gap-4">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 font-medium gap-4">
           <p>© {new Date().getFullYear()} Training by MAD · Ahmad Hudzaifah. {lang === "id" ? "Hak cipta dilindungi." : "All rights reserved."}</p>
           <div className="flex items-center gap-6">
-            <Link href="/privacy" className="hover:text-white transition-colors">{lang === "id" ? "Kebijakan Privasi" : "Privacy Policy"}</Link>
-            <Link href="/terms" className="hover:text-white transition-colors">{lang === "id" ? "Syarat & Ketentuan" : "Terms of Service"}</Link>
+            <Link href="/privacy" className="hover:text-emerald-600 transition-colors">{lang === "id" ? "Kebijakan Privasi" : "Privacy Policy"}</Link>
+            <Link href="/terms" className="hover:text-emerald-600 transition-colors">{lang === "id" ? "Syarat & Ketentuan" : "Terms of Service"}</Link>
           </div>
         </div>
       </div>
